@@ -1,0 +1,1 @@
+This project aims to provide accurate information for the Warcraft 3 custom map Legion TD Mega 3.5 (B4).
