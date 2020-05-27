@@ -27,7 +27,7 @@
     "express-pino-logger": "^5.0.0",
     "helmet": "^3.22.0",
     "mongodb": "^3.5.7",
-    "mongoose": "^5.9.15",
+    "mongoose": "^5.9.16",
     "pino": "^6.3.0",
     "pino-pretty": "^4.0.0",
     "typescript": "^3.9.3"
