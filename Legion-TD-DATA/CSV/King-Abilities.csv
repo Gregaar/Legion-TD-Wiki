@@ -1,0 +1,18 @@
+Name.string(),Description.string(),Activatable.boolean(),Avatar ID.string()
+bash,Gives a 15% chance that an attack will do 25 bonus damage and stun an opponent for 2 seconds.,FALSE,CBPhwJo
+command aura,Gives 15% extra damage to the attacks of nearby friendly units.,FALSE,K3CCloC
+cripple,Reduces movement speed by 30% attack rate by 65% and damage by 50% of a target enemy unit. Lasts 20 seconds.,TRUE,Cq5uazb
+critical strike,Gives a 15% chance to do 175% damage on an attack.,FALSE,rtf3lyI
+devotion aura,Gives 5 additional armor to nearby friendly units.,FALSE,ENikSG9
+endurance aura,Increases nearby friendly units' movement speed by 15% and attack rate by 10%.,FALSE,99W8DaO
+entangling roots,Causes roots to burst from the ground immobilizing a target enemy unit for 10 seconds and dealing 33 damage per second.,TRUE,y7pgcPl
+evasion,Gives a 15% percent chance to avoid an attack.,FALSE,UEVSqnj
+frost,Attacks slow enemies for 4 seconds.,FALSE,V806q8h
+permanent immolation,Burns nearby enemy land units for 12 points of damage per second.,FALSE,PFDKALG
+pulverize,Gives a 25% chance that an attack will deal 80 damage to nearby units.,FALSE,nX5Izh3
+regeneration aura,Increases life regeneration by 20HP per second.,FALSE,agcTJmH
+shockwave,A wave of force that ripples outward causing 90 damage to enemy units in a line.,TRUE,dn8Baey
+slow,Slows enemy unit's attack rate by 25% and movement speed by 60%. Lasts 12 seconds.,TRUE,JjafVvt
+thorns aura,An aura that gives nearby friendly units a damage shield which deals 10% of an enemy unit's attack damage back to it.,FALSE,3HiUkwH
+trueshot aura,An aura that gives nearby friendly units a 15% bonus damage to their ranged attacks.,FALSE,Udp1Hv9
+war stomp,Slams the ground dealing 45 damage to nearby enemy units and stunning them for 1.25 seconds.,TRUE,CNzkpJ5
