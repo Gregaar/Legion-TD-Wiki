@@ -8,9 +8,6 @@ export const searchByUnitName: RequestHandler<{ name: string }> = async (
   next
 ) => {
   try {
-    if (!req.params.name) {
-      throw new Error();
-    }
     const realUnit = await Unit.findOne({
       Name: req.params.name.toLowerCase(),
     });
@@ -34,10 +31,6 @@ export const searchByUnitBuilder: RequestHandler<{ builder: string }> = async (
   next
 ) => {
   try {
-    if (!req.params.builder) {
-      throw new Error();
-    }
-
     const builderUnits = await Unit.find({
       Builder: req.params.builder.toLowerCase(),
     });
@@ -61,10 +54,6 @@ export const searchByUnitTier: RequestHandler<{ tier: string }> = async (
   next
 ) => {
   try {
-    if (!req.params.tier) {
-      throw new Error();
-    }
-
     const tierUnits = await Unit.find({ "Unit Tier": +req.params.tier });
 
     if (!tierUnits.length) {
@@ -86,9 +75,6 @@ export const searchByUnitGoldCost: RequestHandler<{ gold: string }> = async (
   next
 ) => {
   try {
-    if (!req.params.gold) {
-      throw new Error();
-    }
     const unitsByCost = await Unit.find({ "Gold Cost": +req.params.gold });
 
     if (!unitsByCost.length) {
@@ -264,10 +250,6 @@ export const findUnitWithAura: RequestHandler<{ builder: string }> = async (
   next
 ) => {
   try {
-    if (!req.params.builder) {
-      throw new Error();
-    }
-
     if (req.params.builder.toString().toLowerCase() === "any") {
       const unitsFound = await Unit.find({ "Has Aura": true });
 
@@ -360,14 +342,10 @@ export const findUnitByMeleeOrRanged: RequestHandler<{
 
     return res.json({ units: [...unitsFound] });
   } catch (error) {
-    return res
-      .status(404)
-      .json({
-        error: `Unable to find any units that are ${
-          req.query.abilityType
-        } from ${
-          req.query.builder === "any" ? "all builders" : req.query.builder
-        }.`,
-      });
+    return res.status(404).json({
+      error: `Unable to find any units that are ${req.query.abilityType} from ${
+        req.query.builder === "any" ? "all builders" : req.query.builder
+      }.`,
+    });
   }
 };
