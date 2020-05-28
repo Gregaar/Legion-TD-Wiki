@@ -1,17 +1,17 @@
-Name.string(),Avatar ID.string(),Unit ID.string(),Description.string(),Altar Of Heroes.boolean()
-artic,lBMIcVe,uGeV4q9,The creatures of Northrend masters of cold.,True
-beast,s7mIAxD,Ci9ugxK,The creatures of Azeroth are no strangers to war. A balanced race overall. Also pretty inexpensive in cost.,True
-demi-human,CBLzVl8,JdBN2nl,A motley crew of species with similarities to the human race. Fighters boast versatile abilities.,True
-element,BQMaeSG,jhBlJsj,Forces of magic far older than life itself. An offensive race.,True
-elf,pYlztwv,VYx5b11,The first race to awaken on Azeroth. Fighters have mastered powerful offensive spells but lack in the area of support. A haughty selfish race.,True
-ghost,1km4yt7,DVGPMeE,Having transcended the physical world fighters have strong offensive magic and ranged attacks. Weak on defense.,True
-goblin,NSw91aO,9g5uYyF,Goblins are small humanoids. They constantly build and repair machines and work on new ideas. Very strong in mechanical thing and firearm.,True
-hybrid,ODpKupn,qiov8YH,A strange race with no characteristics of its own. Instead morphs into fighters from other races.,False
-marine,dL4Ujvg,i3P2smx,From the depths of the ocean rise creatures unlike any other.,True
-mech,KES1BcP,PTvqyIg,Boasts cutting edge military technology. Powerful core stats but expensive and have few special abilities.,True
-nature,UMO1CdF,M8zmPsc,Defensive race. Slow but very resilient and have excellent abilities. All fighters have slight life regeneration.,True
-orc,hM9kGYq,9gRLj0Q,Strong in melee. Specializes in healing aura (regeneration) and debuff.,True
-paladin,HHl7Y3a,0X69s33,The noble warriors of humanity employ both a strong military and powerful healer in the defense of their shining kingdoms.,True
-prophet,nEmEpl1,anOfnaY,Powerful diviner he can build tower from all races.,False
-shadow,h8bYKmn,fgFrtZB,Specializes in dark magic. High damage fighters with a good balance of offensive and defensive abilities.,True
-undead,NUsqBvJ,CSWBUy1,The horrifying Undead army consists of thousands of walking corpses and powerful necromantic magics.,True
+Name.string(),Avatar ID.string(),Unit ID.string(),Description.string(),Altar Of Heroes.boolean(),Aura.int32(),Buff.int32(),Debuff.int32(),Splash.int32(),Heal.int32(),Stun.int32(),Summon.int32()
+artic,lBMIcVe,uGeV4q9,The creatures of Northrend masters of cold.,True,4,2,5,3,0,1,0
+beast,s7mIAxD,Ci9ugxK,The creatures of Azeroth are no strangers to war. A balanced race overall. Also pretty inexpensive in cost.,True,1,1,4,2,0,2,0
+demi-human,CBLzVl8,JdBN2nl,A motley crew of species with similarities to the human race. Fighters boast versatile abilities.,True,0,1,4,3,1,2,0
+element,BQMaeSG,jhBlJsj,Forces of magic far older than life itself. An offensive race.,True,1,1,0,3,0,0,0
+elf,pYlztwv,VYx5b11,The first race to awaken on Azeroth. Fighters have mastered powerful offensive spells but lack in the area of support. A haughty selfish race.,True,0,0,1,3,0,0,1
+ghost,1km4yt7,DVGPMeE,Having transcended the physical world fighters have strong offensive magic and ranged attacks. Weak on defense.,True,4,0,7,1,0,0,0
+goblin,NSw91aO,9g5uYyF,Goblins are small humanoids. They constantly build and repair machines and work on new ideas. Very strong in mechanical thing and firearm.,True,2,2,0,6,0,1,2
+hybrid,ODpKupn,qiov8YH,A strange race with no characteristics of its own. Instead morphs into fighters from other races.,False,0,0,0,0,0,0,0
+marine,dL4Ujvg,i3P2smx,From the depths of the ocean rise creatures unlike any other.,True,0,2,2,2,0,1,1
+mech,KES1BcP,PTvqyIg,Boasts cutting edge military technology. Powerful core stats but expensive and have few special abilities.,True,2,2,0,1,0,0,0
+nature,UMO1CdF,M8zmPsc,Defensive race. Slow but very resilient and have excellent abilities. All fighters have slight life regeneration.,True,4,2,3,1,2,0,0
+orc,hM9kGYq,9gRLj0Q,Strong in melee. Specializes in healing aura (regeneration) and debuff.,True,2,0,2,1,2,1,2
+paladin,HHl7Y3a,0X69s33,The noble warriors of humanity employ both a strong military and powerful healer in the defense of their shining kingdoms.,True,0,0,0,2,2,0,0
+prophet,nEmEpl1,anOfnaY,Powerful diviner he can build tower from all races.,False,0,0,0,0,0,0,0
+shadow,h8bYKmn,fgFrtZB,Specializes in dark magic. High damage fighters with a good balance of offensive and defensive abilities.,True,2,6,1,0,0,0,4
+undead,NUsqBvJ,CSWBUy1,The horrifying Undead army consists of thousands of walking corpses and powerful necromantic magics.,True,3,0,3,4,0,0,2

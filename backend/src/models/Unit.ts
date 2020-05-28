@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import { UnitInterface } from "../interfaces/unit-interface";
+
 const unitSchema = new mongoose.Schema({
   Name: {
     type: String,
@@ -127,15 +129,14 @@ const unitSchema = new mongoose.Schema({
   },
 });
 
-// unitSchema.methods.toJSON = function () {
-//   const unit = this;
-//   const unitObject = unit.toObject();
+unitSchema.methods.toJSON = function () {
+  const unitObject = this.toObject();
 
-//   delete unitObject._id;
+  delete unitObject._id;
 
-//   return unit;
-// };
+  return unitObject;
+};
 
-const Unit = mongoose.model("Unit", unitSchema);
+const Unit = mongoose.model<UnitInterface>("Unit", unitSchema);
 
 export default Unit;

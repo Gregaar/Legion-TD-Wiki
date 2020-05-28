@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import { MercenaryInterface } from "../interfaces/mercenary-interface";
+
 const mercenarySchema = new mongoose.Schema({
   Name: {
     type: String,
@@ -136,6 +138,17 @@ const mercenarySchema = new mongoose.Schema({
   },
 });
 
-const Mercanary = mongoose.model("Mercenary", mercenarySchema);
+mercenarySchema.methods.toJSON = function () {
+  const mercenaryObject = this.toObject();
+
+  delete mercenaryObject._id;
+
+  return mercenaryObject;
+};
+
+const Mercanary = mongoose.model<MercenaryInterface>(
+  "Mercenary",
+  mercenarySchema,
+);
 
 export default Mercanary;

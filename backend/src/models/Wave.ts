@@ -79,6 +79,14 @@ const waveSchema = new mongoose.Schema({
   },
 });
 
+waveSchema.methods.toJSON = function () {
+  const waveObject = this.toObject();
+
+  delete waveObject._id;
+
+  return waveObject;
+};
+
 const Wave = mongoose.model("Wave", waveSchema);
 
 export default Wave;

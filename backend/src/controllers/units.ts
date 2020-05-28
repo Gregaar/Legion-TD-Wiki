@@ -1,5 +1,8 @@
 import { RequestHandler } from "express";
 
+
+import { UnitInterface } from "../interfaces/unit-interface";
+
 import Unit from "../models/Unit";
 
 // e.g. unit: Tuskarr
@@ -8,15 +11,15 @@ export const searchByUnitName: RequestHandler<{ name: string }> = async (
   res,
 ) => {
   try {
-    const realUnit = await Unit.findOne({
+    const unitFound = await Unit.findOne({
       Name: req.params.name.toLowerCase(),
     });
 
-    if (!realUnit) {
+    if (!unitFound) {
       throw new Error();
     }
 
-    return res.json({ unit: realUnit });
+    return res.json({ unit: unitFound });
   } catch (error) {
     return res
       .status(404)
@@ -342,5 +345,35 @@ export const findUnitByMeleeOrRanged: RequestHandler<{
         req.query.builder === "any" ? "all builders" : req.query.builder
       }.`,
     });
+  }
+};
+
+export const countUsefulAbilities: RequestHandler<{ builder: string }> = async (
+  req,
+  res,
+) => {
+  let aura = 0;
+  let buff = 0;
+  let debuff = 0;
+  let splash = 0;
+  let heal = 0;
+  let stun = 0;
+  let summon = 0;
+  try {
+    const units = await Unit.find({
+      Builder: req.params.builder.toLowerCase(),
+    });
+    units.forEach((unit: UnitInterface) => {
+      unit["Has Aura"] === true ? aura++ : null;
+      unit["Can Buff"] === true ? buff++ : null;
+      unit["Can Debuff"] === true ? debuff++ : null;
+      unit["Can Splash"] === true ? splash++ : null;
+      unit["Can Heal"] === true ? heal++ : null;
+      unit["Can Stun"] === true ? stun++ : null;
+      unit["Can Summon"] === true ? summon++ : null;
+    });
+    return res.json({ aura, buff, debuff, splash, heal, stun, summon });
+  } catch (error) {
+    return res.status(500).json();
   }
 };

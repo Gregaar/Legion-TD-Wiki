@@ -19,6 +19,14 @@ const kingAbilitySchema = new mongoose.Schema({
   },
 });
 
+kingAbilitySchema.methods.toJSON = function () {
+  const kingAbilityObject = this.toObject();
+
+  delete kingAbilityObject._id;
+
+  return kingAbilityObject;
+};
+
 const KingAbility = mongoose.model("KingAbilities", kingAbilitySchema);
 
 export default KingAbility;

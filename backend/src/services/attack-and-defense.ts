@@ -21,7 +21,7 @@ export const attackVsDefense = (attackType: string): (string | string[])[] => {
   return attackRatings;
 };
 
-export const defenseVsAttack = (defenseType: string) => {
+export const defenseVsAttack = (defenseType: string): (string | string[])[] => {
   let defenseRatings: (string | string[])[] = [];
 
   switch (defenseType.toLowerCase()) {

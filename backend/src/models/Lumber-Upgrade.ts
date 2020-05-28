@@ -23,6 +23,14 @@ const lumberUpgradeSchema = new mongoose.Schema({
   },
 });
 
+lumberUpgradeSchema.methods.toJSON = function () {
+  const lumberUpgradeObject = this.toObject();
+
+  delete lumberUpgradeObject._id;
+
+  return lumberUpgradeObject;
+};
+
 const LumberUpgrade = mongoose.model("LumberUpgrade", lumberUpgradeSchema);
 
 export default LumberUpgrade;
