@@ -1,5 +1,5 @@
-export const attackVsDefense = (attackType: string): (string|string[])[] => {
-  let attackRatings: (string|string[])[] = [];
+export const attackVsDefense = (attackType: string): (string | string[])[] => {
+  let attackRatings: (string | string[])[] = [];
 
   switch (attackType.toLowerCase()) {
     case "chaos":
@@ -9,29 +9,20 @@ export const attackVsDefense = (attackType: string): (string|string[])[] => {
       attackRatings = ["Light", "Unarmoured", "Medium", "Heavy", "Fortified"];
       break;
     case "normal":
-      attackRatings = [
-        "Medium",
-        "Unarmoured",
-        ["Light", "Heavy"],
-        "Fortified",
-      ];
+      attackRatings = ["Medium", "Unarmoured", ["Light", "Heavy"], "Fortified"];
       break;
     case "magic":
       attackRatings = ["Heavy", "Light", "Unarmoured", "Medium", "Fortified"];
       break;
     case "siege":
-      attackRatings = [
-        "Fortified",
-        "Unarmoured",
-        ["Light", "Medium", "Heavy"],
-      ];
+      attackRatings = ["Fortified", "Unarmoured", ["Light", "Medium", "Heavy"]];
       break;
   }
   return attackRatings;
 };
 
 export const defenseVsAttack = (defenseType: string) => {
-  let defenseRatings: (string|string[])[] = [];
+  let defenseRatings: (string | string[])[] = [];
 
   switch (defenseType.toLowerCase()) {
     case "unarmoured":

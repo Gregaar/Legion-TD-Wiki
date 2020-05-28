@@ -1,10 +1,11 @@
-import { logger, requestLogger } from "../logger";
 import bodyParser from "body-parser";
+import cors from "cors";
 import helmet from "helmet";
-import cors from 'cors';
+
+import { logger, requestLogger } from "../logger";
 
 export default () => {
-    logger.info("Registering common middleware...");
+  logger.info("Registering common middleware...");
 
-    return [helmet(), cors(), bodyParser.json(), requestLogger];
+  return [helmet(), cors(), bodyParser.json(), requestLogger];
 };
