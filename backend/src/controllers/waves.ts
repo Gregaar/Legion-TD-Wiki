@@ -1,10 +1,10 @@
 import { RequestHandler } from "express";
+
 import Wave from "../models/Wave";
 
 export const findByLevel: RequestHandler<{ level: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     if (+req.params.level < 1 || +req.params.level > 32) {
@@ -24,7 +24,6 @@ export const findByLevel: RequestHandler<{ level: string }> = async (
 export const findByEnemyName: RequestHandler<{ name: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     const enemyWave = await Wave.findOne({
@@ -45,11 +44,11 @@ export const findByEnemyName: RequestHandler<{ name: string }> = async (
 
 export const findByAttackMethod: RequestHandler<{
   attackMethod: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (
-      (req.params.attackMethod.toLowerCase() !== "ranged" &&
-        req.params.attackMethod.toLowerCase() !== "melee")
+      req.params.attackMethod.toLowerCase() !== "ranged" &&
+      req.params.attackMethod.toLowerCase() !== "melee"
     ) {
       throw new Error();
     }
@@ -68,7 +67,7 @@ export const findByAttackMethod: RequestHandler<{
 
 export const findByLandOrFlying: RequestHandler<{
   attackStance: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (
       !req.params.attackStance ||
@@ -93,7 +92,6 @@ export const findByLandOrFlying: RequestHandler<{
 export const findByAttackType: RequestHandler<{ attackType: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     if (!req.params.attackType) {
@@ -118,7 +116,7 @@ export const findByAttackType: RequestHandler<{ attackType: string }> = async (
 
 export const findByDefenseType: RequestHandler<{
   defenseType: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.params.defenseType) {
       throw new Error();
@@ -143,7 +141,7 @@ export const findByDefenseType: RequestHandler<{
 export const findByAttackAndDefenseType: RequestHandler<{
   attackType: string;
   defenseType: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.query.attackType || !req.query.defenseType) {
       throw new Error();
@@ -169,7 +167,6 @@ export const findByAttackAndDefenseType: RequestHandler<{
 export const findBossWaves: RequestHandler<{ boss: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     if (
@@ -195,16 +192,22 @@ export const findBossWaves: RequestHandler<{ boss: string }> = async (
   }
 };
 
-export const findDefenseWeakness: RequestHandler<{attackType: string}> = async (req, res, next) => {
-    try {
-        const enemyWaves = await Wave.find({"Defense Weakness": req.params.attackType.toLowerCase()});
+export const findDefenseWeakness: RequestHandler<{
+  attackType: string;
+}> = async (req, res) => {
+  try {
+    const enemyWaves = await Wave.find({
+      "Defense Weakness": req.params.attackType.toLowerCase(),
+    });
 
-        if(!enemyWaves.length) {
-            throw new Error();
-        }
-
-        return res.json({waves: [...enemyWaves]});
-    } catch (error) {
-        return res.status(404).json({error: `Unable to find any waves who's attacks are weak against ${req.params.attackType} attacks.`});
+    if (!enemyWaves.length) {
+      throw new Error();
     }
-}
+
+    return res.json({ waves: [...enemyWaves] });
+  } catch (error) {
+    return res.status(404).json({
+      error: `Unable to find any waves who's attacks are weak against ${req.params.attackType} attacks.`,
+    });
+  }
+};

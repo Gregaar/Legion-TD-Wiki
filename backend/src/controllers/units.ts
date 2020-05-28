@@ -1,11 +1,11 @@
 import { RequestHandler } from "express";
+
 import Unit from "../models/Unit";
 
 // e.g. unit: Tuskarr
 export const searchByUnitName: RequestHandler<{ name: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     const realUnit = await Unit.findOne({
@@ -28,7 +28,6 @@ export const searchByUnitName: RequestHandler<{ name: string }> = async (
 export const searchByUnitBuilder: RequestHandler<{ builder: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     const builderUnits = await Unit.find({
@@ -51,7 +50,6 @@ export const searchByUnitBuilder: RequestHandler<{ builder: string }> = async (
 export const searchByUnitTier: RequestHandler<{ tier: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     const tierUnits = await Unit.find({ "Unit Tier": +req.params.tier });
@@ -72,7 +70,6 @@ export const searchByUnitTier: RequestHandler<{ tier: string }> = async (
 export const searchByUnitGoldCost: RequestHandler<{ gold: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     const unitsByCost = await Unit.find({ "Gold Cost": +req.params.gold });
@@ -94,7 +91,7 @@ export const searchByUnitGoldCostRange: RequestHandler<{
   minGold: string;
   maxGold: string;
   builder: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.query.minGold || !req.query.maxGold || !req.query.builder) {
       throw new Error();
@@ -131,7 +128,6 @@ export const searchByUnitGoldCostRange: RequestHandler<{
 export const findUnitUpgrade: RequestHandler<{ unit: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     if (!req.query.unit) {
@@ -164,7 +160,7 @@ export const findUnitUpgrade: RequestHandler<{ unit: string }> = async (
 export const findUnitByAttackType: RequestHandler<{
   builder: string;
   attackType: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.query.builder || !req.query.attackType) {
       throw new Error();
@@ -206,7 +202,7 @@ export const findUnitByAttackType: RequestHandler<{
 export const findUnitByDefenseType: RequestHandler<{
   builder: string;
   defenseType: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.query.builder || !req.query.defenseType) {
       throw new Error();
@@ -247,7 +243,6 @@ export const findUnitByDefenseType: RequestHandler<{
 export const findUnitWithAura: RequestHandler<{ builder: string }> = async (
   req,
   res,
-  next
 ) => {
   try {
     if (req.params.builder.toString().toLowerCase() === "any") {
@@ -277,14 +272,14 @@ export const findUnitWithAura: RequestHandler<{ builder: string }> = async (
 export const findUnitByUsefulAbility: RequestHandler<{
   builder: string;
   abilityType: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.query.builder || !req.query.abilityType) {
       throw new Error();
     }
 
     // Sets ability search dynamically
-    const ability: string = `Can ${req.query.abilityType}`;
+    const ability = `Can ${req.query.abilityType}`;
 
     if (req.query.builder.toString().toLowerCase() === "any") {
       const unitsFound = await Unit.find({ [ability]: true });
@@ -314,7 +309,7 @@ export const findUnitByUsefulAbility: RequestHandler<{
 export const findUnitByMeleeOrRanged: RequestHandler<{
   builder: string;
   attackMethod: string;
-}> = async (req, res, next) => {
+}> = async (req, res) => {
   try {
     if (!req.query.builder || !req.query.attackMethod) {
       throw new Error();

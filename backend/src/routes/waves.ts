@@ -1,16 +1,17 @@
 import { Router } from "express";
-import { logger } from "../logger";
+
 import {
-  findByLevel,
-  findByEnemyName,
+  findBossWaves,
+  findByAttackAndDefenseType,
   findByAttackMethod,
-  findByLandOrFlying,
   findByAttackType,
   findByDefenseType,
-  findByAttackAndDefenseType,
-  findBossWaves,
-  findDefenseWeakness
+  findByEnemyName,
+  findByLandOrFlying,
+  findByLevel,
+  findDefenseWeakness,
 } from "../controllers/waves";
+import { logger } from "../logger";
 
 const router = Router();
 

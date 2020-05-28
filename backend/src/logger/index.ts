@@ -1,7 +1,7 @@
-import  createLogger  from "pino";
-import  createRequestLogger from "express-pino-logger";
+import createRequestLogger from "express-pino-logger";
+import createLogger from "pino";
 
 const logger = createLogger();
-const requestLogger = createRequestLogger({logger});
+const requestLogger = createRequestLogger({ logger });
 
 export { logger, requestLogger };
