@@ -211,3 +211,63 @@ export const findDefenseWeakness: RequestHandler<{
     });
   }
 };
+
+export const findAttackWeakness: RequestHandler<{
+  defenseType: string;
+}> = async (req, res) => {
+  try {
+    const enemyWaves = await Wave.find({
+      "Attack Weakness": req.params.defenseType.toLowerCase(),
+    });
+
+    if (!enemyWaves.length) {
+      throw new Error();
+    }
+
+    return res.json({ waves: [...enemyWaves] });
+  } catch (error) {
+    return res.status(404).json({
+      error: `Unable to find any waves who's attacks are weak against ${req.params.defenseType} armour.`,
+    });
+  }
+};
+
+export const findDefenseStrength: RequestHandler<{
+  attackType: string;
+}> = async (req, res) => {
+  try {
+    const enemyWaves = await Wave.find({
+      "Defense Strength": req.params.attackType.toLowerCase(),
+    });
+
+    if (!enemyWaves.length) {
+      throw new Error();
+    }
+
+    return res.json({ waves: [...enemyWaves] });
+  } catch (error) {
+    return res.status(404).json({
+      error: `Unable to find any waves who's attacks are strong against ${req.params.attackType} attacks.`,
+    });
+  }
+};
+
+export const findAttackStrength: RequestHandler<{
+  defenseType: string;
+}> = async (req, res) => {
+  try {
+    const enemyWaves = await Wave.find({
+      "Attack Strength": req.params.defenseType.toLowerCase(),
+    });
+
+    if (!enemyWaves.length) {
+      throw new Error();
+    }
+
+    return res.json({ waves: [...enemyWaves] });
+  } catch (error) {
+    return res.status(404).json({
+      error: `Unable to find any waves who's attacks are strong against ${req.params.defenseType} armour.`,
+    });
+  }
+};

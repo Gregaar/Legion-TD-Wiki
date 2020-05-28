@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import {
+  countUsefulAbilities,
   findUnitByAttackType,
   findUnitByDefenseType,
   findUnitByMeleeOrRanged,
@@ -39,7 +40,9 @@ router.post("/unit/usefulability", findUnitByUsefulAbility);
 
 router.post("/unit/attackmethod", findUnitByMeleeOrRanged);
 
-export default () => {
+router.post("/unit/useful/:builder", countUsefulAbilities);
+
+export default (): Router => {
   logger.info("Registering 'Unit' routes...");
   return router;
 };

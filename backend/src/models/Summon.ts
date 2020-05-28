@@ -67,6 +67,14 @@ const summonSchema = new mongoose.Schema({
   },
 });
 
+summonSchema.methods.toJSON = function () {
+  const summonObject = this.toObject();
+
+  delete summonObject._id;
+
+  return summonObject;
+};
+
 const Summon = mongoose.model("Summon", summonSchema);
 
 export default Summon;

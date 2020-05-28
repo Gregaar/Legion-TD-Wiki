@@ -27,6 +27,14 @@ const farmSchema = new mongoose.Schema({
   },
 });
 
+farmSchema.methods.toJSON = function () {
+  const farmObject = this.toObject();
+
+  delete farmObject._id;
+
+  return farmObject;
+};
+
 const Farm = mongoose.model("Farm", farmSchema);
 
 export default Farm;

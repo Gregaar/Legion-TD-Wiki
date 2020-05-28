@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const connect = (url: string) => {
+const connect = (url: string): void => {
   mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,

@@ -21,6 +21,14 @@ const kingSchema = new mongoose.Schema({
   },
 });
 
+kingSchema.methods.toJSON = function () {
+  const kingObject = this.toObject();
+
+  delete kingObject._id;
+
+  return kingObject;
+};
+
 const King = mongoose.model("King", kingSchema);
 
 export default King;
