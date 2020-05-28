@@ -1,20 +1,16 @@
+// eslint-disable-next-line no-undef
 module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true,
-    node: true,
-    jest: true,
-  },
-  extends: ["eslint:recommended", "plugin:prettier/recommended"],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-  },
-  parserOptions: {
-    ecmaVersion: 2018,
-  },
+  root: true,
+  parser: "@typescript-eslint/parser",
+  plugins: ["simple-import-sort", "@typescript-eslint", "prettier"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+  ],
   rules: {
-    "no-unused-vars": "warn",
+    "simple-import-sort/sort": "error",
   },
 };
