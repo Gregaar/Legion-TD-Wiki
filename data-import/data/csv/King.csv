@@ -1,4 +1,4 @@
-Level.int32(),Hit Points.int32(),Min Hit.int32(),Max Hit.int32(),Regeneration.int32()
+Level,Hit Points,Min Hit,Max Hit,Regeneration
 0,5000,55,65,3
 1,5450,65,75,8
 2,5925,75,85,13

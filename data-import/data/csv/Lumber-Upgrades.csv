@@ -1,4 +1,4 @@
-Training.int32(),Lumber per wisp tick.int32(),Lumber per wisp per minute.int32(),Gold Cost.int32(),Lumber Cost.int32()
+Training,Lumber per wisp tick,Lumber per wisp per minute,Gold Cost,Lumber Cost
 0,2,12,0,0
 1,3,18,60,60
 2,4,24,80,80
