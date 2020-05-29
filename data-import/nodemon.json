@@ -1,0 +1,10 @@
+{
+  "execMap": {
+    "ts": "TS_NODE_PRETTY=true ts-node"
+  },
+  "ext": "js,json,ts,tsx",
+  "ignore": [".git", "node_modules/**/node_modules"],
+  "restartable": "rs",
+  "verbose": false,
+  "watch": "src/"
+}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["ES2019", "DOM"],
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "target": "ES2019",
+    "typeRoots": ["./src/@types", "./node_modules/@types"]
+  },
+  "exclude": ["./src/**/__tests_/**", "node_modules"],
+  "include": ["./src/**/*.ts"]
+}

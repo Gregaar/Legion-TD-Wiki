@@ -6,3 +6,6 @@ update_configs:
   - package_manager: "javascript"
     directory: "/backend"
     update_schedule: "weekly"
+  - package_manager: "javascript"
+    directory: "/data-import"
+    update_schedule: "monthly"

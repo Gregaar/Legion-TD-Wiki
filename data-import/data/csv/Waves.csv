@@ -1,4 +1,4 @@
-Level.int32(),Creep Bounty.int32(),Number of Creeps.int32(),Gold from Creeps.int32(),Bonus Gold.int32(),Creep and Bonus.int32(),Total Gold.int32(),Creep Value.int32(),Creep Name.string(),Min Hit.int32(),Max Hit.int32(),Hit Points.int32(),Attack Type.string(),Defense Type.string(),Attack Strength.string(),Attack Weakness.string(),Defense Strength.string(),Defense Weakness.string(),Type.string(),Boss.boolean()
+Level,Creep Bounty,Number of Creeps,Gold from Creeps,Bonus Gold,Creep and Bonus,Total Gold,Creep Value,Creep Name,Min Hit,Max Hit,Hit Points,Attack Type,Defense Type,Attack Strength,Attack Weakness,Defense Strength,Defense Weakness,Type,Boss
 1,3,36,108,11,119,300,250,crabs,3,4,34,pierce,unarmoured,light,fortified,equal,equal,land;melee,FALSE
 2,3,45,135,12,147,419,350,murlocs,3,5,40,normal,unarmoured,medium,fortified,equal,equal,land;melee,FALSE
 3,4,40,160,13,173,566,500,scorpions,7,9,63,normal,medium,medium,fortified,magic,normal,land;melee,FALSE

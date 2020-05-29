@@ -1,4 +1,4 @@
-Name.string(),Description.string(),Activatable.boolean(),Avatar ID.string()
+Name,Description,Activatable,Avatar ID
 bash,Gives a 15% chance that an attack will do 25 bonus damage and stun an opponent for 2 seconds.,FALSE,CBPhwJo
 command aura,Gives 15% extra damage to the attacks of nearby friendly units.,FALSE,K3CCloC
 cripple,Reduces movement speed by 30% attack rate by 65% and damage by 50% of a target enemy unit. Lasts 20 seconds.,TRUE,Cq5uazb

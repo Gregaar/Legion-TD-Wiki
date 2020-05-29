@@ -1,4 +1,4 @@
-Name.string(),Avatar ID.string(),Unit ID.string(),Description.string(),Altar Of Heroes.boolean(),Aura.int32(),Buff.int32(),Debuff.int32(),Splash.int32(),Heal.int32(),Stun.int32(),Summon.int32()
+Name,Avatar ID,Unit ID,Description,Altar Of Heroes,Aura,Buff,Debuff,Splash,Heal,Stun,Summon
 artic,lBMIcVe,uGeV4q9,The creatures of Northrend masters of cold.,True,4,2,5,3,0,1,0
 beast,s7mIAxD,Ci9ugxK,The creatures of Azeroth are no strangers to war. A balanced race overall. Also pretty inexpensive in cost.,True,1,1,4,2,0,2,0
 demi-human,CBLzVl8,JdBN2nl,A motley crew of species with similarities to the human race. Fighters boast versatile abilities.,True,0,1,4,3,1,2,0
