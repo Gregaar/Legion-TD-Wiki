@@ -1,13 +1,2 @@
 [build]
   base = "frontend/"
-  publish = "build/"
-  command = "npm run build"
-  environment = { NODE_ENV = "production", NODE_VERSION = "12" }
-
-[context.branch-deploy.environment]
-  NODE_ENV = "development"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
