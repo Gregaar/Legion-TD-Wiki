@@ -14,17 +14,7 @@ export const parseCSV = async (csvPath: string): Promise<CollectionJSON> =>
       })
         .fromStream(createReadStream(csvPath))
         .then((jsonArray) => {
-          const parsedJsonArray = jsonArray.map((json) => {
-            Object.entries(json).forEach(([key, value]) => {
-              if (typeof value !== "string") return;
-              if (!value.includes(";")) return;
-
-              // Split on the ';' character and filter out any falsey values
-              json[key] = value.split(";").filter(Boolean);
-            });
-
-            return json;
-          });
+          const parsedJsonArray = jsonArray.map(convertSemiColonsToArrays);
 
           resolve({ name: collectionName, json: parsedJsonArray });
         });
@@ -32,5 +22,17 @@ export const parseCSV = async (csvPath: string): Promise<CollectionJSON> =>
       reject(error);
     }
   });
+
+const convertSemiColonsToArrays = (json: { [index: string]: unknown }) => {
+  Object.entries(json).forEach(([key, value]) => {
+    if (typeof value !== "string") return;
+    if (!value.includes(";")) return;
+
+    // Split on the ';' character and filter out any falsey values
+    json[key] = value.split(";").filter(Boolean);
+  });
+
+  return json;
+};
 
 export type CollectionJSON = { name: string; json: unknown[] };
