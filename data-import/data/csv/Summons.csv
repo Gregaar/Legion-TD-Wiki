@@ -1,4 +1,4 @@
-Name,Summoner,Summoner Builder,Base Min Hit,Base Max Hit,Speed.decimal(),Range,Hit Points,Attack Type,Defense Type,Attack Strength,Attack Weakness,Defense Strength,Defense Weakness,Duration,Avatar ID
+Name,Summoner,Summoner Builder,Base Min Hit,Base Max Hit,Speed,Range,Hit Points,Attack Type,Defense Type,Attack Strength,Attack Weakness,Defense Strength,Defense Weakness,Duration,Avatar ID
 fire archer,necromancer;necrolyte,undead,10,10,0.33,500,250,pierce,light,fortified,light,normal;siege,pierce,60s,gAY1h6p
 fiend,gateguard,shadow,14,17,1.35,100,145,chaos,heavy,equal,equal,pierce,magic,60s,QbIZO5r
 fanatic,harbinger,shadow,40,47,1.35,100,470,chaos,heavy,equal,equal,pierce,magic,60s,D4jpCuj
