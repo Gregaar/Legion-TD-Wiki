@@ -1,8 +1,6 @@
 import { RequestHandler } from "express";
 
-
 import { UnitInterface } from "../interfaces/unit-interface";
-
 import Unit from "../models/Unit";
 
 // e.g. unit: Tuskarr
@@ -19,7 +17,7 @@ export const searchByUnitName: RequestHandler<{ name: string }> = async (
       throw new Error();
     }
 
-    return res.json({ unit: unitFound });
+    return res.status(200).json({ unit: unitFound });
   } catch (error) {
     return res
       .status(404)
@@ -41,10 +39,10 @@ export const searchByUnitBuilder: RequestHandler<{ builder: string }> = async (
       throw new Error();
     }
 
-    return res.json({ units: [...builderUnits] });
+    return res.status(200).json({ units: [...builderUnits] });
   } catch (error) {
     return res.status(404).json({
-      error: `Unable to find units with builder ${req.params.builder}`,
+      error: `Unable to find units from the ${req.params.builder} builder`,
     });
   }
 };
@@ -55,13 +53,13 @@ export const searchByUnitTier: RequestHandler<{ tier: string }> = async (
   res,
 ) => {
   try {
-    const tierUnits = await Unit.find({ "Unit Tier": +req.params.tier });
-
-    if (!tierUnits.length) {
+    if (+req.params.tier < 0 || +req.params.tier > 6) {
       throw new Error();
     }
 
-    return res.json({ units: [...tierUnits] });
+    const tierUnits = await Unit.find({ "Unit Tier": +req.params.tier });
+
+    return res.status(200).json({ units: [...tierUnits] });
   } catch (error) {
     return res.status(404).json({
       error: `Unable to find any units with tier ${req.params.tier}. Tiers are numbered 1 through 6.`,
@@ -75,13 +73,16 @@ export const searchByUnitGoldCost: RequestHandler<{ gold: string }> = async (
   res,
 ) => {
   try {
+    if (+req.params.gold < 10 || +req.params.gold > 450) {
+      throw new Error();
+    }
     const unitsByCost = await Unit.find({ "Gold Cost": +req.params.gold });
 
     if (!unitsByCost.length) {
       throw new Error();
     }
 
-    return res.json({ units: [...unitsByCost] });
+    return res.status(200).json({ units: [...unitsByCost] });
   } catch (error) {
     return res.status(404).json({
       error: `Unable to find any units that cost ${req.params.gold} gold.`,
@@ -107,7 +108,7 @@ export const searchByUnitGoldCostRange: RequestHandler<{
       if (!unitsWithinCost.length) {
         throw new Error();
       }
-      return res.json({ units: [...unitsWithinCost] });
+      return res.status(200).json({ units: [...unitsWithinCost] });
     }
 
     const unitsWithinCost = await Unit.find({
@@ -119,10 +120,16 @@ export const searchByUnitGoldCostRange: RequestHandler<{
       throw new Error();
     }
 
-    return res.json({ units: [...unitsWithinCost] });
+    return res.status(200).json({ units: [...unitsWithinCost] });
   } catch (error) {
     return res.status(404).json({
-      error: `Unable to find any units with gold cost between ${req.query.minGold} - ${req.query.maxGold} gold for builder ${req.query.builder}.`,
+      error: `Unable to find any units with gold cost between ${
+        req.query.minGold
+      } - ${req.query.maxGold} gold${
+        req.query.builder === "any" || req.query.builder === undefined
+          ? ""
+          : ` for the ${req.query.builder} builder`
+      }.`,
     });
   }
 };
@@ -133,24 +140,19 @@ export const findUnitUpgrade: RequestHandler<{ unit: string }> = async (
   res,
 ) => {
   try {
-    if (!req.query.unit) {
-      throw new Error();
-    }
-
     const baseUnit = await Unit.findOne({
       Name: req.params.unit.toLowerCase(),
     });
 
-    if (!baseUnit) {
+    if (!baseUnit || !baseUnit.Upgradeable) {
       throw new Error();
     }
 
-    if ("Upgraded Name" in baseUnit) {
-      const upgradedUnit =
-        baseUnit["Upgraded Name"] !== null
-          ? await Unit.findOne({ Name: baseUnit["Upgraded Name"][0] })
-          : new Error();
-      return res.json({ unit: upgradedUnit });
+    if ("Upgraded Name" in baseUnit && baseUnit["Upgraded Name"] !== null) {
+      const upgradedUnit = await Unit.findOne({
+        Name: baseUnit["Upgraded Name"][0],
+      });
+      return res.status(200).json({ unit: upgradedUnit });
     }
   } catch (error) {
     return res
@@ -161,8 +163,8 @@ export const findUnitUpgrade: RequestHandler<{ unit: string }> = async (
 
 // e.g. Builder: Shadow, attackType: Magic
 export const findUnitByAttackType: RequestHandler<{
-  builder: string;
   attackType: string;
+  builder: string;
 }> = async (req, res) => {
   try {
     if (!req.query.builder || !req.query.attackType) {
@@ -181,7 +183,7 @@ export const findUnitByAttackType: RequestHandler<{
         throw new Error();
       }
 
-      return res.json({ units: [...unitsFound] });
+      return res.status(200).json({ units: [...unitsFound] });
     }
 
     const unitsFound = await Unit.find({
@@ -193,7 +195,7 @@ export const findUnitByAttackType: RequestHandler<{
       throw new Error();
     }
 
-    return res.json({ units: [...unitsFound] });
+    return res.status(200).json({ units: [...unitsFound] });
   } catch (error) {
     return res.status(404).json({
       error: `Unable to find any units with attack type ${req.query.attackType}`,

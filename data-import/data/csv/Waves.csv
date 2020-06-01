@@ -1,32 +1,32 @@
 Level,Creep Bounty,Number of Creeps,Gold from Creeps,Bonus Gold,Creep and Bonus,Total Gold,Creep Value,Creep Name,Min Hit,Max Hit,Hit Points,Attack Type,Defense Type,Attack Strength,Attack Weakness,Defense Strength,Defense Weakness,Type,Boss
-1,3,36,108,11,119,300,250,crabs,3,4,34,pierce,unarmoured,light,fortified,equal,equal,land;melee,FALSE
-2,3,45,135,12,147,419,350,murlocs,3,5,40,normal,unarmoured,medium,fortified,equal,equal,land;melee,FALSE
-3,4,40,160,13,173,566,500,scorpions,7,9,63,normal,medium,medium,fortified,magic,normal,land;melee,FALSE
-4,5,36,180,14,194,739,650,quillbeasts,5,7,75,pierce,heavy,light,fortified,pierce,magic,land;ranged,FALSE
-5,5,36,180,16,196,933,800,hawks,8,10,115,magic,light,heavy,fortified,normal;siege,pierce,flying;melee,FALSE
+1,3,36,108,11,119,300,250,crabs,3,4,34,pierce,unarmored,light,fortified;,equal;,equal,land;melee,FALSE
+2,3,45,135,12,147,419,350,murlocs,3,5,40,normal,unarmored,medium,fortified;,equal;,equal,land;melee,FALSE
+3,4,40,160,13,173,566,500,scorpions,7,9,63,normal,medium,medium,fortified;,magic;,normal,land;melee,FALSE
+4,5,36,180,14,194,739,650,quillbeasts,5,7,75,pierce,heavy,light,fortified;,pierce;,magic,land;ranged,FALSE
+5,5,36,180,16,196,933,800,hawks,8,10,115,magic,light,heavy,fortified;,normal;siege,pierce,flying;melee,FALSE
 6,5,36,180,18,198,1129,1000,rock golems,19,20,138,siege,fortified,fortified,light;medium;heavy,pierce;magic,siege,land;melee,FALSE
-7,6,30,180,20,200,1327,1200,satyrs,25,27,213,pierce,light,light,fortified,normal;siege,pierce,land;melee,FALSE
-8,6,36,216,23,239,1527,1450,acolytes,13,17,178,magic,medium,heavy,fortified,magic,normal,land;ranged,FALSE
-9,5,45,225,26,251,1766,1600,zombies,22,24,210,normal,heavy,medium,fortified,pierce,magic,land;melee,FALSE
-10,51,3,153,60,213,2017,1850,draenei chieftains,153,189,3000,chaos,light,equal,equal,normal;siege,pierce,land;melee,TRUE
+7,6,30,180,20,200,1327,1200,satyrs,25,27,213,pierce,light,light,fortified;,normal;siege,pierce,land;melee,FALSE
+8,6,36,216,23,239,1527,1450,acolytes,13,17,178,magic,medium,heavy,fortified;,magic;,normal,land;ranged,FALSE
+9,5,45,225,26,251,1766,1600,zombies,22,24,210,normal,heavy,medium,fortified;,pierce;,magic,land;melee,FALSE
+10,51,3,153,60,213,2017,1850,draenei chieftains,153,189,3000,chaos,light,equal,equal;,normal;siege,pierce,land;melee,TRUE
 11,5,54,270,35,305,2230,2050,clockwerk goblins,15,17,230,siege,fortified,fortified,light;medium;heavy,pierce;magic,siege,land;melee,FALSE
-12,6,45,270,40,310,2535,2400,sirens,16,18,241,pierce,medium,light,fortified,magic,normal,land;ranged,FALSE
-13,7,45,315,45,360,2845,2700,couatls,30,33,285,magic,light,heavy,fortified,normal; siege,pierce,flying;melee,FALSE
-14,12,26,312,50,362,3205,3100,tuskar warriors,82,86,640,normal,medium,medium,fortified,magic,normal,land;melee,FALSE
-15,9,36,324,55,379,3567,3500,centaurs,74,84,515,normal,heavy,medium,fortified,pierce,magic,land;melee,FALSE
-16,8,45,360,60,420,3946,4000,salamanders,34,40,347,magic,light,heavy,fortified,normal;siege,pierce,land;ranged,FALSE
+12,6,45,270,40,310,2535,2400,sirens,16,18,241,pierce,medium,light,fortified;,magic;,normal,land;ranged,FALSE
+13,7,45,315,45,360,2845,2700,couatls,30,33,285,magic,light,heavy,fortified;,normal; siege,pierce,flying;melee,FALSE
+14,12,26,312,50,362,3205,3100,tuskar warriors,82,86,640,normal,medium,medium,fortified;,magic;,normal,land;melee,FALSE
+15,9,36,324,55,379,3567,3500,centaurs,74,84,515,normal,heavy,medium,fortified;,pierce;,magic,land;melee,FALSE
+16,8,45,360,60,420,3946,4000,salamanders,34,40,347,magic,light,heavy,fortified;,normal;siege,pierce,land;ranged,FALSE
 17,10,34,340,70,410,4366,4500,flesh golems,84,88,699,siege,fortified,fortified,light;medium;heavy,pierce;magic,siege,land;melee,FALSE
-18,8,45,360,80,440,4776,5000,sludge flingers,47,54,780,magic,medium,heavy,fortified,magic,normal,land;melee,FALSE
-19,10,36,360,90,450,5216,5500,giant spiders,70,73,930,pierce,light,light,fortified,normal;siege,pierce,land;melee,FALSE
-20,86,3,258,200,458,5666,6000,turtles,186,221,7100,chaos,heavy,equal,equal,pierce,magic,land;ranged,TRUE
-21,10,36,360,110,470,6124,6500,hippogryphs,53,60,949,pierce,light,light,fortified,normal;siege,pierce,flying;melee,FALSE
+18,8,45,360,80,440,4776,5000,sludge flingers,47,54,780,magic,medium,heavy,fortified;,magic;,normal,land;melee,FALSE
+19,10,36,360,90,450,5216,5500,giant spiders,70,73,930,pierce,light,light,fortified;,normal;siege,pierce,land;melee,FALSE
+20,86,3,258,200,458,5666,6000,turtles,186,221,7100,chaos,heavy,equal,equal;,pierce;,magic,land;ranged,TRUE
+21,10,36,360,110,470,6124,6500,hippogryphs,53,60,949,pierce,light,light,fortified;,normal;siege,pierce,flying;melee,FALSE
 22,9,48,432,120,552,6594,7100,mammoths,99,108,850,siege,fortified,fortified,light;medium;heavy,pierce;magic,siege,land;melee,FALSE
-23,11,36,396,130,526,7146,7700,wildkins,102,114,1450,normal,heavy,medium,fortified,pierce,magic,land;melee,FALSE
-24,11,36,396,140,536,7672,8500,lighning revenants,89,99,1350,magic,medium,heavy,fortified,magic,normal,land;ranged,FALSE
-25,9,45,405,150,555,8208,9500,succubuses,80,86,1580,pierce,light,light,fortified,normal;siege,pierce,land;melee,FALSE
-26,12,36,432,160,592,8763,10600,myrmidons,161,171,1932,normal,heavy,medium,fortified,pierce,magic,land;melee,FALSE
-27,12,36,432,170,602,9355,11800,doom guards,121,129,2159,normal,medium,medium,fortified,magic,normal,land;melee,FALSE
+23,11,36,396,130,526,7146,7700,wildkins,102,114,1450,normal,heavy,medium,fortified;,pierce;,magic,land;melee,FALSE
+24,11,36,396,140,536,7672,8500,lighning revenants,89,99,1350,magic,medium,heavy,fortified;,magic;,normal,land;ranged,FALSE
+25,9,45,405,150,555,8208,9500,succubuses,80,86,1580,pierce,light,light,fortified;,normal;siege,pierce,land;melee,FALSE
+26,12,36,432,160,592,8763,10600,myrmidons,161,171,1932,normal,heavy,medium,fortified;,pierce;,magic,land;melee,FALSE
+27,12,36,432,170,602,9355,11800,doom guards,121,129,2159,normal,medium,medium,fortified;,magic;,normal,land;melee,FALSE
 28,23,18,414,180,594,9957,13000,juggernauts,182,202,3700,siege,fortified,fortified,light;medium;heavy,pierce;magic,siege,land;ranged,FALSE
-29,14,30,420,190,610,10551,14000,frost wyrms,210,230,2732,magic,heavy,heavy,fortified,pierce,magic,flying;ranged,FALSE
-30,123,3,369,400,769,11161,15000,magnataurs,736,802,17055,chaos,fortified,equal,equal,pierce;magic,siege,land;melee,TRUE
-31,0,15,0,0,0,11930,15000,legion lords,248,269,3070,chaos,unarmoured,equal,equal,equal,equal,land;melee,FALSE
+29,14,30,420,190,610,10551,14000,frost wyrms,210,230,2732,magic,heavy,heavy,fortified;,pierce;,magic,flying;ranged,FALSE
+30,123,3,369,400,769,11161,15000,magnataurs,736,802,17055,chaos,fortified,equal,equal;,pierce;magic,siege,land;melee,TRUE
+31,0,15,0,0,0,11930,15000,legion lords,248,269,3070,chaos,unarmored,equal,equal;,equal;,equal,land;melee,FALSE
