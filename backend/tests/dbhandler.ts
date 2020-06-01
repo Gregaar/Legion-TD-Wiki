@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { MongoMemoryServer } = require("mongodb-memory-server");
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
 
 const mongod = new MongoMemoryServer();
 
@@ -7,7 +7,7 @@ const mongod = new MongoMemoryServer();
  * Connect to the in-memory database.
  */
 
-module.exports.connect = async () => {
+export const connect = async (): Promise<void> => {
   const uri = await mongod.getConnectionString();
 
   const mongooseOpts = {
@@ -21,7 +21,7 @@ module.exports.connect = async () => {
 /**
  * Drop database, close the connection and stop mongod.
  */
-module.exports.closeDatabase = async () => {
+export const closeDatabase = async (): Promise<void> => {
   await mongoose.connection.dropDatabase();
   await mongoose.connection.close();
   await mongod.stop();
@@ -30,11 +30,11 @@ module.exports.closeDatabase = async () => {
 /**
  * Remove all the data for all db collections.
  */
-module.exports.clearDatabase = async () => {
+export const clearDatabase = async (): Promise<void> => {
   const collections = mongoose.connection.collections;
 
   for (const key in collections) {
     const collection = collections[key];
-    await collection.deleteMany();
+    await collection.deleteMany({});
   }
 };

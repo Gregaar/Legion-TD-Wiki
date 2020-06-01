@@ -133,6 +133,7 @@ unitSchema.methods.toJSON = function () {
   const unitObject = this.toObject();
 
   delete unitObject._id;
+  delete unitObject.__v;
 
   return unitObject;
 };

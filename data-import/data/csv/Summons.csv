@@ -1,12 +1,12 @@
-Name,Summoner,Summoner Builder,Base Min Hit,Base Max Hit,Speed.decimal(),Range,Hit Points,Attack Type,Defense Type,Attack Strength,Attack Weakness,Defense Strength,Defense Weakness,Duration,Avatar ID
-fire archer,necromancer;necrolyte,undead,10,10,0.33,500,250,pierce,light,fortified,light,normal;siege,pierce,60s,gAY1h6p
-fiend,gateguard,shadow,14,17,1.35,100,145,chaos,heavy,equal,equal,pierce,magic,60s,QbIZO5r
-fanatic,harbinger,shadow,40,47,1.35,100,470,chaos,heavy,equal,equal,pierce,magic,60s,D4jpCuj
-infernal,lord of death,shadow,55,66,1.35,100,850,chaos,fortified,equal,equal,pierce;magic,siege,60s,Z5aTNh3
-diabolic,hades,shadow,51,58,1.35,600,1200,pierce,light,fortified,light,normal;siege,pierce,60s,kCnYHYY
-imp,diabolic,shadow,30,33,1,100,350,chaos,unarmoured,equal,equal,equal,equal,20s,kmGWQkI
-wolf,raider,orc,14,17,1.35,100,145,chaos,heavy,equal,equal,pierce,magic,60s,aKMRDQB
-blood wolf,blood raider,orc,40,47,1.35,100,470,chaos,heavy,equal,equal,pierce,magic,60s,9XK7DBI
-mini hydra,hydra,marine,55,65,1,325,800,magic,unarmoured,heavy,fortified,equal,equal,infinite,rZXIqLw
-goblin driver,steamroller;assault tank,goblin,15,17,0.8,90,200,normal,medium,medium,fortified,magic,normal,infinite,8HkUUwb
-maverick,maverick,elf,48,51,1,300,920,chaos,medium,equal,equal,magic,normal,60s,OzynbZq
+Name,Summoner,Summoner Builder,Base Min Hit,Base Max Hit,Attack Speed,Attack Speed Class,Range,Hit Points,Attack Type,Defense Type,Attack Strength,Attack Weakness,Defense Strength,Defense Weakness,Duration,Avatar ID
+fire archer,necromancer;necrolyte,undead,10,10,0.33,very fast,500,250,pierce,light,fortified,light,normal;siege,pierce,60s,gAY1h6p
+fiend,gateguard;,shadow,14,17,1.35,fast,100,145,chaos,heavy,equal,equal,pierce;,magic,60s,QbIZO5r
+fanatic,harbinger;,shadow,40,47,1.35,fast,100,470,chaos,heavy,equal,equal,pierce;,magic,60s,D4jpCuj
+infernal,lord of death;,shadow,55,66,1.35,fast,100,850,chaos,fortified,equal,equal,pierce;magic,siege,60s,Z5aTNh3
+diabolic,hades;,shadow,51,58,1.35,fast,600,1200,pierce,light,fortified,light,normal;siege,pierce,60s,kCnYHYY
+imp,diabolic;,shadow,30,33,1,fast,100,350,chaos,unarmored,equal,equal,equal;,equal,20s,kmGWQkI
+wolf,raider;,orc,14,17,1.35,fast,100,145,chaos,heavy,equal,equal,pierce;,magic,60s,aKMRDQB
+blood wolf,blood raider;,orc,40,47,1.35,fast,100,470,chaos,heavy,equal,equal,pierce;,magic,60s,9XK7DBI
+mini hydra,hydra;,marine,55,65,1,fast,325,800,magic,unarmored,heavy,fortified,equal;,equal,infinite,rZXIqLw
+goblin driver,steamroller;assault tank,goblin,15,17,0.8,very fast,90,200,normal,medium,medium,fortified,magic;,normal,infinite,8HkUUwb
+maverick,maverick;,elf,48,51,1,fast,300,920,chaos,medium,equal,equal,magic;,normal,60s,OzynbZq
