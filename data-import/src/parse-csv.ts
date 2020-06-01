@@ -13,12 +13,26 @@ export const parseCSV = async (csvPath: string): Promise<CollectionJSON> =>
         checkType: true,
       })
         .fromStream(createReadStream(csvPath))
-        .then((json) => {
-          resolve({ name: collectionName, json });
+        .then((jsonArray) => {
+          const parsedJsonArray = jsonArray.map(convertSemiColonsToArrays);
+
+          resolve({ name: collectionName, json: parsedJsonArray });
         });
     } catch (error) {
       reject(error);
     }
   });
+
+const convertSemiColonsToArrays = (json: { [index: string]: unknown }) => {
+  Object.entries(json).forEach(([key, value]) => {
+    if (typeof value !== "string") return;
+    if (!value.includes(";")) return;
+
+    // Split on the ';' character and filter out any falsey values
+    json[key] = value.split(";").filter(Boolean);
+  });
+
+  return json;
+};
 
 export type CollectionJSON = { name: string; json: unknown[] };

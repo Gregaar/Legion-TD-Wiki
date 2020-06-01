@@ -15,7 +15,7 @@
     "mongodb": "^3.5.8"
   },
   "devDependencies": {
-    "@types/mongodb": "^3.5.18",
+    "@types/mongodb": "^3.5.20",
     "@types/mongoose": "^5.7.21",
     "@types/node": "^12.12.42",
     "@types/uuid": "^8.0.0",
