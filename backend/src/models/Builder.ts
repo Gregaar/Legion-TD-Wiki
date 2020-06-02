@@ -7,11 +7,7 @@ const builderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  "Avatar ID": {
-    type: String,
-    required: true,
-  },
-  "Unit ID": {
+  ID: {
     type: String,
     required: true,
   },

@@ -12,12 +12,15 @@ export interface MercenaryInterface extends mongoose.Document {
   "Hit Points": number;
   Range: number;
   "Melee / Ranged": string;
-  Speed: number;
+  "Attack Speed": number;
+  "Attack Speed Class": string;
   Mana: number;
   "Attack Type": string;
   "Defense Type": string;
+  "Attack Effectiveness Order": string[];
   "Attack Strength": string;
   "Attack Weakness": string[];
+  "Defense Effectiveness Order": string[];
   "Defense Strength": string[];
   "Defense Weakness": string;
   "Unit Description": string;

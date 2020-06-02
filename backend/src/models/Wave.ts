@@ -53,11 +53,19 @@ const waveSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  "Attack Effectiveness Order": {
+    type: Array,
+    required: true,
+  },
   "Attack Strength": {
     type: String,
     required: true,
   },
   "Attack Weakness": {
+    type: Array,
+    required: true,
+  },
+  "Defense Effectiveness Order": {
     type: Array,
     required: true,
   },
