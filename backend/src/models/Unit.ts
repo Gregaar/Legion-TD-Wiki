@@ -49,9 +49,12 @@ const unitSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  Speed: {
+  "Attack Speed": {
     type: Number,
     required: true,
+  },
+  "Attack Speed Class": {
+    type: String,
   },
   Range: {
     type: Number,
@@ -74,10 +77,16 @@ const unitSchema = new mongoose.Schema({
   "Defense Type": {
     type: String,
   },
+  "Attack Effectiveness Order": {
+    type: Array,
+  },
   "Attack Strength": {
     type: String,
   },
   "Attack Weakness": {
+    type: Array,
+  },
+  "Defense Effectiveness Order": {
     type: Array,
   },
   "Defense Strength": {
@@ -123,7 +132,7 @@ const unitSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  "Avatar ID": {
+  ID: {
     type: String,
     required: true,
   },

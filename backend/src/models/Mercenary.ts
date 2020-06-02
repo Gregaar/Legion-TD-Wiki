@@ -47,8 +47,12 @@ const mercenarySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Speed: {
+  "Attack Speed": {
     type: Number,
+    required: true,
+  },
+  "Attack Speed Class": {
+    type: String,
     required: true,
   },
   Mana: {
@@ -63,11 +67,19 @@ const mercenarySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  "Attack Effectiveness Order": {
+    type: Array,
+    required: true,
+  },
   "Attack Strength": {
     type: String,
     required: true,
   },
   "Attack Weakness": {
+    type: Array,
+    required: true,
+  },
+  "Defense Effectiveness Order": {
     type: Array,
     required: true,
   },
@@ -132,7 +144,7 @@ const mercenarySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  "Avatar ID": {
+  ID: {
     type: String,
     required: true,
   },

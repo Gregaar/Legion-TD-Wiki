@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 export interface BuilderInterface extends mongoose.Document {
   Name: string;
-  "Avatar ID": string;
-  "Unit Id": string;
+  ID: string;
   Description: string;
   "Altar of Heroes": boolean;
   Aura: number;

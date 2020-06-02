@@ -21,8 +21,12 @@ const summonSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  Speed: {
+  "Attack Speed": {
     type: Number,
+    required: true,
+  },
+  "Attack Speed Class": {
+    type: String,
     required: true,
   },
   Range: {
@@ -41,12 +45,20 @@ const summonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  "Attack Effectiveness Order": {
+    type: Array,
+    required: true,
+  },
   "Attack Strength": {
     type: String,
     required: true,
   },
   "Attack Weakness": {
     type: String,
+    required: true,
+  },
+  "Defense Effectiveness Order": {
+    type: Array,
     required: true,
   },
   "Defense Strength": {
@@ -61,7 +73,7 @@ const summonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  "Avatar ID": {
+  ID: {
     type: String,
     required: true,
   },

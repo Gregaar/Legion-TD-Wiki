@@ -13,7 +13,7 @@ const kingAbilitySchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  "Avatar ID": {
+  ID: {
     type: String,
     required: true,
   },
