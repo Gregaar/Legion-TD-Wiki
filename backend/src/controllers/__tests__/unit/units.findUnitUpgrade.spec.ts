@@ -3,7 +3,7 @@ import {
   closeDatabase,
   connect,
 } from "../../../../tests/dbhandler";
-import { tuskarrUnit, tuskarrSpearmanUnit } from "../../../../tests/unit";
+import { tuskarrSpearmanUnit, tuskarrUnit } from "../../../../tests/unit";
 import Unit from "../../../models/Unit";
 import { findUnitUpgrade } from "../../units";
 
