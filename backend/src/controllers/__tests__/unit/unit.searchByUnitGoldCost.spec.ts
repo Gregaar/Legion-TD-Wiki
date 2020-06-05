@@ -4,7 +4,7 @@ import {
   connect,
 } from "../../../../tests/dbhandler";
 import { tuskarrUnit } from "../../../../tests/unit";
-import Unit from "../../../models/Unit";
+import Unit from "../../../models/auth/Unit";
 import { searchByUnitGoldCost } from "../../units";
 
 describe("search by unit name", () => {
