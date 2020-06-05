@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 
-import Wave from "../models/Wave";
+import Wave from "../../models/legion/Wave";
 
 export const findByLevel: RequestHandler<{ level: string }> = async (
   req,

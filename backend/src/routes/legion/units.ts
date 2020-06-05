@@ -13,8 +13,8 @@ import {
   searchByUnitGoldCostRange,
   searchByUnitName,
   searchByUnitTier,
-} from "../controllers/units";
-import { logger } from "../logger";
+} from "../../controllers/legion/units";
+import { logger } from "../../logger";
 
 const router = Router();
 

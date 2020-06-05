@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { MercenaryInterface } from "../interfaces/mercenary-interface";
+import { MercenaryInterface } from "../../interfaces/legion/mercenary-interface";
 
 const mercenarySchema = new mongoose.Schema({
   Name: {

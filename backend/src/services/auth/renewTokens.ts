@@ -1,5 +1,5 @@
-import Token from "../../models/auth/Token";
-import User from "../../models/auth/User";
+import Token from "../../models/user/Token";
+import User from "../../models/user/User";
 import validRefresh from "./validRefresh";
 
 const renewTokens = async (

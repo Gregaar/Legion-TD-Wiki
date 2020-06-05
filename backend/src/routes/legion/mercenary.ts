@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { getMercenariesByName } from "../controllers/mercenaries";
-import { logger } from "../logger";
+import { getMercenariesByName } from "../../controllers/legion/mercenaries";
+import { logger } from "../../logger";
 
 const router = Router();
 

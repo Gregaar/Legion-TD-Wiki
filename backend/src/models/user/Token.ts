@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import TokenInterface from "../../interfaces/token-interface";
+import TokenInterface from "../../interfaces/user/token-interface";
 
 const tokenSchema = new mongoose.Schema({
   userId: {

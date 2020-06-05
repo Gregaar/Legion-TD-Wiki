@@ -3,8 +3,8 @@ import { Router } from "express";
 import {
   findBuilderByName,
   sortBuildersByUnitAbilities,
-} from "../controllers/builders";
-import { logger } from "../logger";
+} from "../../controllers/legion/builders";
+import { logger } from "../../logger";
 
 const router = Router();
 

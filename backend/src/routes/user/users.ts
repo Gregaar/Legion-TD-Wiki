@@ -7,9 +7,9 @@ import {
   logout,
   logoutAll,
   register,
-} from "../controllers/auth/users";
-import { logger } from "../logger";
-import isAuth from "../middleware/auth";
+} from "../../controllers/user/users";
+import { logger } from "../../logger";
+import isAuth from "../../middleware/auth";
 
 const router = Router();
 

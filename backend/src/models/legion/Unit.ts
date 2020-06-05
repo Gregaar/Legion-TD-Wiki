@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { UnitInterface } from "../interfaces/unit-interface";
+import { UnitInterface } from "../../interfaces/legion/unit-interface";
 
 const unitSchema = new mongoose.Schema({
   Name: {
@@ -142,7 +142,7 @@ unitSchema.methods.toJSON = function () {
   const unitObject = this.toObject();
 
   delete unitObject._id;
-  delete unitObject.__v;
+  delete unitObject._v;
 
   return unitObject;
 };
