@@ -47,7 +47,7 @@ export const tuskarrUnit = {
   "Can Heal": false,
   "Can Stun": false,
   "Can Summon": false,
-  "Avatar ID": "H1wkO11",
+  ID: "H1wkO11",
 };
 
 export const tuskarrSpearmanUnit = {
@@ -101,5 +101,5 @@ export const tuskarrSpearmanUnit = {
   "Can Heal": false,
   "Can Stun": false,
   "Can Summon": false,
-  "Avatar ID": "wD7V92U",
+  ID: "wD7V92U",
 };
