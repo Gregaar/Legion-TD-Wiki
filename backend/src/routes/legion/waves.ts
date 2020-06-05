@@ -13,8 +13,8 @@ import {
   findByLevel,
   findDefenseStrength,
   findDefenseWeakness,
-} from "../controllers/waves";
-import { logger } from "../logger";
+} from "../../controllers/legion/waves";
+import { logger } from "../../logger";
 
 const router = Router();
 

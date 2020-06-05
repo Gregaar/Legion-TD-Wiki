@@ -1,10 +1,10 @@
+import Unit from "../../../../models/legion/Unit";
 import {
   clearDatabase,
   closeDatabase,
   connect,
-} from "../../../../tests/dbhandler";
-import { tuskarrUnit } from "../../../../tests/unit";
-import Unit from "../../../models/Unit";
+} from "../../../../test-setup/dbhandler";
+import { tuskarrUnit } from "../../../../test-setup/unit";
 import { searchByUnitGoldCostRange } from "../../units";
 
 describe("search by unit name", () => {

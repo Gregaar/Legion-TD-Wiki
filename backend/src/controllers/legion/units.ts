@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 
-import { UnitInterface } from "../interfaces/unit-interface";
-import Unit from "../models/Unit";
+import { UnitInterface } from "../../interfaces/legion/unit-interface";
+import Unit from "../../models/legion/Unit";
 
 // e.g. unit: Tuskarr
 export const searchByUnitName: RequestHandler<{ name: string }> = async (

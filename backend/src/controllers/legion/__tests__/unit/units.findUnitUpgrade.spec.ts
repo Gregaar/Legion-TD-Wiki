@@ -1,11 +1,11 @@
+import Unit from "../../../../models/legion/Unit";
 import {
   clearDatabase,
   closeDatabase,
   connect,
-} from "../../../../tests/dbhandler";
-import { tuskarrUnit } from "../../../../tests/unit";
-import Unit from "../../../models/Unit";
-import { searchByUnitTier } from "../../units";
+} from "../../../../test-setup/dbhandler";
+import { tuskarrSpearmanUnit, tuskarrUnit } from "../../../../test-setup/unit";
+import { findUnitUpgrade } from "../../units";
 
 describe("search by unit name", () => {
   beforeAll(async () => {
@@ -13,8 +13,10 @@ describe("search by unit name", () => {
   });
 
   beforeEach(async () => {
-    const testUnit = new Unit(tuskarrUnit);
-    await testUnit.save();
+    const baseUnit = new Unit(tuskarrUnit);
+    const upgradedUnit = new Unit(tuskarrSpearmanUnit);
+    await baseUnit.save();
+    await upgradedUnit.save();
   });
 
   afterEach(async () => {
@@ -25,10 +27,10 @@ describe("search by unit name", () => {
     await closeDatabase();
   });
 
-  const mockRequest = (tier: string) => {
+  const mockRequest = (unit: string) => {
     const req: any = {
       params: {
-        tier,
+        unit,
       },
     };
     return req;
@@ -43,26 +45,25 @@ describe("search by unit name", () => {
 
   const mockNext = jest.fn();
 
-  it("should return all units from the tier specified", async () => {
-    const req = mockRequest("1");
+  it("should return the upgraded unit from the base unit", async () => {
+    const req = mockRequest("tuskarr");
     const res = mockResponse();
 
-    await searchByUnitTier(req, res, mockNext);
+    await findUnitUpgrade(req, res, mockNext);
 
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalled();
   });
 
-  it("should return an error if the tier is less than 1 or more than 6", async () => {
-    const req = mockRequest("10");
+  it("should return an error if the unit cannot be upgraded", async () => {
+    const req = mockRequest("tuskarr spearman");
     const res = mockResponse();
 
-    await searchByUnitTier(req, res, mockNext);
+    await findUnitUpgrade(req, res, mockNext);
 
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({
-      error:
-        "Unable to find any units with tier 10. Tiers are numbered 1 through 6.",
+      error: "Could not find tuskarr spearman's upgraded unit.",
     });
   });
 });

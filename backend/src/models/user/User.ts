@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 import validator from "validator";
 
-import UserInterface from "../../interfaces/user-interface";
-import UserModelInterface from "../../interfaces/user-model-interface";
+import UserInterface from "../../interfaces/user/user-interface";
+import UserModelInterface from "../../interfaces/user/user-model-interface";
 import passValidator from "../../services/auth/validatePassword";
 import Token from "./Token";
 

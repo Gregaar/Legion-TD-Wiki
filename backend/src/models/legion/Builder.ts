@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { BuilderInterface } from "../interfaces/builder-interface";
+import { BuilderInterface } from "../../interfaces/legion/builder-interface";
 
 const builderSchema = new mongoose.Schema({
   Name: {

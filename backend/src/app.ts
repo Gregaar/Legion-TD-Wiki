@@ -1,11 +1,11 @@
 import express from "express";
 
 import commonMiddleware from "./middleware";
-import builderRouter from "./routes/builders";
-import mercenaryRouter from "./routes/mercenary";
-import unitRouter from "./routes/units";
-import userRouter from "./routes/users";
-import waveRouter from "./routes/waves";
+import builderRouter from "./routes/legion/builders";
+import mercenaryRouter from "./routes/legion/mercenary";
+import unitRouter from "./routes/legion/units";
+import waveRouter from "./routes/legion/waves";
+import userRouter from "./routes/user/users";
 
 const app = express();
 

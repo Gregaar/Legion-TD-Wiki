@@ -2,7 +2,7 @@ import config from "config";
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import User from "../models/auth/User";
+import User from "../models/user/User";
 import renewTokens from "../services/auth/renewTokens";
 
 const isAuth: RequestHandler = async (

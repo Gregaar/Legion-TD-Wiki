@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 
-import Mercenary from "../models/Mercenary";
+import Mercenary from "../../models/legion/Mercenary";
 
 export const getMercenariesByName: RequestHandler<{ name: string }> = async (
   req,

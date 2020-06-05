@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 
-import Builder from "../models/Builder";
+import Builder from "../../models/legion/Builder";
 
 export const findBuilderByName: RequestHandler<{ builder: string }> = async (
   req,
