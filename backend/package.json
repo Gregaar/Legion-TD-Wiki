@@ -22,7 +22,7 @@
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",
     "password-validator": "^5.0.3",
-    "pino": "^6.3.1",
+    "pino": "^6.3.2",
     "validator": "^13.0.0"
   },
   "devDependencies": {
@@ -35,9 +35,9 @@
     "@types/helmet": "0.0.47",
     "@types/jest": "^25.2.3",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/mongodb": "^3.5.18",
+    "@types/mongodb": "^3.5.20",
     "@types/mongoose": "^5.7.21",
-    "@types/node": "^14.0.6",
+    "@types/node": "^14.0.11",
     "@types/pino": "^6.0.1",
     "@types/validator": "^13.0.0",
     "@typescript-eslint/eslint-plugin": "^3.1.0",
