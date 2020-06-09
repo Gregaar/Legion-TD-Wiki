@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.0.0",
+  "proxy": "http://localhost:9001",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.8.0",
@@ -17,6 +18,9 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "~3.9.3"
   },
@@ -53,6 +57,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.1.0"
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router": "^5.1.7",
+    "@types/react-router-dom": "^5.1.5",
+    "@typescript-eslint/parser": "^3.2.0"
   }
 }
