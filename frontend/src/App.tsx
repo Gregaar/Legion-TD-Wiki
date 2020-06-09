@@ -1,28 +1,24 @@
-import "./App.css";
-
 import React from "react";
+import { Route, Switch } from "react-router";
 
-import logo from "./logo.svg";
+import { AuthProvider } from "./hoc/AuthContext/auth-context";
+import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
+import Layout from "./hoc/Layout/layout";
 
-function App() {
+import Homepage from "./components/Homepage/homepage";
+import Login from "./containers/Login/login";
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Layout>
+        <Switch>
+          <Route path="/login" exact component={Login} />
+          <ProtectedRoute path="/" exact component={Homepage} />
+        </Switch>
+      </Layout>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
