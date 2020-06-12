@@ -2,8 +2,7 @@ import passwordValidator from "password-validator";
 
 export default (newPassword: string): string[] | boolean => {
   const schema = new passwordValidator();
-  schema.is().min(7);
-  schema.is().max(16);
+  schema.is().min(6);
   schema.has().uppercase();
   schema.has().lowercase();
   schema.has().digits();

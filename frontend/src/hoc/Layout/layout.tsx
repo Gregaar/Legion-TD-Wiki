@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { useAuthContext } from "../AuthContext/auth-context";
-
 import Header from "../../components/Navigation/Header/header";
 import Footer from "../../components/Navigation/Footer/footer";
 
