@@ -13,9 +13,27 @@ export const register: RequestHandler<{
   password: string;
 }> = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+    }: { name: string; email: string; password: string } = req.body;
 
-    const user = new User({ name, email, password });
+    const existingUser = await User.findOne({
+      email: email.trim().toLowerCase(),
+    });
+
+    if (existingUser) {
+      return res.status(500).json({
+        error: "Email already registered.",
+      });
+    }
+
+    const user = new User({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      password,
+    });
 
     await user.save();
 
@@ -51,7 +69,10 @@ export const login: RequestHandler<{
   try {
     const { email, password }: { email: string; password: string } = req.body;
 
-    const user = await User.findByCredentials(email, password);
+    const user = await User.findByCredentials(
+      email.trim().toLowerCase(),
+      password,
+    );
 
     if (!user) {
       throw new Error();
@@ -80,7 +101,7 @@ export const login: RequestHandler<{
 
     return res.status(200).json({ success: true, username: user.name });
   } catch (error) {
-    return res.status(400).json({ error: "Invalid email or password" });
+    return res.status(400).json({ error: "Invalid email or password." });
   }
 };
 

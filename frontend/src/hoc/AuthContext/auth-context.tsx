@@ -5,9 +5,13 @@ import axios from "axios";
 export interface AuthContextInterface {
   user: {
     isAuth: boolean;
-    name: string;
-  }
-  loginHandler: (event: React.FormEvent, email: string, password: string) => Promise<void>;
+  };
+  registerHandler: (
+    name: string,
+    email: string,
+    password: string
+  ) => Promise<void | string>;
+  loginHandler: (email: string, password: string) => Promise<void | string>;
   logoutHandler: (event: React.MouseEvent<HTMLAnchorElement>) => Promise<void>;
 }
 
@@ -17,7 +21,6 @@ const useAuthContext = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authStatus, setAuthStatus] = useState(false);
-  const [username, setUsername] = useState("Guest");
   const history = useHistory();
 
   useEffect(() => {
@@ -29,27 +32,51 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             setAuthStatus(true);
           } else if (!res.data.success && authStatus) {
             setAuthStatus(false);
-            setUsername("Guest");
+
             history.push("/login");
           }
         })
         .catch((error) => {
           setAuthStatus(false);
-          setUsername("Guest");
           history.push("/login");
         });
     };
     isAuth();
   }, [history.location.pathname]);
 
-  const loginHandler = async (
-    event: React.FormEvent,
+  const registerHandler = async (
+    name: string,
     email: string,
     password: string
-  ): Promise<void> => {
-    event.preventDefault();
+  ): Promise<void | string> => {
+    const response = await axios("/user/register", {
+      method: "POST",
+      data: {
+        name,
+        email,
+        password,
+      },
+      withCredentials: true,
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          setAuthStatus(true);
+        } else {
+          setAuthStatus(false);
+        }
+      })
+      .catch((error) => {
+        setAuthStatus(false);
+        return error.response.data.error;
+      });
+    return response;
+  };
 
-    await axios("/user/login", {
+  const loginHandler = async (
+    email: string,
+    password: string
+  ): Promise<void | string> => {
+    const response = await axios("/user/login", {
       method: "POST",
       data: {
         email,
@@ -63,18 +90,17 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           history.push("/");
         } else {
           setAuthStatus(false);
-          history.push("/login");
         }
       })
       .catch((error) => {
         setAuthStatus(false);
-        history.push("/login");
-        return error.response.data.message;
+        return error.response.data.error;
       });
+    return response;
   };
 
   const logoutHandler = async (
-    event: React.MouseEvent<HTMLAnchorElement>,
+    event: React.MouseEvent<HTMLAnchorElement>
   ): Promise<void> => {
     event.preventDefault();
 
@@ -93,7 +119,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .catch((error) => {
         setAuthStatus(false);
         history.push("/login");
-        return error.response.data.message;
+        return error.response.data.error;
       });
   };
 
@@ -102,10 +128,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         user: {
           isAuth: authStatus,
-          name: username,
         },
+        registerHandler,
         loginHandler,
-        logoutHandler
+        logoutHandler,
       }}
     >
       {children}

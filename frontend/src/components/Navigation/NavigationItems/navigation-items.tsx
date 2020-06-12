@@ -28,9 +28,6 @@ const navigationItems = () => {
           </NavItem>
         </React.Fragment>
       ) : null}
-      <NavItem exact link="/">
-        Home
-      </NavItem>
       {authStatus ? (
         <React.Fragment>
           <NavItem exact link="/">

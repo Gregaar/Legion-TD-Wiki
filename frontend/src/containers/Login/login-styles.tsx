@@ -1,14 +1,4 @@
 import styled from "styled-components";
-import Background from "../../assets/bg.png";
-
-export const BackgroundDiv = styled.div`
-  height: 100vh;
-  opacity: 0.75;
-  background-image: url(${Background});
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 1%;
-`;
 
 export const ContainerDiv = styled.div`
   margin: 10rem auto;
@@ -21,6 +11,10 @@ export const Form = styled.form`
   text-align: center;
   padding: 5%;
   }
+`;
+
+export const InputDiv = styled.div`
+  padding: 0.5rem;
 `;
 
 export const Label = styled.label`
@@ -40,11 +34,11 @@ export const Input = styled.input`
   text-align: center;
 `;
 
-export const LoginButton = styled.input`
+export const InputButton = styled.input`
   display: inline-block;
    padding: 0.46em 1.6em;
    border: 0.1em solid #000000;
-   margin: 0 0.2em 0.2em 0;
+   margin: 10px auto;
    border-radius: 0.12em;
    box-sizing: border-box;
    text-decoration: none;
@@ -61,4 +55,33 @@ export const LoginButton = styled.input`
      color: #ffffff;
      border-color: #ffffff;
   }
+`;
+
+export const Button = styled.button`
+  display: inline-block;
+   padding: 0.46em 1.6em;
+   border: 0.1em solid #000000;
+   margin: 10px auto;
+   border-radius: 0.12em;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: "Roboto", sans-serif;
+   font-weight: 300;
+   color: #000000;
+   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+   background-color: #00ffff;
+   text-align: center;
+   transition: all 0.15s;
+
+  &:hover {
+    ext-shadow: 0 0 2em rgba(255, 255, 255, 1);
+     color: #ffffff;
+     border-color: #ffffff;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
 `;

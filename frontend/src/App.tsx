@@ -7,6 +7,7 @@ import Layout from "./hoc/Layout/layout";
 
 import Homepage from "./components/Homepage/homepage";
 import Login from "./containers/Login/login";
+import Units from "./containers/Units/units";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
         <Switch>
           <Route path="/login" exact component={Login} />
           <ProtectedRoute path="/" exact component={Homepage} />
+          <ProtectedRoute path="/units" exact component={Units} />
         </Switch>
       </Layout>
     </AuthProvider>
