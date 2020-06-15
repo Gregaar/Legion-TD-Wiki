@@ -33,7 +33,7 @@
     "@types/express": "^4.17.6",
     "@types/express-pino-logger": "^4.0.2",
     "@types/helmet": "0.0.47",
-    "@types/jest": "^25.2.3",
+    "@types/jest": "^26.0.0",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongodb": "^3.5.20",
     "@types/mongodb-memory-server": "^2.3.0",
