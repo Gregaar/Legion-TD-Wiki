@@ -19,7 +19,7 @@
     "express-pino-logger": "^5.0.0",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.5.8",
+    "mongodb": "^3.5.9",
     "mongoose": "^5.9.18",
     "password-validator": "^5.0.3",
     "pino": "^6.3.2",
