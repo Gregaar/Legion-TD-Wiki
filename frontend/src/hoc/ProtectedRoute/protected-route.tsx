@@ -2,7 +2,7 @@ import * as React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useAuthContext } from "../AuthContext/auth-context";
 
-const protectedRoute = ({
+const ProtectedRoute = ({
   component: Component,
   path,
   exact,
@@ -33,4 +33,4 @@ const protectedRoute = ({
   );
 };
 
-export default protectedRoute;
+export default ProtectedRoute;

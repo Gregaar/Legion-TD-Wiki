@@ -34,7 +34,7 @@ interface RegisterProps {
   setConfirmPassword: (value: string) => void;
 }
 
-const register: React.FC<RegisterProps> = ({
+const Register: React.FC<RegisterProps> = ({
   username,
   email,
   password,
@@ -243,4 +243,4 @@ const register: React.FC<RegisterProps> = ({
   );
 };
 
-export default register;
+export default Register;
