@@ -121,7 +121,14 @@ const individualUnit: React.FC<UnitProps> = (props) => {
             : "No ability"
         }
       >
-        <img src={props.abilities !== null ? abilityAvatar : cancelIcon} />
+        <img
+          src={props.abilities !== null ? abilityAvatar : cancelIcon}
+          alt={
+            props.abilities !== null
+              ? `Icon for the ${props.abilities[0]} ability.`
+              : "An icon meaning this unit has no ability"
+          }
+        />
       </Tooltip>
       <Tooltip
         title={

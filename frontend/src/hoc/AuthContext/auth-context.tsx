@@ -29,11 +29,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         .get("/user/loginStatus", { withCredentials: true })
         .then((res) => {
           if (res.data.success && !authStatus) {
-            setAuthStatus(true);
+            return setAuthStatus(true);
           } else if (!res.data.success && authStatus) {
             setAuthStatus(false);
-
             history.push("/login");
+            return;
           }
         })
         .catch((error) => {
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
     isAuth();
-  }, [history.location.pathname]);
+  }, [history, authStatus]);
 
   const registerHandler = async (
     name: string,

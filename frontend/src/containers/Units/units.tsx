@@ -49,7 +49,7 @@ export interface UnitInterface {
   ID: string;
 }
 
-const units = () => {
+const Units = () => {
   const [displayUnits, setDisplayUnits] = useState<UnitInterface[]>([]);
 
   const titles = [
@@ -113,4 +113,4 @@ const units = () => {
   );
 };
 
-export default units;
+export default Units;

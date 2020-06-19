@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const UnitContainer = styled.div`
   display: grid;
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: 500px;
   overflow-x: hidden;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   grid-gap: 10px;
   justify-items: center;
   align-items: center;

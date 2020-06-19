@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
 import NavItem from "./NavigationItem/navigation-item";
@@ -11,7 +11,7 @@ const List = styled.ul`
   align-items: center;
 `;
 
-const navigationItems = () => {
+const NavigationItems: React.FC = () => {
   const authContext = useAuthContext();
 
   const authStatus = authContext?.user.isAuth;
@@ -52,4 +52,4 @@ const navigationItems = () => {
   );
 };
 
-export default navigationItems;
+export default NavigationItems;
