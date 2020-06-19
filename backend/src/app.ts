@@ -1,5 +1,4 @@
 import express from "express";
-
 import commonMiddleware from "./middleware";
 import builderRouter from "./routes/legion/builders";
 import mercenaryRouter from "./routes/legion/mercenary";

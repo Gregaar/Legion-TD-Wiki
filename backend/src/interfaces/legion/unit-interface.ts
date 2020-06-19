@@ -37,5 +37,5 @@ export interface UnitInterface extends mongoose.Document {
   "Can Heal": boolean;
   "Can Stun": boolean;
   "Can Summon": boolean;
-  "Avatar ID": string;
+  ID: string;
 }
