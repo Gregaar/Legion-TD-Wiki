@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Filter from "./Filter/filter";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import Filter from "./Filter/filter";
+import IndividualUnit from "./Individual-Unit/individual-unit";
 import {
   UnitContainer,
-  UnitHeadingsContainer,
   UnitHeadings,
+  UnitHeadingsContainer,
 } from "./unit-styles";
-import IndividualUnit from "./Individual-Unit/individual-unit";
-import axios from "axios";
 
 export interface UnitInterface {
   Name: string;

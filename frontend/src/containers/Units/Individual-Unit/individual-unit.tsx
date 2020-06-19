@@ -1,21 +1,21 @@
-import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
-import unitAvatar from "../../../assets/unit-avatar.png";
+import React from "react";
+
+import abilityAvatar from "../../../assets/ability-avatar.png";
 import builderAvatar from "../../../assets/builder-avatar.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
-import abilityAvatar from "../../../assets/ability-avatar.png";
-import unknownIcon from "../../../assets/unknown-icon.png";
 import chaosAttack from "../../../assets/chaos.png";
-import pierceAttack from "../../../assets/pierce.png";
-import normalAttack from "../../../assets/normal.png";
-import magicAttack from "../../../assets/magic.png";
-import siegeAttack from "../../../assets/siege.png";
-
-import unarmoredDefense from "../../../assets/unarmored.png";
-import lightDefense from "../../../assets/light.png";
-import mediumDefense from "../../../assets/medium.png";
-import heavyDefense from "../../../assets/heavy.png";
 import fortifiedDefense from "../../../assets/fortified.png";
+import heavyDefense from "../../../assets/heavy.png";
+import lightDefense from "../../../assets/light.png";
+import magicAttack from "../../../assets/magic.png";
+import mediumDefense from "../../../assets/medium.png";
+import normalAttack from "../../../assets/normal.png";
+import pierceAttack from "../../../assets/pierce.png";
+import siegeAttack from "../../../assets/siege.png";
+import unarmoredDefense from "../../../assets/unarmored.png";
+import unitAvatar from "../../../assets/unit-avatar.png";
+import unknownIcon from "../../../assets/unknown-icon.png";
 
 interface UnitProps {
   unitName: string;

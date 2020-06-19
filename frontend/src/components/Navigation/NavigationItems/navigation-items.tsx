@@ -1,15 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
+import { List } from "./navigation-item-styles";
 import NavItem from "./NavigationItem/navigation-item";
-
-const List = styled.ul`
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  align-items: center;
-`;
 
 const NavigationItems: React.FC = () => {
   const authContext = useAuthContext();
