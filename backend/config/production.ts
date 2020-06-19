@@ -3,7 +3,7 @@ export default {
     port: process.env.PORT,
   },
   mongo: {
-    uri: process.env.MONGO_URI,
+    uri: process.env.MONGODB_URI,
   },
   jwt: {
     secret: process.env.JWT_Secret,
