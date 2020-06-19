@@ -9,11 +9,11 @@ const Div = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   padding: 1%;
-`
+`;
 const homepage: React.FC = () => {
   return (
     <Div>
-      <h1></h1>
+      <h1>Hello :-)</h1>
     </Div>
   );
 };
