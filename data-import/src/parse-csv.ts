@@ -9,11 +9,11 @@ export const parseCSV = async (csvPath: string): Promise<CollectionJSON> =>
 
     try {
       csvtojson({
-        nullObject: true,
-        checkType: true,
+        nullObject: true as boolean,
+        checkType: true as boolean,
       })
         .fromStream(createReadStream(csvPath))
-        .then((jsonArray) => {
+        .subscribe((jsonArray) => {
           const parsedJsonArray = jsonArray.map(convertSemiColonsToArrays);
 
           resolve({ name: collectionName, json: parsedJsonArray });
