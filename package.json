@@ -2,7 +2,7 @@
   "name": "legion-td",
   "scripts": {
     "install:backend": "cd ./backend && npm ci",
-    "install:data-import": "cd ./data-import && npm ci",
+    "install:data-import": "cd ./data-import && npm i --only=dev && npm ci",
     "install:frontend": "cd ./frontend && npm ci",
     "start-data-import-service": "cd data-import && npm run build && npm run start",
     "postinstall": "run-s install:*",
