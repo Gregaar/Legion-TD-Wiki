@@ -4,7 +4,10 @@
     "install:backend": "cd ./backend && npm ci",
     "install:data-import": "cd ./data-import && npm ci",
     "install:frontend": "cd ./frontend && npm ci",
-    "postinstall": "run-s install:*"
+    "start-data-import-service": "cd data-import && npm run build && npm run start",
+    "postinstall": "run-s install:*",
+    "start": "cd backend && npm run start",
+    "heroku-postbuild": "npm run install:backend && npm run install:data-import && npm run start-data-import-service"
   },
   "dependencies": {
     "commitizen": "^4.1.2",
