@@ -1,15 +1,15 @@
 export default {
   app: {
-    port: 9001,
+    port: process.env.PORT,
   },
   mongo: {
-    uri: "mongodb://127.0.0.1:27017/test-legion-td",
+    uri: process.env.MONGODB_URI,
   },
   jwt: {
-    secret: "yerdasellsavon",
-    refreshSecret: "yermawsellsavon",
-    tokenLife: "15m",
-    refreshTokenLife: "1d",
-    domain: "localhost",
+    secret: process.env.JWT_Secret,
+    refreshSecret: process.env.JWT_Refresh_Secret,
+    tokenLife: process.env.Token_Life,
+    refreshTokenLife: process.env.Refresh_Token_Life,
+    domain: process.env.My_Domain,
   },
 };
