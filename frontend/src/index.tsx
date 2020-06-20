@@ -1,16 +1,17 @@
-import React from "react";
 import "./index.css";
+
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import * as serviceWorker from "./serviceWorker";
-import App from "./App";
 
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
 const createApp = () => {
   return (
     <React.StrictMode>
       <BrowserRouter>
-          <App />
+        <App />
       </BrowserRouter>
     </React.StrictMode>
   );

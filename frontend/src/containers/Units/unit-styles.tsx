@@ -20,8 +20,8 @@ export const UnitContainer = styled.div`
 
 export const UnitHeadingsContainer = styled.div`
   display: contents;
-`
+`;
 
 export const UnitHeadings = styled.h3`
   text-shadow: 2px 2px black;
-`
+`;

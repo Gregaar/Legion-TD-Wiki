@@ -1,4 +1,5 @@
 import React from "react";
+
 import { FilterObjectInterface } from "../filter";
 import { DropdownContainer, DropdownLabel } from "../filter-styles";
 
@@ -69,10 +70,7 @@ const dropdownFilters: React.FC<DropdownProps> = (props) => {
         }
       >
         {builderOptions.map((builder) => (
-          <option
-            key={builder}
-            value={builder}
-          >
+          <option key={builder} value={builder}>
             {builder.charAt(0).toUpperCase() + builder.substring(1)}
           </option>
         ))}

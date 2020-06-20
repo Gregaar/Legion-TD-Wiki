@@ -1,10 +1,11 @@
 import React from "react";
+
 import { FilterObjectInterface } from "../filter";
 import {
-  TierRangeContainer,
   TierHeading,
-  TierLabel,
   TierInput,
+  TierLabel,
+  TierRangeContainer,
 } from "../filter-styles";
 
 interface TierRangeProps {
@@ -21,13 +22,13 @@ const tierFilter: React.FC<TierRangeProps> = (props) => {
     event: React.ChangeEvent<HTMLInputElement>,
     key: string
   ) => {
-    const { value }: {value: string} = event.target;
+    const { value }: { value: string } = event.target;
     let inputValue = +value;
 
     if (key === "from" && props.unitFilters.tier.to < inputValue) {
-      inputValue = inputValue - 1 ;
+      inputValue = inputValue - 1;
     } else if (key === "to" && props.unitFilters.tier.from > inputValue) {
-      inputValue = inputValue + 1 ;
+      inputValue = inputValue + 1;
     }
 
     props.setUnitFilters((prevFilters) => {

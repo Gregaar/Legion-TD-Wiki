@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+
 import { UnitInterface } from "../units";
+import { FilterContainer, SubmitButton } from "./filter-styles";
+import CheckboxFilters from "./Filters/checkboxes";
+import DropdownFilters from "./Filters/dropdowns";
+import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
+import SearchFilter from "./Filters/search";
+import TierFilter from "./Filters/tier-range";
 import searchByName from "./Requests/search-by-name";
 import searchWithFilters from "./Requests/search-with-filters";
-import SearchFilter from "./Filters/search";
-import ErrorDisplay from "./Filters/error-display";
-import DropdownFilters from "./Filters/dropdowns";
-import TierFilter from "./Filters/tier-range";
-import CheckboxFilters from "./Filters/checkboxes";
-import { FilterContainer, SubmitButton } from "./filter-styles";
 
 interface FilterProps {
   displayUnits: UnitInterface[];
@@ -79,16 +80,18 @@ const Filter: React.FC<FilterProps> = (props) => {
 
   const errorDisplay = (
     <ErrorDisplay
-    displayErrors={displayErrors}
-    clicked={() => setDisplayErrors("")}
-    show={displayErrors ? true : false}
-  /> )
+      displayErrors={displayErrors}
+      clicked={() => setDisplayErrors("")}
+      show={displayErrors ? true : false}
+      advice="Lessen your search criteria"
+    />
+  );
 
   return (
     <FilterContainer>
       <form onSubmit={(event) => handleFilterSubmit(event, unitName)}>
         <SearchFilter unitName={unitName} setUnitName={setUnitName} />
-        {displayErrors ? errorDisplay : null }
+        {displayErrors ? errorDisplay : null}
         <DropdownFilters
           unitFilters={unitFilters}
           setUnitFilters={setUnitFilters}

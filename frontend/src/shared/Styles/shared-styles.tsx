@@ -1,9 +1,10 @@
 import styled from "styled-components";
+
 import Background from "../../assets/bg.png";
 
 interface HeightProps {
-    height: string;
-  }
+  height: string;
+}
 
 export const BackgroundDiv = styled.div<HeightProps>`
   height: ${(props) => props.height};

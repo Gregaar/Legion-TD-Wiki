@@ -1,17 +1,18 @@
+import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import isEmail from "validator/lib/isEmail";
-import Tooltip from "@material-ui/core/Tooltip";
+import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
 import { BackgroundDiv } from "../../../shared/Styles/shared-styles";
 import {
-  ContainerDiv,
-  Form,
-  InputDiv,
-  Label,
-  Input,
-  InputButton,
   Button,
   ButtonContainer,
+  ContainerDiv,
+  Form,
+  Input,
+  InputButton,
+  InputDiv,
+  Label,
 } from "../login-styles";
 
 interface FormErrors {
@@ -134,9 +135,18 @@ const Register: React.FC<RegisterProps> = ({
     }
   };
 
+  const errorDisplay = (
+    <ErrorDisplay
+      displayErrors={formErrors}
+      clicked={() => setFormErrors((prevState) => [])}
+      show={formErrors ? true : false}
+    />
+  );
+
   return (
     <BackgroundDiv height="100%">
       <ContainerDiv>
+        {formErrors.length > 0 ? errorDisplay : null}
         <Form
           noValidate
           onSubmit={(e) =>
@@ -215,22 +225,7 @@ const Register: React.FC<RegisterProps> = ({
               />
             </Tooltip>
           </InputDiv>
-          <div aria-label="formErrorsContainer">
-            {formErrors.length > 0
-              ? formErrors.map((error) => (
-                  <p
-                    key={Math.random().toFixed(2).toString()}
-                    style={{
-                      color: "yellow",
-                      fontWeight: "bold",
-                      padding: "2%",
-                    }}
-                  >
-                    {error.message}
-                  </p>
-                ))
-              : ""}
-          </div>
+
           <ButtonContainer>
             <InputButton type="submit" value="Register" />
             <Button type="button" value="switch" onClick={handleLogin}>

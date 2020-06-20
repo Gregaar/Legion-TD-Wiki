@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
-import isEmail from "validator/lib/isEmail";
 import Tooltip from "@material-ui/core/Tooltip";
-import { useAuthContext } from "../../hoc/AuthContext/auth-context";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Register from "./Register/register";
+import isEmail from "validator/lib/isEmail";
+
+import { useAuthContext } from "../../hoc/AuthContext/auth-context";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import {
-  ContainerDiv,
-  Form,
-  InputDiv,
-  Label,
-  Input,
-  InputButton,
   Button,
   ButtonContainer,
+  ContainerDiv,
+  Form,
+  Input,
+  InputButton,
+  InputDiv,
+  Label,
 } from "./login-styles";
+import Register from "./Register/register";
+import ErrorDisplay from "../../components/ErrorDisplay/error-display";
 
 interface FormErrors {
   message: string;
@@ -70,9 +72,18 @@ const Login: React.FC = () => {
     }
   };
 
+  const errorDisplay = (
+    <ErrorDisplay
+      displayErrors={formErrors}
+      clicked={() => setFormErrors((prevState) => [])}
+      show={formErrors ? true : false}
+    />
+  );
+
   const login = (
     <React.Fragment>
       <ContainerDiv>
+        {formErrors.length > 0 ? errorDisplay : null}
         <Form
           onSubmit={(event: React.FormEvent) =>
             handleLogin(event, email, password)
@@ -81,42 +92,33 @@ const Login: React.FC = () => {
           <h2 style={{ padding: "0.5rem" }}>Login</h2>
           <InputDiv>
             <Label htmlFor="email">Email</Label>
-            <Tooltip placement="right" title="The email address you registered with">
-            <Input
-              id="email"
-              name="email"
-              required
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
+            <Tooltip
+              placement="right"
+              title="The email address you registered with"
+            >
+              <Input
+                id="email"
+                name="email"
+                required
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
             </Tooltip>
           </InputDiv>
           <InputDiv>
             <Label htmlFor="password">Password</Label>
             <Tooltip placement="right" title="Your password">
-            <Input
-              id="password"
-              name="password"
-              required
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
+              <Input
+                id="password"
+                name="password"
+                required
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
             </Tooltip>
           </InputDiv>
-          <div aria-label="formErrorsContainer">
-            {formErrors.length
-              ? formErrors.map((error) => (
-                  <p
-                    key={Math.random().toFixed(2).toString()}
-                    style={{ color: "yellow", fontWeight: "bold" }}
-                  >
-                    {error.message}
-                  </p>
-                ))
-              : ""}
-          </div>
           <ButtonContainer>
             <InputButton type="submit" value="Login" />
             <Button type="button" value="switch" onClick={handleSignup}>

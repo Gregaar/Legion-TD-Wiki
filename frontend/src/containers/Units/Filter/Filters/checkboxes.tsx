@@ -1,10 +1,11 @@
 import React from "react";
+
 import { FilterObjectInterface } from "../filter";
 import {
   AbilitiesHeading,
   CheckboxContainer,
-  CheckboxLabel,
   CheckboxInput,
+  CheckboxLabel,
 } from "../filter-styles";
 
 interface CheckboxProps {

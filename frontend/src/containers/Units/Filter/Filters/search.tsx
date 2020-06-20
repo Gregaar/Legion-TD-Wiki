@@ -1,5 +1,6 @@
 import React from "react";
-import { SearchLabel, SearchInput } from "../filter-styles";
+
+import { SearchInput, SearchLabel } from "../filter-styles";
 
 interface SearchProps {
   unitName?: string;

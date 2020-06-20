@@ -1,10 +1,12 @@
 import axios from "axios";
+
 import { UnitInterface } from "../../units";
 
 const searchByName = async (
   name: string,
   setUnits: (
-    value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])) => void,
+    value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
+  ) => void,
   setErrors: (value: string | ((value: string) => string)) => void
 ): Promise<void> => {
   await axios(`/unit/name/${name}`)
@@ -16,6 +18,6 @@ const searchByName = async (
       setErrors((prevErrors: string) => error.response.data.error);
       return;
     });
-}
+};
 
 export default searchByName;

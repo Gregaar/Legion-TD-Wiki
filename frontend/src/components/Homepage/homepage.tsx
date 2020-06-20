@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import Background from "../../assets/bg.png";
 
 const Div = styled.div`

@@ -23,17 +23,10 @@ const MONGO_PORT = process.env.MONGO_PORT || "27017";
     const collections = await Promise.all(paths.map(parseCSV));
 
     // Create mongo client
-    if (process.env.NODE_ENV === "production") {
-      client = await mongodb.connect(`${process.env.MONGODB_URI}`, {
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-      });
-    } else {
-      client = await mongodb.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}`, {
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-      });
-    }
+    client = await mongodb.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}`, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
 
     // Drop all matching collections and recreate them with data from csv files
     console.time("Duration");
