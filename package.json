@@ -1,8 +1,8 @@
 {
   "name": "legion-td",
   "scripts": {
-    "build": "cd backend && npm i --only=dev && npm ci",
-    "start": "cd backend && npm run start"
+    "build": "cd backend && npm run build",
+    "start": "cd backend/dist && node index.js"
   },
   "dependencies": {
     "commitizen": "^4.1.2",
