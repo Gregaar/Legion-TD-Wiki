@@ -1,7 +1,7 @@
 {
   "name": "legion-td",
   "scripts": {
-    build: "cd backend && npm i only=dev && npm ci",
+    "build": "cd backend && npm i only=dev && npm ci",
     "start": "cd backend && npm run start"
   },
   "dependencies": {
