@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "This project aims to provide accurate information for the Warcraft 3 custom map Legion TD Mega 3.5 (B4).",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p",
     "start": "dist/index.js",
     "watch": "nodemon --exec ts-node --files src/index.ts | pino-pretty",
     "lint": "eslint ./src",
