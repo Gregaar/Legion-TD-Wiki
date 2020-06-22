@@ -37,7 +37,7 @@ export const register: RequestHandler<{
 
     await user.save();
 
-    const accessToken = await user.generateAccessToken();
+    const accessToken = user.generateAccessToken();
     const refreshToken = await user.generateRefreshToken();
 
     res.cookie("access", accessToken, {
@@ -78,8 +78,13 @@ export const login: RequestHandler<{
       throw new Error();
     }
 
-    const accessToken: string = await user.generateAccessToken();
+    console.log(user);
+
+    const accessToken: string = user.generateAccessToken();
     const refreshToken: string = await user.generateRefreshToken();
+
+    console.log(accessToken);
+    console.log(refreshToken);
 
     res.cookie("access", accessToken, {
       path: "/",

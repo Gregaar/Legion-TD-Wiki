@@ -47,7 +47,7 @@ userSchema.pre<UserInterface>("save", async function (next) {
   return next();
 });
 
-userSchema.methods.generateAccessToken = async function (): Promise<string> {
+userSchema.methods.generateAccessToken = function (): string {
   try {
     const token: string = jwt.sign(
       { _id: this._id },
@@ -68,10 +68,10 @@ userSchema.methods.generateRefreshToken = async function (): Promise<string> {
     const refreshToken: string = jwt.sign(
       { _id: this._id },
       config.get("jwt.refreshSecret"),
-      { expiresIn: config.get("jwt.refreshTokenLife") },
+      {
+        expiresIn: config.get("jwt.refreshTokenLife"),
+      },
     );
-    
-    console.log(refreshToken);
 
     const newTokenDocument = new Token({
       userId: this._id,
