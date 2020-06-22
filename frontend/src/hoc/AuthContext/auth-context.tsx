@@ -106,6 +106,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     await axios("/api/user/logout", {
       method: "POST",
+      withCredentials: true,
     })
       .then((res) => {
         if (res.status === 200) {
