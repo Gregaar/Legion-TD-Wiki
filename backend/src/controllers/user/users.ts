@@ -45,17 +45,18 @@ export const register: RequestHandler<{
       secure: true,
       maxAge: 900000,
       sameSite: true,
-      domain: config.get("jwt.domain"),
+      domain: config.get("jwt.tokenLife"),
       path: "/",
     });
     res.cookie("refresh", refreshToken, {
       httpOnly: true,
       secure: true,
-      maxAge: 86400000,
+      maxAge: config.get("jwt.refreshTokenLife"),
       sameSite: true,
       domain: config.get("jwt.domain"),
       path: "/",
     });
+
     return res.status(201).json({ success: true, username: user.name });
   } catch (error) {
     return res.status(400).json({ error: "Unable to register user" });
@@ -77,9 +78,7 @@ export const login: RequestHandler<{
     if (!user) {
       throw new Error();
     }
-
-    console.log(user);
-
+  
     const accessToken: string = user.generateAccessToken();
     const refreshToken: string = await user.generateRefreshToken();
 
@@ -91,7 +90,7 @@ export const login: RequestHandler<{
       domain: config.get("jwt.domain"),
       httpOnly: true,
       secure: true,
-      maxAge: 900000,
+      maxAge: config.get("jwt.tokenLife"),
       sameSite: true,
     });
 
@@ -100,7 +99,7 @@ export const login: RequestHandler<{
       domain: config.get("jwt.domain"),
       httpOnly: true,
       secure: true,
-      maxAge: 86400000,
+      maxAge: config.get("jwt.refreshTokenLife"),
       sameSite: true,
     });
 

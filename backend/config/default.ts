@@ -8,8 +8,8 @@ export default {
   jwt: {
     secret: "yerdasellsavon",
     refreshSecret: "yermawsellsavon",
-    tokenLife: "15m",
-    refreshTokenLife: "1d",
+    tokenLife: 900000,
+    refreshTokenLife: 86400000,
     domain: "localhost",
   },
 };

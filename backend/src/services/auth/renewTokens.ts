@@ -8,6 +8,8 @@ const renewTokens = async (
   try {
     const { _id }: { _id: string } = validRefresh(refreshToken);
 
+    console.log(_id);
+
     if (!_id) {
       throw new Error("Invalid token");
     }
@@ -20,12 +22,18 @@ const renewTokens = async (
       refreshToken,
     });
 
+    console.log(user);
+    console.log(storedRefresh);
+
     if (!user || !storedRefresh) {
       throw new Error("Unable to find user");
     }
 
     const newToken: string = user.generateAccessToken();
     const newRefresh: string = await user.generateRefreshToken();
+
+    console.log(newToken);
+    console.log(newRefresh);
 
     storedRefresh.remove();
 
