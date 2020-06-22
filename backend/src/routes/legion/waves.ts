@@ -18,29 +18,29 @@ import { logger } from "../../logger";
 
 const router = Router();
 
-router.post("/wave/level/:level", findByLevel);
+router.post("/api/wave/level/:level", findByLevel);
 
-router.post("/wave/name/:name", findByEnemyName);
+router.post("/api/wave/name/:name", findByEnemyName);
 
-router.post("/wave/method/:attackMethod", findByAttackMethod);
+router.post("/api/wave/method/:attackMethod", findByAttackMethod);
 
-router.post("/wave/landorfly/:attackStance", findByLandOrFlying);
+router.post("/api/wave/landorfly/:attackStance", findByLandOrFlying);
 
-router.post("/wave/attacktype/:attackType", findByAttackType);
+router.post("/api/wave/attacktype/:attackType", findByAttackType);
 
-router.post("/wave/defensetype/:defenseType", findByDefenseType);
+router.post("/api/wave/defensetype/:defenseType", findByDefenseType);
 
-router.post("/wave/attackdefense", findByAttackAndDefenseType);
+router.post("/api/wave/attackdefense", findByAttackAndDefenseType);
 
-router.post("/wave/boss/:boss", findBossWaves);
+router.post("/api/wave/boss/:boss", findBossWaves);
 
-router.post("/wave/defenseweakness/:attackType", findDefenseWeakness);
+router.post("/api/wave/defenseweakness/:attackType", findDefenseWeakness);
 
-router.post("/wave/defensestrength/:attackType", findDefenseStrength);
+router.post("/api/wave/defensestrength/:attackType", findDefenseStrength);
 
-router.post("/wave/attackweakness/:defenseType", findAttackWeakness);
+router.post("/api/wave/attackweakness/:defenseType", findAttackWeakness);
 
-router.post("/wave/attackstrength/:defenseType", findAttackStrength);
+router.post("/api/wave/attackstrength/:defenseType", findAttackStrength);
 
 export default (): Router => {
   logger.info("Registering 'Wave' routes...");

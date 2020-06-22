@@ -5,7 +5,7 @@ import { logger } from "../../logger";
 
 const router = Router();
 
-router.post("/mercenary/name/:name", getMercenariesByName);
+router.post("/api/mercenary/name/:name", getMercenariesByName);
 
 export default (): Router => {
   logger.info("Registering 'Mercenary' routes...");

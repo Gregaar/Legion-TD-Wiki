@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.0.0",
-  "proxy": "https://legion-td-wiki.herokuapp.com",
+  "proxy": "http://localhost:9001",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.2",
