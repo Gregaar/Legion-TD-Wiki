@@ -24,7 +24,7 @@ const renewTokens = async (
       throw new Error("Unable to find user");
     }
 
-    const newToken: string = await user.generateAccessToken();
+    const newToken: string = user.generateAccessToken();
     const newRefresh: string = await user.generateRefreshToken();
 
     storedRefresh.remove();
