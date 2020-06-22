@@ -78,9 +78,12 @@ export const login: RequestHandler<{
     if (!user) {
       throw new Error();
     }
-
+  
     const accessToken: string = user.generateAccessToken();
     const refreshToken: string = await user.generateRefreshToken();
+
+    console.log(accessToken);
+    console.log(refreshToken);
 
     res.cookie("access", accessToken, {
       path: "/",
