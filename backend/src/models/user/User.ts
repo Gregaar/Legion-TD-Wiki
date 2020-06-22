@@ -70,8 +70,10 @@ userSchema.methods.generateRefreshToken = async function (): Promise<string> {
       config.get("jwt.refreshSecret"),
       { expiresIn: config.get("jwt.refreshTokenLife") },
     );
+    
+    console.log(refreshToken);
 
-    const newTokenDocument: mongoose.Document = new Token({
+    const newTokenDocument = new Token({
       userId: this._id,
       refreshToken,
     });
