@@ -1,5 +1,2 @@
 [build]
   base = "frontend/"
-[[redirects]]
-  from = "/*"
-  to = "https://legion-td-wiki.herokuapp.com/:splat"
