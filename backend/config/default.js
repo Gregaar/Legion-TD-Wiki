@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   app: {
     port: 9001,
   },
