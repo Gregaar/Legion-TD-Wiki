@@ -9,7 +9,7 @@ const searchByName = async (
   ) => void,
   setErrors: (value: string | ((value: string) => string)) => void
 ): Promise<void> => {
-  await axios(`/unit/name/${name}`)
+  await axios(`/api/unit/name/${name}`)
     .then((res) => {
       setUnits((prevUnits: UnitInterface[]) => [res.data.units]);
       return;

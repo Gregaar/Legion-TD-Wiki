@@ -8,9 +8,9 @@ import { logger } from "../../logger";
 
 const router = Router();
 
-router.post("/builder/name/:builder", findBuilderByName);
+router.post("/api/builder/name/:builder", findBuilderByName);
 
-router.post("/builder/abilities/:ability", sortBuildersByUnitAbilities);
+router.post("/api/builder/abilities/:ability", sortBuildersByUnitAbilities);
 
 export default (): Router => {
   logger.info("Registering 'Builder' routes...");

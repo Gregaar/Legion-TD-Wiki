@@ -65,7 +65,7 @@ const Units = () => {
 
   useEffect(() => {
     const unitByBuilder = async (builder: string) => {
-      await axios(`/unit/builder/${builder}`)
+      await axios(`/api/unit/builder/${builder}`)
         .then((res) => {
           setDisplayUnits((prevUnits) => [...prevUnits, ...res.data.units]);
           return;

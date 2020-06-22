@@ -26,7 +26,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const isAuth = async () => {
       await axios
-        .get("/user/loginStatus", { withCredentials: true })
+        .get("/api/user/loginStatus", { withCredentials: true })
         .then((res) => {
           if (res.data.success && !authStatus) {
             return setAuthStatus(true);
@@ -49,7 +49,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     email: string,
     password: string
   ): Promise<void | string> => {
-    const response = await axios("/user/register", {
+    const response = await axios("/api/user/register", {
       method: "POST",
       data: {
         name,
@@ -76,7 +76,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     email: string,
     password: string
   ): Promise<void | string> => {
-    const response = await axios("/user/login", {
+    const response = await axios("/api/user/login", {
       method: "POST",
       data: {
         email,
@@ -104,7 +104,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   ): Promise<void> => {
     event.preventDefault();
 
-    await axios("/user/logout", {
+    await axios("/api/user/logout", {
       method: "POST",
     })
       .then((res) => {
