@@ -10,6 +10,9 @@ const renewTokens = async (
 
     console.log(_id);
 
+    console.log(refreshToken);
+
+
     if (!_id) {
       throw new Error("Invalid token");
     }
@@ -19,7 +22,7 @@ const renewTokens = async (
 
     const storedRefresh = await Token.findOne({
       userId: _id,
-      refreshToken,
+      refreshToken: refreshToken,
     });
 
     console.log(user);
@@ -35,7 +38,7 @@ const renewTokens = async (
     console.log(newToken);
     console.log(newRefresh);
 
-    storedRefresh.remove();
+    await storedRefresh.remove();
 
     return { newToken, newRefresh };
   } catch (error) {

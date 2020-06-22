@@ -78,7 +78,7 @@ export const login: RequestHandler<{
     if (!user) {
       throw new Error();
     }
-  
+   
     const accessToken: string = user.generateAccessToken();
     const refreshToken: string = await user.generateRefreshToken();
 
