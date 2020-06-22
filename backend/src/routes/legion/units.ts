@@ -8,12 +8,12 @@ import {
   findUnitByUsefulAbility,
   findUnitUpgrade,
   findUnitWithAura,
+  queriedUnits,
   searchByUnitBuilder,
   searchByUnitGoldCost,
   searchByUnitGoldCostRange,
   searchByUnitName,
   searchByUnitTier,
-  queriedUnits
 } from "../../controllers/legion/units";
 import { logger } from "../../logger";
 

@@ -1,4 +1,5 @@
-import config from "config";                      
+import config from "config";
+
 import database from "./db/mongoose";
 import server from "./server";
 
