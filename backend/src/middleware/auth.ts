@@ -50,8 +50,6 @@ const isAuth: RequestHandler = async (
       req.user = user;
       req.refresh = newRefresh;
       req.access = newToken;
-
-      res.json({message: "tokens refreshed"});
       
       return next();
     } else if (token && refresh && !req.user && !req.refresh && !req.access) {
