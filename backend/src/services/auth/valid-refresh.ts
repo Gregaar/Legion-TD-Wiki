@@ -9,7 +9,7 @@ export default (token: string): any => {
       if (error) {
         return error.message;
       }
-      return decoded as { id: string };
+      return decoded as { _id: string };
     },
   );
 };

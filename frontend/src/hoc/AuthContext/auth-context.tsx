@@ -15,6 +15,8 @@ export interface AuthContextInterface {
   logoutHandler: (event: React.MouseEvent<HTMLAnchorElement>) => Promise<void>;
 }
 
+const apiURL = process.env.REACT_APP_API_URL;
+
 const AuthContext = React.createContext<AuthContextInterface | null>(null);
 
 const useAuthContext = () => useContext(AuthContext);
@@ -26,7 +28,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const isAuth = async () => {
       await axios
-        .get("/api/user/loginStatus", { withCredentials: true })
+        .get(`${apiURL}/api/user/loginStatus`, { withCredentials: true })
         .then((res) => {
           if (res.data.success && !authStatus) {
             return setAuthStatus(true);
@@ -49,7 +51,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     email: string,
     password: string
   ): Promise<void | string> => {
-    const response = await axios("/api/user/register", {
+    const response = await axios(`${apiURL}/api/user/register`, {
       method: "POST",
       data: {
         name,
@@ -76,7 +78,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     email: string,
     password: string
   ): Promise<void | string> => {
-    const response = await axios("/api/user/login", {
+    const response = await axios(`${apiURL}/api/user/login`, {
       method: "POST",
       data: {
         email,
@@ -104,7 +106,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   ): Promise<void> => {
     event.preventDefault();
 
-    await axios("/api/user/logout", {
+    await axios(`${apiURL}/api/user/logout`, {
       method: "POST",
       withCredentials: true,
     })

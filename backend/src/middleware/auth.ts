@@ -1,9 +1,8 @@
 import config from "config";
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import jwt from "jsonwebtoken";
 
-import User from "../models/user/User";
-import renewTokens from "../services/auth/renewTokens";
+import renewTokens from "../services/auth/renew-tokens";
+import validateTokens from "../services/auth/validate-tokens";
 
 const isAuth: RequestHandler = async (
   req: Request,
@@ -11,20 +10,20 @@ const isAuth: RequestHandler = async (
   next: NextFunction,
 ) => {
   try {
-    let token = req.cookies.access;
-    let refresh = req.cookies.refresh;
+    const token = req.cookies.access;
+
+    const refresh = req.cookies.refresh;
 
     if (!token && refresh) {
-      const { newToken, newRefresh } = await renewTokens(refresh);
+      const { newToken, newRefresh, user, storedRefresh } = await renewTokens(
+        refresh,
+      );
 
-      if (!newToken || !newRefresh) {
-        throw new Error("Unable to generate new tokens");
+      if (!newToken || !newRefresh || !user || !storedRefresh) {
+        throw new Error();
       }
 
-      token = newToken;
-      refresh = newRefresh;
-
-      res.cookie("access", token, {
+      res.cookie("access", newToken, {
         httpOnly: true,
         secure: true,
         maxAge: config.get("jwt.tokenLife"),
@@ -33,7 +32,7 @@ const isAuth: RequestHandler = async (
         domain: config.get("jwt.domain"),
       });
 
-      res.cookie("refresh", refresh, {
+      res.cookie("refresh", newRefresh, {
         httpOnly: true,
         secure: true,
         maxAge: config.get("jwt.refreshTokenLife"),
@@ -41,30 +40,29 @@ const isAuth: RequestHandler = async (
         path: "/",
         domain: config.get("jwt.domain"),
       });
+
+      await storedRefresh.remove();
+
+      req.user = user;
+      req.refresh = newRefresh;
+      req.access = newToken;
+
+      return next();
+    } else if (token && refresh && !req.user && !req.refresh && !req.access) {
+      const user = await validateTokens(token, refresh);
+
+      req.user = user;
+      req.access = token;
+      req.refresh = refresh;
+
+      return next();
+    } else if (token && !refresh) {
+      throw new Error();
+    } else if (!token && !refresh) {
+      throw new Error();
+    } else {
+      return next();
     }
-
-    const data = <any>jwt.verify(
-      token,
-      config.get("jwt.secret"),
-      (error: any, decode: any) => {
-        if (error) {
-          return error.message;
-        }
-        return decode;
-      },
-    );
-
-    const user = await User.findOne({ _id: data._id });
-
-    if (!user) {
-      throw new Error("Unable to find user");
-    }
-
-    req.user = user;
-    req.refresh = refresh;
-    req.access = token;
-
-    return next();
   } catch (error) {
     return res
       .status(401)

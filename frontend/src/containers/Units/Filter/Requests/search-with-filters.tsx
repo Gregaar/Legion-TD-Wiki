@@ -3,6 +3,8 @@ import axios from "axios";
 import { UnitInterface } from "../../units";
 import { FilterObjectInterface } from "../filter";
 
+const apiURL = process.env.REACT_APP_API_URL;
+
 const searchWithFilters = async (
   unitFilters: FilterObjectInterface,
   setUnits: (
@@ -13,7 +15,7 @@ const searchWithFilters = async (
   const { builder, range, attack, defense, tier, abilities } = unitFilters;
 
   await axios(
-    `/api/unit/filters?builder=${builder}&range=${range}&attack=${attack}&defense=${defense}&tierFrom=${tier.from}&tierTo=${tier.to}&aura=${abilities.aura}&buff=${abilities.buff}&debuff=${abilities.debuff}&splash=${abilities.splash}&heal=${abilities.heal}&stun=${abilities.stun}&summon=${abilities.summon}`
+    `${apiURL}/api/unit/filters?builder=${builder}&range=${range}&attack=${attack}&defense=${defense}&tierFrom=${tier.from}&tierTo=${tier.to}&aura=${abilities.aura}&buff=${abilities.buff}&debuff=${abilities.debuff}&splash=${abilities.splash}&heal=${abilities.heal}&stun=${abilities.stun}&summon=${abilities.summon}`
   )
     .then((res) => {
       if (res.status === 200) {
