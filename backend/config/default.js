@@ -12,4 +12,7 @@ module.exports = {
     refreshTokenLife: 86400000,
     domain: "localhost",
   },
+  frontend: {
+    URL: "http://localhost:3000",
+  },
 };
