@@ -6,10 +6,13 @@ module.exports = {
     uri: process.env.MONGODB_URI,
   },
   jwt: {
-    secret: process.env.JWT_Secret,
-    refreshSecret: process.env.JWT_Rsecret,
-    tokenLife: process.env.Token_Life,
-    refreshTokenLife: process.env.Refresh_Token_Life,
-    domain: process.env.My_Domain,
+    secret: process.env.JWT_SECRET,
+    refreshSecret: process.env.JWT_REFRESH_SECRET,
+    tokenLife: process.env.TOKEN_LIFE,
+    refreshTokenLife: process.env.REFRESH_TOKEN_LIFE,
+    domain: process.env.COOKIE_DOMAIN,
+  },
+  frontend: {
+    URL: process.env.FRONTEND_URL,
   },
 };

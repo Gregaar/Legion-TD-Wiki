@@ -6,7 +6,7 @@ import validator from "validator";
 
 import UserInterface from "../../interfaces/user/user-interface";
 import UserModelInterface from "../../interfaces/user/user-model-interface";
-import passValidator from "../../services/auth/validatePassword";
+import passValidator from "../../services/auth/validate-password";
 import Token from "./Token";
 
 const userSchema = new mongoose.Schema({
