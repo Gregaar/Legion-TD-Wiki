@@ -26,7 +26,8 @@ const isAuth: RequestHandler = async (
       res.cookie("access", newToken, {
         httpOnly: true,
         secure: true,
-        maxAge: config.get("jwt.tokenLife"),
+        expires: new Date(Date.now() + +config.get<string>("jwt.tokenLife")),
+        maxAge: +config.get<string>("jwt.tokenLife"),
         sameSite: true,
         path: "/",
         domain: config.get("jwt.domain"),
@@ -35,7 +36,10 @@ const isAuth: RequestHandler = async (
       res.cookie("refresh", newRefresh, {
         httpOnly: true,
         secure: true,
-        maxAge: config.get("jwt.refreshTokenLife"),
+        expires: new Date(
+          Date.now() + +config.get<string>("jwt.refreshTokenLife"),
+        ),
+        maxAge: +config.get<string>("jwt.refreshTokenLife"),
         sameSite: true,
         path: "/",
         domain: config.get("jwt.domain"),
