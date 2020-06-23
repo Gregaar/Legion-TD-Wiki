@@ -5,7 +5,7 @@ import validator from "validator";
 
 import Token from "../../models/user/Token";
 import User from "../../models/user/User";
-import passValidator from "../../services/auth/validatePassword";
+import passValidator from "../../services/auth/validate-password";
 
 export const register: RequestHandler<{
   name: string;
@@ -109,15 +109,13 @@ export const login: RequestHandler<{
 export const logout: RequestHandler = async (req, res) => {
   try {
     const storedToken = await Token.findOne({
-      userId: req.user?._id,
+      userId: req.user._id,
       refreshToken: req.refresh,
     });
 
     if (!storedToken) {
       throw new Error("Unable to find token");
     }
-
-    await storedToken.remove();
 
     res.clearCookie("access", {
       path: "/",
@@ -133,6 +131,8 @@ export const logout: RequestHandler = async (req, res) => {
       secure: true,
       sameSite: true,
     });
+
+    await storedToken.remove();
 
     return res.status(200).send();
   } catch (error) {
