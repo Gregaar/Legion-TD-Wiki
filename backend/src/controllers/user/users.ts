@@ -42,16 +42,17 @@ export const register: RequestHandler<{
 
     res.cookie("access", accessToken, {
       httpOnly: true,
+      expires: new Date(Date.now() + +config.get<string>("jwt.tokenLife")),
       secure: true,
-      maxAge: 900000,
+      maxAge: +config.get<string>("jwt.tokenLife"),
       sameSite: true,
-      domain: config.get("jwt.tokenLife"),
+      domain: config.get("jwt.domain"),
       path: "/",
     });
     res.cookie("refresh", refreshToken, {
       httpOnly: true,
       secure: true,
-      maxAge: config.get("jwt.refreshTokenLife"),
+      maxAge: +config.get<string>("jwt.refreshTokenLife"),
       sameSite: true,
       domain: config.get("jwt.domain"),
       path: "/",
@@ -78,7 +79,7 @@ export const login: RequestHandler<{
     if (!user) {
       throw new Error();
     }
-   
+
     const accessToken: string = user.generateAccessToken();
     const refreshToken: string = await user.generateRefreshToken();
 
@@ -90,7 +91,8 @@ export const login: RequestHandler<{
       domain: config.get("jwt.domain"),
       httpOnly: true,
       secure: true,
-      maxAge: config.get("jwt.tokenLife"),
+      maxAge: +config.get<string>("jwt.tokenLife"),
+      expires: new Date(Date.now() + +config.get<string>("jwt.tokenLife")),
       sameSite: true,
     });
 
@@ -99,7 +101,10 @@ export const login: RequestHandler<{
       domain: config.get("jwt.domain"),
       httpOnly: true,
       secure: true,
-      maxAge: config.get("jwt.refreshTokenLife"),
+      maxAge: +config.get<string>("jwt.refreshTokenLife"),
+      expires: new Date(
+        Date.now() + +config.get<string>("jwt.refreshTokenLife"),
+      ),
       sameSite: true,
     });
 

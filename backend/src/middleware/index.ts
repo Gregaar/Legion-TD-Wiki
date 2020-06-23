@@ -7,7 +7,6 @@ import helmet from "helmet";
 import { logger, requestLogger } from "../logger";
 
 const corsOptions = {
-  origin: [config.get("frontend.URL") as string],
   credentials: true,
 };
 

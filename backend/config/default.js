@@ -8,11 +8,8 @@ module.exports = {
   jwt: {
     secret: "yerdasellsavon",
     refreshSecret: "yermawsellsavon",
-    tokenLife: 900000,
-    refreshTokenLife: 86400000,
+    tokenLife: "900000",
+    refreshTokenLife: "86400000",
     domain: "localhost",
-  },
-  frontend: {
-    URL: "http://localhost:3000",
   },
 };
