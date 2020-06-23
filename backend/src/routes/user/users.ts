@@ -14,7 +14,7 @@ import isAuth from "../../middleware/auth";
 const router = Router();
 
 router.get("/api/user/loginStatus", isAuth, (req, res) => {
-  return res.json({ success: true, username: req.user.name });
+  return res.status(200).json({ success: true, username: req.user.name });
 });
 
 router.post("/api/user/register", register);
