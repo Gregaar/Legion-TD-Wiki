@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "description": "This project aims to provide accurate information for the Warcraft 3 custom map Legion TD Mega 3.5 (B4).",
   "scripts": {
+    "prebuild": "rimraf ./dist",
     "build": "tsc",
-    "start": "dist/src/index.js",
+    "start": "node dist/index.js",
     "watch": "nodemon --exec ts-node --files src/index.ts | pino-pretty",
     "lint": "eslint ./src",
     "test": "jest --watch --runInBand"
@@ -52,6 +53,7 @@
     "nodemon": "^2.0.4",
     "pino-pretty": "^4.0.0",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2"
   }
