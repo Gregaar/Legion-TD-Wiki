@@ -7,6 +7,10 @@
   NODE_ENV = "development"
 
 [[redirects]]
+  from = "/api/*"
+  to = "https://legion-td-wiki.herokuapp.com/api/:splat"
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
