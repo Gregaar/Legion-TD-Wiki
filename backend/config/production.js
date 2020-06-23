@@ -12,4 +12,7 @@ module.exports = {
     refreshTokenLife: process.env.REFRESH_TOKEN_LIFE,
     domain: process.env.COOKIE_DOMAIN,
   },
+  frontend: {
+    URL: process.env.FRONTEND_URL,
+  },
 };
