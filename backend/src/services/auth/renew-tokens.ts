@@ -14,15 +14,7 @@ const renewTokens = async (
 }> => {
   try {
     const { _id }: { _id: string } = validRefresh(refreshToken);
-
-<<<<<<< HEAD:backend/src/services/auth/renewTokens.ts
-    console.log(_id);
-
-    console.log(refreshToken);
-
-
-=======
->>>>>>> fix: cookie issuing fix and add env variables to frontend:backend/src/services/auth/renew-tokens.ts
+    
     if (!_id) {
       throw new Error("Invalid token");
     }
