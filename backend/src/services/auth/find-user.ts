@@ -6,8 +6,9 @@ const findUser = async (id: string): Promise<UserInterface> => {
     const user = await User.findOne({ _id: id });
 
     if (!user) {
-      throw new Error();
+      throw new Error("Unable to find user");
     }
+
     return user;
   } catch (error) {
     return error;

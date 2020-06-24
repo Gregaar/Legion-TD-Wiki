@@ -1,6 +1,7 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import isEmail from "validator/lib/isEmail";
+
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
 import { BackgroundDiv } from "../../../shared/Styles/shared-styles";
@@ -104,23 +105,23 @@ const Register: React.FC<RegisterProps> = ({
       ]);
     }
 
-    if (
-      !password.match(
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
-      ) ||
-      !confirmPassword.match(
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
-      )
-    ) {
-      errorCount++;
-      setFormErrors((prevErrors) => [
-        ...prevErrors,
-        {
-          message:
-            "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
-        },
-      ]);
-    }
+//     if (
+//       !password.match(
+//         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
+//       ) ||
+//       !confirmPassword.match(
+//         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
+//       )
+//     ) {
+//       errorCount++;
+//       setFormErrors((prevErrors) => [
+//         ...prevErrors,
+//         {
+//           message:
+//             "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
+//         },
+//       ]);
+//     }
 
     if (errorCount < 1) {
       const response = await authContext?.registerHandler(
@@ -198,7 +199,7 @@ const Register: React.FC<RegisterProps> = ({
             <Tooltip
               id="password"
               placement="right"
-              title="Must have at least 6 characters and include the following: uppercase, lowercase, number."
+              title="Must have at least 6 characters and include the following: uppercase, lowercase, number, and a special character."
             >
               <Input
                 id="password"
