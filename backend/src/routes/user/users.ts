@@ -13,7 +13,7 @@ import isAuth from "../../middleware/auth";
 
 const router = Router();
 
-router.get("/api/user/loginStatus", isAuth, (req, res) => {
+router.post("/api/user/loginStatus", isAuth, (req, res) => {
   return res.status(200).json({ success: true, username: req.user.name });
 });
 
