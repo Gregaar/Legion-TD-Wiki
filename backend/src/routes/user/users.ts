@@ -14,6 +14,7 @@ import isAuth from "../../middleware/auth";
 const router = Router();
 
 router.get("/api/user/loginStatus", isAuth, (req, res) => {
+  console.log("```````````COOKIES SET - SENDING TO CLIENT````````````````````);
   return res.status(200).json({ success: true, username: req.user.name });
 });
 
