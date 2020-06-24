@@ -199,7 +199,7 @@ const Register: React.FC<RegisterProps> = ({
             <Tooltip
               id="password"
               placement="right"
-              title="Must have at least 6 characters and include the following: uppercase, lowercase, number, and a special character"
+              title="Must have at least 6 characters and include the following: uppercase, lowercase, number, and a special character."
             >
               <Input
                 id="password"
