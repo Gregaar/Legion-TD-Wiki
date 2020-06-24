@@ -1,10 +1,10 @@
 import config from "config";
-import jwt from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 
 export default (token: string): any => {
-  return jwt.verify(token, config.get("jwt.secret"), (error, decoded): any => {
+  return verify(token, config.get("jwt.secret"), (error, decoded) => {
     if (error) {
-      return error.message;
+      return "validation failed";
     }
     return decoded;
   });

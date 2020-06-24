@@ -1,10 +1,12 @@
 import bcrypt from "bcrypt";
-import config from "config";
 import { RequestHandler } from "express";
 import validator from "validator";
 
 import Token from "../../models/user/Token";
 import User from "../../models/user/User";
+import clearJwtCookie from "../../services/auth/clear-jwt-cookie";
+import findStoredToken from "../../services/auth/find-stored-token";
+import setJwtCookie from "../../services/auth/set-jwt-cookie";
 import passValidator from "../../services/auth/validate-password";
 
 export const register: RequestHandler<{
@@ -40,23 +42,8 @@ export const register: RequestHandler<{
     const accessToken = user.generateAccessToken();
     const refreshToken = await user.generateRefreshToken();
 
-    res.cookie("access", accessToken, {
-      httpOnly: true,
-      expires: new Date(Date.now() + +config.get<string>("jwt.tokenLife")),
-      secure: true,
-      maxAge: +config.get<string>("jwt.tokenLife"),
-      sameSite: true,
-      domain: config.get("jwt.domain"),
-      path: "/",
-    });
-    res.cookie("refresh", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      maxAge: +config.get<string>("jwt.refreshTokenLife"),
-      sameSite: true,
-      domain: config.get("jwt.domain"),
-      path: "/",
-    });
+    setJwtCookie(res, "access", accessToken);
+    setJwtCookie(res, "refresh", refreshToken);
 
     return res.status(201).json({ success: true, username: user.name });
   } catch (error) {
@@ -83,30 +70,8 @@ export const login: RequestHandler<{
     const accessToken: string = user.generateAccessToken();
     const refreshToken: string = await user.generateRefreshToken();
 
-    console.log(accessToken);
-    console.log(refreshToken);
-
-    res.cookie("access", accessToken, {
-      path: "/",
-      domain: config.get("jwt.domain"),
-      httpOnly: true,
-      secure: true,
-      maxAge: +config.get<string>("jwt.tokenLife"),
-      expires: new Date(Date.now() + +config.get<string>("jwt.tokenLife")),
-      sameSite: true,
-    });
-
-    res.cookie("refresh", refreshToken, {
-      path: "/",
-      domain: config.get("jwt.domain"),
-      httpOnly: true,
-      secure: true,
-      maxAge: +config.get<string>("jwt.refreshTokenLife"),
-      expires: new Date(
-        Date.now() + +config.get<string>("jwt.refreshTokenLife"),
-      ),
-      sameSite: true,
-    });
+    setJwtCookie(res, "access", accessToken);
+    setJwtCookie(res, "refresh", refreshToken);
 
     return res.status(200).json({ success: true, username: user.name });
   } catch (error) {
@@ -116,29 +81,22 @@ export const login: RequestHandler<{
 
 export const logout: RequestHandler = async (req, res) => {
   try {
-    const storedToken = await Token.findOne({
-      userId: req.user._id,
-      refreshToken: req.refresh,
-    });
-
-    if (!storedToken) {
-      throw new Error("Unable to find token");
+    if (!req.refresh && req.access) {
+      clearJwtCookie(res, "refresh");
+      clearJwtCookie(res, "access");
+      return res.status(200).send();
     }
 
-    res.clearCookie("access", {
-      path: "/",
-      domain: config.get("jwt.domain"),
-      httpOnly: true,
-      secure: true,
-      sameSite: true,
-    });
-    res.clearCookie("refresh", {
-      path: "/",
-      domain: config.get("jwt.domain"),
-      httpOnly: true,
-      secure: true,
-      sameSite: true,
-    });
+    const storedToken = await findStoredToken(req.user._id, req.refresh);
+
+    if (!storedToken) {
+      clearJwtCookie(res, "access");
+      clearJwtCookie(res, "refresh");
+      return res.status(200).send();
+    }
+
+    clearJwtCookie(res, "access");
+    clearJwtCookie(res, "refresh");
 
     await storedToken.remove();
 
@@ -152,8 +110,8 @@ export const logoutAll: RequestHandler = async (req, res) => {
   try {
     await Token.deleteMany({ userId: req.user?._id });
 
-    res.clearCookie("access");
-    res.clearCookie("refresh");
+    clearJwtCookie(res, "access");
+    clearJwtCookie(res, "refresh");
 
     return res.status(200).send();
   } catch (error) {
@@ -167,20 +125,8 @@ export const deleteUser: RequestHandler = async (req, res) => {
 
     await Token.deleteMany({ userId: req.user?._id });
 
-    res.clearCookie("access", {
-      path: "/",
-      domain: config.get("jwt.domain"),
-      httpOnly: true,
-      secure: true,
-      sameSite: true,
-    });
-    res.clearCookie("refresh", {
-      path: "/",
-      domain: config.get("jwt.domain"),
-      httpOnly: true,
-      secure: true,
-      sameSite: true,
-    });
+    clearJwtCookie(res, "access");
+    clearJwtCookie(res, "refresh");
 
     return res.status(200).json({ success: true, message: "User deleted" });
   } catch (error) {
@@ -251,26 +197,13 @@ export const changePassword: RequestHandler<{ password: string }> = async (
 
       await req.user.save();
 
-      res.clearCookie("access", {
-        path: "/",
-        domain: config.get("jwt.domain"),
-        httpOnly: true,
-        secure: true,
-        sameSite: true,
-      });
-
-      res.clearCookie("refresh", {
-        path: "/",
-        domain: config.get("jwt.domain"),
-        httpOnly: true,
-        secure: true,
-        sameSite: true,
-      });
-
       await Token.findOneAndDelete({
         userId: req.user._id,
         refreshToken: req.refresh,
       });
+
+      clearJwtCookie(res, "access");
+      clearJwtCookie(res, "refresh");
 
       return res
         .status(200)
