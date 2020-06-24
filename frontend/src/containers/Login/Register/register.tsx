@@ -105,23 +105,23 @@ const Register: React.FC<RegisterProps> = ({
       ]);
     }
 
-    if (
-      !password.match(
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
-      ) ||
-      !confirmPassword.match(
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
-      )
-    ) {
-      errorCount++;
-      setFormErrors((prevErrors) => [
-        ...prevErrors,
-        {
-          message:
-            "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
-        },
-      ]);
-    }
+//     if (
+//       !password.match(
+//         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
+//       ) ||
+//       !confirmPassword.match(
+//         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
+//       )
+//     ) {
+//       errorCount++;
+//       setFormErrors((prevErrors) => [
+//         ...prevErrors,
+//         {
+//           message:
+//             "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
+//         },
+//       ]);
+//     }
 
     if (errorCount < 1) {
       const response = await authContext?.registerHandler(
