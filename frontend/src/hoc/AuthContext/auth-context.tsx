@@ -25,8 +25,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const isAuth = async () => {
-      await axios
-        .get(`/api/user/loginStatus`, { withCredentials: true })
+      await axios(`/api/user/loginStatus`, { 
+        method: "POST",
+        withCredentials: true 
+        })
         .then((res) => {
           if (res.data.success && !authStatus) {
             return setAuthStatus(true);
