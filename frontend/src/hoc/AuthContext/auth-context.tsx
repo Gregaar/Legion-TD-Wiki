@@ -32,9 +32,9 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         withCredentials: true,
       })
         .then((res) => {
+          setPageLoading(false);
           if (res.data.success && !authStatus) {
             setAuthStatus(true);
-            setPageLoading(false);
             return;
           } else if (!res.data.success && authStatus) {
             setAuthStatus(false);
@@ -68,6 +68,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       withCredentials: true,
     })
       .then((res) => {
+        setPageLoading(false);
         if (res.status === 201) {
           setAuthStatus(true);
           setPageLoading(false);
@@ -77,6 +78,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       })
       .catch((error) => {
+        setPageLoading(false);
         setAuthStatus(false);
         setPageLoading(false);
         return error.response.data.error;
@@ -97,6 +99,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       withCredentials: true,
     })
       .then((res) => {
+        setPageLoading(false);
         if (res.status === 200) {
           setAuthStatus(true);
           setPageLoading(false);
@@ -107,6 +110,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       })
       .catch((error) => {
+        setPageLoading(false);
         setAuthStatus(false);
         setPageLoading(false);
         return error.response.data.error;
@@ -124,6 +128,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       withCredentials: true,
     })
       .then((res) => {
+        setPageLoading(false);
         if (res.status === 200) {
           setAuthStatus(false);
           setPageLoading(false);
@@ -135,6 +140,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       })
       .catch((error) => {
+        setPageLoading(false);
         setAuthStatus(false);
         setPageLoading(false);
         history.push("/login");
