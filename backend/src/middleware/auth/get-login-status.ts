@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 
-import findUser from "../services/auth/find-user";
-import validAccess from "../services/auth/valid-access";
+import findUser from "../../services/auth/find-user";
+import validAccess from "../../services/auth/valid-access";
 
 const getLoginStatus: RequestHandler = async (
   req: Request,

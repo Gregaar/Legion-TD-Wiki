@@ -1,56 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import Filter from "./Filter/filter";
-import IndividualUnit from "./Individual-Unit/individual-unit";
+import UnitList from "./Unit-List/unit-list";
 import {
   UnitContainer,
   UnitHeadings,
   UnitHeadingsContainer,
 } from "./unit-styles";
 
-export interface UnitInterface {
-  Name: string;
-  Builder: string;
-  "Unit Tier": number;
-  "Gold Cost": number;
-  "Food Cost": number;
-  Upgradeable: boolean;
-  "Max Upgrade Gold Cost": number;
-  "Total Food Cost with Upgrade": number;
-  "Base Unit Name": string[] | null;
-  "Upgraded Name": string | null;
-  "Base Min Hit": number;
-  "Base Max Hit": number;
-  "Attack Speed": number;
-  "Attack Speed Class": string;
-  Range: number;
-  "Melee / Ranged": string;
-  "Hit Points": number;
-  Mana: number;
-  "Attack Type": string;
-  "Defense Type": string;
-  "Attack Effectiveness Order": string[];
-  "Attack Strength": string;
-  "Attack Weakness": string[];
-  "Defense Effectiveness Order": string[];
-  "Defense Strength": string[];
-  "Defense Weakness": string[];
-  Abilities: string[] | null;
-  "Ability Type": string[] | null;
-  "Ability Description": string[] | null;
-  "Has Aura": boolean;
-  "Can Buff": boolean;
-  "Can Debuff": boolean;
-  "Can Splash": boolean;
-  "Can Heal": boolean;
-  "Can Stun": boolean;
-  "Can Summon": boolean;
-  ID: string;
-}
-
-const Units = () => {
+const Units: React.FC = () => {
   const [displayUnits, setDisplayUnits] = useState<UnitInterface[]>([]);
 
   const titles = [
@@ -78,12 +39,12 @@ const Units = () => {
     unitByBuilder("artic");
   }, []);
 
-  let unitDisplay;
+  let unitListDisplay;
 
   if (displayUnits.length > 0) {
     const unitCopy: UnitInterface[] = [...displayUnits];
-    unitDisplay = unitCopy.map((unit) => (
-      <IndividualUnit
+    unitListDisplay = unitCopy.map((unit) => (
+      <UnitList
         key={unit.ID}
         unitName={unit.Name}
         builder={unit.Builder}
@@ -107,7 +68,7 @@ const Units = () => {
               <UnitHeadings key={title}>{title}</UnitHeadings>
             ))}
           </UnitHeadingsContainer>
-          {unitDisplay}
+          {unitListDisplay}
         </UnitContainer>
       </BackgroundDiv>
     </main>

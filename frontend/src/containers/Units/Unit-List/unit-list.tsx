@@ -4,18 +4,8 @@ import React from "react";
 import abilityAvatar from "../../../assets/ability-avatar.png";
 import builderAvatar from "../../../assets/builder-avatar.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
-import chaosAttack from "../../../assets/chaos.png";
-import fortifiedDefense from "../../../assets/fortified.png";
-import heavyDefense from "../../../assets/heavy.png";
-import lightDefense from "../../../assets/light.png";
-import magicAttack from "../../../assets/magic.png";
-import mediumDefense from "../../../assets/medium.png";
-import normalAttack from "../../../assets/normal.png";
-import pierceAttack from "../../../assets/pierce.png";
-import siegeAttack from "../../../assets/siege.png";
-import unarmoredDefense from "../../../assets/unarmored.png";
 import unitAvatar from "../../../assets/unit-avatar.png";
-import unknownIcon from "../../../assets/unknown-icon.png";
+import { getAttackIcon, getDefenseIcon } from "./combat-icons";
 
 interface UnitProps {
   unitName: string;
@@ -28,59 +18,20 @@ interface UnitProps {
   rangeNumber: number | null;
 }
 
-const individualUnit: React.FC<UnitProps> = (props) => {
-  let attackIcon;
-  let defenseIcon;
+const unitList: React.FC<UnitProps> = (props) => {
+  const attackIcon = getAttackIcon(props.attack);
+  const defenseIcon = getDefenseIcon(props.defense);
 
-  (function (attack: string) {
-    switch (attack) {
-      case "chaos":
-        attackIcon = chaosAttack;
-        break;
-      case "pierce":
-        attackIcon = pierceAttack;
-        break;
-      case "normal":
-        attackIcon = normalAttack;
-        break;
-      case "magic":
-        attackIcon = magicAttack;
-        break;
-      case "siege":
-        attackIcon = siegeAttack;
-        break;
-      default:
-        attackIcon = unknownIcon;
-        break;
-    }
-  })(props.attack!);
-
-  (function (defense: string) {
-    switch (defense) {
-      case "unarmored":
-        defenseIcon = unarmoredDefense;
-        break;
-      case "light":
-        defenseIcon = lightDefense;
-        break;
-      case "medium":
-        defenseIcon = mediumDefense;
-        break;
-      case "heavy":
-        defenseIcon = heavyDefense;
-        break;
-      case "fortified":
-        defenseIcon = fortifiedDefense;
-        break;
-      default:
-        defenseIcon = unknownIcon;
-        break;
-    }
-  })(props.defense!);
+  const goToUnitHandler = (event: React.MouseEvent) => {
+    event.preventDefault();
+  }
 
   return (
     <div style={{ display: "contents" }}>
-      <p style={{ textShadow: "1px 1px black" }}>{props.unitName}</p>
+      <p 
+      style={{ textShadow: "1px 1px black" }}
+      onClick={(event: React.MouseEvent) => goToUnitHandler(event)}
+      >{props.unitName}</p>
       <Tooltip
         title={props.unitName
           .charAt(0)
@@ -161,7 +112,7 @@ const individualUnit: React.FC<UnitProps> = (props) => {
   );
 };
 
-export default individualUnit;
+export default unitList;
 
 // work on making the list sortable, when a heading is clicked, it sorts either ascendingly or descendingly
 // after all this, work on an individual unit page, where more information about the unit is displayed.

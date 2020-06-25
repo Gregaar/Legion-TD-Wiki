@@ -2,9 +2,13 @@ import * as React from "react";
 import { Header } from "./header-styles";
 import NavigationItems from "../NavigationItems/navigation-items";
 
-const header = () => {
+interface HeaderProps {
+  loading: boolean | undefined;
+}
+
+const header: React.FC<HeaderProps> = (props) => {
   return (
-    <Header>
+    <Header loading={props.loading}>
       <nav>
         <NavigationItems />
       </nav>

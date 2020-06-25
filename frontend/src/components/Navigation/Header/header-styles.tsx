@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
+interface HeaderProps {
+  loading: boolean | undefined;
+}
+
+export const Header = styled.header<HeaderProps>`
   height: 75px;
   opacity: 0.75;
   width: 100%;
@@ -12,4 +16,5 @@ export const Header = styled.header`
   border-radius: 5px;
   position: unset;
   border: 2px solid yellow;
+  visibility: ${props => props.loading ? "hidden" : "visible"};
 `;

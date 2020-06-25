@@ -3,7 +3,7 @@ import { NextFunction, Request, RequestHandler, Response } from "express";
 import getLoginStatus from "./get-login-status";
 import refreshTokens from "./refresh-tokens";
 
-const authMiddleware: RequestHandler = async (
+const checkAuth: RequestHandler = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -30,4 +30,4 @@ const authMiddleware: RequestHandler = async (
   }
 };
 
-export default authMiddleware;
+export default checkAuth;

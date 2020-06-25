@@ -2,9 +2,13 @@ import * as React from "react";
 import { Footer, List } from "./footer-styles";
 import NavItem from "../NavigationItems/NavigationItem/navigation-item";
 
-const footer = () => {
+interface FooterProps {
+  loading: boolean | undefined;
+}
+
+const footer: React.FC<FooterProps> = (props) => {
   return (
-    <Footer>
+    <Footer loading={props.loading}>
       <List>
         <NavItem exact link="/About">
           About

@@ -1,9 +1,9 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 
-import findStoredToken from "../services/auth/find-stored-token";
-import findUser from "../services/auth/find-user";
-import setJwtCookie from "../services/auth/set-jwt-cookie";
-import validRefresh from "../services/auth/valid-refresh";
+import findStoredToken from "../../services/auth/find-stored-token";
+import findUser from "../../services/auth/find-user";
+import setJwtCookie from "../../services/auth/set-jwt-cookie";
+import validRefresh from "../../services/auth/valid-refresh";
 
 const refreshTokens: RequestHandler = async (
   req: Request,
