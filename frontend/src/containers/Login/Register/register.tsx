@@ -1,6 +1,5 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
-import isEmail from "validator/lib/isEmail";
 
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
@@ -15,6 +14,7 @@ import {
   InputDiv,
   Label,
 } from "../login-styles";
+import registerValidation from "./validation";
 
 interface FormErrors {
   message: string;
@@ -69,61 +69,15 @@ const Register: React.FC<RegisterProps> = ({
   ): Promise<void> => {
     event.preventDefault();
 
-    await setFormErrors((prevState) => []);
+    const registerErrors = registerValidation(
+      name,
+      email,
+      password,
+      confirmPassword,
+      setFormErrors
+    );
 
-    let errorCount = 0;
-
-    if (name.length < 2) {
-      errorCount++;
-      setFormErrors((prevErrors) => [
-        ...prevErrors,
-        { message: "Error: Username must have at least 2 characters." },
-      ]);
-    }
-
-    if (!isEmail(email)) {
-      errorCount++;
-      setFormErrors((prevErrors) => [
-        ...prevErrors,
-        { message: "Error: Please enter a valid email address." },
-      ]);
-    }
-
-    if (password.trim().length < 6 || confirmPassword.trim().length < 6) {
-      errorCount++;
-      setFormErrors((prevErrors) => [
-        ...prevErrors,
-        { message: "Error: Passwords must be at least 6 characters long." },
-      ]);
-    }
-
-    if (password !== confirmPassword) {
-      errorCount++;
-      setFormErrors((prevErrors) => [
-        ...prevErrors,
-        { message: "Error: Passwords must match." },
-      ]);
-    }
-
-//     if (
-//       !password.match(
-//         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
-//       ) ||
-//       !confirmPassword.match(
-//         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/gm
-//       )
-//     ) {
-//       errorCount++;
-//       setFormErrors((prevErrors) => [
-//         ...prevErrors,
-//         {
-//           message:
-//             "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
-//         },
-//       ]);
-//     }
-
-    if (errorCount < 1) {
+    if (registerErrors < 1) {
       const response = await authContext?.registerHandler(
         name,
         email,

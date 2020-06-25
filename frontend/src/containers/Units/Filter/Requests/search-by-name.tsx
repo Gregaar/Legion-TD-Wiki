@@ -1,13 +1,21 @@
 import axios from "axios";
 
-import { UnitInterface } from "../../units";
+import UnitInterface from "../../../../shared/Interfaces/unit-interface";
 
-const searchByName = async (
-  name: string,
-  setUnits: (
-    value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
-  ) => void,
-  setErrors: (value: string | ((value: string) => string)) => void
+interface SearchByNameArgs {
+  (
+    name: string,
+    setUnits: (
+      value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
+    ) => void,
+    setErrors: (value: string | ((value: string) => string)) => void
+  ): void;
+}
+
+const searchByName: SearchByNameArgs = async (
+  name,
+  setUnits,
+  setErrors
 ): Promise<void> => {
   await axios(`/api/unit/name/${name}`)
     .then((res) => {

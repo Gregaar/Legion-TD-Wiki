@@ -1,14 +1,22 @@
 import axios from "axios";
 
-import { UnitInterface } from "../../units";
+import UnitInterface from "../../../../shared/Interfaces/unit-interface";
 import { FilterObjectInterface } from "../filter";
 
-const searchWithFilters = async (
-  unitFilters: FilterObjectInterface,
-  setUnits: (
-    value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
-  ) => void,
-  setErrors: (value: string | ((value: string) => string)) => void
+interface SearchWithFiltersArgs {
+  (
+    unitFilters: FilterObjectInterface,
+    setUnits: (
+      value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
+    ) => void,
+    setErrors: (value: string | ((value: string) => string)) => void
+  ): void;
+}
+
+const searchWithFilters: SearchWithFiltersArgs = async (
+  unitFilters,
+  setUnits,
+  setErrors
 ): Promise<void> => {
   const { builder, range, attack, defense, tier, abilities } = unitFilters;
 

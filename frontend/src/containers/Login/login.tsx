@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import isEmail from "validator/lib/isEmail";
 
+import ErrorDisplay from "../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../hoc/AuthContext/auth-context";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import {
@@ -16,7 +17,6 @@ import {
   Label,
 } from "./login-styles";
 import Register from "./Register/register";
-import ErrorDisplay from "../../components/ErrorDisplay/error-display";
 
 interface FormErrors {
   message: string;

@@ -6,6 +6,7 @@ export interface AuthContextInterface {
   user: {
     isAuth: boolean;
   };
+  loading: boolean;
   registerHandler: (
     name: string,
     email: string,
@@ -20,27 +21,33 @@ const AuthContext = React.createContext<AuthContextInterface | null>(null);
 const useAuthContext = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [authStatus, setAuthStatus] = useState(false);
+  const [authStatus, setAuthStatus] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
     const isAuth = async () => {
-      await axios(`/api/user/loginStatus`, { 
+      await axios(`/api/user/loginStatus`, {
         method: "POST",
-        withCredentials: true 
-        })
+        withCredentials: true,
+      })
         .then((res) => {
           if (res.data.success && !authStatus) {
-            return setAuthStatus(true);
+            setAuthStatus(true);
+            setPageLoading(false);
+            return;
           } else if (!res.data.success && authStatus) {
             setAuthStatus(false);
+            setPageLoading(false);
             history.push("/login");
             return;
           }
         })
         .catch((error) => {
           setAuthStatus(false);
+          setPageLoading(false);
           history.push("/login");
+          return;
         });
     };
     isAuth();
@@ -63,12 +70,15 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .then((res) => {
         if (res.status === 201) {
           setAuthStatus(true);
+          setPageLoading(false);
         } else {
           setAuthStatus(false);
+          setPageLoading(false);
         }
       })
       .catch((error) => {
         setAuthStatus(false);
+        setPageLoading(false);
         return error.response.data.error;
       });
     return response;
@@ -89,13 +99,16 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .then((res) => {
         if (res.status === 200) {
           setAuthStatus(true);
+          setPageLoading(false);
           history.push("/");
         } else {
           setAuthStatus(false);
+          setPageLoading(false);
         }
       })
       .catch((error) => {
         setAuthStatus(false);
+        setPageLoading(false);
         return error.response.data.error;
       });
     return response;
@@ -113,14 +126,17 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .then((res) => {
         if (res.status === 200) {
           setAuthStatus(false);
+          setPageLoading(false);
           history.push("/login");
         } else {
           setAuthStatus(true);
+          setPageLoading(false);
           history.push("/");
         }
       })
       .catch((error) => {
         setAuthStatus(false);
+        setPageLoading(false);
         history.push("/login");
         return error.response.data.error;
       });
@@ -132,6 +148,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         user: {
           isAuth: authStatus,
         },
+        loading: pageLoading,
         registerHandler,
         loginHandler,
         logoutHandler,

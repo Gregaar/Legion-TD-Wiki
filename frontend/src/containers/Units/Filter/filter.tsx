@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { UnitInterface } from "../units";
+import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
+import UnitInterface from "../../../shared/Interfaces/unit-interface";
 import { FilterContainer, SubmitButton } from "./filter-styles";
 import CheckboxFilters from "./Filters/checkboxes";
 import DropdownFilters from "./Filters/dropdowns";
-import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import SearchFilter from "./Filters/search";
 import TierFilter from "./Filters/tier-range";
 import searchByName from "./Requests/search-by-name";
