@@ -32,13 +32,12 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         withCredentials: true,
       })
         .then((res) => {
+          setPageLoading(false);
           if (res.data.success && !authStatus) {
             setAuthStatus(true);
-            setPageLoading(false);
             return;
           } else if (!res.data.success && authStatus) {
             setAuthStatus(false);
-            setPageLoading(false);
             history.push("/login");
             return;
           }
@@ -68,17 +67,16 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       withCredentials: true,
     })
       .then((res) => {
+        setPageLoading(false);
         if (res.status === 201) {
           setAuthStatus(true);
-          setPageLoading(false);
         } else {
           setAuthStatus(false);
-          setPageLoading(false);
         }
       })
       .catch((error) => {
-        setAuthStatus(false);
         setPageLoading(false);
+        setAuthStatus(false);
         return error.response.data.error;
       });
     return response;
@@ -97,18 +95,17 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       withCredentials: true,
     })
       .then((res) => {
+        setPageLoading(false);
         if (res.status === 200) {
           setAuthStatus(true);
-          setPageLoading(false);
           history.push("/");
         } else {
           setAuthStatus(false);
-          setPageLoading(false);
         }
       })
       .catch((error) => {
-        setAuthStatus(false);
         setPageLoading(false);
+        setAuthStatus(false);
         return error.response.data.error;
       });
     return response;
@@ -124,19 +121,18 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       withCredentials: true,
     })
       .then((res) => {
+        setPageLoading(false);
         if (res.status === 200) {
           setAuthStatus(false);
-          setPageLoading(false);
           history.push("/login");
         } else {
           setAuthStatus(true);
-          setPageLoading(false);
           history.push("/");
         }
       })
       .catch((error) => {
-        setAuthStatus(false);
         setPageLoading(false);
+        setAuthStatus(false);
         history.push("/login");
         return error.response.data.error;
       });
