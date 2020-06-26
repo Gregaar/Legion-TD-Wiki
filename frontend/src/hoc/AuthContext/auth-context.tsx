@@ -16,13 +16,15 @@ export interface AuthContextInterface {
   logoutHandler: (event: React.MouseEvent<HTMLAnchorElement>) => Promise<void>;
 }
 
-const AuthContext = React.createContext<AuthContextInterface | null>(null);
+const AuthContext = React.createContext<AuthContextInterface>(
+  {} as AuthContextInterface
+);
 
 const useAuthContext = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authStatus, setAuthStatus] = useState(true);
-  const [pageLoading, setPageLoading] = useState(true);
+  const [pageLoading, setPageLoading] = useState<boolean>(true);
   const history = useHistory();
 
   useEffect(() => {

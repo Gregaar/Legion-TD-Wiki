@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useAuthContext } from "../AuthContext/auth-context";
+
 import LoadingSpinner from "../../components/Spinner/spinner";
+import { useAuthContext } from "../AuthContext/auth-context";
 
 const ProtectedRoute = ({
   component: Component,
@@ -18,7 +19,8 @@ const ProtectedRoute = ({
     <Route
       {...rest}
       render={(props) => {
-        if (authContext?.loading || !authContext?.user.isAuth) return <LoadingSpinner />
+        if (authContext?.loading || !authContext?.user.isAuth)
+          return <LoadingSpinner />;
         if (authContext?.user.isAuth) {
           return <Component {...rest} {...props} />;
         } else {

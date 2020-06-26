@@ -14,7 +14,7 @@ const Div = styled.div`
 const homepage: React.FC = () => {
   return (
     <Div>
-      <h1 style={{textAlign: "center", color: "white"}}>:-)</h1>
+      <h1 style={{ textAlign: "center", color: "white" }}>:-)</h1>
     </Div>
   );
 };

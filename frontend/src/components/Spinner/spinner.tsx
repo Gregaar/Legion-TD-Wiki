@@ -2,7 +2,7 @@ import React from "react";
 import ClockLoader from "react-spinners/ClockLoader";
 
 const loadingSpinner = () => (
-<div
+  <div
     style={{
       display: "flex",
       justifyContent: "center",
@@ -11,7 +11,9 @@ const loadingSpinner = () => (
       height: "100vh",
     }}
   >
-    <h2 style={{ display: "block", color: "yellow", marginRight: "10px" }}>Loading...</h2>
+    <h2 style={{ display: "block", color: "yellow", marginRight: "10px" }}>
+      Loading...
+    </h2>
     <ClockLoader color={"yellow"} />
   </div>
 );
