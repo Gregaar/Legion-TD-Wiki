@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
 import { List } from "./navigation-item-styles";
 import NavItem from "./NavigationItem/navigation-item";
@@ -12,21 +13,21 @@ const NavigationItems: React.FC = () => {
     <List>
       {authStatus ? (
         <React.Fragment>
-          <NavItem exact link="/units">
-            Units
+          <NavItem exact link="/summons">
+            Summons
           </NavItem>
-          <NavItem exact link="/builders">
-            Builders
+          <NavItem exact link="/king">
+            King
           </NavItem>
         </React.Fragment>
       ) : null}
       {authStatus ? (
         <React.Fragment>
-          <NavItem exact link="/">
-            Search
+          <NavItem exact link="/units">
+            Units
           </NavItem>
-          <NavItem exact link="/Mercenaries">
-            Summons
+          <NavItem exact link="/builders">
+            Builders
           </NavItem>
           <NavItem exact link="/profile">
             Profile

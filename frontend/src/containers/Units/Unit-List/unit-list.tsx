@@ -1,11 +1,13 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import abilityAvatar from "../../../assets/ability-avatar.png";
 import builderAvatar from "../../../assets/builder-avatar.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
 import unitAvatar from "../../../assets/unit-avatar.png";
 import { getAttackIcon, getDefenseIcon } from "./combat-icons";
+import { UnitImg, UnitName } from "./unit-list-styles";
 
 interface UnitProps {
   unitName: string;
@@ -18,20 +20,35 @@ interface UnitProps {
   rangeNumber: number | null;
 }
 
-const unitList: React.FC<UnitProps> = (props) => {
+type UnitNameHandlerEvent = HTMLParagraphElement | HTMLImageElement;
+
+const UnitList: React.FC<UnitProps> = (props) => {
   const attackIcon = getAttackIcon(props.attack);
   const defenseIcon = getDefenseIcon(props.defense);
+  const history = useHistory();
 
-  const goToUnitHandler = (event: React.MouseEvent) => {
+  const goToUnitHandler = (
+    event: React.MouseEvent<UnitNameHandlerEvent>
+  ): void => {
     event.preventDefault();
-  }
+    const addDashToUnitName = props.unitName.replace(/\s/gm, "-");
+    history.push(`/units/${addDashToUnitName}`);
+    return;
+  };
+
+  const goToBuilderHandler = (
+    event: React.MouseEvent<HTMLImageElement>
+  ): void => {
+    event.preventDefault();
+    history.push(`/builders/${props.builder}`);
+    return;
+  };
 
   return (
     <div style={{ display: "contents" }}>
-      <p 
-      style={{ textShadow: "1px 1px black" }}
-      onClick={(event: React.MouseEvent) => goToUnitHandler(event)}
-      >{props.unitName}</p>
+      <UnitName onClick={(event) => goToUnitHandler(event)}>
+        {props.unitName}
+      </UnitName>
       <Tooltip
         title={props.unitName
           .charAt(0)
@@ -39,9 +56,10 @@ const unitList: React.FC<UnitProps> = (props) => {
           .concat(props.unitName.slice(1))}
         placement="right"
       >
-        <img
+        <UnitImg
           src={unitAvatar}
           alt={`The avatar for the ${props.unitName} unit`}
+          onClick={(event) => goToUnitHandler(event)}
         />
       </Tooltip>
       <Tooltip
@@ -54,6 +72,7 @@ const unitList: React.FC<UnitProps> = (props) => {
         <img
           src={builderAvatar}
           alt={`The avatar for the ${props.builder} builder`}
+          onClick={(event) => goToBuilderHandler(event)}
         />
       </Tooltip>
       <Tooltip
@@ -112,10 +131,7 @@ const unitList: React.FC<UnitProps> = (props) => {
   );
 };
 
-export default unitList;
+export default UnitList;
 
 // work on making the list sortable, when a heading is clicked, it sorts either ascendingly or descendingly
-// after all this, work on an individual unit page, where more information about the unit is displayed.
-
-//fix issue with form being randomly resubmittied? (or so it seemed)
-// fix issue with background scaling when the list is increased or decreased
+// work on an individual unit page, where more information about the unit is displayed.

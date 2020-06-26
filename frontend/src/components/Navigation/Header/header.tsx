@@ -1,14 +1,15 @@
 import * as React from "react";
-import { Header } from "./header-styles";
+
 import NavigationItems from "../NavigationItems/navigation-items";
+import { Header } from "./header-styles";
 
 interface HeaderProps {
-  loading: boolean | undefined;
+  loading: boolean;
 }
 
 const header: React.FC<HeaderProps> = (props) => {
   return (
-    <Header loading={props.loading}>
+    <Header loading={props.loading ? 1 : 0}>
       <nav>
         <NavigationItems />
       </nav>
