@@ -7,7 +7,7 @@ interface InfoPanelProps {
 
 export const InfoPanel = styled.div<InfoPanelProps>`
   width: 350px;
-  height: ${(props) => props.height || "600px"};
+  height: ${(props) => props.height || "625px"};
   margin: ${(props) =>
     props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
   text-align: center;
