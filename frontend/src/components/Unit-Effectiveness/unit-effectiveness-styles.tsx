@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const EffectivenessPanel = styled.div`
   width: 350px;
-  max-height: 600px;
+  max-height: 625px;
   margin: 125px auto 0 auto;
   text-align: center;
   border: 2px solid beige;
