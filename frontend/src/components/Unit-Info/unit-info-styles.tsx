@@ -44,7 +44,6 @@ export const InfoGrid = styled.div`
   text-transform: capitalize;
   align-items: center;
   justify-items: center;
-
   animation-name: changeTextColor;
   animation-duration: 1.5s;
 
