@@ -17,16 +17,16 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
 
   return (
     <React.Fragment>
-      <InfoHeading>Tier</InfoHeading>
+      <InfoHeading>Builder</InfoHeading>
+      <NavParagraph onClick={() => handleBuilderClick(props.builder)}>
+        {props.builder}
+      </NavParagraph>
+      <InfoHeading>Unit Tier</InfoHeading>
       <p>{props.tier}</p>
       <InfoHeading>Food Cost</InfoHeading>
       <p>{props.foodCost}</p>
       <InfoHeading>Gold Cost</InfoHeading>
       <p>{props.goldCost}</p>
-      <InfoHeading>Builder</InfoHeading>
-      <NavParagraph onClick={() => handleBuilderClick(props.builder)}>
-        {props.builder}
-      </NavParagraph>
     </React.Fragment>
   );
 };

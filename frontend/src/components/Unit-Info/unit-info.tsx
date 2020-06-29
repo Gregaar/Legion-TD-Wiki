@@ -6,7 +6,7 @@ import BuildingInfo from "./Building-Info/building-info";
 import CombatInfo from "./Combat-Info/combat-info";
 import {
   InfoGrid,
-  Panel,
+  InfoPanel,
   UnitImage,
   UnitInfoHeading,
   UnitName,
@@ -20,10 +20,10 @@ interface UnitInfoProps {
 
 const unitInfo: React.FC<UnitInfoProps> = ({ unit, goToClicked }) => {
   const hybridUnits = (
-    <Panel height="350px">
+    <InfoPanel height="350px">
       <UnitName>{unit.Name}</UnitName>
       <UnitImage src={unitAvatar} alt={`Avatar for the ${unit.Name} unit.`} />
-      <UnitInfoHeading>Unit Information</UnitInfoHeading>
+      <UnitInfoHeading>Building Info</UnitInfoHeading>
       <InfoGrid>
         <BuildingInfo
           tier={unit["Unit Tier"]}
@@ -33,13 +33,13 @@ const unitInfo: React.FC<UnitInfoProps> = ({ unit, goToClicked }) => {
           clicked={goToClicked}
         />
       </InfoGrid>
-    </Panel>
+    </InfoPanel>
   );
 
   return unit.Builder === "hybrid" ? (
     hybridUnits
   ) : (
-    <Panel>
+    <InfoPanel ability={unit.Abilities !== null ? 1 : 0}>
       <UnitName>{unit.Name}</UnitName>
       <UnitImage src={unitAvatar} alt={`Avatar for the ${unit.Name} unit.`} />
       <UnitInfoHeading>Building Info</UnitInfoHeading>
@@ -72,7 +72,7 @@ const unitInfo: React.FC<UnitInfoProps> = ({ unit, goToClicked }) => {
           defenseType={unit["Defense Type"]}
         />
       </InfoGrid>
-    </Panel>
+    </InfoPanel>
   );
 };
 
