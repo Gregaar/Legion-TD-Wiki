@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
+import UnitAbilities from "../../components/Unit-Abilities/unit-abilities";
+import UnitEffectiveness from "../../components/Unit-Effectiveness/unit-effectiveness";
 import UnitInfo from "../../components/Unit-Info/unit-info";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import { ContainerDiv } from "./individual-unit-styles";
 
 const sanitizeUnitName = (path: string): string => {
   const lastSlashIndex = path.lastIndexOf("/");
@@ -41,23 +44,25 @@ const IndividualUnit: React.FC = () => {
   if (currentUnit) {
     const copiedUnit = { ...currentUnit };
     unitToDisplay = (
-      <UnitInfo
-        key={copiedUnit.ID}
-        unit={copiedUnit}
-        goToClicked={history.push}
-      />
+      <React.Fragment key={copiedUnit.ID}>
+        <UnitInfo unit={copiedUnit} goToClicked={history.push} />
+
+        {copiedUnit["Attack Type"] !== null ? (
+          <UnitEffectiveness unit={copiedUnit} />
+        ) : null}
+
+        {copiedUnit.Abilities !== null ? (
+          <UnitAbilities unit={copiedUnit} />
+        ) : null}
+      </React.Fragment>
     );
   }
 
   return (
     <BackgroundDiv height="100vh">
-      <div>{currentUnit ? unitToDisplay : null}</div>
+      <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>
     </BackgroundDiv>
   );
 };
 
 export default IndividualUnit;
-
-// create a Unit component, that display all the unit information
-// break down the Unit component as much as possible, delegating displays to other custom components!
-// figure out how to deal with nulls etc

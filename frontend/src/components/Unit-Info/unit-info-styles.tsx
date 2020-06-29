@@ -1,30 +1,20 @@
 import styled from "styled-components";
 
-interface PanelProps {
+interface InfoPanelProps {
   height?: string;
+  ability?: number;
 }
 
-export const Panel = styled.div<PanelProps>`
+export const InfoPanel = styled.div<InfoPanelProps>`
   width: 350px;
-  height: ${(props) => props.height || "675px"};
-  margin: 75px auto 0 auto;
+  height: ${(props) => props.height || "600px"};
+  margin: ${(props) =>
+    props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
   text-align: center;
   border: 2px solid beige;
   border-radius: 3px;
   background-color: rgb(68, 89, 106);
   color: white;
-
-  animation-name: changeTextColor;
-  animation-duration: 1.5s;
-
-  @keyframes changeTextColor {
-    from {
-      color: gold;
-    }
-    to {
-      color: white;
-    }
-  }
 `;
 
 export const UnitName = styled.h2`
@@ -37,7 +27,7 @@ export const UnitName = styled.h2`
 
 export const UnitImage = styled.img`
   display: block;
-  margin: 50px auto;
+  margin: 25px auto;
 `;
 
 export const UnitInfoHeading = styled.h3`
@@ -54,6 +44,18 @@ export const InfoGrid = styled.div`
   text-transform: capitalize;
   align-items: center;
   justify-items: center;
+
+  animation-name: changeTextColor;
+  animation-duration: 1.5s;
+
+  @keyframes changeTextColor {
+    from {
+      color: gold;
+    }
+    to {
+      color: white;
+    }
+  }
 `;
 
 export const InfoHeading = styled.h3`

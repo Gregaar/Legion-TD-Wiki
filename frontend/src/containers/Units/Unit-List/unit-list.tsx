@@ -6,7 +6,10 @@ import abilityAvatar from "../../../assets/ability-avatar.png";
 import builderAvatar from "../../../assets/builder-avatar.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
 import unitAvatar from "../../../assets/unit-avatar.png";
-import { getAttackIcon, getDefenseIcon } from "./combat-icons";
+import {
+  getAttackIcon,
+  getDefenseIcon,
+} from "../../../shared/Services/combat-icons";
 import { UnitImg, UnitName } from "./unit-list-styles";
 
 interface UnitProps {
@@ -132,6 +135,3 @@ const UnitList: React.FC<UnitProps> = (props) => {
 };
 
 export default UnitList;
-
-// work on making the list sortable, when a heading is clicked, it sorts either ascendingly or descendingly
-// work on an individual unit page, where more information about the unit is displayed.
