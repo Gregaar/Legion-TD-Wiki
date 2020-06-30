@@ -5,9 +5,13 @@ interface InfoPanelProps {
   ability?: number;
 }
 
+interface UnitNameProps {
+  bgColor?: string;
+}
+
 export const InfoPanel = styled.div<InfoPanelProps>`
   width: 350px;
-  height: ${(props) => props.height || "625px"};
+  height: ${(props) => props.height || "615px"};
   margin: ${(props) =>
     props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
   text-align: center;
@@ -17,12 +21,14 @@ export const InfoPanel = styled.div<InfoPanelProps>`
   color: white;
 `;
 
-export const UnitName = styled.h2`
+export const UnitName = styled.h2<UnitNameProps>`
   text-shadow: 2px 2px black;
   background-color: #3a6384;
   text-transform: capitalize;
-  margin: 15px 0;
+  margin: 1px;
   border: 2px solid gold;
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : "darkslategray"};
 `;
 
 export const UnitImage = styled.img`

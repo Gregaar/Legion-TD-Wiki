@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InfoHeading, NavParagraph } from "../unit-info-styles";
+import { InfoHeading, NavParagraph } from "../info-card-styles";
 
 interface BuildingInfoProps {
   tier: number;
@@ -23,10 +23,10 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
       </NavParagraph>
       <InfoHeading>Unit Tier</InfoHeading>
       <p>{props.tier}</p>
-      <InfoHeading>Food Cost</InfoHeading>
-      <p>{props.foodCost}</p>
       <InfoHeading>Gold Cost</InfoHeading>
       <p>{props.goldCost}</p>
+      <InfoHeading>Food Cost</InfoHeading>
+      <p>{props.foodCost}</p>
     </React.Fragment>
   );
 };

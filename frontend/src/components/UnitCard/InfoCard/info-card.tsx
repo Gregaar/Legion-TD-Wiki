@@ -1,7 +1,8 @@
 import React from "react";
 
-import unitAvatar from "../../assets/unit-avatar.png";
-import UnitInterface from "../../shared/Interfaces/unit-interface";
+import unitAvatar from "../../../assets/unit-avatar.png";
+import UnitInterface from "../../../shared/Interfaces/unit-interface";
+import { unitNameColor } from "./../get-heading-color";
 import BuildingInfo from "./Building-Info/building-info";
 import CombatInfo from "./Combat-Info/combat-info";
 import {
@@ -10,18 +11,20 @@ import {
   UnitImage,
   UnitInfoHeading,
   UnitName,
-} from "./unit-info-styles";
+} from "./info-card-styles";
 import UpgradeInfo from "./Upgrade-Info/upgrade-info";
 
-interface UnitInfoProps {
+interface InfoCardProps {
   unit: UnitInterface;
   goToClicked: (path: string) => void;
 }
 
-const unitInfo: React.FC<UnitInfoProps> = ({ unit, goToClicked }) => {
+const infoCard: React.FC<InfoCardProps> = ({ unit, goToClicked }) => {
+  const nameBgColor = unitNameColor(unit.Builder);
+
   const hybridUnits = (
     <InfoPanel height="350px">
-      <UnitName>{unit.Name}</UnitName>
+      <UnitName bgColor={nameBgColor}>{unit.Name}</UnitName>
       <UnitImage src={unitAvatar} alt={`Avatar for the ${unit.Name} unit.`} />
       <UnitInfoHeading>Building Info</UnitInfoHeading>
       <InfoGrid>
@@ -40,7 +43,7 @@ const unitInfo: React.FC<UnitInfoProps> = ({ unit, goToClicked }) => {
     hybridUnits
   ) : (
     <InfoPanel ability={unit.Abilities !== null ? 1 : 0}>
-      <UnitName>{unit.Name}</UnitName>
+      <UnitName bgColor={nameBgColor}>{unit.Name}</UnitName>
       <UnitImage src={unitAvatar} alt={`Avatar for the ${unit.Name} unit.`} />
       <UnitInfoHeading>Building Info</UnitInfoHeading>
       <InfoGrid>
@@ -66,14 +69,15 @@ const unitInfo: React.FC<UnitInfoProps> = ({ unit, goToClicked }) => {
           minDamage={unit["Base Min Hit"]}
           maxDamage={unit["Base Max Hit"]}
           health={unit["Hit Points"]}
-          range={unit["Melee / Ranged"]}
-          attackType={unit["Attack Type"]}
-          attackSpeed={unit["Attack Speed Class"]}
-          defenseType={unit["Defense Type"]}
+          range={unit.Range}
+          rangeClass={unit["Melee / Ranged"]}
+          attackSpeed={unit["Attack Speed"]}
+          attackClass={unit["Attack Speed Class"]}
+          mana={unit.Mana}
         />
       </InfoGrid>
     </InfoPanel>
   );
 };
 
-export default unitInfo;
+export default infoCard;

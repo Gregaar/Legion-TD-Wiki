@@ -8,9 +8,21 @@ interface HeightProps {
 
 export const BackgroundDiv = styled.div<HeightProps>`
   height: ${(props) => props.height};
-  opacity: 0.75;
-  background-image: url(${Background});
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: block;
+  position: relative;
   padding: 1%;
+
+  &:after {
+    content: "";
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background-image: url(${Background});
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+  }
 `;

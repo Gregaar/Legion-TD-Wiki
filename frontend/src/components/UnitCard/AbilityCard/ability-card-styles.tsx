@@ -8,6 +8,10 @@ interface AbilityTextProps {
   capitalize?: number;
 }
 
+interface AbilityNameProps {
+  bgColor?: string;
+}
+
 export const AbilityGrid = styled.div<AbilityGridProps>`
   display: inline-grid;
   grid-template-columns: repeat(2, 1fr);
@@ -29,11 +33,12 @@ export const AbilityPanel = styled.div`
   text-align: center;
 `;
 
-export const AbilityName = styled.h2`
+export const AbilityName = styled.h2<AbilityNameProps>`
   text-shadow: 2px 2px black;
-  background-color: #3a6384;
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : "darkslategrey"};
   text-transform: capitalize;
-  margin: 15px 0;
+  margin: 1px;
   border: 2px solid gold;
 `;
 
