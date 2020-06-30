@@ -73,7 +73,6 @@ export const ListElement = styled.li<ListElementProps>`
   min-height: 25px;
 
   &:before {
-    display: flex;
     text-transform: capitalize;
     content: counter(li);
     counter-increment: li;
@@ -88,5 +87,8 @@ export const ListElement = styled.li<ListElementProps>`
     display: block;
     position: absolute;
     left: 0;
+  }
+  &:after {
+    text-transform: capitalize;
   }
 `;
