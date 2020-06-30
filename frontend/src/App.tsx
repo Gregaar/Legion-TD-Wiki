@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router";
 
 import Homepage from "./components/Homepage/homepage";
-import IndividualUnit from "./containers/Individual-Unit/individual-unit";
+import IndividualUnit from "./containers/IndividualUnit/individual-unit";
 import Login from "./containers/Login/login";
 import Units from "./containers/Units/units";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";

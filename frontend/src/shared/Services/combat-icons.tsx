@@ -10,54 +10,36 @@ import siegeAttack from "../../assets/siege.png";
 import unarmoredDefense from "../../assets/unarmored.png";
 import unknownIcon from "../../assets/unknown-icon.png";
 
-export const getAttackIcon = (attackType: string | null) => {
-  let attackIcon: string;
-
+export const getAttackIcon = (attackType: string | null): string => {
   switch (attackType) {
     case "chaos":
-      attackIcon = chaosAttack;
-      break;
+      return chaosAttack;
     case "pierce":
-      attackIcon = pierceAttack;
-      break;
+      return pierceAttack;
     case "normal":
-      attackIcon = normalAttack;
-      break;
+      return normalAttack;
     case "magic":
-      attackIcon = magicAttack;
-      break;
+      return magicAttack;
     case "siege":
-      attackIcon = siegeAttack;
-      break;
+      return siegeAttack;
     default:
-      attackIcon = unknownIcon;
-      break;
+      return unknownIcon;
   }
-  return attackIcon;
 };
 
-export const getDefenseIcon = (defenseType: string | null) => {
-  let defenseIcon: string;
-
+export const getDefenseIcon = (defenseType: string | null): string => {
   switch (defenseType) {
     case "unarmored":
-      defenseIcon = unarmoredDefense;
-      break;
+      return unarmoredDefense;
     case "light":
-      defenseIcon = lightDefense;
-      break;
+      return lightDefense;
     case "medium":
-      defenseIcon = mediumDefense;
-      break;
+      return mediumDefense;
     case "heavy":
-      defenseIcon = heavyDefense;
-      break;
+      return heavyDefense;
     case "fortified":
-      defenseIcon = fortifiedDefense;
-      break;
+      return fortifiedDefense;
     default:
-      defenseIcon = unknownIcon;
-      break;
+      return unknownIcon;
   }
-  return defenseIcon;
 };

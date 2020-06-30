@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import UnitAbilities from "../../components/Unit-Abilities/unit-abilities";
-import UnitEffectiveness from "../../components/Unit-Effectiveness/unit-effectiveness";
-import UnitInfo from "../../components/Unit-Info/unit-info";
+import AbilityCard from "../../components/UnitCard/AbilityCard/ability-card";
+import CombatCard from "../../components/UnitCard/CombatCard/combat-card";
+import UnitInfo from "../../components/UnitCard/InfoCard/info-card";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import { ContainerDiv } from "./individual-unit-styles";
@@ -48,11 +48,11 @@ const IndividualUnit: React.FC = () => {
         <UnitInfo unit={copiedUnit} goToClicked={history.push} />
 
         {copiedUnit["Attack Type"] !== null ? (
-          <UnitEffectiveness unit={copiedUnit} />
+          <CombatCard unit={copiedUnit} />
         ) : null}
 
         {copiedUnit.Abilities !== null ? (
-          <UnitAbilities unit={copiedUnit} />
+          <AbilityCard unit={copiedUnit} />
         ) : null}
       </React.Fragment>
     );

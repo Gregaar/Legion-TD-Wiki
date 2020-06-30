@@ -1,7 +1,8 @@
 import React from "react";
 
-import abilityAvatar from "../../assets/ability-avatar.png";
-import UnitInterface from "../../shared/Interfaces/unit-interface";
+import abilityAvatar from "../../../assets/ability-avatar.png";
+import UnitInterface from "../../../shared/Interfaces/unit-interface";
+import { abilityColor } from "../get-heading-color";
 import {
   AbilityGrid,
   AbilityImage,
@@ -10,13 +11,13 @@ import {
   AbilityPanel,
   AbilityText,
   DescContainer,
-} from "./unit-abilities-styles";
+} from "./ability-card-styles";
 
-interface UnitAbilitiesProps {
+interface AbilityCardProps {
   unit: UnitInterface;
 }
 
-const unitAbilities: React.FC<UnitAbilitiesProps> = ({ unit }) => {
+const abilityCard: React.FC<AbilityCardProps> = ({ unit }) => {
   const abilityInfo = [];
   if (unit.Abilities && unit["Ability Type"] && unit["Ability Description"]) {
     for (let i = 0; i < unit.Abilities.length; i++) {
@@ -33,7 +34,9 @@ const unitAbilities: React.FC<UnitAbilitiesProps> = ({ unit }) => {
       {abilityInfo
         ? abilityInfo.map((ability) => (
             <AbilityPanel key={ability.name}>
-              <AbilityName>Ability: {ability.name}</AbilityName>
+              <AbilityName bgColor={abilityColor(ability.type)}>
+                Ability: {ability.name}
+              </AbilityName>
               <AbilityImage
                 src={abilityAvatar}
                 alt={`The avatar for the ${ability.name} ability`}
@@ -52,4 +55,4 @@ const unitAbilities: React.FC<UnitAbilitiesProps> = ({ unit }) => {
   );
 };
 
-export default unitAbilities;
+export default abilityCard;
