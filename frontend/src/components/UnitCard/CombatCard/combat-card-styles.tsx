@@ -71,6 +71,8 @@ export const ListElement = styled.li<ListElementProps>`
   position: relative;
   padding-left: 40px;
   min-height: 25px;
+  display: flex;
+  margin-top: 2px;
 
   &:before {
     content: counter(li);
@@ -80,11 +82,12 @@ export const ListElement = styled.li<ListElementProps>`
       props.bulletColor ? props.bulletColor : "steelblue"};
     border-radius: 50%;
     font-size: 18px;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     text-align: center;
-    display: block;
+    display: inline-block;
     position: absolute;
     left: 0;
+    top: -3px
   }
 `;
