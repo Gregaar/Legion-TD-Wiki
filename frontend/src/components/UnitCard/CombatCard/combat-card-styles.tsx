@@ -73,6 +73,7 @@ export const ListElement = styled.li<ListElementProps>`
   min-height: 25px;
 
   &:before {
+    text-transform: capitalize;
     content: counter(li);
     counter-increment: li;
     color: #fff;
