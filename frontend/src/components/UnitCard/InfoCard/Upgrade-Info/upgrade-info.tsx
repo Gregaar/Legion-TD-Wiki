@@ -5,13 +5,18 @@ import { InfoHeading, NavParagraph } from "../info-card-styles";
 interface UpgradeInfoProps {
   upgradedName: string[] | null;
   baseName: string[] | null;
+  disableInfoNav?: boolean;
   clickedName: (path: string) => void;
 }
 
 const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
   const handleNameClick = (name: string) => {
-    const unitNameWithDashes = name.replace(" ", "-");
-    props.clickedName(`/units/${unitNameWithDashes}`);
+    if (props.disableInfoNav) {
+      return;
+    } else {
+      const unitNameWithDashes = name.replace(" ", "-");
+      props.clickedName(`/units/${unitNameWithDashes}`);
+    }
   };
 
   const upgradedNames = (
@@ -20,7 +25,10 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
       {props.upgradedName
         ? props.upgradedName.map((name) => (
             <React.Fragment key={name}>
-              <NavParagraph onClick={() => handleNameClick(name)}>
+              <NavParagraph
+                onClick={() => handleNameClick(name)}
+                disableInfoNav={props.disableInfoNav ? 1 : 0}
+              >
                 {name}
               </NavParagraph>
               {props.upgradedName !== null && props?.upgradedName.length > 1 ? (
@@ -38,7 +46,10 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
       {props.baseName
         ? props.baseName.map((name) => (
             <React.Fragment key={name}>
-              <NavParagraph onClick={() => handleNameClick(name)}>
+              <NavParagraph
+                onClick={() => handleNameClick(name)}
+                disableInfoNav={props.disableInfoNav ? 1 : 0}
+              >
                 {name}
               </NavParagraph>
               {props.baseName !== null && props?.baseName.length > 1 ? (

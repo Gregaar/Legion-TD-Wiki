@@ -7,18 +7,26 @@ interface BuildingInfoProps {
   foodCost: number;
   goldCost: number;
   builder: string;
+  disableInfoNav?: boolean;
   clicked: (path: string) => void;
 }
 
 const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
   const handleBuilderClick = (builder: string): void => {
-    props.clicked(`/builders/${builder}`);
+    if (props.disableInfoNav) {
+      return;
+    } else {
+      props.clicked(`/builders/${builder}`);
+    }
   };
 
   return (
     <React.Fragment>
       <InfoHeading>Builder</InfoHeading>
-      <NavParagraph onClick={() => handleBuilderClick(props.builder)}>
+      <NavParagraph
+        onClick={() => handleBuilderClick(props.builder)}
+        disableInfoNav={props.disableInfoNav ? 1 : 0}
+      >
         {props.builder}
       </NavParagraph>
       <InfoHeading>Unit Tier</InfoHeading>

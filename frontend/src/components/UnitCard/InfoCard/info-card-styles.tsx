@@ -5,11 +5,25 @@ interface InfoPanelProps {
   ability?: number;
 }
 
+interface InfoGridProps {
+  disableAnimation?: number;
+}
+
 interface UnitNameProps {
   bgColor?: string;
+  enableHover?: number;
+}
+
+interface UnitImageProps {
+  enableHover?: number;
+}
+
+interface NavParagraph {
+  disableInfoNav?: number;
 }
 
 export const InfoPanel = styled.div<InfoPanelProps>`
+  display: inline-block;
   width: 350px;
   max-height: ${(props) => props.height || "645px"};
   margin: ${(props) =>
@@ -29,11 +43,18 @@ export const UnitName = styled.h2<UnitNameProps>`
   border: 2px solid gold;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : "darkslategray"};
+  cursor: ${(props) => (props.enableHover ? "pointer" : "default")};
+
+  &:hover {
+    color: ${(props) => (props.enableHover ? "gold" : "inherit")};
+    font-weight: ${(props) => (props.enableHover ? "bolder" : "default")};
+  }
 `;
 
-export const UnitImage = styled.img`
+export const UnitImage = styled.img<UnitImageProps>`
   display: block;
   margin: 25px auto;
+  cursor: ${(props) => (props.enableHover ? "pointer" : "default")};
 `;
 
 export const UnitInfoHeading = styled.h3`
@@ -44,14 +65,14 @@ export const UnitInfoHeading = styled.h3`
   border-radius: 3px;
 `;
 
-export const InfoGrid = styled.div`
+export const InfoGrid = styled.div<InfoGridProps>`
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-transform: capitalize;
   align-items: center;
   justify-items: center;
-  animation-name: changeTextColor;
-  animation-duration: 1.5s;
+  animation: ${(props) =>
+    props.disableAnimation ? "none" : "changeTextColor 1.5s"};
 
   @keyframes changeTextColor {
     from {
@@ -69,11 +90,11 @@ export const InfoHeading = styled.h3`
   width: 110%;
 `;
 
-export const NavParagraph = styled.p`
-  cursor: pointer;
+export const NavParagraph = styled.p<NavParagraph>`
+  cursor: ${(props) => (props.disableInfoNav ? "default" : "pointer")};
 
   &:hover {
-    color: gold;
-    font-weight: bolder;
+    color: ${(props) => (props.disableInfoNav ? "inherit" : "gold")};
+    font-weight: ${(props) => (props.disableInfoNav ? "inherit" : "bolder")};
   }
 `;

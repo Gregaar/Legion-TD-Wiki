@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ImgProps {
-  cursor? : number;
+  cursor?: number;
 }
 
 export const UnitName = styled.p`
@@ -14,6 +14,6 @@ export const UnitName = styled.p`
   }
 `;
 export const Img = styled.img<ImgProps>`
-    cursor: ${props => props.cursor ? "pointer" : "default"};
+    cursor: ${(props) => (props.cursor ? "pointer" : "default")};
   }
 `;

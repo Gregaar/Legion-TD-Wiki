@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 interface BuilderNameProps {
   bgColor?: string;
+  disableHover?: number;
+}
+
+interface BuilderImgProps {
+  disableHover?: number;
 }
 
 interface BuilderInfoHeadingProps {
@@ -10,7 +15,7 @@ interface BuilderInfoHeadingProps {
 
 export const BuilderPanel = styled.div`
   width: 375px;
-  max-height: 425px;
+  max-height: 455px;
   margin: 0 auto;
   text-align: center;
   border: 2px solid beige;
@@ -28,16 +33,13 @@ export const BuilderName = styled.h2<BuilderNameProps>`
   border: 2px solid gold;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : "darkslategray"};
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: ${(props) => (props.disableHover ? "default" : "pointer")};
 `;
 
-export const BuilderImage = styled.img`
+export const BuilderImage = styled.img<BuilderImgProps>`
   display: block;
   margin: 25px auto;
-  cursor: pointer;
+  cursor: ${(props) => (props.disableHover ? "default" : "pointer")};
 `;
 
 export const BuilderInfoHeading = styled.h3<BuilderInfoHeadingProps>`

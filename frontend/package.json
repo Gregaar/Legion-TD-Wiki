@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.5",
+    "@types/shortid": "0.0.29",
     "@types/styled-components": "^5.1.0",
     "@types/validator": "^13.0.0",
     "@typescript-eslint/parser": "^3.2.0",
@@ -26,6 +27,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-spinners": "^0.9.0",
+    "shortid": "^2.2.15",
     "styled-components": "^5.1.1",
     "typescript": "^3.9.5",
     "validator": "^13.1.1"

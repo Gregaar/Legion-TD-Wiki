@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import BuilderCards from "../../components/BuilderCards/builder-cards";
-import { BuildersContainer } from "./builders-styles";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
+import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import { BuildersContainer } from "./builders-styles";
 const Builders: React.FC = () => {
   const [legionBuilders, setLegionBuilders] = useState<BuilderInterface[]>([]);
   const history = useHistory();
