@@ -20,7 +20,7 @@ const Builders: React.FC = () => {
         });
     };
     getBuilders();
-  }, [searchBuilder]);
+  }, []);
 
   let buildersDisplay;
 
