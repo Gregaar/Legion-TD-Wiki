@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage/homepage";
 import IndividualUnit from "./containers/IndividualUnit/individual-unit";
 import Login from "./containers/Login/login";
 import Units from "./containers/Units/units";
+import Builders from "./containers/Builders/builders";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
@@ -15,13 +16,14 @@ const App: React.FC = () => {
       <Layout>
         <Switch>
           <Route path="/login" exact component={Login} />
-          <ProtectedRoute path="/" exact component={Homepage} />
           <ProtectedRoute
             path="/units/:unitName"
             exact
             component={IndividualUnit}
           />
           <ProtectedRoute path="/units" exact component={Units} />
+          <ProtectedRoute path="/builders" exact component={Builders} />
+          <ProtectedRoute path="/" exact component={Homepage} />
         </Switch>
       </Layout>
     </AuthProvider>

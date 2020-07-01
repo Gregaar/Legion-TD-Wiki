@@ -10,7 +10,7 @@ export const findBuilderByName: RequestHandler<{ builder: string }> = async (
     if (req.params.builder.toLowerCase() === "any") {
       const builders = await Builder.find();
 
-      return res.json({ builder: [...builders] });
+      return res.json({ builders: [...builders] });
     } else {
       const builderFound = await Builder.findOne({
         Name: req.params.builder.toLowerCase(),
@@ -20,7 +20,7 @@ export const findBuilderByName: RequestHandler<{ builder: string }> = async (
         throw new Error();
       }
 
-      return res.json({ builder: builderFound });
+      return res.json({ builders: builderFound });
     }
   } catch (error) {
     return res.status(404).json({

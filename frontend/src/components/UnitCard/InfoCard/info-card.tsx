@@ -1,8 +1,8 @@
 import React from "react";
 
-import unitAvatar from "../../../assets/unit-avatar.png";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
-import { unitNameColor } from "./../get-heading-color";
+import { getUnitIcon } from "../../../shared/Services/get-icons";
+import { unitNameColor } from "../../../shared/Styles/get-heading-color";
 import BuildingInfo from "./Building-Info/building-info";
 import CombatInfo from "./Combat-Info/combat-info";
 import {
@@ -21,11 +21,12 @@ interface InfoCardProps {
 
 const infoCard: React.FC<InfoCardProps> = ({ unit, goToClicked }) => {
   const nameBgColor = unitNameColor(unit.Builder);
+  const unitIcon = getUnitIcon(unit.Builder, unit.Name);
 
   const hybridUnits = (
     <InfoPanel height="350px">
       <UnitName bgColor={nameBgColor}>{unit.Name}</UnitName>
-      <UnitImage src={unitAvatar} alt={`Avatar for the ${unit.Name} unit.`} />
+      <UnitImage src={unitIcon} alt={`Avatar for the ${unit.Name} unit.`} />
       <UnitInfoHeading>Building Info</UnitInfoHeading>
       <InfoGrid>
         <BuildingInfo
@@ -44,7 +45,7 @@ const infoCard: React.FC<InfoCardProps> = ({ unit, goToClicked }) => {
   ) : (
     <InfoPanel ability={unit.Abilities !== null ? 1 : 0}>
       <UnitName bgColor={nameBgColor}>{unit.Name}</UnitName>
-      <UnitImage src={unitAvatar} alt={`Avatar for the ${unit.Name} unit.`} />
+      <UnitImage src={unitIcon} alt={`Avatar for the ${unit.Name} unit.`} />
       <UnitInfoHeading>Building Info</UnitInfoHeading>
       <InfoGrid>
         <BuildingInfo

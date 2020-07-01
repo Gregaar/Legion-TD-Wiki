@@ -36,4 +36,5 @@ export default interface UnitInterface {
   "Can Stun": boolean;
   "Can Summon": boolean;
   ID: string;
+  "Builder ID": string;
 }

@@ -8,6 +8,7 @@ import normalAttack from "../../assets/normal.png";
 import pierceAttack from "../../assets/pierce.png";
 import siegeAttack from "../../assets/siege.png";
 import unarmoredDefense from "../../assets/unarmored.png";
+import unitAvatar from "../../assets/unit-avatar.png";
 import unknownIcon from "../../assets/unknown-icon.png";
 
 export const getAttackIcon = (attackType: string | null): string => {
@@ -42,4 +43,31 @@ export const getDefenseIcon = (defenseType: string | null): string => {
     default:
       return unknownIcon;
   }
+};
+
+export const getUnitIcon = (
+  builder: string,
+  unitName: string,
+): string => {
+  const amazonURL =
+    "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
+  if (process.env.NODE_ENV === "production") {
+    return `${amazonURL}/${builder}/avatars/${unitName
+      .toLowerCase()
+      .replace(/\s/gm, "")}.png`;
+  } else {
+    return unitAvatar;
+  }
+};
+
+export const getAbilityIcon = (
+  builder: string,
+  ability?: string | null
+): string => {
+  const amazonURL =
+    "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
+  if (ability && process.env.NODE_ENV === "production") {
+    const pureAbility = ability.toLowerCase().replace(/[\s'!]/gm, "");
+    return `${amazonURL}/${builder}/abilities/${pureAbility}.png`;
+  } else return unknownIcon;
 };

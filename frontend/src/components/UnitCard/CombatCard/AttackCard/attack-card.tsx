@@ -1,7 +1,7 @@
 import React from "react";
 
-import { getAttackIcon } from "../../../../shared/Services/combat-icons";
-import { unitAttackColor } from "../../get-heading-color";
+import { getAttackIcon } from "../../../../shared/Services/get-icons";
+import { unitAttackColor } from "../../../../shared/Styles/get-heading-color";
 import {
   CombatHeading,
   CombatImage,

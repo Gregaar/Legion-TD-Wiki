@@ -88,6 +88,6 @@ export const ListElement = styled.li<ListElementProps>`
     display: inline-block;
     position: absolute;
     left: 0;
-    top: -3px
+    top: -2px
   }
 `;

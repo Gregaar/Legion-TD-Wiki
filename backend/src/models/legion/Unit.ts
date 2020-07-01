@@ -136,6 +136,10 @@ const unitSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  "Builder ID": {
+    type: String,
+    required: true,
+  },
 });
 
 unitSchema.methods.toJSON = function () {

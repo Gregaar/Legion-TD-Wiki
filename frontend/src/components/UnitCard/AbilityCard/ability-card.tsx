@@ -1,8 +1,8 @@
 import React from "react";
 
-import abilityAvatar from "../../../assets/ability-avatar.png";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
-import { abilityColor } from "../get-heading-color";
+import { getAbilityIcon } from "../../../shared/Services/get-icons";
+import { abilityColor } from "../../../shared/Styles/get-heading-color";
 import {
   AbilityGrid,
   AbilityImage,
@@ -38,7 +38,7 @@ const abilityCard: React.FC<AbilityCardProps> = ({ unit }) => {
                 Ability: {ability.name}
               </AbilityName>
               <AbilityImage
-                src={abilityAvatar}
+                src={getAbilityIcon(unit.Builder, ability.name)}
                 alt={`The avatar for the ${ability.name} ability`}
               />
               <AbilityInfoHeading>Ability Type</AbilityInfoHeading>
