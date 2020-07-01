@@ -2,17 +2,19 @@ import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import abilityAvatar from "../../../assets/ability-avatar.png";
-import builderAvatar from "../../../assets/builder-avatar.png";
+import unknownIcon from "../../../assets/unknown-icon.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
-import unitAvatar from "../../../assets/unit-avatar.png";
 import {
+  getUnitIcon,
   getAttackIcon,
   getDefenseIcon,
-} from "../../../shared/Services/combat-icons";
+  getAbilityIcon
+} from "../../../shared/Services/get-icons";
 import { UnitImg, UnitName } from "./unit-list-styles";
 
 interface UnitProps {
+  id: string;
+  builderId: string;
   unitName: string;
   builder: string;
   abilities: string[] | null;
@@ -26,9 +28,14 @@ interface UnitProps {
 type UnitNameHandlerEvent = HTMLParagraphElement | HTMLImageElement;
 
 const UnitList: React.FC<UnitProps> = (props) => {
+  const unitIcon = getUnitIcon(props.builder, props.unitName);
   const attackIcon = getAttackIcon(props.attack);
   const defenseIcon = getDefenseIcon(props.defense);
+  const abilityIcon = props.abilities ? getAbilityIcon(props.builder, props.abilities[0]) : unknownIcon;
+  const imgurURL = "https://i.imgur.com";
   const history = useHistory();
+  
+  
 
   const goToUnitHandler = (
     event: React.MouseEvent<UnitNameHandlerEvent>
@@ -60,7 +67,7 @@ const UnitList: React.FC<UnitProps> = (props) => {
         placement="right"
       >
         <UnitImg
-          src={unitAvatar}
+          src={unitIcon}
           alt={`The avatar for the ${props.unitName} unit`}
           onClick={(event) => goToUnitHandler(event)}
         />
@@ -73,7 +80,7 @@ const UnitList: React.FC<UnitProps> = (props) => {
         placement="right"
       >
         <img
-          src={builderAvatar}
+          src={`${imgurURL}/${props.builderId}.png`}
           alt={`The avatar for the ${props.builder} builder`}
           onClick={(event) => goToBuilderHandler(event)}
         />
@@ -95,7 +102,7 @@ const UnitList: React.FC<UnitProps> = (props) => {
         }
       >
         <img
-          src={props.abilities !== null ? abilityAvatar : cancelIcon}
+          src={props.abilities !== null ? abilityIcon : cancelIcon}
           alt={
             props.abilities !== null
               ? `Icon for the ${props.abilities[0]} ability.`

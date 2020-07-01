@@ -38,4 +38,5 @@ export interface UnitInterface extends mongoose.Document {
   "Can Stun": boolean;
   "Can Summon": boolean;
   ID: string;
+  "Builder ID": string;
 }

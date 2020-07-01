@@ -11,6 +11,10 @@ const builderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  "Avatar ID": {
+    type: String,
+    required: true,
+  },
   Description: {
     type: String,
     required: true,

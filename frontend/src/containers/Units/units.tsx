@@ -32,7 +32,6 @@ const Units: React.FC = () => {
           return;
         })
         .catch((error) => {
-          console.log(error);
           return;
         });
     };
@@ -46,6 +45,8 @@ const Units: React.FC = () => {
     unitListDisplay = unitCopy.map((unit) => (
       <UnitList
         key={unit.ID}
+        id={unit.ID}
+        builderId={unit["Builder ID"]}
         unitName={unit.Name}
         builder={unit.Builder}
         abilities={unit.Abilities}
