@@ -1,4 +1,5 @@
 import React from "react";
+
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import IndividualBuilder from "./individualBuilder/individual-builder";
 
@@ -37,5 +38,4 @@ const builderCards: React.FC<BuilderCardsProps> = ({
 
 export default builderCards;
 
-//fix background issue
-//find out best way to align unitsabilities header for all builders.
+//find out best way to align units abilities header for all builders.

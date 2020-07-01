@@ -7,15 +7,15 @@ import mediumDefense from "../../assets/medium.png";
 import normalAttack from "../../assets/normal.png";
 import pierceAttack from "../../assets/pierce.png";
 import siegeAttack from "../../assets/siege.png";
+import tierFive from "../../assets/tier-five.png";
+import tierFour from "../../assets/tier-four.png";
+import tierOne from "../../assets/tier-one.png";
+import tierSix from "../../assets/tier-six.png";
+import tierThree from "../../assets/tier-three.png";
+import tierTwo from "../../assets/tier-two.png";
 import unarmoredDefense from "../../assets/unarmored.png";
 import unitAvatar from "../../assets/unit-avatar.png";
 import unknownIcon from "../../assets/unknown-icon.png";
-import tierOne from "../../assets/tier-one.png";
-import tierTwo from "../../assets/tier-two.png";
-import tierThree from "../../assets/tier-three.png";
-import tierFour from "../../assets/tier-four.png";
-import tierFive from "../../assets/tier-five.png";
-import tierSix from "../../assets/tier-six.png";
 
 export const getAttackIcon = (attackType: string | null): string => {
   switch (attackType) {

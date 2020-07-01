@@ -74,8 +74,6 @@ export const abilityColor = (abilityType: string | null): string => {
     abilityType && abilityType.includes(" ")
       ? abilityType.slice(0, abilityType.indexOf(" "))
       : abilityType;
-
-  console.log(ability);
   switch (ability) {
     case "gold":
       return "goldenrod";

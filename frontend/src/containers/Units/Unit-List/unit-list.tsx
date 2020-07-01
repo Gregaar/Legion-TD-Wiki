@@ -2,14 +2,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import unknownIcon from "../../../assets/unknown-icon.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
+import unknownIcon from "../../../assets/unknown-icon.png";
 import {
-  getUnitIcon,
-  getTierIcon,
+  getAbilityIcon,
   getAttackIcon,
   getDefenseIcon,
-  getAbilityIcon
+  getTierIcon,
+  getUnitIcon,
 } from "../../../shared/Services/get-icons";
 import { Img, UnitName } from "./unit-list-styles";
 
@@ -32,11 +32,11 @@ const UnitList: React.FC<UnitProps> = (props) => {
   const tierIcon = getTierIcon(props.tier);
   const attackIcon = getAttackIcon(props.attack);
   const defenseIcon = getDefenseIcon(props.defense);
-  const abilityIcon = props.abilities ? getAbilityIcon(props.builder, props.abilities[0]) : unknownIcon;
+  const abilityIcon = props.abilities
+    ? getAbilityIcon(props.builder, props.abilities[0])
+    : unknownIcon;
   const imgurURL = "https://i.imgur.com";
   const history = useHistory();
-  
-  
 
   const goToUnitHandler = (
     event: React.MouseEvent<UnitNameHandlerEvent>
@@ -89,10 +89,10 @@ const UnitList: React.FC<UnitProps> = (props) => {
         />
       </Tooltip>
       <Img
-          src={tierIcon}
-          alt={`Tier ${props.tier} icon`}
-          onClick={(event) => goToUnitHandler(event)}
-        />
+        src={tierIcon}
+        alt={`Tier ${props.tier} icon`}
+        onClick={(event) => goToUnitHandler(event)}
+      />
       <Tooltip
         placement="right"
         title={
