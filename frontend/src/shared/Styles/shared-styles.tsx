@@ -21,8 +21,6 @@ export const BackgroundDiv = styled.div<HeightProps>`
     right: 0;
     position: absolute;
     background-image: url(${Background});
-    background-repeat: no-repeat;
-    background-size: cover;
     z-index: -1;
   }
 `;
