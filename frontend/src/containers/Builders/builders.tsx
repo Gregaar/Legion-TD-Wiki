@@ -6,13 +6,12 @@ import { BuildersContainer } from "./builders-styles";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 const Builders: React.FC = () => {
-  const [searchBuilder, setSearchBuilder] = useState<string>("any");
   const [legionBuilders, setLegionBuilders] = useState<BuilderInterface[]>([]);
   const history = useHistory();
 
   useEffect(() => {
     const getBuilders = async () => {
-      await axios(`/api/builder/name/${searchBuilder}`)
+      await axios(`/api/builder/name/any`)
         .then((res) => {
           setLegionBuilders((prevBuilders) => [...res.data.builders]);
         })
