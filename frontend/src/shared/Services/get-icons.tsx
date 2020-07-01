@@ -51,7 +51,7 @@ export const getUnitIcon = (
 ): string => {
   const amazonURL =
     "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
-  if (process.env.NODE_ENV === "production") {
+  if (builder && unitName && process.env.NODE_ENV === "production") {
     return `${amazonURL}/${builder}/avatars/${unitName
       .toLowerCase()
       .replace(/\s/gm, "")}.png`;
@@ -66,7 +66,7 @@ export const getAbilityIcon = (
 ): string => {
   const amazonURL =
     "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
-  if (ability && process.env.NODE_ENV === "production") {
+  if (ability && builder && process.env.NODE_ENV === "production") {
     const pureAbility = ability.toLowerCase().replace(/[\s'!]/gm, "");
     return `${amazonURL}/${builder}/abilities/${pureAbility}.png`;
   } else return unknownIcon;
