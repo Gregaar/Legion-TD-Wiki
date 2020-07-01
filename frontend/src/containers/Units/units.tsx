@@ -17,8 +17,8 @@ const Units: React.FC = () => {
   const titles = [
     "Name",
     "Avatar",
-    "Tier",
     "Builder",
+    "Tier",
     "Abilities",
     "Attack Type",
     "Defense Type",
