@@ -17,11 +17,11 @@ const Units: React.FC = () => {
   const titles = [
     "Name",
     "Avatar",
+    "Tier",
     "Builder",
     "Abilities",
     "Attack Type",
     "Defense Type",
-    "Attack Range",
   ];
 
   useEffect(() => {
@@ -48,13 +48,12 @@ const Units: React.FC = () => {
         id={unit.ID}
         builderId={unit["Builder ID"]}
         unitName={unit.Name}
+        tier={unit["Unit Tier"]}
         builder={unit.Builder}
         abilities={unit.Abilities}
         abilityDescriptions={unit["Ability Description"]}
         attack={unit["Attack Type"]}
         defense={unit["Defense Type"]}
-        rangeType={unit["Melee / Ranged"]}
-        rangeNumber={unit["Range"]}
       />
     ));
   }

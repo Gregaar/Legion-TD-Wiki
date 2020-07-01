@@ -10,6 +10,12 @@ import siegeAttack from "../../assets/siege.png";
 import unarmoredDefense from "../../assets/unarmored.png";
 import unitAvatar from "../../assets/unit-avatar.png";
 import unknownIcon from "../../assets/unknown-icon.png";
+import tierOne from "../../assets/tier-one.png";
+import tierTwo from "../../assets/tier-two.png";
+import tierThree from "../../assets/tier-three.png";
+import tierFour from "../../assets/tier-four.png";
+import tierFive from "../../assets/tier-five.png";
+import tierSix from "../../assets/tier-six.png";
 
 export const getAttackIcon = (attackType: string | null): string => {
   switch (attackType) {
@@ -45,10 +51,7 @@ export const getDefenseIcon = (defenseType: string | null): string => {
   }
 };
 
-export const getUnitIcon = (
-  builder: string,
-  unitName: string,
-): string => {
+export const getUnitIcon = (builder: string, unitName: string): string => {
   const amazonURL =
     "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
   if (builder && unitName && process.env.NODE_ENV === "production") {
@@ -57,6 +60,25 @@ export const getUnitIcon = (
       .replace(/\s/gm, "")}.png`;
   } else {
     return unitAvatar;
+  }
+};
+
+export const getTierIcon = (tier: number): string => {
+  switch (tier) {
+    case 1:
+      return tierOne;
+    case 2:
+      return tierTwo;
+    case 3:
+      return tierThree;
+    case 4:
+      return tierFour;
+    case 5:
+      return tierFive;
+    case 6:
+      return tierSix;
+    default:
+      return unknownIcon;
   }
 };
 
