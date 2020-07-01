@@ -6,29 +6,30 @@ import unknownIcon from "../../../assets/unknown-icon.png";
 import cancelIcon from "../../../assets/cancel-icon.png";
 import {
   getUnitIcon,
+  getTierIcon,
   getAttackIcon,
   getDefenseIcon,
   getAbilityIcon
 } from "../../../shared/Services/get-icons";
-import { UnitImg, UnitName } from "./unit-list-styles";
+import { Img, UnitName } from "./unit-list-styles";
 
 interface UnitProps {
   id: string;
   builderId: string;
   unitName: string;
+  tier: number;
   builder: string;
   abilities: string[] | null;
   abilityDescriptions: string[] | null;
   attack: string | null;
   defense: string | null;
-  rangeType: string | null;
-  rangeNumber: number | null;
 }
 
 type UnitNameHandlerEvent = HTMLParagraphElement | HTMLImageElement;
 
 const UnitList: React.FC<UnitProps> = (props) => {
   const unitIcon = getUnitIcon(props.builder, props.unitName);
+  const tierIcon = getTierIcon(props.tier);
   const attackIcon = getAttackIcon(props.attack);
   const defenseIcon = getDefenseIcon(props.defense);
   const abilityIcon = props.abilities ? getAbilityIcon(props.builder, props.abilities[0]) : unknownIcon;
@@ -66,12 +67,18 @@ const UnitList: React.FC<UnitProps> = (props) => {
           .concat(props.unitName.slice(1))}
         placement="right"
       >
-        <UnitImg
+        <Img
           src={unitIcon}
           alt={`The avatar for the ${props.unitName} unit`}
           onClick={(event) => goToUnitHandler(event)}
+          cursor={1}
         />
       </Tooltip>
+      <Img
+          src={tierIcon}
+          alt={`Tier ${props.tier} icon`}
+          onClick={(event) => goToUnitHandler(event)}
+        />
       <Tooltip
         title={props.builder
           .charAt(0)
@@ -79,10 +86,11 @@ const UnitList: React.FC<UnitProps> = (props) => {
           .concat(props.builder.slice(1))}
         placement="right"
       >
-        <img
+        <Img
           src={`${imgurURL}/${props.builderId}.png`}
           alt={`The avatar for the ${props.builder} builder`}
           onClick={(event) => goToBuilderHandler(event)}
+          cursor={1}
         />
       </Tooltip>
       <Tooltip
@@ -101,7 +109,7 @@ const UnitList: React.FC<UnitProps> = (props) => {
             : "No ability"
         }
       >
-        <img
+        <Img
           src={props.abilities !== null ? abilityIcon : cancelIcon}
           alt={
             props.abilities !== null
@@ -118,7 +126,7 @@ const UnitList: React.FC<UnitProps> = (props) => {
         }
         placement="right"
       >
-        <img src={attackIcon} alt={`Icon for ${props.attack} attacks.`} />
+        <Img src={attackIcon} alt={`Icon for ${props.attack} attacks.`} />
       </Tooltip>
       <Tooltip
         title={
@@ -131,12 +139,8 @@ const UnitList: React.FC<UnitProps> = (props) => {
         }
         placement="right"
       >
-        <img src={defenseIcon} alt={`Icon for ${props.defense} armor.`} />
+        <Img src={defenseIcon} alt={`Icon for ${props.defense} armor.`} />
       </Tooltip>
-      <p style={{ textShadow: "1px 1px black" }}>
-        {props.rangeType ? props.rangeType : "?"} (
-        {props.rangeNumber ? props.rangeNumber : "?"})
-      </p>
     </div>
   );
 };

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface ImgProps {
+  cursor? : number;
+}
+
 export const UnitName = styled.p`
   text-shadow: 1px 1px black;
 
@@ -9,8 +13,7 @@ export const UnitName = styled.p`
     cursor: pointer;
   }
 `;
-export const UnitImg = styled.img`
-  &:hover {
-    cursor: pointer;
+export const Img = styled.img<ImgProps>`
+    cursor: ${props => props.cursor ? "pointer" : "default"};
   }
 `;
