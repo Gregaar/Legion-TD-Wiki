@@ -7,6 +7,7 @@ interface BuilderNameProps {
 
 interface BuilderImgProps {
   disableHover?: number;
+  bgColor?: string;
 }
 
 interface BuilderInfoHeadingProps {
@@ -34,12 +35,21 @@ export const BuilderName = styled.h2<BuilderNameProps>`
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : "darkslategray"};
   cursor: ${(props) => (props.disableHover ? "default" : "pointer")};
+
+  &:hover {
+    color: ${(props) => (props.disableHover ? "inherit" : "yellow")};
+  }
 `;
 
 export const BuilderImage = styled.img<BuilderImgProps>`
   display: block;
   margin: 25px auto;
   cursor: ${(props) => (props.disableHover ? "default" : "pointer")};
+  border: 5px outset transparent;
+
+  &:hover {
+    border: ${(props) => (props.disableHover ? "" : `5px outset ${props.bgColor}`)};
+  }
 `;
 
 export const BuilderInfoHeading = styled.h3<BuilderInfoHeadingProps>`

@@ -81,6 +81,7 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
         alt={`Avatar for the ${props.name} builder.`}
         onClick={handleBuilderClick}
         disableHover={props.disableHover ? 1 : 0}
+        bgColor={builderColor}
       />
       <Paragraph>{props.description}</Paragraph>
       <BuilderInfoHeading bgColor={builderColor}>
