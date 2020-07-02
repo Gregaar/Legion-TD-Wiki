@@ -37,5 +37,3 @@ const builderCards: React.FC<BuilderCardsProps> = ({
 };
 
 export default builderCards;
-
-//find out best way to align units abilities header for all builders.

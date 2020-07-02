@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
-
-export interface MercenaryInterface extends mongoose.Document {
+export default interface SummonInterface {
   Name: string;
+  Builder: string;
   "Lumber Cost": number;
   "Income Bonus": number;
   Location: string;
@@ -37,5 +36,5 @@ export interface MercenaryInterface extends mongoose.Document {
   "Can Stun": boolean;
   "Can Summon": boolean;
   "Land/Flying": string;
-  "Avatar ID": string;
+  ID: string;
 }

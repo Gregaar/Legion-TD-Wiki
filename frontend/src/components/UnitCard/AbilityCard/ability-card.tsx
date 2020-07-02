@@ -1,6 +1,7 @@
 import React from "react";
 
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
+import SummonInterface from "../../../shared/Interfaces/summon-interface";
 import { getAbilityIcon } from "../../../shared/Services/get-icons";
 import { abilityColor } from "../../../shared/Styles/get-heading-color";
 import {
@@ -14,7 +15,7 @@ import {
 } from "./ability-card-styles";
 
 interface AbilityCardProps {
-  unit: UnitInterface;
+  unit: UnitInterface | SummonInterface;
 }
 
 const abilityCard: React.FC<AbilityCardProps> = ({ unit }) => {
