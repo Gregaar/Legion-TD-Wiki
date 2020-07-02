@@ -2,7 +2,12 @@ import React, { useState } from "react";
 
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
-import { FilterContainer, SubmitButton } from "./filter-styles";
+import {
+  ButtonContainer,
+  FilterContainer,
+  ResetButton,
+  SubmitButton,
+} from "./filter-styles";
 import CheckboxFilters from "./Filters/checkboxes";
 import DropdownFilters from "./Filters/dropdowns";
 import SearchFilter from "./Filters/search";
@@ -35,34 +40,42 @@ export interface FilterObjectInterface {
   abilities: AbilityTypes;
 }
 
+const defaultFilters: FilterObjectInterface = {
+  builder: "any",
+  range: "either",
+  attack: "any",
+  defense: "any",
+  tier: {
+    from: 1,
+    to: 6,
+  },
+  abilities: {
+    aura: false,
+    buff: false,
+    debuff: false,
+    splash: false,
+    heal: false,
+    stun: false,
+    summon: false,
+  },
+};
+
+const defaultFilterState = (): FilterObjectInterface => {
+  const storedFilters = sessionStorage.getItem("filterSettings");
+  return storedFilters !== null ? JSON.parse(storedFilters) : defaultFilters;
+};
+
 const Filter: React.FC<FilterProps> = (props) => {
+  const filterDefault = defaultFilterState();
   const [displayErrors, setDisplayErrors] = useState<string>("");
   const [unitName, setUnitName] = useState<string>("");
-  const [unitFilters, setUnitFilters] = useState<FilterObjectInterface>({
-    builder: "any",
-    range: "either",
-    attack: "any",
-    defense: "any",
-    tier: {
-      from: 1,
-      to: 6,
-    },
-    abilities: {
-      aura: false,
+  const [unitFilters, setUnitFilters] = useState<FilterObjectInterface>(
+    filterDefault
+  );
 
-      buff: false,
-
-      debuff: false,
-
-      splash: false,
-
-      heal: false,
-
-      stun: false,
-
-      summon: false,
-    },
-  });
+  const handleFormReset = () => {
+    setUnitFilters((prevFilters) => defaultFilters);
+  };
 
   const handleFilterSubmit = async (event: React.FormEvent, name?: string) => {
     event.preventDefault();
@@ -75,6 +88,7 @@ const Filter: React.FC<FilterProps> = (props) => {
         props.setDisplayUnits,
         setDisplayErrors
       );
+      sessionStorage.setItem("filterSettings", JSON.stringify(unitFilters));
     }
   };
 
@@ -101,30 +115,13 @@ const Filter: React.FC<FilterProps> = (props) => {
           unitFilters={unitFilters}
           setUnitFilters={setUnitFilters}
         />
-        <SubmitButton type="submit" value="Search" />
+        <ButtonContainer>
+          <SubmitButton type="submit" value="Search" />
+          <ResetButton type="button" value="Reset" onClick={handleFormReset} />
+        </ButtonContainer>
       </form>
     </FilterContainer>
   );
 };
 
 export default Filter;
-
-// create a filter/form to go above the unit table, where users can:
-// create their own view for the table of units.
-// e.g. at the moment their is 7 columns, but it should allow the user to
-// change these columns as they see fit.
-
-// this filter/form component should also doubly work as a filtering option too
-// e.g. dropdown for builders, unit tiers, attack types, def types etc.
-// default settings can be all builders or maybe just artic? with the columns I have above
-// depending on the filter, the view below is automatically updated
-
-///create either dropdown or checkbox for melee / ranged.
-
-// create an array with objects holding options info and MAP these options
-// e.g. <select onChange={myfunc} value={myvalue}>
-//        {options.map(item => (
-//          <option key={item.key} value={item.value}>{item.name}</option>
-//))}
-
-// figure out the default selected option thing.
