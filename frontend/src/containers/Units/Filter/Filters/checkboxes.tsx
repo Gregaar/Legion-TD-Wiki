@@ -53,6 +53,7 @@ const checkboxFilters: React.FC<CheckboxProps> = (props) => {
             <CheckboxInput
               type="checkbox"
               id={ability}
+              checked={props.unitFilters.abilities[ability] ? true : false}
               name={ability}
               order={index}
               value={ability}

@@ -293,7 +293,6 @@ export const findUnitByUsefulAbility: RequestHandler<{
 
     if (req.query.builder.toString().toLowerCase() === "any") {
       const unitsFound = await Unit.find({ [ability]: true });
-      console.log(unitsFound);
       return res.json({ units: [...unitsFound] });
     }
 

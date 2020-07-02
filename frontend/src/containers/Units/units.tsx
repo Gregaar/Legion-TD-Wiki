@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import Filter from "./Filter/filter";
+import searchWithFilters from "./Filter/Requests/search-with-filters";
 import UnitList from "./Unit-List/unit-list";
 import {
   UnitContainer,
@@ -25,7 +26,7 @@ const Units: React.FC = () => {
   ];
 
   useEffect(() => {
-    const unitByBuilder = async (builder: string) => {
+    const getUnitsToDisplay = async (builder: string) => {
       await axios(`/api/unit/builder/${builder}`)
         .then((res) => {
           setDisplayUnits((prevUnits) => [...prevUnits, ...res.data.units]);
@@ -35,7 +36,14 @@ const Units: React.FC = () => {
           return;
         });
     };
-    unitByBuilder("artic");
+    const storedFilter = sessionStorage.getItem("filterSettings");
+    if (storedFilter) {
+      const storedObj = JSON.parse(storedFilter);
+
+      searchWithFilters(storedObj, setDisplayUnits);
+    } else {
+      getUnitsToDisplay("artic");
+    }
   }, []);
 
   let unitListDisplay;

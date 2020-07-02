@@ -9,7 +9,7 @@ interface SearchWithFiltersArgs {
     setUnits: (
       value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
     ) => void,
-    setErrors: (value: string | ((value: string) => string)) => void
+    setErrors?: (value: string | ((value: string) => string)) => void
   ): void;
 }
 
@@ -30,7 +30,12 @@ const searchWithFilters: SearchWithFiltersArgs = async (
       }
     })
     .catch((error) => {
-      setErrors((prevErrors: string) => error.response.data.error);
+      if (setErrors) {
+        setErrors((prevErrors: string) => error.response.data.error);
+        return error.response.data.error;
+      } else {
+        return error.response.data.error;
+      }
     });
 };
 

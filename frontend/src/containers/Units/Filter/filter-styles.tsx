@@ -96,8 +96,8 @@ export const CheckboxInput = styled.input<CheckboxProps>`
 `;
 
 export const SubmitButton = styled.input`
-    display: block;
-    margin: 25px auto 0 auto;
+    display: inline-block;
+    margin: 25px 5px 5px 1.5rem;
     padding: 0.46em 1.6em;
     border: 0.1em solid #000000;
 
@@ -108,7 +108,7 @@ export const SubmitButton = styled.input`
    font-weight: 300;
    color: #000000;
    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-   background-color: yellow;
+   background-color: limegreen;
    text-align: center;
    transition: all 0.15s;
 
@@ -116,4 +116,12 @@ export const SubmitButton = styled.input`
     ext-shadow: 0 0 2em rgba(255, 255, 255, 1);
      border-color: #ffffff;
   }
+`;
+
+export const ResetButton = styled(SubmitButton)`
+  background-color: yellow;
+`;
+
+export const ButtonContainer = styled.div`
+  text-align: center;
 `;
