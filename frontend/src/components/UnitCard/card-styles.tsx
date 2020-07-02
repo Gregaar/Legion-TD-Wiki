@@ -26,7 +26,7 @@ interface NavParagraph {
 export const InfoPanel = styled.div<InfoPanelProps>`
   display: inline-block;
   width: 350px;
-  max-height: ${(props) => props.height || "655px"};
+  max-height: ${(props) => props.height || "675px"};
   margin: ${(props) =>
     props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
   text-align: center;
