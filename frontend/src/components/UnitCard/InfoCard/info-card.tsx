@@ -27,7 +27,7 @@ const infoCard: React.FC<InfoCardProps> = ({
   nameNav,
   disableInfoNav,
 }) => {
-  const nameBgColor = unitNameColor(unit.Builder);
+  const unitBgColor = unitNameColor(unit.Builder);
   const unitIcon = getUnitIcon(unit.Builder, unit.Name);
 
   const handleNameClick = (): void => {
@@ -42,7 +42,7 @@ const infoCard: React.FC<InfoCardProps> = ({
   const hybridUnits = (
     <InfoPanel height="350px">
       <UnitName
-        bgColor={nameBgColor}
+        bgColor={unitBgColor}
         onClick={handleNameClick}
         enableHover={nameNav ? 1 : 0}
       >
@@ -52,6 +52,7 @@ const infoCard: React.FC<InfoCardProps> = ({
         src={unitIcon}
         alt={`Avatar for the ${unit.Name} unit.`}
         onClick={handleNameClick}
+        bgColor={unitBgColor}
         enableHover={nameNav ? 1 : 0}
       />
       <UnitInfoHeading>Building Info</UnitInfoHeading>
@@ -72,7 +73,7 @@ const infoCard: React.FC<InfoCardProps> = ({
   ) : (
     <InfoPanel ability={unit.Abilities !== null ? 1 : 0}>
       <UnitName
-        bgColor={nameBgColor}
+        bgColor={unitBgColor}
         onClick={handleNameClick}
         enableHover={nameNav ? 1 : 0}
       >
@@ -82,6 +83,7 @@ const infoCard: React.FC<InfoCardProps> = ({
         src={unitIcon}
         alt={`Avatar for the ${unit.Name} unit.`}
         onClick={handleNameClick}
+        bgColor={unitBgColor}
         enableHover={nameNav ? 1 : 0}
       />
       <UnitInfoHeading>Building Info</UnitInfoHeading>

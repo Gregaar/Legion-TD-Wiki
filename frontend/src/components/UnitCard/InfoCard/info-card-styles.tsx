@@ -15,6 +15,7 @@ interface UnitNameProps {
 }
 
 interface UnitImageProps {
+  bgColor?: string;
   enableHover?: number;
 }
 
@@ -55,6 +56,11 @@ export const UnitImage = styled.img<UnitImageProps>`
   display: block;
   margin: 25px auto;
   cursor: ${(props) => (props.enableHover ? "pointer" : "default")};
+  border: 5px outset transparent;
+
+  &:hover {
+    border: ${(props) => (props.enableHover ? `5px outset ${props.bgColor}` : "")};
+  }
 `;
 
 export const UnitInfoHeading = styled.h3`
