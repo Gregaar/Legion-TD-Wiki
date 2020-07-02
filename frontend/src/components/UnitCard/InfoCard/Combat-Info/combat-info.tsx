@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InfoHeading } from "../info-card-styles";
+import { InfoHeading } from "../../card-styles";
 
 interface CombatInfoProps {
   minDamage: number;

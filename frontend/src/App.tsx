@@ -5,8 +5,10 @@ import Homepage from "./components/Homepage/homepage";
 import Builders from "./containers/Builders/builders";
 import BuilderUnits from "./containers/BuilderUnits/builder-units";
 import IndividualUnit from "./containers/IndividualUnit/individual-unit";
+import IndividualSummon from "./containers/IndividualSummon/individual-summon";
 import Login from "./containers/Login/login";
 import Units from "./containers/Units/units";
+import Summons from "./containers/Summons/summons";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
@@ -29,6 +31,12 @@ const App: React.FC = () => {
             component={BuilderUnits}
           />
           <ProtectedRoute path="/builders" exact component={Builders} />
+          <ProtectedRoute
+            path="/summons/:summonName"
+            exact
+            component={IndividualSummon}
+          />
+          <ProtectedRoute path="/summons" exact component={Summons} />
           <ProtectedRoute path="/" exact component={Homepage} />
         </Switch>
       </Layout>

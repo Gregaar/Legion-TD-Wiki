@@ -26,7 +26,7 @@ interface NavParagraph {
 export const InfoPanel = styled.div<InfoPanelProps>`
   display: inline-block;
   width: 350px;
-  max-height: ${(props) => props.height || "645px"};
+  max-height: ${(props) => props.height || "655px"};
   margin: ${(props) =>
     props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
   text-align: center;
@@ -59,7 +59,7 @@ export const UnitImage = styled.img<UnitImageProps>`
   border: 5px outset transparent;
 
   &:hover {
-    border: ${(props) => (props.enableHover ? `5px outset ${props.bgColor}` : "")};
+    border: ${(props) => (props.enableHover ? `5px outset ${props.bgColor ? props.bgColor : "darkslategrey"}` : "")};
   }
 `;
 

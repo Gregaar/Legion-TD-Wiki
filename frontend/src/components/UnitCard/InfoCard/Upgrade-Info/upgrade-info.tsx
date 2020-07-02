@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InfoHeading, NavParagraph } from "../info-card-styles";
+import { InfoHeading, NavParagraph } from "../../card-styles";
 
 interface UpgradeInfoProps {
   upgradedName: string[] | null;

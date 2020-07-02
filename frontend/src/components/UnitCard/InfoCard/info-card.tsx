@@ -11,7 +11,7 @@ import {
   UnitImage,
   UnitInfoHeading,
   UnitName,
-} from "./info-card-styles";
+} from "../card-styles";
 import UpgradeInfo from "./Upgrade-Info/upgrade-info";
 
 interface InfoCardProps {
