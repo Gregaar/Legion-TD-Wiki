@@ -13,6 +13,7 @@ interface CombatInfoProps {
   attackClass: string | null;
   attackSpeed: number;
   isOpen: boolean;
+  disableAnimation?: boolean;
 }
 
 const combatInfo: React.FC<CombatInfoProps> = (props) => {
@@ -37,7 +38,9 @@ const combatInfo: React.FC<CombatInfoProps> = (props) => {
   ];
 
   return (
-    <InfoGrid isOpen={props.isOpen}>
+    <InfoGrid 
+    isOpen={props.isOpen}
+    disableAnimation={props.disableAnimation ? 1 : 0}>
       {combatData &&
         combatData.map((data) => (
           <React.Fragment key={data.key}>
