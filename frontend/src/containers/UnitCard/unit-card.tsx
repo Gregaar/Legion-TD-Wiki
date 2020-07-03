@@ -138,6 +138,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
             attackClass={unit["Attack Speed Class"]}
             mana={unit.Mana}
             isOpen={toggle.combat}
+            disableAnimation={disableInfoNav}
           />
         </>
       )}
