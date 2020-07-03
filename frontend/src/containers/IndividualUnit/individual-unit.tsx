@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import AbilityCard from "../../components/UnitCard/AbilityCard/ability-card";
-import CombatCard from "../../components/UnitCard/CombatCard/combat-card";
-import UnitInfo from "../../components/UnitCard/InfoCard/info-card";
+import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
+import CombatCard from "../../components/Cards/CombatCard/combat-card";
+import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import SummonCard from "../Summons/summon-card";
+import UnitCard from "../UnitCard/unit-card";
 import { ContainerDiv } from "./individual-unit-styles";
 
 const sanitizeUnitName = (path: string): string => {
@@ -15,12 +17,15 @@ const sanitizeUnitName = (path: string): string => {
   return unitWithDashes.replace(/-/gm, " ");
 };
 
+type Unit = UnitInterface & SummonInterface;
+
 const IndividualUnit: React.FC = () => {
-  const [currentUnit, setCurrentUnit] = useState<UnitInterface>(
-    {} as UnitInterface
-  );
+  const [currentUnit, setCurrentUnit] = useState<Unit>({} as Unit);
   const history = useHistory();
   const currentLocation = useLocation();
+  const isSummonUnit = currentLocation.pathname.includes("summons")
+    ? true
+    : false;
   const unitName = sanitizeUnitName(currentLocation.pathname);
 
   useEffect(() => {
@@ -36,8 +41,23 @@ const IndividualUnit: React.FC = () => {
           return;
         });
     };
-    getUnit();
-  }, [unitName, history]);
+    const getSummon = async () => {
+      await axios(`/api/summon/name/${unitName}`)
+        .then((res) => {
+          setCurrentUnit((prevSummon) => res.data.summon);
+          return;
+        })
+        .catch((error) => {
+          history.push("/summons");
+          return;
+        });
+    };
+    if (isSummonUnit) {
+      getSummon();
+    } else {
+      getUnit();
+    }
+  }, [unitName, isSummonUnit, history]);
 
   let unitToDisplay;
 
@@ -45,7 +65,15 @@ const IndividualUnit: React.FC = () => {
     const copiedUnit = { ...currentUnit };
     unitToDisplay = (
       <React.Fragment key={copiedUnit.ID}>
-        <UnitInfo unit={copiedUnit} goToClicked={history.push} />
+        {isSummonUnit ? (
+          <SummonCard
+            summon={currentUnit}
+            goToClicked={history.push}
+            enableHover={0}
+          />
+        ) : (
+          <UnitCard unit={copiedUnit} goToClicked={history.push} />
+        )}
 
         {copiedUnit["Attack Type"] !== null ? (
           <CombatCard unit={copiedUnit} />

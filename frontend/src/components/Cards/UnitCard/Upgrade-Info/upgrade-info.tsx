@@ -1,11 +1,12 @@
 import React from "react";
 
-import { InfoHeading, NavParagraph } from "../../card-styles";
+import { InfoGrid, InfoHeading, NavParagraph } from "../../card-styles";
 
 interface UpgradeInfoProps {
   upgradedName: string[] | null;
   baseName: string[] | null;
   disableInfoNav?: boolean;
+  isOpen?: boolean;
   clickedName: (path: string) => void;
 }
 
@@ -20,7 +21,10 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
   };
 
   const upgradedNames = (
-    <React.Fragment>
+    <InfoGrid
+      isOpen={props.isOpen}
+      disableAnimation={props.disableInfoNav ? 1 : 0}
+    >
       <InfoHeading>Upgraded Unit</InfoHeading>
       {props.upgradedName
         ? props.upgradedName.map((name) => (
@@ -37,11 +41,14 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
             </React.Fragment>
           ))
         : null}
-    </React.Fragment>
+    </InfoGrid>
   );
 
   const baseUnitNames = (
-    <React.Fragment>
+    <InfoGrid
+      isOpen={props.isOpen}
+      disableAnimation={props.disableInfoNav ? 1 : 0}
+    >
       <InfoHeading>Base Unit</InfoHeading>
       {props.baseName
         ? props.baseName.map((name) => (
@@ -58,7 +65,7 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
             </React.Fragment>
           ))
         : null}
-    </React.Fragment>
+    </InfoGrid>
   );
 
   return (

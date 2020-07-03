@@ -1,5 +1,6 @@
 import React from "react";
 import shortid from "shortid";
+
 import { InfoGrid, InfoHeading } from "../../card-styles";
 
 interface SummonCombatProps {
@@ -13,6 +14,7 @@ interface SummonCombatProps {
   mana: number;
   abilityCount: number;
   disableAnimation?: number;
+  isOpen: boolean;
 }
 
 const summonCombat: React.FC<SummonCombatProps> = (props) => {
@@ -42,7 +44,7 @@ const summonCombat: React.FC<SummonCombatProps> = (props) => {
   ];
 
   return (
-    <InfoGrid disableAnimation={props.disableAnimation}>
+    <InfoGrid disableAnimation={props.disableAnimation} isOpen={props.isOpen}>
       {summonCombatArray &&
         summonCombatArray.map((combatInfo) => (
           <React.Fragment key={combatInfo.key}>

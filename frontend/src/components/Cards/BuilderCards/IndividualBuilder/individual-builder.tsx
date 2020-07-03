@@ -1,7 +1,7 @@
 import React from "react";
 import shortid from "shortid";
 
-import { unitNameColor } from "../../../shared/Styles/get-heading-color";
+import { unitNameColor } from "../../../../shared/Styles/get-heading-color";
 import {
   AbilityGrid,
   AbilityHeading,
@@ -28,34 +28,32 @@ interface IndividualBuilderProps {
   summon: number;
 }
 
-const addArrayIds = (array: [string, number][]): [string, number, string][] => {
-  const withID: [string, number, string][] = array.map((ability) => {
-    return [...ability, shortid.generate()];
-  });
-  return withID;
-};
+interface BuilderAbilities {
+  title: string;
+  value: number;
+  key: string;
+}
 
-const filterOutZeroes = (array: [string, number, string][]) => {
+const filterOutZeroes = (array: BuilderAbilities[]) => {
   return array.filter((ability) => {
-    return ability[1] > 0;
+    return ability.value > 0;
   });
 };
 
 const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
   const imgurURL = "https://i.imgur.com";
-  const abilityArray: [string, number][] = [
-    ["auras", props.aura],
-    ["buffs", props.buff],
-    ["debuffs", props.debuff],
-    ["splash", props.splash],
-    ["heals", props.heal],
-    ["stuns", props.stun],
-    ["summons", props.summon],
+
+  const abilityArray: BuilderAbilities[] = [
+    { title: "auras", value: props.aura, key: shortid.generate() },
+    { title: "buffs", value: props.buff, key: shortid.generate() },
+    { title: "debuffs", value: props.debuff, key: shortid.generate() },
+    { title: "splash", value: props.splash, key: shortid.generate() },
+    { title: "heals", value: props.heal, key: shortid.generate() },
+    { title: "stuns", value: props.stun, key: shortid.generate() },
+    { title: "summons", value: props.summon, key: shortid.generate() },
   ];
 
-  const abilitiesArrayIds = addArrayIds(abilityArray);
-
-  const filteredAbilities = filterOutZeroes(abilitiesArrayIds);
+  const filteredAbilities = filterOutZeroes(abilityArray);
 
   const builderColor = unitNameColor(props.name);
 
@@ -91,14 +89,15 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
         {props.name !== "hybrid" && props.name !== "prophet"
           ? filteredAbilities &&
             filteredAbilities.map((ability) => (
-              <React.Fragment key={ability[2]}>
-                <AbilityHeading>{ability[0]}</AbilityHeading>
-                <Paragraph>{ability[1]}</Paragraph>
+              <React.Fragment key={ability.key}>
+                <AbilityHeading>{ability.title}</AbilityHeading>
+                <Paragraph>{ability.value}</Paragraph>
               </React.Fragment>
             ))
-          : abilitiesArrayIds.map((ability) => (
-              <React.Fragment key={ability[2]}>
-                <AbilityHeading>{ability[0]}</AbilityHeading>
+          : abilityArray &&
+            abilityArray.map((ability) => (
+              <React.Fragment key={ability.key}>
+                <AbilityHeading>{ability.title}</AbilityHeading>
                 <Paragraph>?</Paragraph>
               </React.Fragment>
             ))}

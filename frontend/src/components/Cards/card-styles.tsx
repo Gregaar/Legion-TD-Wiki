@@ -7,11 +7,16 @@ interface InfoPanelProps {
 
 interface InfoGridProps {
   disableAnimation?: number;
+  isOpen?: boolean;
 }
 
 interface UnitNameProps {
   bgColor?: string;
   enableHover?: number;
+}
+
+interface UnitInfoHeadingProps {
+  canToggle?: number;
 }
 
 interface UnitImageProps {
@@ -25,8 +30,10 @@ interface NavParagraph {
 
 export const InfoPanel = styled.div<InfoPanelProps>`
   display: inline-block;
+  align-self: start;
   width: 350px;
   max-height: ${(props) => props.height || "700px"};
+  overflow: hidden;
   margin: ${(props) =>
     props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
   text-align: center;
@@ -59,20 +66,28 @@ export const UnitImage = styled.img<UnitImageProps>`
   border: 5px outset transparent;
 
   &:hover {
-    border: ${(props) => (props.enableHover ? `5px outset ${props.bgColor ? props.bgColor : "darkslategrey"}` : "")};
+    border: ${(props) =>
+      props.enableHover
+        ? `5px outset ${props.bgColor ? props.bgColor : "darkslategrey"}`
+        : ""};
   }
 `;
 
-export const UnitInfoHeading = styled.h3`
+export const UnitInfoHeading = styled.h3<UnitInfoHeadingProps>`
   text-shadow: 2px 1px black;
   background-color: #3a6384;
   margin: 15px 0;
   border: 2px solid floralwhite;
   border-radius: 3px;
+
+  &:hover {
+    cursor: ${(props) => (props.canToggle ? "pointer" : "default")};
+    color: ${(props) => (props.canToggle ? "gold" : "inherit")};
+  }
 `;
 
 export const InfoGrid = styled.div<InfoGridProps>`
-  display: grid;
+  display: ${(props) => (props.isOpen ? "grid" : "none")};
   grid-template-columns: 1fr 1fr;
   text-transform: capitalize;
   align-items: center;

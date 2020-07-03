@@ -5,10 +5,9 @@ import Homepage from "./components/Homepage/homepage";
 import Builders from "./containers/Builders/builders";
 import BuilderUnits from "./containers/BuilderUnits/builder-units";
 import IndividualUnit from "./containers/IndividualUnit/individual-unit";
-import IndividualSummon from "./containers/IndividualSummon/individual-summon";
 import Login from "./containers/Login/login";
-import Units from "./containers/Units/units";
 import Summons from "./containers/Summons/summons";
+import Units from "./containers/Units/units";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
@@ -34,7 +33,7 @@ const App: React.FC = () => {
           <ProtectedRoute
             path="/summons/:summonName"
             exact
-            component={IndividualSummon}
+            component={IndividualUnit}
           />
           <ProtectedRoute path="/summons" exact component={Summons} />
           <ProtectedRoute path="/" exact component={Homepage} />

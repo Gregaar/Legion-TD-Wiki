@@ -1,7 +1,7 @@
 import React from "react";
 
-import BuilderInterface from "../../shared/Interfaces/builder-interface";
-import IndividualBuilder from "./individualBuilder/individual-builder";
+import BuilderInterface from "../../../shared/Interfaces/builder-interface";
+import IndividualBuilder from "./IndividualBuilder/individual-builder";
 
 interface BuilderCardsProps {
   builders: BuilderInterface[];
