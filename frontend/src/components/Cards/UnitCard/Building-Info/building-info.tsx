@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InfoHeading, NavParagraph } from "../../card-styles";
+import { InfoGrid, InfoHeading, NavParagraph } from "../../card-styles";
 
 interface BuildingInfoProps {
   tier: number;
@@ -8,6 +8,7 @@ interface BuildingInfoProps {
   goldCost: number;
   builder: string;
   disableInfoNav?: boolean;
+  isOpen?: boolean;
   clicked: (path: string) => void;
 }
 
@@ -21,7 +22,10 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <InfoGrid
+      isOpen={props.isOpen}
+      disableAnimation={props.disableInfoNav ? 1 : 0}
+    >
       <InfoHeading>Builder</InfoHeading>
       <NavParagraph
         onClick={() => handleBuilderClick(props.builder)}
@@ -35,7 +39,7 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
       <p>{props.goldCost}</p>
       <InfoHeading>Food Cost</InfoHeading>
       <p>{props.foodCost}</p>
-    </React.Fragment>
+    </InfoGrid>
   );
 };
 

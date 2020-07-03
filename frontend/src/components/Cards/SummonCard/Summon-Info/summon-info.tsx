@@ -1,5 +1,6 @@
 import React from "react";
 import shortid from "shortid";
+
 import { InfoGrid, InfoHeading } from "../../card-styles";
 
 interface SummonInfoProps {
@@ -8,6 +9,7 @@ interface SummonInfoProps {
   stock: number;
   replenishInterval: number;
   disableAnimation?: number;
+  isOpen: boolean;
 }
 
 const summonInfo: React.FC<SummonInfoProps> = (props) => {
@@ -27,7 +29,7 @@ const summonInfo: React.FC<SummonInfoProps> = (props) => {
   ];
 
   return (
-    <InfoGrid disableAnimation={props.disableAnimation}>
+    <InfoGrid disableAnimation={props.disableAnimation} isOpen={props.isOpen}>
       {summonInfoArray &&
         summonInfoArray.map((info) => (
           <React.Fragment key={info.key}>

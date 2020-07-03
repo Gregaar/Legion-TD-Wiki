@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import IndividualBuilder from "../../components/BuilderCards/individualBuilder/individual-builder";
-import InfoCard from "../../components/UnitCard/InfoCard/info-card";
+import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBuilder/individual-builder";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import InfoCard from "../UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
 
 const sanitizeBuilderName = (path: string): string => {

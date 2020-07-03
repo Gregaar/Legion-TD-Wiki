@@ -48,7 +48,8 @@ export const BuilderImage = styled.img<BuilderImgProps>`
   border: 5px outset transparent;
 
   &:hover {
-    border: ${(props) => (props.disableHover ? "" : `5px outset ${props.bgColor}`)};
+    border: ${(props) =>
+      props.disableHover ? "" : `5px outset ${props.bgColor}`};
   }
 `;
 

@@ -30,6 +30,10 @@ export const unitNameColor = (unitBuilder: string): string => {
       return "rgba(128, 128, 0, 0.8)";
     case "hybrid":
       return "unset";
+    case "barracks":
+      return "darkgreen";
+    case "advanced barracks":
+      return "brown";
     default:
       return "darkslategray";
   }
