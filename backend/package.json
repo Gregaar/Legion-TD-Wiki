@@ -22,7 +22,7 @@
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
-    "mongoose": "^5.9.18",
+    "mongoose": "^5.9.21",
     "password-validator": "^5.0.3",
     "pino": "^6.3.2",
     "typescript": "^3.9.5",
