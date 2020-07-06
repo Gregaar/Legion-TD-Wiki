@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "csvtojson": "^2.0.10",
-    "mongodb": "^3.5.8"
+    "mongodb": "^3.5.9"
   },
   "devDependencies": {
     "@types/csvtojson": "^1.1.5",
