@@ -14,6 +14,7 @@ import {
 
 interface IndividualBuilderProps {
   clicked?: (path: string) => void;
+  prophet?: boolean;
   disableHover?: boolean;
   ID: string;
   name: string;
@@ -86,7 +87,15 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
         Unit Abilities
       </BuilderInfoHeading>
       <AbilityGrid>
-        {props.name !== "hybrid" && props.name !== "prophet"
+        {props.prophet
+          ? filteredAbilities &&
+            filteredAbilities.map((ability) => (
+              <React.Fragment key={ability.key}>
+                <AbilityHeading>{ability.title}</AbilityHeading>
+                <Paragraph>{ability.value}</Paragraph>
+              </React.Fragment>
+            ))
+          : props.name !== "hybrid" && props.name !== "prophet"
           ? filteredAbilities &&
             filteredAbilities.map((ability) => (
               <React.Fragment key={ability.key}>

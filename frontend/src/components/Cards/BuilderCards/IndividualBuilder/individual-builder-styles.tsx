@@ -16,7 +16,7 @@ interface BuilderInfoHeadingProps {
 
 export const BuilderPanel = styled.div`
   width: 375px;
-  max-height: 455px;
+  max-height: 465px;
   margin: 0 auto;
   text-align: center;
   border: 2px solid beige;

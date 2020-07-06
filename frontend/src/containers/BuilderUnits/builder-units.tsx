@@ -5,6 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBuilder/individual-builder";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
+import ProphetAbilities from "../../shared/Interfaces/prophet-abilities-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import InfoCard from "../Units/UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
@@ -18,6 +19,9 @@ const BuilderUnits: React.FC = () => {
   const [units, setUnits] = useState<UnitInterface[]>([]);
   const [builderInfo, setBuilderInfo] = useState<BuilderInterface>(
     {} as BuilderInterface
+  );
+  const [prophetAbilities, setProphetAbilities] = useState<ProphetAbilities>(
+    {} as ProphetAbilities
   );
   const history = useHistory();
   const currentLocation = useLocation();
@@ -37,10 +41,24 @@ const BuilderUnits: React.FC = () => {
         });
     };
     const getBuilderUnitsInfo = async () => {
-      await axios(`/api/unit/builder/${builderName}`)
+      const path =
+        builderName !== "prophet"
+          ? `/api/unit/builder/${builderName}`
+          : `/api/unit/prophet`;
+      await axios(path)
         .then((res) => {
-          setUnits((prevUnits) => [...res.data.units]);
-          return;
+          if (builderName !== "prophet") {
+            setUnits((prevUnits) => [...res.data.units]);
+            return;
+          } else {
+            setUnits((prevUnits) => [...res.data.units]);
+            setProphetAbilities((prevAbilities) => {
+              return {
+                ...res.data.abilities,
+              };
+            });
+            return;
+          }
         })
         .catch((error) => {
           return error;
@@ -52,20 +70,38 @@ const BuilderUnits: React.FC = () => {
 
   return (
     <BackgroundDiv height="100%">
-      <IndividualBuilder
-        disableHover={true}
-        ID={builderInfo["Avatar ID"]}
-        name={builderInfo.Name}
-        description={builderInfo.Description}
-        heroes={builderInfo["Altar Of Heroes"]}
-        aura={builderInfo.Aura}
-        buff={builderInfo.Buff}
-        debuff={builderInfo.Debuff}
-        splash={builderInfo.Splash}
-        heal={builderInfo.Heal}
-        stun={builderInfo.Stun}
-        summon={builderInfo.Summon}
-      />
+      {builderName === "prophet" ? (
+        <IndividualBuilder
+          prophet={true}
+          disableHover={true}
+          ID={builderInfo["Avatar ID"]}
+          name={builderInfo.Name}
+          description={builderInfo.Description}
+          heroes={builderInfo["Altar Of Heroes"]}
+          aura={prophetAbilities.Aura}
+          buff={prophetAbilities.Buff}
+          debuff={prophetAbilities.Debuff}
+          splash={prophetAbilities.Splash}
+          heal={prophetAbilities.Heal}
+          stun={prophetAbilities.Stun}
+          summon={prophetAbilities.Summon}
+        />
+      ) : (
+        <IndividualBuilder
+          disableHover={true}
+          ID={builderInfo["Avatar ID"]}
+          name={builderInfo.Name}
+          description={builderInfo.Description}
+          heroes={builderInfo["Altar Of Heroes"]}
+          aura={builderInfo.Aura}
+          buff={builderInfo.Buff}
+          debuff={builderInfo.Debuff}
+          splash={builderInfo.Splash}
+          heal={builderInfo.Heal}
+          stun={builderInfo.Stun}
+          summon={builderInfo.Summon}
+        />
+      )}
       <UnitGrid>
         {units &&
           units.map((unit) => (

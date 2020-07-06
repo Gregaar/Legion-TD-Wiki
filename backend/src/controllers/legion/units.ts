@@ -1,6 +1,8 @@
 import { RequestHandler } from "express";
 
 import Unit from "../../models/legion/Unit";
+import getProphetUnitAbilities from "../../services/legion/get-prophet-unit-abilities";
+import getProphetUnits from "../../services/legion/get-prophet-units";
 
 // e.g. unit: Tuskarr
 export const searchByUnitName: RequestHandler<{ name: string }> = async (
@@ -103,5 +105,32 @@ export const queriedUnits: RequestHandler = async (req, res) => {
     return res.status(200).json({ units: [...unitsFound] });
   } catch (error) {
     return res.status(500).json({ error: "Unable to query units" });
+  }
+};
+
+export const prophetUnits: RequestHandler = async (req, res) => {
+  try {
+    const tierOne = await getProphetUnits(1);
+    const tierTwo = await getProphetUnits(2);
+    const tierThree = await getProphetUnits(3);
+    const tierFour = await getProphetUnits(4);
+    const tierFive = await getProphetUnits(5);
+    const tierSix = await getProphetUnits(6);
+    const allUnits = [
+      ...tierOne,
+      ...tierTwo,
+      ...tierThree,
+      ...tierFour,
+      ...tierFive,
+      ...tierSix,
+    ];
+    const abilityCount = getProphetUnitAbilities(allUnits);
+
+    return res.status(200).json({
+      units: allUnits,
+      abilities: abilityCount,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: "Unable to get Prophet Units" });
   }
 };
