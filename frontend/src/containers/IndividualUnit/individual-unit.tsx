@@ -6,9 +6,11 @@ import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import CombatCard from "../../components/Cards/CombatCard/combat-card";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
+import WaveInterface from "../../shared/Interfaces/wave-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import SummonCard from "../Summons/summon-card";
-import UnitCard from "../UnitCard/unit-card";
+import UnitCard from "../Units/UnitCard/unit-card";
+import WaveCard from "../Waves/wave-card";
 import { ContainerDiv } from "./individual-unit-styles";
 
 const sanitizeUnitName = (path: string): string => {
@@ -17,15 +19,14 @@ const sanitizeUnitName = (path: string): string => {
   return unitWithDashes.replace(/-/gm, " ");
 };
 
-type Unit = UnitInterface & SummonInterface;
+type Unit = UnitInterface & SummonInterface & WaveInterface;
 
 const IndividualUnit: React.FC = () => {
   const [currentUnit, setCurrentUnit] = useState<Unit>({} as Unit);
   const history = useHistory();
   const currentLocation = useLocation();
-  const isSummonUnit = currentLocation.pathname.includes("summons")
-    ? true
-    : false;
+  const isSummonUnit = currentLocation.pathname.includes("summons");
+  const isWaveUnit = currentLocation.pathname.includes("waves");
   const unitName = sanitizeUnitName(currentLocation.pathname);
 
   useEffect(() => {
@@ -52,12 +53,25 @@ const IndividualUnit: React.FC = () => {
           return;
         });
     };
+    const getWave = async () => {
+      await axios(`/api/wave/name/${unitName}`)
+        .then((res) => {
+          setCurrentUnit((prevWave) => res.data.waves);
+          return;
+        })
+        .catch((error) => {
+          history.push("/waves");
+          return;
+        });
+    };
     if (isSummonUnit) {
       getSummon();
+    } else if (isWaveUnit) {
+      getWave();
     } else {
       getUnit();
     }
-  }, [unitName, isSummonUnit, history]);
+  }, [unitName, isSummonUnit, isWaveUnit, history]);
 
   let unitToDisplay;
 
@@ -71,6 +85,12 @@ const IndividualUnit: React.FC = () => {
             goToClicked={history.push}
             enableHover={0}
           />
+        ) : isWaveUnit ? (
+          <WaveCard
+            wave={currentUnit}
+            goToClicked={history.push}
+            enableHover={false}
+          />
         ) : (
           <UnitCard unit={copiedUnit} goToClicked={history.push} />
         )}
@@ -79,7 +99,7 @@ const IndividualUnit: React.FC = () => {
           <CombatCard unit={copiedUnit} />
         ) : null}
 
-        {copiedUnit.Abilities !== null ? (
+        {copiedUnit.Abilities !== null && copiedUnit.Abilities !== undefined ? (
           <AbilityCard unit={copiedUnit} />
         ) : null}
       </React.Fragment>

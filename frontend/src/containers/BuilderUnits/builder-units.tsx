@@ -6,7 +6,7 @@ import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBui
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
-import InfoCard from "../UnitCard/unit-card";
+import InfoCard from "../Units/UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
 
 const sanitizeBuilderName = (path: string): string => {

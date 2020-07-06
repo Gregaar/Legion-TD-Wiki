@@ -63,6 +63,16 @@ export const getUnitIcon = (builder: string, unitName: string): string => {
   }
 };
 
+export const getWaveIcon = (creepName: string): string => {
+  const amazonURL =
+    "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/waves/avatars";
+  if (creepName && process.env.NODE_ENV === "production") {
+    return `${amazonURL}/${creepName.toLowerCase().replace(/\s/gm, "")}.png}`;
+  } else {
+    return unitAvatar;
+  }
+};
+
 export const getTierIcon = (tier: number): string => {
   switch (tier) {
     case 1:

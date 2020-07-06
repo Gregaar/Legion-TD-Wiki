@@ -6,13 +6,13 @@ import {
   UnitImage,
   UnitInfoHeading,
   UnitName,
-} from "../../components/Cards/card-styles";
-import BuildingInfo from "../../components/Cards/UnitCard/Building-Info/building-info";
-import CombatInfo from "../../components/Cards/UnitCard/Combat-Info/combat-info";
-import UpgradeInfo from "../../components/Cards/UnitCard/Upgrade-Info/upgrade-info";
-import UnitInterface from "../../shared/Interfaces/unit-interface";
-import { getUnitIcon } from "../../shared/Services/get-icons";
-import { unitNameColor } from "../../shared/Styles/get-heading-color";
+} from "../../../components/Cards/card-styles";
+import BuildingInfo from "../../../components/Cards/UnitCard/Building-Info/building-info";
+import CombatInfo from "../../../components/Cards/UnitCard/Combat-Info/combat-info";
+import UpgradeInfo from "../../../components/Cards/UnitCard/Upgrade-Info/upgrade-info";
+import UnitInterface from "../../../shared/Interfaces/unit-interface";
+import { getUnitIcon } from "../../../shared/Services/get-icons";
+import { unitNameColor } from "../../../shared/Styles/get-heading-color";
 
 interface InfoCardProps {
   unit: UnitInterface;
@@ -45,8 +45,8 @@ const InfoCard: React.FC<InfoCardProps> = ({
   nameNav,
   disableInfoNav,
 }) => {
-  const defaulttoggle = disableInfoNav ? builderUnitList : singleUnitList;
-  const [toggle, setToggle] = useState<ToggleInterface>(defaulttoggle);
+  const defaultToggle = disableInfoNav ? builderUnitList : singleUnitList;
+  const [toggle, setToggle] = useState<ToggleInterface>(defaultToggle);
   const unitBgColor = unitNameColor(unit.Builder);
   const unitIcon = getUnitIcon(unit.Builder, unit.Name);
 
