@@ -45,6 +45,10 @@ const waveSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  Range: {
+    type: String,
+    required: true,
+  },
   "Attack Type": {
     type: String,
     requird: true,
@@ -78,7 +82,7 @@ const waveSchema = new mongoose.Schema({
     required: true,
   },
   Type: {
-    type: Array,
+    type: String,
     required: true,
   },
   Boss: {

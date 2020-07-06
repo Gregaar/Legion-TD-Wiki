@@ -111,3 +111,20 @@ export const abilityColor = (abilityType: string | null): string => {
       return "darkslategray";
   }
 };
+
+export const getWaveColor = (level: number): string => {
+  switch (true) {
+    case level === 10 || level === 20 || level === 30:
+      return "firebrick";
+    case level >= 30:
+      return "darkgoldenrod";
+    case level > 20:
+      return "maroon";
+    case level > 10:
+      return "midnightblue";
+    case level > 0:
+      return "green";
+    default:
+      return "darkslategrey";
+  }
+};

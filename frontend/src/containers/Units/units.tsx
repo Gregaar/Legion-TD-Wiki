@@ -22,7 +22,7 @@ const Units: React.FC = () => {
     "Tier",
     "Abilities",
     "Attack Type",
-    "Defense Type",
+    "Defence Type",
   ];
 
   useEffect(() => {

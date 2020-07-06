@@ -16,8 +16,8 @@ const NavigationItems: React.FC = () => {
           <NavItem exact link="/summons">
             Summons
           </NavItem>
-          <NavItem exact link="/king">
-            King
+          <NavItem exact link="/waves">
+            Waves
           </NavItem>
         </React.Fragment>
       ) : null}

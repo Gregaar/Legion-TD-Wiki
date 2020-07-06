@@ -119,3 +119,9 @@ export const NavParagraph = styled.p<NavParagraph>`
     font-weight: ${(props) => (props.disableInfoNav ? "inherit" : "bolder")};
   }
 `;
+
+export const Paragraph = styled.p`
+  font-weight: bolder;
+  text-shadow: 1px 1px black;
+  text-transform: capitalize;
+`;
