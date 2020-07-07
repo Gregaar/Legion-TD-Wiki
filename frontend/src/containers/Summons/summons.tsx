@@ -5,7 +5,7 @@ import handleSummonPagination from "./handle-summon-pagination";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import SummonCard from "./summon-card";
-import SummonButtons from "./summon-buttons";
+import SummonButtons from "../../components/UI/Buttons/SummonButtons/summon-buttons";
 import { SummonsContainer } from "./summons-styles";
 
 interface ActiveButton {

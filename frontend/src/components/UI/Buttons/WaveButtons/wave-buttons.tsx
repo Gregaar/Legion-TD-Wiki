@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonContainer, Button } from "./waves-styles";
+import { ButtonContainer, Button } from "../button-styles";
 
 interface ButtonState {
   all: boolean;

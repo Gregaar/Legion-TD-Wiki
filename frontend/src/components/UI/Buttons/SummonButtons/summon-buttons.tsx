@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonContainer, Button } from "./summons-styles";
+import { ButtonContainer, Button } from "../button-styles";
 
 interface SummonButtonsProps {
   activeButton: {
@@ -14,21 +14,21 @@ const summonButtons: React.FC<SummonButtonsProps> = (props) => {
   return (
     <ButtonContainer>
       <Button
-        activeButton={props.activeButton.all}
+        active={props.activeButton.all}
         type="button"
         onClick={() => props.buttonClicked("all")}
       >
         All
       </Button>
       <Button
-        activeButton={props.activeButton.barracks}
+        active={props.activeButton.barracks}
         type="button"
         onClick={() => props.buttonClicked("barracks")}
       >
         Barracks
       </Button>
       <Button
-        activeButton={props.activeButton.advanced}
+        active={props.activeButton.advanced}
         type="button"
         onClick={() => props.buttonClicked("advanced")}
       >

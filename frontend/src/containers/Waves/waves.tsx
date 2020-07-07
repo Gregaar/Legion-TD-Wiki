@@ -5,7 +5,7 @@ import shortid from "shortid";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import WaveCard from "./wave-card";
-import WaveButtons from "./wave-buttons";
+import WaveButtons from "../../components/UI/Buttons/WaveButtons/wave-buttons";
 import handleWavePagination from "./handle-wave-pagination";
 import { WavesContainer } from "./waves-styles";
 
