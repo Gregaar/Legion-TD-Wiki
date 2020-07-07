@@ -3,12 +3,16 @@ import shortid from "shortid";
 
 import { InfoGrid, InfoHeading, NavParagraph } from "../../card-styles";
 
+interface HistoryWithState {
+  advanced?: boolean;
+}
+
 interface SummonOtherProps {
   location: string;
   landOrFly: string;
   disableAnimation?: number;
   isOpen: boolean;
-  goToClicked: (path: string) => void;
+  goToClicked: (pathname: string, state?: HistoryWithState) => void;
 }
 
 const summonOther: React.FC<SummonOtherProps> = (props) => {
@@ -31,6 +35,10 @@ const summonOther: React.FC<SummonOtherProps> = (props) => {
   const handleNavClick = () => {
     if (props.disableAnimation) {
       return;
+    } else if (props.location === "advanced barracks") {
+      props.goToClicked("/summons", {
+        advanced: true,
+      });
     } else {
       props.goToClicked("/summons");
     }

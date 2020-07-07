@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import WaveInterface from "../../interfaces/legion/wave-interface";
+
 const waveSchema = new mongoose.Schema({
   Level: {
     type: Number,
@@ -99,6 +101,6 @@ waveSchema.methods.toJSON = function () {
   return waveObject;
 };
 
-const Wave = mongoose.model("Wave", waveSchema);
+const Wave = mongoose.model<WaveInterface>("Wave", waveSchema);
 
 export default Wave;

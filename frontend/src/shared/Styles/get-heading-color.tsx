@@ -31,7 +31,7 @@ export const unitNameColor = (unitBuilder: string): string => {
     case "hybrid":
       return "unset";
     case "barracks":
-      return "darkgreen";
+      return "mediumseagreen";
     case "advanced barracks":
       return "brown";
     default:
