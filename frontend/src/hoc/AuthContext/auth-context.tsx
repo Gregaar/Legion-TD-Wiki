@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 export interface AuthContextInterface {
   user: {
@@ -26,6 +26,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authStatus, setAuthStatus] = useState(true);
   const [pageLoading, setPageLoading] = useState<boolean>(true);
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     const isAuth = async () => {
@@ -53,7 +54,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
     isAuth();
-  }, [history, authStatus]);
+  }, [history, authStatus, location]);
 
   const registerHandler = async (
     name: string,

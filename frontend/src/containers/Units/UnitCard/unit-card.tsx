@@ -74,7 +74,6 @@ const InfoCard: React.FC<InfoCardProps> = ({
 
   return (
     <InfoPanel
-      ability={unit.Abilities !== null ? 1 : 0}
       key={shortid.generate()}
     >
       <UnitName

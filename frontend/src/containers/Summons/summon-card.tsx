@@ -12,9 +12,13 @@ import SummonOther from "../../components/Cards/SummonCard/Summon-Other/summon-o
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import { unitNameColor } from "../../shared/Styles/get-heading-color";
 
+interface HistoryWithState {
+  advanced?: boolean;
+}
+
 interface SummonCardProps {
   summon: SummonInterface;
-  goToClicked: (path: string) => void;
+  goToClicked: (pathname: string, state?: HistoryWithState) => void;
   enableHover?: number;
 }
 

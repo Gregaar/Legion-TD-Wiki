@@ -9,7 +9,6 @@ export const getSummonsByName: RequestHandler<{ name: string }> = async (
   try {
     if (req.params.name.toLowerCase() === "any") {
       const summons = await Summon.find();
-
       return res.json({ summon: [...summons] });
     } else {
       const summonFound = await Summon.findOne({

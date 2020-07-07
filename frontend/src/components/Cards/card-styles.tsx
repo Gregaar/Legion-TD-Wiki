@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 interface InfoPanelProps {
   height?: string;
-  ability?: number;
 }
 
 interface InfoGridProps {
@@ -29,13 +28,12 @@ interface NavParagraph {
 }
 
 export const InfoPanel = styled.div<InfoPanelProps>`
-  display: inline-block;
+  flex: 0 0 calc(25% - 90px);
   align-self: start;
   width: 350px;
   max-height: ${(props) => props.height || "700px"};
   overflow: hidden;
-  margin: ${(props) =>
-    props.ability ? "125px 50px 0 auto;" : "125px auto 0 auto;"}
+  margin: 125px auto 0 auto;
   text-align: center;
   border: 2px solid beige;
   border-radius: 3px;
