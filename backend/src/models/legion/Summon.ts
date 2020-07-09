@@ -11,6 +11,10 @@ const summonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Order: {
+    type: Number,
+    required: true,
+  },
   "Lumber Cost": {
     type: Number,
     required: true,

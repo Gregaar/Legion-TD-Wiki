@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import CombatCard from "../../components/Cards/CombatCard/combat-card";
+import NavButtons from "../../components/UI/Buttons/NavButtons/nav-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
@@ -43,7 +44,7 @@ const IndividualUnit: React.FC = () => {
         });
     };
     const getSummon = async () => {
-      await axios(`/api/summon/name/${unitName}`)
+      await axios(`/api/summon/order/${unitName}`)
         .then((res) => {
           setCurrentUnit((prevSummon) => res.data.summon);
           return;
@@ -54,7 +55,8 @@ const IndividualUnit: React.FC = () => {
         });
     };
     const getWave = async () => {
-      await axios(`/api/wave/name/${unitName}`)
+      // figure out way to get order number to use it here!
+      await axios(`/api/wave/level/${unitName}`)
         .then((res) => {
           setCurrentUnit((prevWave) => res.data.waves);
           return;
@@ -107,7 +109,22 @@ const IndividualUnit: React.FC = () => {
   }
 
   return (
-    <BackgroundDiv height="100vh">
+    <BackgroundDiv height="115vh">
+      {isWaveUnit ? (
+        <NavButtons
+          goToChosen={history.push}
+          path={"waves"}
+          currentNumber={unitName}
+          maxNumber={31}
+        />
+      ) : isSummonUnit ? (
+        <NavButtons
+          goToChosen={history.push}
+          path={"summons"}
+          currentNumber={unitName}
+          maxNumber={24}
+        />
+      ) : null}
       <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>
     </BackgroundDiv>
   );

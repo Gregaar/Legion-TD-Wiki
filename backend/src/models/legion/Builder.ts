@@ -15,6 +15,10 @@ const builderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Order: {
+    type: Number,
+    required: true,
+  },
   Description: {
     type: String,
     required: true,

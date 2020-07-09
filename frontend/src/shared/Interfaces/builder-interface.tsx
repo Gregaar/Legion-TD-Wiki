@@ -2,6 +2,7 @@ export default interface BuilderInterface {
   Name: string;
   ID: string;
   "Avatar ID": string;
+  Order: number;
   Description: string;
   "Altar Of Heroes": boolean;
   Aura: number;

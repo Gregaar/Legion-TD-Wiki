@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 export default interface SummonInterface extends mongoose.Document {
   Name: string;
   Builder: string;
+  Order: number;
   "Lumber Cost": number;
   "Income Bonus": number;
   Location: string;

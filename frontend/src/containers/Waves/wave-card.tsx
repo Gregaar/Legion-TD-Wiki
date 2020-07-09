@@ -65,8 +65,7 @@ const WaveCard: React.FC<WaveCardProps> = ({
     if (!enableHover) {
       return;
     } else {
-      const nameWithDashes = wave["Creep Name"].replace(/\s/gm, "-");
-      goToClicked(`/waves/${nameWithDashes}`);
+      goToClicked(`/waves/${wave.Level}`);
       return;
     }
   };

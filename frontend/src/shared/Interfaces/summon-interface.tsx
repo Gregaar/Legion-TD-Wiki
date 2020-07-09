@@ -1,6 +1,7 @@
 export default interface SummonInterface {
   Name: string;
   Builder: string;
+  Order: number;
   "Lumber Cost": number;
   "Income Bonus": number;
   Location: string;

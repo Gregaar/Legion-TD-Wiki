@@ -28,3 +28,22 @@ export const findBuilderByName: RequestHandler<{ builder: string }> = async (
     });
   }
 };
+
+export const findBuilderByOrder: RequestHandler<{ order: string }> = async (
+  req,
+  res,
+) => {
+  try {
+    if (+req.params.order < 1 || +req.params.order > 16) {
+      throw new Error();
+    }
+
+    const builderFound = await Builder.findOne({ Order: +req.params.order });
+
+    return res.json({ builders: builderFound });
+  } catch (error) {
+    res.status(404).json({
+      error: `Unable to find builder.`,
+    });
+  }
+};

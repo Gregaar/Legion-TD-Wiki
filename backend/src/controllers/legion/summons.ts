@@ -25,3 +25,20 @@ export const getSummonsByName: RequestHandler<{ name: string }> = async (
     return res.status(404).json({ error: `Unable to find summon` });
   }
 };
+
+export const getSummonsByOrder: RequestHandler<{ order: string }> = async (
+  req,
+  res,
+) => {
+  try {
+    if (+req.params.order < 1 || +req.params.order > 24) {
+      throw new Error();
+    }
+
+    const summonFound = await Summon.findOne({ Order: +req.params.order });
+
+    return res.json({ summon: summonFound });
+  } catch (error) {
+    return res.status(404).json({ error: `Unable to find summon` });
+  }
+};

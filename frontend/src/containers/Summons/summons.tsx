@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import handleSummonPagination from "./handle-summon-pagination";
+
+import SummonButtons from "../../components/UI/Buttons/SummonButtons/summon-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import handleSummonPagination from "./handle-summon-pagination";
 import SummonCard from "./summon-card";
-import SummonButtons from "../../components/UI/Buttons/SummonButtons/summon-buttons";
 import { SummonsContainer } from "./summons-styles";
 
 interface ActiveButton {

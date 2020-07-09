@@ -73,9 +73,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
   };
 
   return (
-    <InfoPanel
-      key={shortid.generate()}
-    >
+    <InfoPanel key={shortid.generate()}>
       <UnitName
         bgColor={unitBgColor}
         onClick={handleNameClick}

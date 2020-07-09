@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import shortid from "shortid";
+
+import WaveButtons from "../../components/UI/Buttons/WaveButtons/wave-buttons";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
-import WaveCard from "./wave-card";
-import WaveButtons from "../../components/UI/Buttons/WaveButtons/wave-buttons";
 import handleWavePagination from "./handle-wave-pagination";
+import WaveCard from "./wave-card";
 import { WavesContainer } from "./waves-styles";
 
 interface ButtonState {
