@@ -67,8 +67,7 @@ const SummonCard: React.FC<SummonCardProps> = ({
     if (!enableHover) {
       return;
     } else {
-      const nameWithDashes = summon.Name.replace(/\s/gm, "-");
-      goToClicked(`/summons/${nameWithDashes}`);
+      goToClicked(`/summons/${summon.Order}`);
       return;
     }
   };

@@ -74,7 +74,7 @@ export const Button = styled.button`
    transition: all 0.15s;
 
   &:hover {
-    ext-shadow: 0 0 2em rgba(255, 255, 255, 1);
+    text-shadow: 0 0 2em rgba(255, 255, 255, 1);
      color: #ffffff;
      border-color: #ffffff;
   }

@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBuilder/individual-builder";
+import NavButtons from "../../components/UI/Buttons/NavButtons/nav-buttons";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
-import UnitInterface from "../../shared/Interfaces/unit-interface";
 import ProphetAbilities from "../../shared/Interfaces/prophet-abilities-interface";
+import UnitInterface from "../../shared/Interfaces/unit-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import InfoCard from "../Units/UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
@@ -70,6 +71,13 @@ const BuilderUnits: React.FC = () => {
 
   return (
     <BackgroundDiv height="100%">
+      <NavButtons
+        goToChosen={history.push}
+        path={"builders"}
+        currentNumber={builderInfo.Order}
+        maxNumber={16}
+        currentBuilder={builderInfo.Name}
+      />
       {builderName === "prophet" ? (
         <IndividualBuilder
           prophet={true}

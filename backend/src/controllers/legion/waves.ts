@@ -7,7 +7,7 @@ export const findByLevel: RequestHandler<{ level: string }> = async (
   res,
 ) => {
   try {
-    if (+req.params.level < 1 || +req.params.level > 32) {
+    if (+req.params.level < 1 || +req.params.level > 31) {
       throw new Error();
     }
 

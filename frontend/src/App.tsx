@@ -32,13 +32,13 @@ const App: React.FC = () => {
           />
           <ProtectedRoute path="/builders" exact component={Builders} />
           <ProtectedRoute
-            path="/summons/:summonName"
+            path="/summons/:order"
             exact
             component={IndividualUnit}
           />
           <ProtectedRoute path="/summons" exact component={Summons} />
           <ProtectedRoute
-            path="/waves/:waveName"
+            path="/waves/:level"
             exact
             component={IndividualUnit}
           />

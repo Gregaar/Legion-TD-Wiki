@@ -88,11 +88,13 @@ const UnitList: React.FC<UnitProps> = (props) => {
           cursor={1}
         />
       </Tooltip>
-      <Img
-        src={tierIcon}
-        alt={`Tier ${props.tier} icon`}
-        onClick={(event) => goToUnitHandler(event)}
-      />
+      <Tooltip title={`Tier ${props.tier}`} placement="right">
+        <Img
+          src={tierIcon}
+          alt={`Tier ${props.tier} icon`}
+          onClick={(event) => goToUnitHandler(event)}
+        />
+      </Tooltip>
       <Tooltip
         placement="right"
         title={

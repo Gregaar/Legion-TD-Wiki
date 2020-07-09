@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface AbilityGridProps {
+interface AbilityCountProps {
   abilityCount: number;
 }
 
@@ -12,16 +12,20 @@ interface AbilityNameProps {
   bgColor?: string;
 }
 
-export const AbilityGrid = styled.div<AbilityGridProps>`
-  display: inline-grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 25px;
+export const AbilityGrid = styled.div<AbilityCountProps>`
+  display: ${(props) => (props.abilityCount > 2 ? "flex" : "inline-grid")};
+  flex-wrap: ${(props) => (props.abilityCount > 2 ? "wrap" : null)};
+  justify-content: ${(props) => (props.abilityCount > 2 ? "center" : null)};
+  grid-template-columns: ${(props) =>
+    props.abilityCount > 2 ? null : "repeat(2, 1fr)"};
+  grid-gap: ${(props) => (props.abilityCount > 2 ? "0" : "25px")};
   align-content: center;
   margin-right: 150px;
+  margin-top: ${(props) => (props.abilityCount > 2 ? "45px" : "0")};
   width: ${(props) => (props.abilityCount > 1 ? "40%" : "25%")};
 `;
 
-export const AbilityPanel = styled.div`
+export const AbilityPanel = styled.div<AbilityCountProps>`
   width: 400px;
   max-height: 550px;
   margin: 75px auto 0 auto;
@@ -31,6 +35,7 @@ export const AbilityPanel = styled.div`
   background-color: rgb(68, 89, 106);
   color: white;
   text-align: center;
+  flex: ${(props) => (props.abilityCount > 1 ? "0 0 45%" : null)};
 `;
 
 export const AbilityName = styled.h2<AbilityNameProps>`

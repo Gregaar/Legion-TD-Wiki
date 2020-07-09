@@ -34,7 +34,7 @@ const abilityCard: React.FC<AbilityCardProps> = ({ unit }) => {
     <AbilityGrid abilityCount={abilityInfo.length}>
       {abilityInfo
         ? abilityInfo.map((ability) => (
-            <AbilityPanel key={ability.name}>
+            <AbilityPanel key={ability.name} abilityCount={abilityInfo.length}>
               <AbilityName bgColor={abilityColor(ability.type)}>
                 Ability: {ability.name}
               </AbilityName>

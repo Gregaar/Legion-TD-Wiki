@@ -1,11 +1,16 @@
 import { Router } from "express";
 
-import { findBuilderByName } from "../../controllers/legion/builders";
+import {
+  findBuilderByName,
+  findBuilderByOrder,
+} from "../../controllers/legion/builders";
 import { logger } from "../../logger";
 
 const router = Router();
 
 router.get("/api/builder/name/:builder", findBuilderByName);
+
+router.get("/api/builder/order/:order", findBuilderByOrder);
 
 export default (): Router => {
   logger.info("Registering 'Builder' routes...");
