@@ -1,8 +1,9 @@
 import React from "react";
 import shortid from "shortid";
+
+import KingAbilityInterface from "../../../shared/Interfaces/king-ability-interface";
 import SummonInterface from "../../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
-import KingAbilityInterface from "../../../shared/Interfaces/king-ability-interface";
 import { getAbilityIcon } from "../../../shared/Services/get-icons";
 import { abilityColor } from "../../../shared/Styles/get-heading-color";
 import {

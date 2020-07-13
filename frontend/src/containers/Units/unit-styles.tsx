@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import device from "../../shared/Styles/devices";
 
 export const UnitContainer = styled.div`
@@ -45,7 +46,7 @@ export const UnitHeadingsContainer = styled.div`
 
 export const UnitHeadings = styled.h3`
   text-shadow: 2px 2px black;
-  
+
   @media ${device.mobileS} {
     margin-left: 5px;
   }

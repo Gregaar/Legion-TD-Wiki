@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+
 import device from "../../../../shared/Styles/devices";
 
 export const NavigationItem = styled(NavLink)`
@@ -14,15 +15,15 @@ export const NavigationItem = styled(NavLink)`
   }
 
   @media ${device.mobileS} {
-    margin: 0 0.2rem;
+    margin: 1rem 1rem;
   }
 
   @media ${device.mobileM} {
-    margin: 0 0.2rem;
+    margin: 1rem 1rem;
   }
 
   @media ${device.mobileL} {
-    margin: 0 0.2rem;
+    margin: 1rem 1rem;
   }
 
   @media ${device.tablet} {

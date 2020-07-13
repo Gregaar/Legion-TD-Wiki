@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import KingStatsInterface from "../../shared/Interfaces/king-stats-interface";
-import KingAbilityInterface from "../../shared/Interfaces/king-ability-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
-import { KingContainer } from "./king-styles";
+import React, { useEffect, useState } from "react";
+
+import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import KingButtons from "../../components/Navigation/UI/Buttons/KingButtons/king-buttons";
 import KingStatTable from "../../components/Tables/King/king-stats-table";
-import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
+import KingAbilityInterface from "../../shared/Interfaces/king-ability-interface";
+import KingStatsInterface from "../../shared/Interfaces/king-stats-interface";
+import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import { KingContainer } from "./king-styles";
 
 interface KingButtons {
   stats: boolean;

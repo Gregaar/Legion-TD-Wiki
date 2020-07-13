@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import device from "../../../shared/Styles/devices";
 
 interface CheckboxProps {
@@ -116,7 +117,6 @@ export const DropdownSelect = styled.select`
   @media ${device.mobileL} {
     width: 50%;
   }
-  
 `;
 
 export const TierRangeContainer = styled.div`

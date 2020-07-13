@@ -1,18 +1,19 @@
-import React from "react";
-import shortid from "shortid";
-import goldIcon from "../../../assets/gold.png";
-import lumberIcon from "../../../assets/lumber.png";
-import kingAttack from "../../../assets/king-attack.png";
-import kingRegen from "../../../assets/king-regen.png";
-import kingHitPoints from "../../../assets/king-hitpoints.png";
-import kingLevel from "../../../assets/king-level.png";
-import KingStatsInterface from "../../../shared/Interfaces/king-stats-interface";
 import Table from "@material-ui/core/Table";
-import { TableContainer, TableCellStyled } from "./king-stats-styles";
 import TableBody from "@material-ui/core/TableBody";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import React from "react";
+import shortid from "shortid";
+
+import goldIcon from "../../../assets/gold.png";
+import kingAttack from "../../../assets/king-attack.png";
+import kingHitPoints from "../../../assets/king-hitpoints.png";
+import kingLevel from "../../../assets/king-level.png";
+import kingRegen from "../../../assets/king-regen.png";
+import lumberIcon from "../../../assets/lumber.png";
+import KingStatsInterface from "../../../shared/Interfaces/king-stats-interface";
+import { TableCellStyled, TableContainer } from "./king-stats-styles";
 
 interface KingStatsProps {
   stats: KingStatsInterface[];
@@ -43,7 +44,7 @@ const kingStatsTable: React.FC<KingStatsProps> = ({ stats }) => {
               </Tooltip>
             </TableCellStyled>
             <TableCellStyled>
-              <h2>Regen</h2> 
+              <h2>Regen</h2>
               <Tooltip title="Regeneration" placement="bottom">
                 <img src={kingRegen} alt={`A healing hand icon`} />
               </Tooltip>
