@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
-import { List } from "./navigation-item-styles";
+import { List } from "./navigation-items-styles";
 import NavItem from "./NavigationItem/navigation-item";
 
 const NavigationItems: React.FC = () => {

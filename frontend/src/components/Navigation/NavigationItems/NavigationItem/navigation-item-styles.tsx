@@ -13,6 +13,14 @@ export const NavigationItem = styled(NavLink)`
     color: white;
   }
 
+  @media ${device.mobileS} {
+    margin: 0 0.2rem;
+  }
+
+  @media ${device.mobileM} {
+    margin: 0 0.2rem;
+  }
+
   @media ${device.mobileL} {
     margin: 0 0.2rem;
   }

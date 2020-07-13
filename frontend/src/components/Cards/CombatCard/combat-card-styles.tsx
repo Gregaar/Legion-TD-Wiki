@@ -44,16 +44,19 @@ export const CombatPanel = styled.div`
 
   @media ${device.mobileS} {
     width: 100%;
+    height: 330px;
     margin: 10px auto;
   }
 
   @media ${device.mobileM} {
     width: 100%;
+    height: 330px;
     margin: 10px auto;
   }
 
   @media ${device.mobileL} {
     width: 22em;
+    height: 330px;
     margin: 10px auto;
   }
 `;

@@ -29,4 +29,13 @@ export const BackgroundDiv = styled.div<HeightProps>`
   @media ${device.mobileS} {
     height: 100%;
   }
+
+  @media ${device.mobileM} {
+    height: 100%;
+  }
+
+  @media ${device.mobileL} {
+    height: 100%;
+  }
+
 `;
