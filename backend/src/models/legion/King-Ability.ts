@@ -1,23 +1,38 @@
 import mongoose from "mongoose";
 
-const kingAbilitySchema = new mongoose.Schema({
-  Name: {
-    type: String,
-    required: true,
+import KingAbilityInterface from "../../interfaces/legion/king-ability-interface";
+
+const kingAbilitySchema = new mongoose.Schema(
+  {
+    Abilities: {
+      type: Array,
+      required: true,
+    },
+    "Ability Description": {
+      type: Array,
+      required: true,
+    },
+    "Ability Type": {
+      type: Array,
+      required: true,
+    },
+    Activatable: {
+      type: Boolean,
+      required: true,
+    },
+    Builder: {
+      type: String,
+      required: true,
+    },
+    ID: {
+      type: String,
+      required: true,
+    },
   },
-  Description: {
-    type: String,
-    required: true,
+  {
+    collection: "king-abilities",
   },
-  Activatable: {
-    type: Boolean,
-    required: true,
-  },
-  ID: {
-    type: String,
-    required: true,
-  },
-});
+);
 
 kingAbilitySchema.methods.toJSON = function () {
   const kingAbilityObject = this.toObject();
@@ -27,6 +42,9 @@ kingAbilitySchema.methods.toJSON = function () {
   return kingAbilityObject;
 };
 
-const KingAbility = mongoose.model("KingAbilities", kingAbilitySchema);
+const KingAbility = mongoose.model<KingAbilityInterface>(
+  "KingAbilities",
+  kingAbilitySchema,
+);
 
 export default KingAbility;

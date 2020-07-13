@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import SummonButtons from "../../components/UI/Buttons/SummonButtons/summon-buttons";
+import SummonButtons from "../../components/Navigation/UI/Buttons/SummonButtons/summon-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import handleSummonPagination from "./handle-summon-pagination";
@@ -57,6 +57,7 @@ const Summons: React.FC = () => {
   const handleButtonClick = (buttonName: string): void => {
     handleSummonPagination(
       buttonName,
+      activeButton,
       setPageNumber,
       setLimit,
       setActiveButton

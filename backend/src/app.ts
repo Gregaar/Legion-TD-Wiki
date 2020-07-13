@@ -2,6 +2,7 @@ import express from "express";
 
 import commonMiddleware from "./middleware";
 import builderRouter from "./routes/legion/builders";
+import kingRouter from "./routes/legion/king";
 import summonRouter from "./routes/legion/summons";
 import unitRouter from "./routes/legion/units";
 import waveRouter from "./routes/legion/waves";
@@ -15,5 +16,6 @@ app.use(unitRouter());
 app.use(builderRouter());
 app.use(waveRouter());
 app.use(summonRouter());
+app.use(kingRouter());
 
 export default app;

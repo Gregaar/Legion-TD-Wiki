@@ -14,12 +14,13 @@ type ActiveBtn = (
 
 export default (
   buttonName: string,
+  currentlyActive: ActiveButton,
   setPageNum: PageNum,
   setLimit: Limit,
   setActiveBtn: ActiveBtn
 ): void => {
-  switch (buttonName) {
-    case "all":
+  switch (true) {
+    case buttonName === "all" && !currentlyActive.all:
       setPageNum((prevNumber) => 1);
       setLimit((prevLimit) => 24);
       setActiveBtn((prevActive) => {
@@ -30,7 +31,7 @@ export default (
         };
       });
       break;
-    case "barracks":
+    case buttonName === "barracks" && !currentlyActive.barracks:
       setPageNum((prevNumber) => 1);
       setLimit((prevLimit) => 12);
       setActiveBtn((prevActive) => {
@@ -41,7 +42,7 @@ export default (
         };
       });
       break;
-    case "advanced":
+    case buttonName === "advanced" && !currentlyActive.advanced:
       setPageNum((prevNumber) => 2);
       setLimit((prevLimit) => 12);
       setActiveBtn((prevActive) => {
@@ -52,5 +53,7 @@ export default (
         };
       });
       break;
+      default: 
+      return;
   }
 };

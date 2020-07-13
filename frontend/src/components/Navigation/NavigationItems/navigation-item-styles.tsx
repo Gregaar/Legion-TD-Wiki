@@ -6,4 +6,10 @@ export const List = styled.ul`
   padding: 0;
   display: flex;
   align-items: center;
+  flex-flow: column;
+  text-align: center;
+
+  @media (min-width: 501px) {
+    flex-flow: row;
+  }
 `;

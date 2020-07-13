@@ -19,18 +19,14 @@ const NavigationItems: React.FC = () => {
           <NavItem exact link="/waves">
             Waves
           </NavItem>
-        </React.Fragment>
-      ) : null}
-      {authStatus ? (
-        <React.Fragment>
           <NavItem exact link="/units">
-            Units
+            Unit Search
           </NavItem>
           <NavItem exact link="/builders">
             Builders
           </NavItem>
-          <NavItem exact link="/profile">
-            Profile
+          <NavItem exact link="/king">
+            King
           </NavItem>
         </React.Fragment>
       ) : null}

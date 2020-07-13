@@ -14,7 +14,7 @@ const navItem = ({
   clicked?: (event: React.MouseEvent<HTMLAnchorElement>) => Promise<void>;
 }) => {
   return (
-    <ul>
+    <li style={{margin: "10px 5px"}}>
       <NavigationItem
         to={link}
         exact
@@ -27,7 +27,7 @@ const navItem = ({
       >
         {children}
       </NavigationItem>
-    </ul>
+    </li>
   );
 };
 

@@ -41,7 +41,7 @@ const navButtons: React.FC<NavButtonProps> = ({
       ? builderOrder.findIndex((element) => element.builder === currentBuilder)
       : null;
 
-  const handleBuilderArrowClick = (btnName: string) => {
+  const handleBuilderArrowClick = (btnName: string): void => {
     if (builderIndex !== null) {
       if (btnName === "back" && builderIndex > 0) {
         console.log("back");
@@ -55,9 +55,22 @@ const navButtons: React.FC<NavButtonProps> = ({
     }
   };
 
+  const handleUnitArrowClick = (btnName: string): void => {
+    if (btnName === "back") {
+      goToChosen(`/units`);
+    } else if (btnName === "next") {
+      goToChosen(`/builders/${currentBuilder}`);
+    } else {
+      return;
+    }
+  };
+
   const handleArrowClick = (btnName: string): void => {
-    if (path === "builders") return handleBuilderArrowClick(btnName);
-    if (btnName === "back" && +currentNumber > 1) {
+    if (path === "builders") {
+      return handleBuilderArrowClick(btnName);
+    } else if (path === "units") {
+      return handleUnitArrowClick(btnName);
+    } else if (btnName === "back" && +currentNumber > 1) {
       goToChosen(`/${path}/${+currentNumber - 1}`);
     } else if (btnName === "next" && maxNumber >= +currentNumber) {
       goToChosen(`/${path}/${+currentNumber + 1}`);
@@ -65,6 +78,7 @@ const navButtons: React.FC<NavButtonProps> = ({
       return;
     }
   };
+
   return (
     <ArrowContainer>
       <ArrowButton
@@ -73,7 +87,7 @@ const navButtons: React.FC<NavButtonProps> = ({
         path={path}
         disablePrev={+currentNumber <= 1}
       >
-        ❮ Prev
+        {path !== "units" ? "❮ Prev" : "❮ Unit Search"}
       </ArrowButton>
       <ArrowButton
         type="button"
@@ -81,7 +95,7 @@ const navButtons: React.FC<NavButtonProps> = ({
         path={path}
         disableNext={+currentNumber >= maxNumber}
       >
-        Next ❯
+        {path !== "units" ? "Next ❯" : "Unit Builder ❯"}
       </ArrowButton>
     </ArrowContainer>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../../../shared/Styles/devices";
 
 interface BuilderNameProps {
   bgColor?: string;
@@ -24,6 +25,22 @@ export const BuilderPanel = styled.div`
   background-color: rgb(68, 89, 106);
   color: white;
   padding: 1%;
+
+  @media ${device.mobileS} {
+    width: 19em;
+  }
+
+  @media ${device.mobileM} {
+    width: 22em;
+  }
+
+  @media ${device.mobileL} {
+    width: 22em;
+  }
+
+  @media ${device.tablet} {
+    width: 22em;
+  }
 `;
 
 export const BuilderName = styled.h2<BuilderNameProps>`

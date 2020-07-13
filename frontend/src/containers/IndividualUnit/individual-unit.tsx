@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import CombatCard from "../../components/Cards/CombatCard/combat-card";
-import NavButtons from "../../components/UI/Buttons/NavButtons/nav-buttons";
+import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
@@ -108,23 +108,33 @@ const IndividualUnit: React.FC = () => {
     );
   }
 
+  const navButtons = isWaveUnit ? (
+    <NavButtons
+      goToChosen={history.push}
+      path={"waves"}
+      currentNumber={unitName}
+      maxNumber={31}
+    />
+  ) : isSummonUnit ? (
+    <NavButtons
+      goToChosen={history.push}
+      path={"summons"}
+      currentNumber={unitName}
+      maxNumber={24}
+    />
+  ) : (
+    <NavButtons
+      goToChosen={history.push}
+      path={"units"}
+      currentNumber={2}
+      maxNumber={100}
+      currentBuilder={currentUnit.Builder}
+    />
+  );
+
   return (
     <BackgroundDiv height="115vh">
-      {isWaveUnit ? (
-        <NavButtons
-          goToChosen={history.push}
-          path={"waves"}
-          currentNumber={unitName}
-          maxNumber={31}
-        />
-      ) : isSummonUnit ? (
-        <NavButtons
-          goToChosen={history.push}
-          path={"summons"}
-          currentNumber={unitName}
-          maxNumber={24}
-        />
-      ) : null}
+      {navButtons}
       <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>
     </BackgroundDiv>
   );
