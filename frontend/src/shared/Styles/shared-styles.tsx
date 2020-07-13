@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import device from "./devices";
+
 import Background from "../../assets/bg.png";
+import device from "./devices";
 
 interface HeightProps {
   height: string;
@@ -8,7 +9,8 @@ interface HeightProps {
 }
 
 export const BackgroundDiv = styled.div<HeightProps>`
-  height: ${(props) => (props.login ? "100vh" : props.height ? props.height : "100vh")};
+  height: ${(props) =>
+    props.login ? "100vh" : props.height ? props.height : "100vh"};
   display: block;
   position: relative;
   padding: 1%;
@@ -37,5 +39,4 @@ export const BackgroundDiv = styled.div<HeightProps>`
   @media ${device.mobileL} {
     height: 100%;
   }
-
 `;

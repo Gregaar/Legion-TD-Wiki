@@ -35,8 +35,8 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover {
     text-shadow: 0 0 2em rgba(255, 255, 255, 1);
-    background-color:${(props) => (props.active ? "teal" : "gold")};
-    color: ${(props) => (props.active ? "white" : "black")};;
+    background-color: ${(props) => (props.active ? "teal" : "gold")};
+    color: ${(props) => (props.active ? "white" : "black")};
     border: 2px solid white;
     cursor: ${(props) => (props.active ? "default" : "pointer")};
   }

@@ -1,6 +1,7 @@
 import React from "react";
-import NavigationItems from "../NavigationItems/navigation-items";
+
 import Logo from "../../Logo/logo";
+import NavigationItems from "../NavigationItems/navigation-items";
 import { Backdrop, SideDrawerDiv } from "./side-drawer-styles";
 
 interface SideDrawerProps {

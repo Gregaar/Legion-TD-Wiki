@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import TableCell from "@material-ui/core/TableCell";
+import styled from "styled-components";
+
 import device from "../../../shared/Styles/devices";
 
 export const TableContainer = styled.div`
@@ -45,8 +46,8 @@ export const TableContainer = styled.div`
 
 export const TableCellStyled = styled(TableCell)`
   && {
-      color: yellow;
-      font-weight: bold;
-      text-align: center;
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
   }
 `;

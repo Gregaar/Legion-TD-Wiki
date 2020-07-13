@@ -1,5 +1,6 @@
 import React from "react";
-import { DrawerToggle, DrawerMenu } from "../side-drawer-styles";
+
+import { DrawerMenu, DrawerToggle } from "../side-drawer-styles";
 
 interface DrawerToggleProps {
   toggled: (val: boolean | ((val: boolean) => boolean)) => void;
