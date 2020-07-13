@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../../shared/Styles/devices";
 
 interface FooterStyleProps {
   loading: number;
@@ -22,4 +23,16 @@ export const List = styled.ul`
   font-size: 1rem;
   display: flex;
   justify-content: flex-end;
+
+  @media ${device.mobileS} {
+    margin: 2%;
+  }
+
+  @media ${device.mobileM} {
+    margin: 2%;
+  }
+
+  @media ${device.mobileL} {
+    margin: 5px;
+  }
 `;
