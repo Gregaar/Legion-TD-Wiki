@@ -80,7 +80,7 @@ const navButtons: React.FC<NavButtonProps> = ({
   };
 
   return (
-    <ArrowContainer>
+    <ArrowContainer path={path}>
       <ArrowButton
         type="button"
         onClick={() => handleArrowClick("back")}

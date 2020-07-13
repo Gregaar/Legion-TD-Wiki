@@ -36,7 +36,7 @@ export const LegionHeading = styled.h1`
   margin-left: 10px;
 
   @media ${device.mobileS} {
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
 
   @media ${device.mobileM} {
