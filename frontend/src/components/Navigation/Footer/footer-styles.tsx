@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import device from "../../../shared/Styles/devices";
 
-import device from "../../../shared/Styles/devices";
-
 interface FooterStyleProps {
   loading: number;
 }
