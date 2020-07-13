@@ -13,6 +13,8 @@ interface ArrowButtonProps {
 export const ButtonContainer = styled.div`
   margin: 25px auto -50px auto;
   text-align: center;
+  position: relative;
+  z-index: 99;
 `;
 
 export const Button = styled.button<ButtonProps>`
@@ -33,9 +35,10 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover {
     text-shadow: 0 0 2em rgba(255, 255, 255, 1);
-    background-color: gold;
-    color: black;
+    background-color:${(props) => (props.active ? "teal" : "gold")};
+    color: ${(props) => (props.active ? "white" : "black")};;
     border: 2px solid white;
+    cursor: ${(props) => (props.active ? "default" : "pointer")};
   }
 `;
 

@@ -1,25 +1,38 @@
 import mongoose from "mongoose";
 
-const kingSchema = new mongoose.Schema({
-  Level: {
-    type: Number,
-    required: true,
+import KingInterface from "../../interfaces/legion/king-interface";
+
+const kingSchema = new mongoose.Schema(
+  {
+    Level: {
+      type: Number,
+      required: true,
+    },
+    "Hit Points": {
+      type: Number,
+    },
+    "Min Hit": {
+      type: Number,
+      required: true,
+    },
+    "Max Hit": {
+      type: Number,
+      required: true,
+    },
+    Regeneration: {
+      type: Number,
+    },
+    "Wood Spent": {
+      type: Number,
+      required: true,
+    },
+    "Income Gained": {
+      type: Number,
+      required: true,
+    },
   },
-  "Hit Points": {
-    type: Number,
-  },
-  "Min Hit": {
-    type: Number,
-    required: true,
-  },
-  "Max Hit": {
-    type: Number,
-    required: true,
-  },
-  Regeneration: {
-    type: Number,
-  },
-});
+  { collection: "king" },
+);
 
 kingSchema.methods.toJSON = function () {
   const kingObject = this.toObject();
@@ -29,6 +42,6 @@ kingSchema.methods.toJSON = function () {
   return kingObject;
 };
 
-const King = mongoose.model("King", kingSchema);
+const King = mongoose.model<KingInterface>("King", kingSchema);
 
 export default King;

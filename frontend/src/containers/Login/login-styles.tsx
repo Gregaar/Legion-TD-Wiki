@@ -1,10 +1,36 @@
 import styled from "styled-components";
+import device from "../../shared/Styles/devices";
 
 export const ContainerDiv = styled.div`
   margin: 10rem auto;
   background-color: rgba(68, 89, 106, 0.8);
   color: white;
   width: 25%;
+
+  @media ${device.mobileS} {
+    width: 90%;
+    margin: 5rem auto;
+  }
+
+  @media ${device.mobileM} {
+    width: 90%;
+    margin: 5rem auto;
+  }
+
+  @media ${device.mobileL} {
+    width: 75%;
+    margin: 5rem auto;
+  }
+
+  @media ${device.tablet} {
+    width: 75%;
+    margin: 5rem auto;
+  }
+
+  @media ${device.laptop} {
+    width: 50%;
+    margin: 5rem auto;
+  }
 `;
 
 export const Form = styled.form`
@@ -32,6 +58,26 @@ export const Input = styled.input`
   width: 70%;
   margin-bottom: 0.5em;
   text-align: center;
+
+  @media ${device.mobileS} {
+    width: 80%;
+  }
+
+  @media ${device.mobileM} {
+    width: 80%;
+  }
+
+  @media ${device.mobileL} {
+    width: 15rem;
+  }
+
+  @media ${device.tablet} {
+    width: 15rem;
+  }
+
+  @media ${device.laptop} {
+    width: 15rem;
+  }
 `;
 
 export const InputButton = styled.input`

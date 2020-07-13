@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../../shared/Styles/devices";
 
 interface HeaderProps {
   loading: number;
@@ -17,4 +18,35 @@ export const Header = styled.header<HeaderProps>`
   position: unset;
   border: 2px solid yellow;
   visibility: ${(props) => (props.loading ? "hidden" : "visible")};
+
+  @media (max-width: 500px) {
+    justify-content: flex-start;
+  }
+`;
+
+export const Nav = styled.nav`
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export const LegionHeading = styled.h1`
+  color: gold;
+  margin-left: 10px;
+
+  @media ${device.mobileS} {
+    margin-left: 2rem;
+  }
+
+  @media ${device.mobileM} {
+    margin-left: 3rem;
+  }
+
+  @media ${device.mobileL} {
+    margin-left: 5rem;
+  }
+
+  @media (min-width: 501px) {
+    display: none;
+  }
 `;

@@ -31,7 +31,7 @@ const validateRegisterInput: ValidateRegisterArgs = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Userusername must have at least 2 characters." },
+      { message: "Error: Username must have at least 2 characters." },
     ]);
   }
 

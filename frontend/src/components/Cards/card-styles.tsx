@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../shared/Styles/devices";
 
 interface InfoPanelProps {
   height?: string;
@@ -39,6 +40,34 @@ export const InfoPanel = styled.div<InfoPanelProps>`
   border-radius: 3px;
   background-color: rgb(68, 89, 106);
   color: white;
+
+  @media ${device.mobileS} {
+    width: 100%;
+  }
+
+  @media ${device.mobileM} {
+    width: 100%;
+  }
+
+  @media ${device.mobileL} {
+    width: 22em;
+  }
+
+  @media ${device.tablet} {
+    width: 22em;
+    flex: 0 0 40%;
+    margin: 125px auto -70px auto;
+  }
+
+  @media ${device.laptop} {
+    flex 0 0 40%;
+    margin: 125px auto 0 auto;
+  }
+
+  @media ${device.laptopL} {
+    flex 0 0 calc(35% - 90px);
+    margin: 125px auto 0 auto;
+  }
 `;
 
 export const UnitName = styled.h2<UnitNameProps>`

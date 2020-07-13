@@ -9,6 +9,7 @@ import Login from "./containers/Login/login";
 import Summons from "./containers/Summons/summons";
 import Units from "./containers/Units/units";
 import Waves from "./containers/Waves/waves";
+import King from "./containers/King/king";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
@@ -43,6 +44,7 @@ const App: React.FC = () => {
             component={IndividualUnit}
           />
           <ProtectedRoute path="/waves" exact component={Waves} />
+          <ProtectedRoute path="/king" exact component={King} />
           <ProtectedRoute path="/" exact component={Homepage} />
         </Switch>
       </Layout>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBuilder/individual-builder";
-import NavButtons from "../../components/UI/Buttons/NavButtons/nav-buttons";
+import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-buttons";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import ProphetAbilities from "../../shared/Interfaces/prophet-abilities-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";

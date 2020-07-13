@@ -147,7 +147,7 @@ const Login: React.FC = () => {
       />
     );
   }
-  return <BackgroundDiv height="100vh">{login}</BackgroundDiv>;
+  return <BackgroundDiv height="100vh" login={true}>{login}</BackgroundDiv>;
 };
 
 export default Login;

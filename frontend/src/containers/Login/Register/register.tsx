@@ -103,7 +103,7 @@ const Register: React.FC<RegisterProps> = ({
   );
 
   return (
-    <BackgroundDiv height="100%">
+    <BackgroundDiv height="100%" login={true}>
       <ContainerDiv>
         {formErrors.length > 0 ? errorDisplay : null}
         <Form

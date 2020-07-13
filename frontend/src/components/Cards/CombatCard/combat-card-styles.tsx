@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../../shared/Styles/devices";
 
 interface CombatHeadingProps {
   bgColor?: string;
@@ -12,6 +13,23 @@ export const CombatContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+
+  @media ${device.mobileS} {
+    margin: 1px;
+  }
+
+  @media ${device.mobileM} {
+    margin: 1px;
+  }
+
+  @media ${device.mobileL} {
+    margin: 1px;
+  }
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    margin-bottom: 5rem;
+  }
 `;
 
 export const CombatPanel = styled.div`
@@ -23,6 +41,21 @@ export const CombatPanel = styled.div`
   border-radius: 3px;
   background-color: rgb(68, 89, 106);
   color: white;
+
+  @media ${device.mobileS} {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  @media ${device.mobileM} {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  @media ${device.mobileL} {
+    width: 22em;
+    margin: 10px auto;
+  }
 `;
 
 export const CombatHeading = styled.h2<CombatHeadingProps>`
@@ -54,6 +87,24 @@ export const OrderedList = styled.ol`
   *list-style: decimal;
   animation-name: changeTextColorCombat;
   animation-duration: 1.5s;
+
+  @media ${device.mobileS} {
+    margin: 0 auto;
+    position: relative;
+    left: 5%;
+  }
+
+  @media ${device.mobileM} {
+    margin: 1px;
+    position: relative;
+    left: 30%;
+  }
+
+  @media ${device.mobileL} {
+    margin: 1px;
+    position: relative;
+    left: 28%;
+  }
 
   @keyframes changeTextColorCombat {
     from {

@@ -1,7 +1,11 @@
 import React from "react";
 
 import { FilterObjectInterface } from "../filter";
-import { DropdownContainer, DropdownLabel } from "../filter-styles";
+import {
+  DropdownContainer,
+  DropdownLabel,
+  DropdownSelect,
+} from "../filter-styles";
 
 interface DropdownProps {
   unitFilters: FilterObjectInterface;
@@ -61,7 +65,7 @@ const dropdownFilters: React.FC<DropdownProps> = (props) => {
   return (
     <DropdownContainer>
       <DropdownLabel htmlFor="builderFilter">Builder:</DropdownLabel>
-      <select
+      <DropdownSelect
         id="builderFilter"
         name="builderFilter"
         value={props.unitFilters.builder}
@@ -74,10 +78,10 @@ const dropdownFilters: React.FC<DropdownProps> = (props) => {
             {builder.charAt(0).toUpperCase() + builder.substring(1)}
           </option>
         ))}
-      </select>
+      </DropdownSelect>
 
       <DropdownLabel htmlFor="rangedFilter">Attack Range:</DropdownLabel>
-      <select
+      <DropdownSelect
         id="rangedFilter"
         name="rangedFilter"
         value={props.unitFilters.range}
@@ -90,10 +94,10 @@ const dropdownFilters: React.FC<DropdownProps> = (props) => {
             {range.charAt(0).toUpperCase() + range.substring(1)}
           </option>
         ))}
-      </select>
+      </DropdownSelect>
 
       <DropdownLabel htmlFor="attackFilter">Attack Type:</DropdownLabel>
-      <select
+      <DropdownSelect
         id="attackFilter"
         name="attackFilter"
         value={props.unitFilters.attack}
@@ -106,10 +110,10 @@ const dropdownFilters: React.FC<DropdownProps> = (props) => {
             {attack.charAt(0).toUpperCase() + attack.substring(1)}
           </option>
         ))}
-      </select>
+      </DropdownSelect>
 
-      <DropdownLabel htmlFor="defenseFilter">Defense Type:</DropdownLabel>
-      <select
+      <DropdownLabel htmlFor="defenseFilter">Defence Type:</DropdownLabel>
+      <DropdownSelect
         id="defenseFilter"
         name="defenseFilter"
         value={props.unitFilters.defense}
@@ -122,7 +126,7 @@ const dropdownFilters: React.FC<DropdownProps> = (props) => {
             {defense.charAt(0).toUpperCase() + defense.substring(1)}
           </option>
         ))}
-      </select>
+      </DropdownSelect>
     </DropdownContainer>
   );
 };

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../../shared/Styles/devices";
 
 interface CheckboxProps {
   order: number;
@@ -12,6 +13,26 @@ export const FilterContainer = styled.div`
   border: 2px solid yellow;
   border-radius: 5px;
   width: 50%;
+
+  @media ${device.mobileS} {
+    width: 100%;
+  }
+
+  @media ${device.mobileM} {
+    width: 100%;
+  }
+
+  @media ${device.mobileL} {
+    width: 90%;
+  }
+
+  @media ${device.tablet} {
+    width: 45rem;
+  }
+
+  @media ${device.laptop} {
+    width: 50rem;
+  }
 `;
 
 export const SearchLabel = styled.label`
@@ -28,6 +49,22 @@ export const SearchInput = styled.input`
   display: block;
   margin: 0 auto 30px auto;
   width: 40%;
+
+  @media ${device.mobileS} {
+    width: 70%;
+  }
+
+  @media ${device.mobileM} {
+    width: 70%;
+  }
+
+  @media ${device.mobileL} {
+    width: 50%;
+  }
+
+  @media ${device.tablet} {
+    width: 50%;
+  }
 `;
 
 export const DropdownContainer = styled.div`
@@ -36,6 +73,28 @@ export const DropdownContainer = styled.div`
   grid-gap: 10px;
   margin: 10px 60px auto -100px;
   text-align: end;
+
+  @media ${device.mobileS} {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 3rem;
+    text-align: center;
+  }
+
+  @media ${device.mobileM} {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 3rem;
+    text-align: center;
+  }
+
+  @media ${device.mobileL} {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 2rem 0 -1rem;
+    text-align: end;
+  }
+
+  @media ${device.tablet} {
+    margin: 0 auto 0 -5rem;
+  }
 `;
 
 export const DropdownLabel = styled.label`
@@ -43,6 +102,21 @@ export const DropdownLabel = styled.label`
   width: 104px;
   margin: 0 0 0 auto;
   text-shadow: 1px 1px black;
+`;
+
+export const DropdownSelect = styled.select`
+  @media ${device.mobileS} {
+    width: 90%;
+  }
+
+  @media ${device.mobileM} {
+    width: 90%;
+  }
+
+  @media ${device.mobileL} {
+    width: 50%;
+  }
+  
 `;
 
 export const TierRangeContainer = styled.div`
@@ -66,6 +140,26 @@ export const TierInput = styled.input`
   text-align: center;
   width: 10%;
   margin: 0 10px;
+
+  @media ${device.mobileS} {
+    width: 25%;
+  }
+
+  @media ${device.mobileM} {
+    width: 25%;
+  }
+
+  @media ${device.mobileL} {
+    width: 20%;
+  }
+
+  @media ${device.tablet} {
+    width: 20%;
+  }
+
+  @media ${device.laptop} {
+    width: 20%;
+  }
 `;
 
 export const AbilitiesHeading = styled.h3`
