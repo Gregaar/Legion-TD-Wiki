@@ -4,6 +4,10 @@ interface ButtonProps {
   active: boolean;
 }
 
+interface ArrowContainerProps {
+  path?: string;
+}
+
 interface ArrowButtonProps {
   path: string;
   disablePrev?: boolean;
@@ -42,11 +46,15 @@ export const Button = styled.button<ButtonProps>`
   }
 `;
 
-export const ArrowContainer = styled.div`
+export const ArrowContainer = styled.div<ArrowContainerProps>`
   text-align: center;
   margin: 25px auto -50px auto;
   position: relative;
   z-index: 98;
+
+  @media (max-width: 1150px) {
+    margin: ${(props) => (props.path === "builders" ? "25px auto" : null)};
+  }
 `;
 
 export const ArrowButton = styled.button<ArrowButtonProps>`
@@ -80,5 +88,9 @@ export const ArrowButton = styled.button<ArrowButtonProps>`
     text-shadow: 0 0 2em rgba(255, 255, 255, 1);
     border: 2px solid white;
     color: black;
+  }
+
+  @media (max-width: 1150px) {
+    margin: ${(props) => (props.path === "builders" ? "0 15px" : null)};
   }
 `;
