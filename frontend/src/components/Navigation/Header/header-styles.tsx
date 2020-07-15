@@ -20,13 +20,13 @@ export const Header = styled.header<HeaderProps>`
   border: 2px solid yellow;
   visibility: ${(props) => (props.loading ? "hidden" : "visible")};
 
-  @media (max-width: 500px) {
+  @media (max-width: 575px) {
     justify-content: flex-start;
   }
 `;
 
 export const Nav = styled.nav`
-  @media (max-width: 500px) {
+  @media (max-width: 575px) {
     display: none;
   }
 `;
@@ -44,10 +44,10 @@ export const LegionHeading = styled.h1`
   }
 
   @media ${device.mobileL} {
-    margin-left: 5rem;
+    margin-left: 6rem;
   }
 
-  @media (min-width: 501px) {
+  @media (min-width: 576px) {
     display: none;
   }
 `;

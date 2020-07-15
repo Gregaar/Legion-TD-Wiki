@@ -4,8 +4,10 @@ import Background from "../../assets/bg.png";
 import device from "./devices";
 
 interface HeightProps {
-  height: string;
+  height?: string;
   login?: boolean;
+  noMatch?: boolean;
+  textBased?: boolean;
 }
 
 export const BackgroundDiv = styled.div<HeightProps>`
@@ -17,7 +19,7 @@ export const BackgroundDiv = styled.div<HeightProps>`
 
   &:after {
     content: "";
-    opacity: 0.5;
+    opacity: ${(props) => (props.textBased ? "0.1" : "0.5")};
     top: 0;
     left: 0;
     bottom: 0;
@@ -29,14 +31,14 @@ export const BackgroundDiv = styled.div<HeightProps>`
   }
 
   @media ${device.mobileS} {
-    height: 100%;
+    height: ${(props) => (props.noMatch ? "100vh" : null)};
   }
 
   @media ${device.mobileM} {
-    height: 100%;
+    height: ${(props) => (props.noMatch ? "100vh" : null)};
   }
 
   @media ${device.mobileL} {
-    height: 100%;
+    height: ${(props) => (props.noMatch ? "100vh" : null)};
   }
 `;

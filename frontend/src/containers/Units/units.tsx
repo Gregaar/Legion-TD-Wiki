@@ -29,7 +29,7 @@ const Units: React.FC = () => {
     const getUnitsToDisplay = async (builder: string) => {
       await axios(`/api/unit/builder/${builder}`)
         .then((res) => {
-          setDisplayUnits((prevUnits) => [...prevUnits, ...res.data.units]);
+          setDisplayUnits((prevUnits) => [...res.data.units]);
           return;
         })
         .catch((error) => {

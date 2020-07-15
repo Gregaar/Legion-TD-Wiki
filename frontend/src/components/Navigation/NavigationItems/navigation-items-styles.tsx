@@ -9,7 +9,7 @@ export const List = styled.ul`
   flex-flow: column;
   text-align: center;
 
-  @media (min-width: 501px) {
+  @media (min-width: 576px) {
     flex-flow: row;
   }
 `;

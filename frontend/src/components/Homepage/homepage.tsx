@@ -1,21 +1,58 @@
 import React from "react";
-import styled from "styled-components";
+import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import {
+  MainHeading,
+  HeadingTwo,
+  TextContainer,
+  Paragraph,
+  A,
+  NavLinkStyled,
+} from "./homepage-styles";
 
-import Background from "../../assets/bg.png";
-
-const Div = styled.div`
-  height: 100vh;
-  opacity: 0.75;
-  background-image: url(${Background});
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 1%;
-`;
 const homepage: React.FC = () => {
   return (
-    <Div>
-      <h1 style={{ textAlign: "center", color: "white" }}>:-)</h1>
-    </Div>
+    <BackgroundDiv height="100%" textBased>
+      <MainHeading>Legion TD Mega Wiki</MainHeading>
+      <HeadingTwo>Based on Version 3.5 (B4)</HeadingTwo>
+      <TextContainer>
+        <Paragraph>
+          All of the information used throughout the site is taken from the 3.5
+          (B4) map, which can be downloaded from the{" "}
+          <A
+            href="https://www.hiveworkshop.com/threads/legion-td-mega-3-5-b4-3-41-unprotect.194224/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Hive Workshop
+          </A>
+          .{" "}
+        </Paragraph>
+        <br />
+        <Paragraph>
+          This map can be played on either Warcraft III: Frozen Throne or
+          Warcraft III: Reforged.
+        </Paragraph>
+        <br />
+        <Paragraph>
+          The map itself can be played in either PvP or PvE modes and can be
+          played with up to a maximum of 8 players.
+        </Paragraph>
+        <br />
+        <Paragraph>
+          Throughout the wiki, you can find information regarding the Units,
+          Builders, Waves, Summons and the King.
+        </Paragraph>
+        <br />
+        <Paragraph>
+          If you have any ideas for additional content, or notice any mistakes,
+          you can find contact information on the{" "}
+          <NavLinkStyled to="/about">About</NavLinkStyled> page.
+        </Paragraph>
+        <br />
+        <br />
+        <Paragraph>Happy Tower Defending!</Paragraph>
+      </TextContainer>
+    </BackgroundDiv>
   );
 };
 

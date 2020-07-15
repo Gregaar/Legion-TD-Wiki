@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router";
 
 import Homepage from "./components/Homepage/homepage";
+import About from "./components/About/about";
 import Builders from "./containers/Builders/builders";
 import BuilderUnits from "./containers/BuilderUnits/builder-units";
 import IndividualUnit from "./containers/IndividualUnit/individual-unit";
@@ -10,6 +11,7 @@ import Login from "./containers/Login/login";
 import Summons from "./containers/Summons/summons";
 import Units from "./containers/Units/units";
 import Waves from "./containers/Waves/waves";
+import NoMatchPage from "./containers/NoMatchPage/no-match-page";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
@@ -45,7 +47,9 @@ const App: React.FC = () => {
           />
           <ProtectedRoute path="/waves" exact component={Waves} />
           <ProtectedRoute path="/king" exact component={King} />
-          <ProtectedRoute path="/" exact component={Homepage} />
+          <Route path="/about" exact component={About} />
+          <Route path="/" exact component={Homepage} />
+          <Route component={NoMatchPage} />
         </Switch>
       </Layout>
     </AuthProvider>

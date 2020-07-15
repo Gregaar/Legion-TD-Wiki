@@ -13,6 +13,9 @@ const NavigationItems: React.FC = () => {
     <List>
       {authStatus ? (
         <React.Fragment>
+          <NavItem exact link="/">
+            Home
+          </NavItem>
           <NavItem exact link="/summons">
             Summons
           </NavItem>
@@ -29,10 +32,16 @@ const NavigationItems: React.FC = () => {
             King
           </NavItem>
         </React.Fragment>
-      ) : null}
+      ) : (
+        <React.Fragment>
+          <NavItem exact link="/">
+            Home
+          </NavItem>
+        </React.Fragment>
+      )}
       <NavItem
         exact
-        link={authStatus ? "/logout" : "login"}
+        link={authStatus ? "/logout" : "/login"}
         clicked={authStatus ? authContext?.logoutHandler : undefined}
       >
         {authStatus ? "Logout" : "Login"}
