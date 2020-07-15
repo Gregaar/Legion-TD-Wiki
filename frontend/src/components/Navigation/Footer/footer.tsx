@@ -10,7 +10,7 @@ const footer: React.FC<FooterProps> = (props) => {
   return (
     <Footer loading={props.loading ? 1 : 0}>
       <List>
-        <FooterItem exact to="/About">
+        <FooterItem exact to="/about">
           About
         </FooterItem>
       </List>

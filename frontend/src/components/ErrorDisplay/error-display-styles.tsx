@@ -32,7 +32,7 @@ export const Modal = styled.div<ModalProps>`
   margin-left: -37.5%;
   width: 35%;
   max-height: 55%;
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 99;
   background-color: #44596A;
   border: 1px solid yellow;

@@ -26,6 +26,7 @@ export const WavesContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 10rem;
   }
 
   @media ${device.laptop} {

@@ -27,7 +27,7 @@ export const SideDrawerDiv = styled.div<ShowProps>`
   padding: 32px 16px;
   transition: transform 0.3s ease-out;
 
-  @media (min-width: 501px) {
+  @media (min-width: 576px) {
     display: none;
   }
 `;
@@ -43,7 +43,7 @@ export const DrawerToggle = styled.div`
   cursor: pointer;
   margin-left: 10px;
 
-  @media (min-width: 501px) {
+  @media (min-width: 576px) {
     display: none;
   }
 `;
@@ -53,7 +53,7 @@ export const DrawerMenu = styled.div`
   height: 3px;
   background-color: white;
 
-  @media (min-width: 501px) {
+  @media (min-width: 576px) {
     display: none;
   }
 `;
