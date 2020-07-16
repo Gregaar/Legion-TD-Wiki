@@ -22,4 +22,5 @@ export default interface WaveInterface {
   "Defense Weakness": string;
   Type: string;
   Boss: boolean;
+  ID: string;
 }

@@ -37,6 +37,8 @@ export const ContainerDiv = styled.div`
 export const Form = styled.form`
   text-align: center;
   padding: 5%;
+  border: 2px solid white;
+  border-radius: 5px;
   }
 `;
 

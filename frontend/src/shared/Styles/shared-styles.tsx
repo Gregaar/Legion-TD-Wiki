@@ -1,44 +1,110 @@
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 import Background from "../../assets/bg.png";
 import device from "./devices";
 
-interface HeightProps {
-  height?: string;
-  login?: boolean;
-  noMatch?: boolean;
-  textBased?: boolean;
-}
-
-export const BackgroundDiv = styled.div<HeightProps>`
-  height: ${(props) =>
-    props.login ? "100vh" : props.height ? props.height : "100vh"};
-  display: block;
-  position: relative;
-  padding: 1%;
+export const BackgroundDiv = styled.div`
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100%;
+  height: auto;
 
   &:after {
     content: "";
-    opacity: ${(props) => (props.textBased ? "0.1" : "0.5")};
+    opacity: 0.1;
+    background-image: url(${Background});
+    background-size: auto;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    position: absolute;
-    background-image: url(${Background});
-    background-size: auto;
+    position: fixed;
     z-index: -1;
   }
+`;
+
+export const MainHeading = styled.h1`
+  text-align: center;
+  color: gold;
+  font-size: 5rem;
+  text-shadow: 3px 3px black;
+  margin: 25px auto 0 auto;
 
   @media ${device.mobileS} {
-    height: ${(props) => (props.noMatch ? "100vh" : null)};
+    font-size: 3rem;
+  }
+
+  /* mobileM & mobileL */
+  @media (min-width: 375px) and (max-width: 767px) {
+    font-size: 4rem;
+  }
+`;
+
+export const TextContainer = styled.div`
+  margin: 0 auto;
+  text-align: center;
+  width: 65vw;
+  line-height: 50px;
+
+  @media ${device.mobileS} {
+    width: 100vw;
   }
 
   @media ${device.mobileM} {
-    height: ${(props) => (props.noMatch ? "100vh" : null)};
+    width: 100vw;
   }
 
   @media ${device.mobileL} {
-    height: ${(props) => (props.noMatch ? "100vh" : null)};
+    width: 70vw;
+  }
+
+  @media ${device.tablet} {
+    width: 75vw;
+  }
+
+  @media ${device.laptop} {
+    width: 85vw;
+  }
+
+  @media ${device.laptopL} {
+    width: 85vw;
+  }
+`;
+
+export const P = styled.p`
+  color: white;
+  text-shadow: 1px 1px black;
+  font-size: 1.5rem;
+
+  @media ${device.mobileS} {
+    margin: 10px;
+  }
+
+  /* mobileM & mobileL */
+  @media (min-width: 375px) and (max-width: 767px) {
+    margin: 20px;
+  }
+
+  /* tablet and laptop */
+  @media (min-width: 768px) and (max-width: 1439px) {
+    margin: 30px auto;
+  }
+
+  /* laptopL and desktops */
+  @media (min-width: 1440px) {
+    margin: 10px auto;
+  }
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+
+  &:hover,
+  &:active {
+    text-shadow: 1px 1px gold;
   }
 `;

@@ -91,6 +91,10 @@ const waveSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  ID: {
+    type: String,
+    required: true,
+  },
 });
 
 waveSchema.methods.toJSON = function () {

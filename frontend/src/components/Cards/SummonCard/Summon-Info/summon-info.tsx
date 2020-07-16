@@ -22,7 +22,7 @@ const summonInfo: React.FC<SummonInfoProps> = (props) => {
     { title: "Lumber Cost", value: props.lumberCost, key: shortid.generate() },
     { title: "Max Stock", value: props.stock, key: shortid.generate() },
     {
-      title: "Replenish Interval",
+      title: "Replenish Time",
       value: `${props.replenishInterval} seconds`,
       key: shortid.generate(),
     },

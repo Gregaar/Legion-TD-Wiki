@@ -26,7 +26,7 @@ const summonOther: React.FC<SummonOtherProps> = (props) => {
 
   const otherInfoNavArray = [
     {
-      title: "Purchase Location",
+      title: "Location",
       value: props.location,
       key: shortid.generate(),
     },

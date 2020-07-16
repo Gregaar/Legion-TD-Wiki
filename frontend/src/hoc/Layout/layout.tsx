@@ -4,6 +4,7 @@ import Footer from "../../components/Navigation/Footer/footer";
 import Header from "../../components/Navigation/Header/header";
 import SideDrawer from "../../components/Navigation/SideDrawer/side-drawer";
 import { useAuthContext } from "../AuthContext/auth-context";
+import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const authContext = useAuthContext();
@@ -12,7 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <React.Fragment>
       <Header loading={authContext.loading} toggleDrawer={setShowSideDrawer} />
       <SideDrawer isOpen={showSideDrawer} closed={setShowSideDrawer} />
-      {children}
+      <BackgroundDiv>{children}</BackgroundDiv>
       <Footer loading={authContext.loading} />
     </React.Fragment>
   );

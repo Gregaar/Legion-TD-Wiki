@@ -24,4 +24,5 @@ export default interface WaveInterface extends Document {
   "Defense Weakness": string;
   Type: string;
   Boss: boolean;
+  ID: string;
 }
