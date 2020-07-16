@@ -3,7 +3,6 @@ import React from "react";
 
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
-import { BackgroundDiv } from "../../../shared/Styles/shared-styles";
 import {
   Button,
   ButtonContainer,
@@ -103,7 +102,7 @@ const Register: React.FC<RegisterProps> = ({
   );
 
   return (
-    <BackgroundDiv height="100%" login={true}>
+    <React.Fragment>
       <ContainerDiv>
         {formErrors.length > 0 ? errorDisplay : null}
         <Form
@@ -193,7 +192,7 @@ const Register: React.FC<RegisterProps> = ({
           </ButtonContainer>
         </Form>
       </ContainerDiv>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

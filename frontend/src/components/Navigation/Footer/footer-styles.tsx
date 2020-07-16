@@ -9,13 +9,14 @@ interface FooterStyleProps {
 
 export const Footer = styled.footer<FooterStyleProps>`
   border: 2px solid yellow;
-  background-color: rgba(68, 89, 106, 0.8);
+  background-color: rgb(68, 89, 106);
   width: 100%;
   padding: 0 2px;
   z-index: 99;
   border-radius: 5px;
   height: 35px;
   visibility: ${(props) => (props.loading ? "hidden" : "visible")};
+  margin-top: 2rem;
 `;
 
 export const List = styled.ul`

@@ -8,7 +8,6 @@ import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-bu
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import SummonCard from "../Summons/summon-card";
 import UnitCard from "../Units/UnitCard/unit-card";
 import WaveCard from "../Waves/wave-card";
@@ -23,12 +22,12 @@ const sanitizeUnitName = (path: string): string => {
 type Unit = UnitInterface & SummonInterface & WaveInterface;
 
 const IndividualUnit: React.FC = () => {
-  const [currentUnit, setCurrentUnit] = useState<Unit>({} as Unit);
   const history = useHistory();
   const currentLocation = useLocation();
   const isSummonUnit = currentLocation.pathname.includes("summons");
   const isWaveUnit = currentLocation.pathname.includes("waves");
   const unitName = sanitizeUnitName(currentLocation.pathname);
+  const [currentUnit, setCurrentUnit] = useState<Unit>({} as Unit);
 
   useEffect(() => {
     const getUnit = async () => {
@@ -38,7 +37,6 @@ const IndividualUnit: React.FC = () => {
           return;
         })
         .catch((error) => {
-          //maybe push to somekind of 404 or modal to say unit not found?
           history.push("/units");
           return;
         });
@@ -55,7 +53,6 @@ const IndividualUnit: React.FC = () => {
         });
     };
     const getWave = async () => {
-      // figure out way to get order number to use it here!
       await axios(`/api/wave/level/${unitName}`)
         .then((res) => {
           setCurrentUnit((prevWave) => res.data.waves);
@@ -133,10 +130,10 @@ const IndividualUnit: React.FC = () => {
   );
 
   return (
-    <BackgroundDiv height="115vh">
+    <React.Fragment>
       {navButtons}
       <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>
-    </BackgroundDiv>
+      </React.Fragment>
   );
 };
 

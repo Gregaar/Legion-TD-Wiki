@@ -43,11 +43,11 @@ export const InfoPanel = styled.div<InfoPanelProps>`
   color: white;
 
   @media ${device.mobileS} {
-    width: 100%;
+    width: 95%;
   }
 
   @media ${device.mobileM} {
-    width: 100%;
+    width: 95%;
   }
 
   @media ${device.mobileL} {

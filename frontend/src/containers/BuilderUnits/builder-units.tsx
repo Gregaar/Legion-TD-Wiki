@@ -7,7 +7,6 @@ import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-bu
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import ProphetAbilities from "../../shared/Interfaces/prophet-abilities-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import InfoCard from "../Units/UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
 
@@ -70,7 +69,7 @@ const BuilderUnits: React.FC = () => {
   }, [builderName]);
 
   return (
-    <BackgroundDiv height="100%">
+    <React.Fragment>
       <NavButtons
         goToChosen={history.push}
         path={"builders"}
@@ -122,7 +121,7 @@ const BuilderUnits: React.FC = () => {
             />
           ))}
       </UnitGrid>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

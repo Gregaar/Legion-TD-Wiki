@@ -1,5 +1,4 @@
 import React from "react";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import {
   MainHeading,
   ImgContainer,
@@ -14,7 +13,7 @@ import EmailLogo from "../../assets/email-logo.png";
 
 const about: React.FC = () => {
   return (
-    <BackgroundDiv height="100%" textBased>
+    <React.Fragment>
       <MainHeading>About</MainHeading>
       <FAQContainer>
         <PQ>Q. What's the purpose of this site?</PQ>
@@ -76,7 +75,7 @@ const about: React.FC = () => {
           <Img src={EmailLogo} alt="Email Logo" />
         </A>
       </ImgContainer>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

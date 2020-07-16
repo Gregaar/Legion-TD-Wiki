@@ -15,15 +15,19 @@ interface ArrowButtonProps {
 }
 
 export const ButtonContainer = styled.div`
-  margin: 25px auto -50px auto;
+  margin: 25px auto 0 auto;
   text-align: center;
   position: relative;
   z-index: 99;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Button = styled.button<ButtonProps>`
   display: inline-block;
-   padding: 0.46em 1.6em;
+   padding: 10px;
    border: 2px solid ${(props) => (props.active ? "white" : "black")};
    margin: 0 0.5em 0.2em 0.5em;
    border-radius: 0.12em;
@@ -36,6 +40,7 @@ export const Button = styled.button<ButtonProps>`
    background-color: ${(props) => (props.active ? "teal" : "gray")};
    text-align: center;
    transition: all 0.15s;
+   flex: 0 0 15%;
 
   &:hover {
     text-shadow: 0 0 2em rgba(255, 255, 255, 1);

@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import {
   Heading,
   Paragraph,
@@ -12,7 +11,7 @@ const NoMatchPage: React.FC = () => {
   const history = useHistory();
 
   return (
-    <BackgroundDiv height="100vh" noMatch={true} textBased>
+    <React.Fragment>
       <Heading>
         404{"\n"}
         Page Not Found
@@ -27,7 +26,7 @@ const NoMatchPage: React.FC = () => {
           Back to Safety
         </BackButton>
       </ButtonContainer>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

@@ -5,7 +5,11 @@ import shortid from "shortid";
 
 import WaveButtons from "../../components/Navigation/UI/Buttons/WaveButtons/wave-buttons";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import {
+  MainHeading,
+  TextContainer,
+  P,
+} from "../../shared/Styles/shared-styles";
 import handleWavePagination from "./handle-wave-pagination";
 import WaveCard from "./wave-card";
 import { WavesContainer } from "./waves-styles";
@@ -67,7 +71,19 @@ const Waves: React.FC = () => {
   }
 
   return (
-    <BackgroundDiv height="100%">
+    <React.Fragment>
+      <MainHeading>Waves</MainHeading>
+      <TextContainer>
+        <P>
+          The main objective of the game is to defend your king by defeating
+          each wave of enemies.
+        </P>
+        <P>
+          In total, there are 31 waves, with a Boss wave every 10 levels and an
+          endless wave after level 30.
+        </P>
+        <P>Each wave gets increasingly harder as the game continues.</P>
+      </TextContainer>
       <WaveButtons
         activeButton={activeButton}
         handleWaveClick={handleWaveClick}
@@ -75,7 +91,7 @@ const Waves: React.FC = () => {
       <WavesContainer>
         {enemyWaves.length > 1 ? wavesCardDisplay : null}
       </WavesContainer>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

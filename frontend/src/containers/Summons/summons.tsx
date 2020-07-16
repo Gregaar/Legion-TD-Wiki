@@ -4,7 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import SummonButtons from "../../components/Navigation/UI/Buttons/SummonButtons/summon-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import {
+  MainHeading,
+  TextContainer,
+  P,
+} from "../../shared/Styles/shared-styles";
 import handleSummonPagination from "./handle-summon-pagination";
 import SummonCard from "./summon-card";
 import { SummonsContainer } from "./summons-styles";
@@ -80,7 +84,24 @@ const Summons: React.FC = () => {
   }
 
   return (
-    <BackgroundDiv height="100%">
+    <React.Fragment>
+      <MainHeading>Summons</MainHeading>
+      <TextContainer>
+        <P>
+          To hinder the enemy team or boost your own income, each player can
+          send Summons.
+        </P>
+        <P>
+          Summons are units that are sent along with the next wave to attack
+          your opponents at random.
+        </P>
+        <P>
+          Each Summon has their own unique stats and some even have abilities.
+        </P>
+        <P>
+          Summons can be sent from two locations: Barracks or Advanced Barracks
+        </P>
+      </TextContainer>
       <SummonButtons
         activeButton={activeButton}
         buttonClicked={handleButtonClick}
@@ -88,7 +109,7 @@ const Summons: React.FC = () => {
       <SummonsContainer>
         {summonDisplay ? summonDisplay : null}
       </SummonsContainer>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

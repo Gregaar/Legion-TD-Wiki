@@ -5,7 +5,6 @@ import isEmail from "validator/lib/isEmail";
 
 import ErrorDisplay from "../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../hoc/AuthContext/auth-context";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import {
   Button,
   ButtonContainer,
@@ -148,9 +147,9 @@ const Login: React.FC = () => {
     );
   }
   return (
-    <BackgroundDiv height="100vh" login={true}>
+    <React.Fragment>
       {login}
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

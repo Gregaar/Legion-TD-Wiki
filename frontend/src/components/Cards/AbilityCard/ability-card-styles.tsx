@@ -79,18 +79,18 @@ export const AbilityPanel = styled.div<AbilityCountProps>`
   flex: ${(props) => (props.abilityCount > 1 ? "0 0 45%" : null)};
 
   @media ${device.mobileS} {
-    width: 100%;
-    margin: 10px auto;
+    width: 95%;
+    margin: 1.5rem auto 0 auto;
   }
 
   @media ${device.mobileM} {
-    width: 100%;
-    margin: 10px auto;
+    width: 95%;
+    margin: 1.5rem auto 0 auto;
   }
 
   @media ${device.mobileL} {
     width: 22em;
-    margin: 10px auto;
+    margin: 1.5rem auto 0 auto;
   }
 
   @media ${device.laptop} {

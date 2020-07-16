@@ -6,7 +6,12 @@ import KingButtons from "../../components/Navigation/UI/Buttons/KingButtons/king
 import KingStatTable from "../../components/Tables/King/king-stats-table";
 import KingAbilityInterface from "../../shared/Interfaces/king-ability-interface";
 import KingStatsInterface from "../../shared/Interfaces/king-stats-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
+import {
+  MainHeading,
+  TextContainer,
+  P,
+} from "../../shared/Styles/shared-styles";
+import {} from "../../shared/Styles/shared-styles";
 import { KingContainer } from "./king-styles";
 
 interface KingButtons {
@@ -77,7 +82,23 @@ const King: React.FC = () => {
   }
 
   return (
-    <BackgroundDiv height="100%">
+    <React.Fragment>
+      <MainHeading>The King</MainHeading>
+      <TextContainer>
+        <P>
+          The main objective of the game is to protect your teams King. If the
+          King dies, the game is over.
+        </P>
+
+        <P>
+          To make the King more powerful, players can upgraded his Attack, Hit
+          Points and Regeneration.
+        </P>
+        <P>
+          Additionally, throughout the game the King learns up to four random
+          abilities.
+        </P>
+      </TextContainer>
       <KingButtons
         activeButton={activeButton}
         buttonClicked={handleKingClick}
@@ -90,7 +111,7 @@ const King: React.FC = () => {
       {activeButton.abilities ? (
         <KingContainer>{abilityDisplay}</KingContainer>
       ) : null}
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

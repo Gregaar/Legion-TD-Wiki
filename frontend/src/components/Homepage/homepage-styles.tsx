@@ -117,7 +117,6 @@ export const NavLinkStyled = styled(NavLink)`
 
   &:hover,
   &:active {
-    color: white;
     text-shadow: 1px 1px gold;
   }
 `;

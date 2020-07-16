@@ -28,10 +28,9 @@ export const KingContainer = styled.div<ContainerProps>`
   }
 
   @media ${device.tablet} {
-    display: ${(props) => (props.stats ? "flex" : "inline-grid")};
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     flex-direction: row;
-    margin-top: 3rem;
+    margin-top: 3rem auto 0 25px;
     width: 100%;
   }
 

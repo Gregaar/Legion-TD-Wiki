@@ -1,5 +1,4 @@
 import React from "react";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import {
   MainHeading,
   HeadingTwo,
@@ -11,7 +10,7 @@ import {
 
 const homepage: React.FC = () => {
   return (
-    <BackgroundDiv height="100%" textBased>
+    <React.Fragment>
       <MainHeading>Legion TD Mega Wiki</MainHeading>
       <HeadingTwo>Based on Version 3.5 (B4)</HeadingTwo>
       <TextContainer>
@@ -52,7 +51,7 @@ const homepage: React.FC = () => {
         <br />
         <Paragraph>Happy Tower Defending!</Paragraph>
       </TextContainer>
-    </BackgroundDiv>
+    </React.Fragment>
   );
 };
 

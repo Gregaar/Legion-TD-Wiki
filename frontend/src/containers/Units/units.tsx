@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import UnitInterface from "../../shared/Interfaces/unit-interface";
-import { BackgroundDiv } from "../../shared/Styles/shared-styles";
 import Filter from "./Filter/filter";
 import searchWithFilters from "./Filter/Requests/search-with-filters";
 import UnitList from "./Unit-List/unit-list";
@@ -68,7 +67,7 @@ const Units: React.FC = () => {
 
   return (
     <main>
-      <BackgroundDiv height="100%">
+      <React.Fragment>
         <Filter displayUnits={displayUnits} setDisplayUnits={setDisplayUnits} />
         <UnitContainer>
           <UnitHeadingsContainer>
@@ -78,7 +77,7 @@ const Units: React.FC = () => {
           </UnitHeadingsContainer>
           {unitListDisplay}
         </UnitContainer>
-      </BackgroundDiv>
+      </React.Fragment>
     </main>
   );
 };

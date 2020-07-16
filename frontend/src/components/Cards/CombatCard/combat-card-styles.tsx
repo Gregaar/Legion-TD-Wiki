@@ -44,21 +44,21 @@ export const CombatPanel = styled.div`
   color: white;
 
   @media ${device.mobileS} {
-    width: 100%;
+    width: 97%;
     height: 330px;
-    margin: 10px auto;
+    margin: 1.5rem auto 0 auto;
   }
 
   @media ${device.mobileM} {
-    width: 100%;
+    width: 97%;
     height: 330px;
-    margin: 10px auto;
+    margin: 1.5rem auto 0 auto;
   }
 
   @media ${device.mobileL} {
     width: 22em;
     height: 330px;
-    margin: 10px auto;
+    margin: 1.5rem auto 0 auto;
   }
 `;
 
