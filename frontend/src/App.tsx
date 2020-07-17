@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router";
 
 import About from "./components/About/about";
 import Homepage from "./components/Homepage/homepage";
-import About from "./components/About/about";
 import Builders from "./containers/Builders/builders";
 import BuilderUnits from "./containers/BuilderUnits/builder-units";
 import IndividualUnit from "./containers/IndividualUnit/individual-unit";
