@@ -99,7 +99,7 @@ const Summons: React.FC = () => {
           Each Summon has their own unique stats and some even have abilities.
         </P>
         <P>
-          Summons can be sent from two locations: Barracks or Advanced Barracks
+          Summons can be sent from two locations: Barracks or Advanced Barracks.
         </P>
       </TextContainer>
       <SummonButtons

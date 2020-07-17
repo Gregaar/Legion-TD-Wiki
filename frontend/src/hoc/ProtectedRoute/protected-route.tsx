@@ -19,7 +19,7 @@ const ProtectedRoute = ({
     <Route
       {...rest}
       render={(props) => {
-        if (authContext?.loading || !authContext?.user.isAuth)
+        if (authContext?.loading)
           return <LoadingSpinner />;
         if (authContext?.user.isAuth) {
           return <Component {...rest} {...props} />;

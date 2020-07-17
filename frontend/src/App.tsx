@@ -11,6 +11,7 @@ import Login from "./containers/Login/login";
 import Summons from "./containers/Summons/summons";
 import Units from "./containers/Units/units";
 import Waves from "./containers/Waves/waves";
+import ResetPassword from "./containers/Login/ResetPassword/reset-password";
 import NoMatchPage from "./containers/NoMatchPage/no-match-page";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
@@ -22,6 +23,11 @@ const App: React.FC = () => {
       <Layout>
         <Switch>
           <Route path="/login" exact component={Login} />
+          <Route
+            path="/resetpassword/:id/:token"
+            exact
+            component={ResetPassword}
+          />
           <ProtectedRoute
             path="/units/:unitName"
             exact

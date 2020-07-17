@@ -1,8 +1,6 @@
 import Tooltip from "@material-ui/core/Tooltip";
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import isEmail from "validator/lib/isEmail";
-
 import ErrorDisplay from "../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../hoc/AuthContext/auth-context";
 import {
@@ -14,8 +12,10 @@ import {
   InputButton,
   InputDiv,
   Label,
+  ForgotHeading,
 } from "./login-styles";
 import Register from "./Register/register";
+import ForgotPassword from "./ForgotPassword/forgot-password";
 
 interface FormErrors {
   message: string;
@@ -27,15 +27,9 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [signUp, setSignUp] = useState<boolean>(false);
+  const [forgottenPassword, setForgottenPassword] = useState<boolean>(false);
   const [formErrors, setFormErrors] = useState<FormErrors[]>([]);
   const authContext = useAuthContext();
-  const history = useHistory();
-
-  useEffect(() => {
-    if (authContext?.user.isAuth) {
-      history.push("/");
-    }
-  });
 
   const handleSignup = (): void => {
     setUsername("");
@@ -44,6 +38,17 @@ const Login: React.FC = () => {
     setConfirmPassword("");
     setFormErrors((prevState) => []);
     setSignUp(true);
+    setForgottenPassword(false);
+  };
+
+  const handleForgotten = (): void => {
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setFormErrors((prevState) => []);
+    setSignUp(false);
+    setForgottenPassword(true);
   };
 
   const handleLogin = async (
@@ -124,6 +129,9 @@ const Login: React.FC = () => {
               Switch to Register
             </Button>
           </ButtonContainer>
+          <ForgotHeading onClick={handleForgotten}>
+            Forgotten Password?
+          </ForgotHeading>
         </Form>
       </ContainerDiv>
     </React.Fragment>
@@ -146,11 +154,20 @@ const Login: React.FC = () => {
       />
     );
   }
-  return (
-    <React.Fragment>
-      {login}
-    </React.Fragment>
-  );
+
+  if (forgottenPassword) {
+    return (
+      <ForgotPassword
+        formErrors={formErrors}
+        setFormErrors={setFormErrors}
+        email={email}
+        setEmail={setEmail}
+        setForgottenPassword={setForgottenPassword}
+      />
+    );
+  }
+
+  return <React.Fragment>{login}</React.Fragment>;
 };
 
 export default Login;

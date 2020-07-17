@@ -41,14 +41,12 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           } else if (!res.data.success && authStatus) {
             setAuthStatus(false);
             setPageLoading(false);
-            history.push("/login");
             return;
           }
         })
         .catch((error) => {
           setAuthStatus(false);
           setPageLoading(false);
-          history.push("/");
           return;
         });
     };
@@ -136,15 +134,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           setPageLoading(false);
           history.push("/login");
         } else {
-          setAuthStatus(true);
+          setAuthStatus(false);
           setPageLoading(false);
-          history.push("/");
+          history.push("/login");
         }
       })
       .catch((error) => {
         setPageLoading(false);
         setAuthStatus(false);
-        setPageLoading(false);
         history.push("/login");
         return error.response.data.error;
       });

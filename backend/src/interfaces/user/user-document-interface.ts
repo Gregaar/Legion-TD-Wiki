@@ -4,4 +4,5 @@ export interface UserDocumentInterface extends Document {
   name: string;
   email: string;
   password: string;
+  created: number;
 }

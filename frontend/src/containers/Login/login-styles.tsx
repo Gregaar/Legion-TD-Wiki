@@ -134,3 +134,15 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   margin-top: 5%;
 `;
+
+export const ForgotHeading = styled.h2`
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  cursor: pointer; 
+
+  &:hover, &:active {
+    text-decoration: underline;
+    text-shadow: 1px 1px black;
+  }
+`;

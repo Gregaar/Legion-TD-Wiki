@@ -13,7 +13,7 @@ export const BackgroundDiv = styled.div`
     content: "";
     opacity: 0.1;
     background-image: url(${Background});
-    background-size: auto;
+    background-size: cover;
     top: 0;
     left: 0;
     bottom: 0;

@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
+  created: {
+    type: Number,
+    required: true,
+  },
 });
 
 userSchema.pre<UserInterface>("save", async function (next) {

@@ -91,7 +91,7 @@ const King: React.FC = () => {
         </P>
 
         <P>
-          To make the King more powerful, players can upgraded his Attack, Hit
+          To make the King more powerful, players can upgrade his Attack, Hit
           Points and Regeneration.
         </P>
         <P>

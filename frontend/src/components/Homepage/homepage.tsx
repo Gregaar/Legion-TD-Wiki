@@ -2,17 +2,20 @@ import React from "react";
 import {
   MainHeading,
   HeadingTwo,
+  Img,
   TextContainer,
   Paragraph,
   A,
   NavLinkStyled,
 } from "./homepage-styles";
+import mapImage from "../../assets/map-image.png";
 
 const homepage: React.FC = () => {
   return (
     <React.Fragment>
       <MainHeading>Legion TD Mega Wiki</MainHeading>
       <HeadingTwo>Based on Version 3.5 (B4)</HeadingTwo>
+      <Img src={mapImage} alt="The Legion TD map" />
       <TextContainer>
         <Paragraph>
           All of the information used throughout the site is taken from the 3.5

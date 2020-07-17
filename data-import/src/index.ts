@@ -5,8 +5,8 @@ import { getCsvPaths } from "./get-csv-paths";
 import { parseCSV } from "./parse-csv";
 
 const MONGO_DB = process.env.MONGO_DB;
-const MONGO_HOST = process.env.MONGO_HOST || "localhost";
-const MONGO_PORT = process.env.MONGO_PORT || "27017";
+// const MONGO_HOST = process.env.MONGO_HOST || "localhost";
+// const MONGO_PORT = process.env.MONGO_PORT || "27017";
 
 (async () => {
   let client: mongodb | undefined;
@@ -23,10 +23,13 @@ const MONGO_PORT = process.env.MONGO_PORT || "27017";
     const collections = await Promise.all(paths.map(parseCSV));
 
     // Create mongo client
-    client = await mongodb.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}`, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    });
+    client = await mongodb.connect(
+      `mongodb+srv://legion-admin:aarR1L8Vra3@legion.7j5ow.mongodb.net/Legion?retryWrites=true&w=majority`,
+      {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+      },
+    );
 
     // Drop all matching collections and recreate them with data from csv files
     console.time("Duration");

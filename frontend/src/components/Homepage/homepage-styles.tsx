@@ -38,6 +38,12 @@ export const HeadingTwo = styled.h2`
   }
 `;
 
+export const Img = styled.img`
+  display: block;
+  border: 2px solid white;
+  margin: 0 auto;
+`
+
 export const TextContainer = styled.div`
   margin: 0 auto;
 

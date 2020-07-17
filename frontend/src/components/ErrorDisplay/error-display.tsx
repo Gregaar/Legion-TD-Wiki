@@ -1,4 +1,5 @@
 import React from "react";
+import shortid from "shortid";
 
 import {
   BackdropDiv,
@@ -26,7 +27,7 @@ const errorDisplay: React.FC<ErrorDisplayProps> = (props) => (
     <Modal show={props.show}>
       {Array.isArray(props.displayErrors) ? (
         props.displayErrors.map((error) => (
-          <ErrorHeading key={error.message.slice(7)}>
+          <ErrorHeading key={shortid.generate()}>
             {error.message}
           </ErrorHeading>
         ))

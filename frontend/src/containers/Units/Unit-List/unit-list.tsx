@@ -1,9 +1,6 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import { useHistory } from "react-router-dom";
-
-import cancelIcon from "../../../assets/cancel-icon.png";
-import unknownIcon from "../../../assets/unknown-icon.png";
 import {
   getAbilityIcon,
   getAttackIcon,
@@ -11,7 +8,7 @@ import {
   getTierIcon,
   getUnitIcon,
 } from "../../../shared/Services/get-icons";
-import { Img, UnitName } from "./unit-list-styles";
+import { Img } from "../unit-styles";
 
 interface UnitProps {
   id: string;
@@ -32,11 +29,12 @@ const UnitList: React.FC<UnitProps> = (props) => {
   const tierIcon = getTierIcon(props.tier);
   const attackIcon = getAttackIcon(props.attack);
   const defenseIcon = getDefenseIcon(props.defense);
-  const abilityIcon = props.abilities
-    ? getAbilityIcon(props.builder, props.abilities[0])
-    : unknownIcon;
   const imgurURL = "https://i.imgur.com";
   const history = useHistory();
+
+  const abilityIcon = (builder: string, abilityName: string | null): string => {
+    return getAbilityIcon(builder, abilityName);
+  };
 
   const goToUnitHandler = (
     event: React.MouseEvent<UnitNameHandlerEvent>
@@ -57,9 +55,6 @@ const UnitList: React.FC<UnitProps> = (props) => {
 
   return (
     <div style={{ display: "contents" }}>
-      <UnitName onClick={(event) => goToUnitHandler(event)}>
-        {props.unitName}
-      </UnitName>
       <Tooltip
         title={props.unitName
           .charAt(0)
@@ -98,24 +93,42 @@ const UnitList: React.FC<UnitProps> = (props) => {
       <Tooltip
         placement="right"
         title={
-          props.abilityDescriptions !== null &&
-          props.abilityDescriptions.length > 1
-            ? props.abilityDescriptions[0] +
-              ` Unit has ${props.abilityDescriptions.length - 1} more ${
-                props.abilityDescriptions.length - 1 > 1
-                  ? "Abilities"
-                  : "Ability"
-              }.`
-            : props.abilityDescriptions !== null
+          props.abilityDescriptions !== null
             ? props.abilityDescriptions[0]
             : "No ability"
         }
       >
         <Img
-          src={props.abilities !== null ? abilityIcon : cancelIcon}
+          src={
+            props.abilities !== null
+              ? abilityIcon(props.builder, props.abilities[0])
+              : abilityIcon(props.builder, null)
+          }
           alt={
             props.abilities !== null
               ? `Icon for the ${props.abilities[0]} ability.`
+              : "An icon meaning this unit has no ability"
+          }
+        />
+      </Tooltip>
+      <Tooltip
+        placement="right"
+        title={
+          props.abilityDescriptions !== null &&
+          props.abilityDescriptions.length > 1
+            ? props.abilityDescriptions[1]
+            : "No ability"
+        }
+      >
+        <Img
+          src={
+            props.abilities !== null && props.abilities.length > 1
+              ? abilityIcon(props.builder, props.abilities[1])
+              : abilityIcon(props.builder, null)
+          }
+          alt={
+            props.abilities !== null
+              ? `Icon for the ${props.abilities[1]} ability.`
               : "An icon meaning this unit has no ability"
           }
         />

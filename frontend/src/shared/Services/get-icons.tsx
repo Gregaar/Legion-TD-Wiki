@@ -15,6 +15,7 @@ import tierThree from "../../assets/tier-three.png";
 import tierTwo from "../../assets/tier-two.png";
 import unarmoredDefense from "../../assets/unarmored.png";
 import unitAvatar from "../../assets/unit-avatar.png";
+import cancelIcon from "../../assets/cancel-icon.png";
 import unknownIcon from "../../assets/unknown-icon.png";
 
 export const getAttackIcon = (attackType: string | null): string => {
@@ -98,8 +99,14 @@ export const getAbilityIcon = (
 ): string => {
   const amazonURL =
     "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
-  if (ability && builder && process.env.NODE_ENV === "production") {
+
+  if (ability === undefined || ability === null) {
+  return cancelIcon;
+  } else if (ability && builder && process.env.NODE_ENV === "production") {
     const pureAbility = ability.toLowerCase().replace(/[\s'!]/gm, "");
+
     return `${amazonURL}/${builder}/abilities/${pureAbility}.png`;
-  } else return unknownIcon;
+  } else {
+    return unknownIcon;
+  }
 };
