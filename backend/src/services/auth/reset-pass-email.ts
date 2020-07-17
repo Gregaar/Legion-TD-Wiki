@@ -9,7 +9,7 @@ export default async (
 ): Promise<void> => {
   let transporter;
 
-  if (process.env.NODE === "production") {
+  if (process.env.NODE_ENV === "production") {
     transporter = nodemailer.createTransport(
       SMTPTransport({
         host: config.get("email.host"),
