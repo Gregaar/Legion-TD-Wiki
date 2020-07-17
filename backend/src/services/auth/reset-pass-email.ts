@@ -17,7 +17,7 @@ export default async (
         secure: false,
         auth: {
           user: config.get("email.user"),
-          pass: config.get("email.password"),
+          pass: config.get("email.pass"),
         },
       }),
     );
