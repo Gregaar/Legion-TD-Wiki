@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 import Background from "../../assets/bg.png";
 import device from "./devices";
 
