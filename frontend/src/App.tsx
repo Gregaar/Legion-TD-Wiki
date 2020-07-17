@@ -13,7 +13,6 @@ import NoMatchPage from "./containers/NoMatchPage/no-match-page";
 import Summons from "./containers/Summons/summons";
 import Units from "./containers/Units/units";
 import Waves from "./containers/Waves/waves";
-import NoMatchPage from "./containers/NoMatchPage/no-match-page";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
