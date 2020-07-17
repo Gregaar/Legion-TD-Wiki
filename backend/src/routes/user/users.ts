@@ -3,10 +3,13 @@ import { Router } from "express";
 import {
   changeEmail,
   changePassword,
+  confirmEmailResetToken,
+  forgottenPasswordEmail,
   login,
   logout,
   logoutAll,
   register,
+  resetPasswordFromEmail,
 } from "../../controllers/user/users";
 import { logger } from "../../logger";
 import checkAuth from "../../middleware/auth/check-auth";
@@ -28,6 +31,12 @@ router.post("/api/user/logoutall", checkAuth, logoutAll);
 router.post("/api/user/changeemail", checkAuth, changeEmail);
 
 router.post("/api/user/changepassword", checkAuth, changePassword);
+
+router.post("/api/user/forgottenpassword", forgottenPasswordEmail);
+
+router.get("/api/user/resetpassword/:id/:token", confirmEmailResetToken);
+
+router.post("/api/user/handlepasswordreset", resetPasswordFromEmail);
 
 export default (): Router => {
   logger.info("Registering 'User' routes...");

@@ -6,8 +6,8 @@ import SummonButtons from "../../components/Navigation/UI/Buttons/SummonButtons/
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import {
   MainHeading,
-  TextContainer,
   P,
+  TextContainer,
 } from "../../shared/Styles/shared-styles";
 import handleSummonPagination from "./handle-summon-pagination";
 import SummonCard from "./summon-card";
@@ -99,7 +99,7 @@ const Summons: React.FC = () => {
           Each Summon has their own unique stats and some even have abilities.
         </P>
         <P>
-          Summons can be sent from two locations: Barracks or Advanced Barracks
+          Summons can be sent from two locations: Barracks or Advanced Barracks.
         </P>
       </TextContainer>
       <SummonButtons

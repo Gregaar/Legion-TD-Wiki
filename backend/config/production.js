@@ -12,4 +12,9 @@ module.exports = {
     refreshTokenLife: process.env.REFRESH_TOKEN_LIFE,
     domain: process.env.COOKIE_DOMAIN,
   },
+  email: {
+    host: process.env.SMTP_HOST,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
+  },
 };

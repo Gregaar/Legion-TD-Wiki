@@ -1,3 +1,4 @@
+import cancelIcon from "../../assets/cancel-icon.png";
 import chaosAttack from "../../assets/chaos.png";
 import fortifiedDefense from "../../assets/fortified.png";
 import heavyDefense from "../../assets/heavy.png";
@@ -98,8 +99,14 @@ export const getAbilityIcon = (
 ): string => {
   const amazonURL =
     "https://legion-td-mega-wiki.s3.eu-west-2.amazonaws.com/units";
-  if (ability && builder && process.env.NODE_ENV === "production") {
+
+  if (ability === undefined || ability === null) {
+    return cancelIcon;
+  } else if (ability && builder && process.env.NODE_ENV === "production") {
     const pureAbility = ability.toLowerCase().replace(/[\s'!]/gm, "");
+
     return `${amazonURL}/${builder}/abilities/${pureAbility}.png`;
-  } else return unknownIcon;
+  } else {
+    return unknownIcon;
+  }
 };

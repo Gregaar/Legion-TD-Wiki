@@ -7,11 +7,11 @@ interface CheckboxProps {
 }
 
 export const FilterContainer = styled.div`
-  margin: 10px auto;
+  margin: 5rem auto;
   padding: 1%;
-  background-color: rgba(68, 89, 106, 0.9);
+  background-color: rgba(68, 89, 106, 0.7);
   color: white;
-  border: 2px solid yellow;
+  border: 2px solid white;
   border-radius: 5px;
   width: 50%;
 

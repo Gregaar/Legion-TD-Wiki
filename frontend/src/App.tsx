@@ -1,17 +1,18 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 
-import Homepage from "./components/Homepage/homepage";
 import About from "./components/About/about";
+import Homepage from "./components/Homepage/homepage";
 import Builders from "./containers/Builders/builders";
 import BuilderUnits from "./containers/BuilderUnits/builder-units";
 import IndividualUnit from "./containers/IndividualUnit/individual-unit";
 import King from "./containers/King/king";
 import Login from "./containers/Login/login";
+import ResetPassword from "./containers/Login/ResetPassword/reset-password";
+import NoMatchPage from "./containers/NoMatchPage/no-match-page";
 import Summons from "./containers/Summons/summons";
 import Units from "./containers/Units/units";
 import Waves from "./containers/Waves/waves";
-import NoMatchPage from "./containers/NoMatchPage/no-match-page";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
@@ -22,6 +23,11 @@ const App: React.FC = () => {
       <Layout>
         <Switch>
           <Route path="/login" exact component={Login} />
+          <Route
+            path="/resetpassword/:id/:token"
+            exact
+            component={ResetPassword}
+          />
           <ProtectedRoute
             path="/units/:unitName"
             exact

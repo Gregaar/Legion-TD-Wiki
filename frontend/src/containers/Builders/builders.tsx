@@ -6,9 +6,9 @@ import BuilderCards from "../../components/Cards/BuilderCards/builder-cards";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import {
   MainHeading,
-  TextContainer,
-  P,
   NavLinkStyled,
+  P,
+  TextContainer,
 } from "../../shared/Styles/shared-styles";
 import { BuildersContainer } from "./builders-styles";
 const Builders: React.FC = () => {

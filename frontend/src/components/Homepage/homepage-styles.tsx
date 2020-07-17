@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import device from "../../shared/Styles/devices";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+import device from "../../shared/Styles/devices";
 
 export const MainHeading = styled.h1`
   text-align: center;
@@ -36,6 +37,12 @@ export const HeadingTwo = styled.h2`
     margin-top: 10px;
     font-size: 1.5rem;
   }
+`;
+
+export const Img = styled.img`
+  display: block;
+  border: 2px solid white;
+  margin: 0 auto;
 `;
 
 export const TextContainer = styled.div`

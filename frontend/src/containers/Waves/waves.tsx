@@ -7,8 +7,8 @@ import WaveButtons from "../../components/Navigation/UI/Buttons/WaveButtons/wave
 import WaveInterface from "../../shared/Interfaces/wave-interface";
 import {
   MainHeading,
-  TextContainer,
   P,
+  TextContainer,
 } from "../../shared/Styles/shared-styles";
 import handleWavePagination from "./handle-wave-pagination";
 import WaveCard from "./wave-card";

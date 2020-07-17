@@ -5,23 +5,19 @@ import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
 import searchWithFilters from "./Filter/Requests/search-with-filters";
 import UnitList from "./Unit-List/unit-list";
-import {
-  UnitContainer,
-  UnitHeadings,
-  UnitHeadingsContainer,
-} from "./unit-styles";
+import { HeadingContainer, UnitContainer, UnitHeadings } from "./unit-styles";
 
 const Units: React.FC = () => {
   const [displayUnits, setDisplayUnits] = useState<UnitInterface[]>([]);
 
   const titles = [
-    "Name",
-    "Avatar",
+    "Unit",
     "Builder",
     "Tier",
-    "Abilities",
-    "Attack",
-    "Defence",
+    "Ability 1",
+    "Ability 2",
+    "Attack Type",
+    "Defence Type",
   ];
 
   useEffect(() => {
@@ -70,11 +66,11 @@ const Units: React.FC = () => {
       <React.Fragment>
         <Filter displayUnits={displayUnits} setDisplayUnits={setDisplayUnits} />
         <UnitContainer>
-          <UnitHeadingsContainer>
+          <HeadingContainer>
             {titles.map((title) => (
               <UnitHeadings key={title}>{title}</UnitHeadings>
             ))}
-          </UnitHeadingsContainer>
+          </HeadingContainer>
           {unitListDisplay}
         </UnitContainer>
       </React.Fragment>

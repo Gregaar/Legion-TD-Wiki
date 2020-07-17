@@ -1,10 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+
 import {
+  BackButton,
+  ButtonContainer,
   Heading,
   Paragraph,
-  ButtonContainer,
-  BackButton,
 } from "./no-match-styles";
 
 const NoMatchPage: React.FC = () => {

@@ -12,4 +12,9 @@ module.exports = {
     refreshTokenLife: "86400000",
     domain: "localhost",
   },
+  email: {
+    host: "smtp.ethereal.email",
+    user: null,
+    pass: null,
+  },
 };
