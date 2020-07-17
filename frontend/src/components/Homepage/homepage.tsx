@@ -1,14 +1,15 @@
 import React from "react";
+
+import mapImage from "../../assets/map-image.png";
 import {
-  MainHeading,
+  A,
   HeadingTwo,
   Img,
-  TextContainer,
-  Paragraph,
-  A,
+  MainHeading,
   NavLinkStyled,
+  Paragraph,
+  TextContainer,
 } from "./homepage-styles";
-import mapImage from "../../assets/map-image.png";
 
 const homepage: React.FC = () => {
   return (

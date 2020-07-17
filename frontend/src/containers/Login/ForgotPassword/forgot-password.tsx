@@ -1,13 +1,14 @@
-import React from "react";
 import axios from "axios";
+import React from "react";
 import isEmail from "validator/lib/isEmail";
+
 import {
+  Button,
+  ButtonContainer,
   ContainerDiv,
   Form,
   Input,
-  ButtonContainer,
   InputButton,
-  Button,
   InputDiv,
   Label,
 } from "../login-styles";

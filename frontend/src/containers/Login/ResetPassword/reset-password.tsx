@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+
+import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import {
   ContainerDiv,
   Form,
-  InputDiv,
   Input,
-  Label,
   InputButton,
+  InputDiv,
+  Label,
 } from "../login-styles";
 import resetValidation from "./reset-validation";
-import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 
 const getUserId = (path: string): string => {
   const lastSlash = path.lastIndexOf("/");

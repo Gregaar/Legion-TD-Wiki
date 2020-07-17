@@ -6,8 +6,8 @@ import SummonButtons from "../../components/Navigation/UI/Buttons/SummonButtons/
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import {
   MainHeading,
-  TextContainer,
   P,
+  TextContainer,
 } from "../../shared/Styles/shared-styles";
 import handleSummonPagination from "./handle-summon-pagination";
 import SummonCard from "./summon-card";

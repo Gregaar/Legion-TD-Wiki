@@ -5,7 +5,7 @@ import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
 import searchWithFilters from "./Filter/Requests/search-with-filters";
 import UnitList from "./Unit-List/unit-list";
-import { UnitContainer, UnitHeadings, HeadingContainer } from "./unit-styles";
+import { HeadingContainer, UnitContainer, UnitHeadings } from "./unit-styles";
 
 const Units: React.FC = () => {
   const [displayUnits, setDisplayUnits] = useState<UnitInterface[]>([]);

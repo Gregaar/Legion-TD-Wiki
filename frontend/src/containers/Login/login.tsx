@@ -1,21 +1,22 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React, { useState } from "react";
 import isEmail from "validator/lib/isEmail";
+
 import ErrorDisplay from "../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../hoc/AuthContext/auth-context";
+import ForgotPassword from "./ForgotPassword/forgot-password";
 import {
   Button,
   ButtonContainer,
   ContainerDiv,
+  ForgotHeading,
   Form,
   Input,
   InputButton,
   InputDiv,
   Label,
-  ForgotHeading,
 } from "./login-styles";
 import Register from "./Register/register";
-import ForgotPassword from "./ForgotPassword/forgot-password";
 
 interface FormErrors {
   message: string;

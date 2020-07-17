@@ -133,7 +133,7 @@ const IndividualUnit: React.FC = () => {
     <React.Fragment>
       {navButtons}
       <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>
-      </React.Fragment>
+    </React.Fragment>
   );
 };
 

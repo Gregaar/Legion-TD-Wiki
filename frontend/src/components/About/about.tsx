@@ -1,15 +1,16 @@
 import React from "react";
+
+import EmailLogo from "../../assets/email-logo.png";
+import GitHubLogo from "../../assets/github-logo.png";
 import {
-  MainHeading,
-  ImgContainer,
+  A,
   FAQContainer,
   Img,
-  PQ,
+  ImgContainer,
+  MainHeading,
   PA,
-  A,
+  PQ,
 } from "./about-styles";
-import GitHubLogo from "../../assets/github-logo.png";
-import EmailLogo from "../../assets/email-logo.png";
 
 const about: React.FC = () => {
   return (

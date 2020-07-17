@@ -1,6 +1,7 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import { useHistory } from "react-router-dom";
+
 import {
   getAbilityIcon,
   getAttackIcon,

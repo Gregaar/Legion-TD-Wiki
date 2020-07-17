@@ -40,7 +40,7 @@ export const Button = styled.button<ButtonProps>`
    background-color: ${(props) => (props.active ? "teal" : "gray")};
    text-align: center;
    transition: all 0.15s;
-   flex: 0 0 15%;
+  flex: 0 0 15%;
 
   &:hover {
     text-shadow: 0 0 2em rgba(255, 255, 255, 1);

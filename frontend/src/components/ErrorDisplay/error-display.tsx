@@ -27,9 +27,7 @@ const errorDisplay: React.FC<ErrorDisplayProps> = (props) => (
     <Modal show={props.show}>
       {Array.isArray(props.displayErrors) ? (
         props.displayErrors.map((error) => (
-          <ErrorHeading key={shortid.generate()}>
-            {error.message}
-          </ErrorHeading>
+          <ErrorHeading key={shortid.generate()}>{error.message}</ErrorHeading>
         ))
       ) : (
         <ErrorHeading>{props.displayErrors}</ErrorHeading>

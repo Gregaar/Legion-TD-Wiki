@@ -8,8 +8,8 @@ import KingAbilityInterface from "../../shared/Interfaces/king-ability-interface
 import KingStatsInterface from "../../shared/Interfaces/king-stats-interface";
 import {
   MainHeading,
-  TextContainer,
   P,
+  TextContainer,
 } from "../../shared/Styles/shared-styles";
 import {} from "../../shared/Styles/shared-styles";
 import { KingContainer } from "./king-styles";
