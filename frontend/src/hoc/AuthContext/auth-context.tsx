@@ -72,6 +72,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (res.status === 201) {
           setAuthStatus(true);
           setPageLoading(false);
+          history.push("/units");
         } else {
           setAuthStatus(false);
           setPageLoading(false);
