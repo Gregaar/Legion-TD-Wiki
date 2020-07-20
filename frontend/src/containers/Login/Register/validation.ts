@@ -31,7 +31,15 @@ const validateRegisterInput: ValidateRegisterArgs = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Username must have at least 2 characters." },
+      { message: "Error:\nUsername must have at least 2 characters." },
+    ]);
+  }
+
+  if (!username.match(/^[a-zA-Z]+$/)) {
+    errorCount++;
+    setFormErrors((prevErrors) => [
+      ...prevErrors,
+      { message: "Error:\nUsername cannot contain spaces, numbers or special characters." },
     ]);
   }
 
@@ -39,7 +47,7 @@ const validateRegisterInput: ValidateRegisterArgs = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Please enter a valid email address." },
+      { message: "Error:\nPlease enter a valid email address." },
     ]);
   }
 
@@ -47,7 +55,7 @@ const validateRegisterInput: ValidateRegisterArgs = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Passwords must be at least 6 characters long." },
+      { message: "Error:\nPasswords must be at least 6 characters long." },
     ]);
   }
 
@@ -55,7 +63,7 @@ const validateRegisterInput: ValidateRegisterArgs = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Passwords must match." },
+      { message: "Error:\nPasswords must match." },
     ]);
   }
 
@@ -72,7 +80,7 @@ const validateRegisterInput: ValidateRegisterArgs = (
       ...prevErrors,
       {
         message:
-          "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
+          "Error:\nPasswords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
       },
     ]);
   }

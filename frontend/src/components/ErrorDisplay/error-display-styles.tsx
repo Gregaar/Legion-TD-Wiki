@@ -26,13 +26,14 @@ export const BackdropDiv = styled.div`
 
 export const Modal = styled.div<ModalProps>`
   position: fixed;
-  top: 25%;
+  top: 5%;
   bottom: 5%;
-  left: 70%;
-  margin-left: -37.5%;
-  width: 35%;
+  left: 30%;
+  margin: 5rem auto;
+  width: 40vw;
   max-height: 55%;
   overflow-y: auto;
+  overflow-x: hidden;
   z-index: 99;
   background-color: #44596A;
   border: 1px solid yellow;
@@ -90,26 +91,39 @@ export const Modal = styled.div<ModalProps>`
 
   @media ${device.laptop} {
     width: 50%;
-    max-height: 30%;
+    max-height: 40%;
     left: 25%;
-    top: 25%;
-    bottom: 25%;
+    top: 15%;
+    bottom: 5%;
     margin: 0 auto;
     font-size: 1rem;
     overflow: scroll;
   }
 
   @media ${device.laptopL} {
-    max-height: 40%;
+    max-height: 35%;
+    top: 15%;
 `;
 
 export const ErrorHeading = styled.h2`
-  margin: 50px 5px;
+  white-space: break-spaces;
+  margin: 5rem auto;
+  padding: 5px;
   color: white;
   text-shadow: 2px 2px black;
 
+  /* mobileS, mobileM, mobileL */
+  @media (min-width: 320px) and (max-width: 767px) {
+    width: 75vw;
+    margin: 4rem auto;
+  }
+
+  @media ${device.laptop} {
+    width: 30vw;
+  }
+
   @media ${device.laptopL} {
-    margin: 100px 5px;
+    width: 25vw;
   }
 `;
 

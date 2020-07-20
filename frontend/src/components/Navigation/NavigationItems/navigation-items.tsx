@@ -11,34 +11,24 @@ const NavigationItems: React.FC = () => {
 
   return (
     <List>
-      {authStatus ? (
-        <React.Fragment>
-          <NavItem exact link="/">
-            Home
-          </NavItem>
-          <NavItem exact link="/summons">
-            Summons
-          </NavItem>
-          <NavItem exact link="/waves">
-            Waves
-          </NavItem>
-          <NavItem exact link="/units">
-            Unit Search
-          </NavItem>
-          <NavItem exact link="/builders">
-            Builders
-          </NavItem>
-          <NavItem exact link="/king">
-            King
-          </NavItem>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <NavItem exact link="/">
-            Home
-          </NavItem>
-        </React.Fragment>
-      )}
+      <NavItem exact link="/">
+        Home
+      </NavItem>
+      <NavItem exact link="/summons">
+        Summons
+      </NavItem>
+      <NavItem exact link="/waves">
+        Waves
+      </NavItem>
+      <NavItem exact link="/units">
+        Unit Search
+      </NavItem>
+      <NavItem exact link="/builders">
+        Builders
+      </NavItem>
+      <NavItem exact link="/king">
+        King
+      </NavItem>
       <NavItem
         exact
         link={authStatus ? "/logout" : "/login"}

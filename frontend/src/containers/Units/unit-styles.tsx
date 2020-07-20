@@ -5,7 +5,7 @@ import device from "../../shared/Styles/devices";
 export const UnitContainer = styled.div`
   display: grid;
   overflow-y: auto;
-  height: 100vh;
+  height: 100%;
   width: 95vw;
   overflow-x: hidden;
   grid-template-columns: repeat(7, 1fr);
@@ -47,6 +47,12 @@ export const HeadingContainer = styled.div`
 export const UnitHeadings = styled.h3`
   text-shadow: 2px 2px black;
   text-align: center;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
 
   @media ${device.mobileS} {
     margin-left: 5px;
@@ -71,5 +77,6 @@ interface ImgProps {
 
 export const Img = styled.img<ImgProps>`
     cursor: ${(props) => (props.cursor ? "pointer" : "default")};
+    align-self: center;
   }
 `;

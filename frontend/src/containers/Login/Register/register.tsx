@@ -118,7 +118,7 @@ const Register: React.FC<RegisterProps> = ({
             <Tooltip
               id="username"
               placement="right"
-              title="The name you'd like to be known by."
+              title="Cannot contain spaces, numbers or special characters."
             >
               <Input
                 id="username"

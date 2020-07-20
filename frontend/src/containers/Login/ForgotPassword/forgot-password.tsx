@@ -50,7 +50,7 @@ const forgotPassword: React.FC<ForgotPasswordProps> = (props) => {
           props.setFormErrors((prevErrors) => [
             {
               message:
-                "If the email is exists, a password reset link has been sent.",
+                "If the email address exists,\nyou'll receive a password reset link shortly.",
             },
           ]);
           props.setEmail("");
@@ -60,7 +60,7 @@ const forgotPassword: React.FC<ForgotPasswordProps> = (props) => {
           props.setFormErrors((prevErrors) => [
             {
               message:
-                "If the email is exists, a password reset link has been sent.",
+                "If the email address exists,\nyou'll receive a password reset link shortly.",
             },
           ]);
         });

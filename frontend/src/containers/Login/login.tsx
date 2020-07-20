@@ -131,7 +131,7 @@ const Login: React.FC = () => {
             </Button>
           </ButtonContainer>
           <ForgotHeading onClick={handleForgotten}>
-            Forgotten Password?
+            Forgot your Password?
           </ForgotHeading>
         </Form>
       </ContainerDiv>

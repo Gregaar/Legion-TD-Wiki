@@ -17,6 +17,12 @@ const about: React.FC = () => {
     <React.Fragment>
       <MainHeading>About</MainHeading>
       <FAQContainer>
+        <PQ>Q. Does logging in actually do anything?</PQ>
+        <PA>
+          Right now, no. However, if enough people register, we will explore
+          adding member only features, such as voting, favoriting, etc.{" "}
+        </PA>
+        <br />
         <PQ>Q. What's the purpose of this site?</PQ>
         <PA>
           To provide an easy way of finding information relating to Legion TD.
@@ -72,7 +78,7 @@ const about: React.FC = () => {
         >
           <Img src={GitHubLogo} alt="Github Logo" />
         </A>
-        <A href="mailto:gregor@gregorfra.me">
+        <A href="mailto:support@legion-td.com">
           <Img src={EmailLogo} alt="Email Logo" />
         </A>
       </ImgContainer>

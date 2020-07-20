@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
+import { defaultOrderState, ListOrderInterface } from "../units";
 import {
   ButtonContainer,
   FilterContainer,
@@ -19,6 +20,11 @@ interface FilterProps {
   displayUnits: UnitInterface[];
   setDisplayUnits: (
     value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
+  ) => void;
+  setListOrder: (
+    value:
+      | ListOrderInterface
+      | ((value: ListOrderInterface) => ListOrderInterface)
   ) => void;
 }
 
@@ -82,6 +88,7 @@ const Filter: React.FC<FilterProps> = (props) => {
     setDisplayErrors("");
     if (unitName.length > 0) {
       await searchByName(unitName, props.setDisplayUnits, setDisplayErrors);
+      props.setListOrder(defaultOrderState);
     } else {
       await searchWithFilters(
         unitFilters,
@@ -89,6 +96,7 @@ const Filter: React.FC<FilterProps> = (props) => {
         setDisplayErrors
       );
       sessionStorage.setItem("filterSettings", JSON.stringify(unitFilters));
+      props.setListOrder(defaultOrderState);
     }
   };
 
