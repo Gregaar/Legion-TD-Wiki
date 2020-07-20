@@ -95,7 +95,7 @@ export const InputButton = styled.input`
    font-weight: 300;
    color: #000000;
    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-   background-color: yellow;
+   background-color: chartreuse;
    text-align: center;
    transition: all 0.15s;
 
@@ -118,7 +118,7 @@ export const Button = styled.button`
    font-weight: 300;
    color: #000000;
    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-   background-color: chartreuse;
+   background-color: yellow;
    text-align: center;
    transition: all 0.15s;
 

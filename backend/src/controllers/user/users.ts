@@ -10,6 +10,7 @@ import findStoredToken from "../../services/auth/find-stored-token";
 import resetPassEmail from "../../services/auth/reset-pass-email";
 import setJwtCookie from "../../services/auth/set-jwt-cookie";
 import passValidator from "../../services/auth/validate-password";
+import usernameValidator from "../../services/auth/validate-username";
 
 export const register: RequestHandler<{
   name: string;
@@ -33,8 +34,13 @@ export const register: RequestHandler<{
       });
     }
 
+    if (!usernameValidator(name)) {
+      return res.status(500).json({
+        error: "Invalid Username.",
+      });
+    }
     const user = new User({
-      name: name.trim(),
+      name: `${name.charAt(0).toUpperCase()}${name.slice(1)}`,
       email: email.trim().toLowerCase(),
       password,
       created: Date.now(),

@@ -4,21 +4,29 @@ import React, { useEffect, useState } from "react";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
 import searchWithFilters from "./Filter/Requests/search-with-filters";
+import sortListOrder from "./Services/reorder-units";
 import UnitList from "./Unit-List/unit-list";
 import { HeadingContainer, UnitContainer, UnitHeadings } from "./unit-styles";
 
+export interface ListOrderInterface {
+  [key: string]: string;
+}
+
+export const defaultOrderState = {
+  Unit: "",
+  Builder: "",
+  Tier: "",
+  "Ability 1": "",
+  "Ability 2": "",
+  "Attack Type": "",
+  "Defence Type": "",
+};
+
 const Units: React.FC = () => {
   const [displayUnits, setDisplayUnits] = useState<UnitInterface[]>([]);
-
-  const titles = [
-    "Unit",
-    "Builder",
-    "Tier",
-    "Ability 1",
-    "Ability 2",
-    "Attack Type",
-    "Defence Type",
-  ];
+  const [listOrder, setListOrder] = useState<ListOrderInterface>(
+    defaultOrderState
+  );
 
   useEffect(() => {
     const getUnitsToDisplay = async (builder: string) => {
@@ -41,11 +49,20 @@ const Units: React.FC = () => {
     }
   }, []);
 
-  let unitListDisplay;
+  const listTitles = [
+    "Unit",
+    "Builder",
+    "Tier",
+    "Ability 1",
+    "Ability 2",
+    "Attack Type",
+    "Defence Type",
+  ];
 
-  if (displayUnits.length > 0) {
-    const unitCopy: UnitInterface[] = [...displayUnits];
-    unitListDisplay = unitCopy.map((unit) => (
+  let unitListDisplay: JSX.Element[] | undefined;
+
+  const mapDisplayUnits = (listCopy: UnitInterface[]) => {
+    unitListDisplay = listCopy.map((unit) => (
       <UnitList
         key={unit.ID}
         id={unit.ID}
@@ -59,16 +76,42 @@ const Units: React.FC = () => {
         defense={unit["Defense Type"]}
       />
     ));
+  };
+
+  if (displayUnits.length > 0) {
+    const unitCopy: UnitInterface[] = [...displayUnits];
+    mapDisplayUnits(unitCopy);
   }
+
+  const handleReorder = (title: string): void => {
+    sortListOrder(
+      title,
+      displayUnits,
+      setDisplayUnits,
+      listOrder,
+      setListOrder
+    );
+  };
 
   return (
     <main>
       <React.Fragment>
-        <Filter displayUnits={displayUnits} setDisplayUnits={setDisplayUnits} />
+        <Filter
+          displayUnits={displayUnits}
+          setDisplayUnits={setDisplayUnits}
+          setListOrder={setListOrder}
+        />
         <UnitContainer>
           <HeadingContainer>
-            {titles.map((title) => (
-              <UnitHeadings key={title}>{title}</UnitHeadings>
+            {listTitles.map((title) => (
+              <UnitHeadings key={title} onClick={() => handleReorder(title)}>
+                {title}{" "}
+                {listOrder[title] === "asc"
+                  ? "↑"
+                  : listOrder[title] === "desc"
+                  ? "↓"
+                  : null}
+              </UnitHeadings>
             ))}
           </HeadingContainer>
           {unitListDisplay}

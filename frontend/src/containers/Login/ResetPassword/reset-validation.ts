@@ -25,7 +25,7 @@ const validatePasswordReset: ResetPasswordProps = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Passwords must be at least 6 characters long." },
+      { message: "Error:\nPasswords must be at least 6 characters long." },
     ]);
   }
 
@@ -33,7 +33,7 @@ const validatePasswordReset: ResetPasswordProps = (
     errorCount++;
     setFormErrors((prevErrors) => [
       ...prevErrors,
-      { message: "Error: Passwords must match." },
+      { message: "Error:\nPasswords must match." },
     ]);
   }
 
@@ -50,7 +50,7 @@ const validatePasswordReset: ResetPasswordProps = (
       ...prevErrors,
       {
         message:
-          "Error: Passwords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
+          "Error:\nPasswords must be have 6 characters or more and include at least a lowercase, an uppercase character, a number and a special character.",
       },
     ]);
   }
