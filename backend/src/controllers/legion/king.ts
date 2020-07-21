@@ -31,7 +31,6 @@ export const getKingAbility: RequestHandler<{ abilityName: string }> = async (
   res,
 ) => {
   try {
-    console.log(req.params.abilityName);
     if (req.params.abilityName.toLowerCase() === "all") {
       const kingAbilities = await KingAbility.find();
 
