@@ -4,7 +4,7 @@ import styled from "styled-components";
 import device from "../../../shared/Styles/devices";
 
 interface FooterStyleProps {
-  loading: number;
+  loading?: number;
 }
 
 export const Footer = styled.footer<FooterStyleProps>`
@@ -15,7 +15,7 @@ export const Footer = styled.footer<FooterStyleProps>`
   z-index: 99;
   border-radius: 5px;
   height: 35px;
-  visibility: ${(props) => (props.loading ? "hidden" : "visible")};
+  visibility: visible;
   margin-top: 2rem;
 `;
 

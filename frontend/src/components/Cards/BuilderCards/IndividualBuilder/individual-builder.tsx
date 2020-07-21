@@ -10,6 +10,7 @@ import {
   BuilderName,
   BuilderPanel,
   Paragraph,
+  StyledLink,
 } from "./individual-builder-styles";
 
 interface IndividualBuilderProps {
@@ -66,22 +67,51 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
     }
   };
 
+  const cardWithNav = (
+    <>
+      <StyledLink to={`/builders/${props.name}`}>
+        <BuilderName
+          bgColor={builderColor}
+          onClick={handleBuilderClick}
+          disableHover={props.disableHover ? 1 : 0}
+        >
+          {props.name}
+        </BuilderName>
+      </StyledLink>
+      <StyledLink to={`/builders/${props.name}`}>
+        <BuilderImage
+          src={`${imgurURL}/${props.ID}.png`}
+          alt={`Avatar for the ${props.name} builder.`}
+          onClick={handleBuilderClick}
+          disableHover={props.disableHover ? 1 : 0}
+          bgColor={builderColor}
+        />
+      </StyledLink>
+    </>
+  );
+
   return (
     <BuilderPanel>
-      <BuilderName
-        bgColor={builderColor}
-        onClick={handleBuilderClick}
-        disableHover={props.disableHover ? 1 : 0}
-      >
-        {props.name}
-      </BuilderName>
-      <BuilderImage
-        src={`${imgurURL}/${props.ID}.png`}
-        alt={`Avatar for the ${props.name} builder.`}
-        onClick={handleBuilderClick}
-        disableHover={props.disableHover ? 1 : 0}
-        bgColor={builderColor}
-      />
+      {!props.disableHover ? (
+        cardWithNav
+      ) : (
+        <>
+          <BuilderName
+            bgColor={builderColor}
+            onClick={handleBuilderClick}
+            disableHover={props.disableHover ? 1 : 0}
+          >
+            {props.name}
+          </BuilderName>
+          <BuilderImage
+            src={`${imgurURL}/${props.ID}.png`}
+            alt={`Avatar for the ${props.name} builder.`}
+            onClick={handleBuilderClick}
+            disableHover={props.disableHover ? 1 : 0}
+            bgColor={builderColor}
+          />
+        </>
+      )}
       <Paragraph>{props.description}</Paragraph>
       <BuilderInfoHeading bgColor={builderColor}>
         Unit Abilities

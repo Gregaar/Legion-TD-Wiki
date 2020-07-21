@@ -38,7 +38,7 @@ const Builders: React.FC = () => {
   }
 
   return (
-      <main>
+    <main>
       <MainHeading>Builders</MainHeading>
       <TextContainer>
         <P>
@@ -55,7 +55,7 @@ const Builders: React.FC = () => {
         <P>The Prophet builder randoms units once whenever he is selected.</P>
       </TextContainer>
       <BuildersContainer>{buildersDisplay}</BuildersContainer>
-      </main>
+    </main>
   );
 };
 

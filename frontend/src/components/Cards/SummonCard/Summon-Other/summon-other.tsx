@@ -1,7 +1,12 @@
 import React from "react";
 import shortid from "shortid";
 
-import { InfoGrid, InfoHeading, NavParagraph } from "../../card-styles";
+import {
+  InfoGrid,
+  InfoHeading,
+  NavParagraph,
+  StyledLink,
+} from "../../card-styles";
 
 interface HistoryWithState {
   advanced?: boolean;
@@ -57,12 +62,21 @@ const summonOther: React.FC<SummonOtherProps> = (props) => {
         otherInfoNavArray.map((info) => (
           <React.Fragment key={info.key}>
             <InfoHeading>{info.title}</InfoHeading>
-            <NavParagraph
-              onClick={handleNavClick}
-              disableInfoNav={props.disableAnimation ? 1 : 0}
-            >
-              {info.value}
-            </NavParagraph>
+            {!props.disableAnimation ? (
+              <NavParagraph
+                onClick={handleNavClick}
+                disableInfoNav={props.disableAnimation ? 1 : 0}
+              >
+                <StyledLink to={"/summons"}>{info.value}</StyledLink>
+              </NavParagraph>
+            ) : (
+              <NavParagraph
+                onClick={handleNavClick}
+                disableInfoNav={props.disableAnimation ? 1 : 0}
+              >
+                {info.value}
+              </NavParagraph>
+            )}
           </React.Fragment>
         ))}
     </InfoGrid>

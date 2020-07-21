@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import device from "../../../../shared/Styles/devices";
@@ -95,4 +96,9 @@ export const AbilityHeading = styled.h3`
 
 export const Paragraph = styled.p`
   text-shadow: 1px 1px black;
+`;
+
+export const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;

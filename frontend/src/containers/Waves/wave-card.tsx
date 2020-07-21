@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   InfoPanel,
   Paragraph,
+  StyledLink,
   UnitImage as WaveImage,
   UnitInfoHeading as WaveInfoHeading,
   UnitName as WaveName,
@@ -70,22 +71,51 @@ const WaveCard: React.FC<WaveCardProps> = ({
     }
   };
 
+  const cardWithNav = (
+    <>
+      <StyledLink to={`/waves/${wave.Level}`}>
+        <WaveName
+          bgColor={bgColor}
+          enableHover={enableHover ? 1 : 0}
+          onClick={handleWaveClick}
+        >
+          {wave["Creep Name"]}
+        </WaveName>
+      </StyledLink>
+      <StyledLink to={`/waves/${wave.Level}`}>
+        <WaveImage
+          src={waveIcon}
+          alt={`Icon for the ${wave["Creep Name"]} wave`}
+          bgColor={bgColor}
+          enableHover={enableHover ? 1 : 0}
+          onClick={handleWaveClick}
+        />
+      </StyledLink>
+    </>
+  );
+
   return (
     <InfoPanel>
-      <WaveName
-        bgColor={bgColor}
-        enableHover={enableHover ? 1 : 0}
-        onClick={handleWaveClick}
-      >
-        {wave["Creep Name"]}
-      </WaveName>
-      <WaveImage
-        src={waveIcon}
-        alt={`Icon for the ${wave["Creep Name"]} wave`}
-        bgColor={bgColor}
-        enableHover={enableHover ? 1 : 0}
-        onClick={handleWaveClick}
-      />
+      {enableHover ? (
+        cardWithNav
+      ) : (
+        <>
+          <WaveName
+            bgColor={bgColor}
+            enableHover={enableHover ? 1 : 0}
+            onClick={handleWaveClick}
+          >
+            {wave["Creep Name"]}
+          </WaveName>
+          <WaveImage
+            src={waveIcon}
+            alt={`Icon for the ${wave["Creep Name"]} wave`}
+            bgColor={bgColor}
+            enableHover={enableHover ? 1 : 0}
+            onClick={handleWaveClick}
+          />
+        </>
+      )}
       <Paragraph>{`Wave: ${wave.Level}`}</Paragraph>
       <Paragraph>
         {`Number of ${wave["Creep Name"]}: ${wave["Number of Creeps"]}`}

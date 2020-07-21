@@ -1,6 +1,11 @@
 import React from "react";
 
-import { InfoGrid, InfoHeading, NavParagraph } from "../../card-styles";
+import {
+  InfoGrid,
+  InfoHeading,
+  NavParagraph,
+  StyledLink,
+} from "../../card-styles";
 
 interface UpgradeInfoProps {
   upgradedName: string[] | null;
@@ -20,6 +25,11 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
     }
   };
 
+  const getLinkURL = (name: string) => {
+    const unitNameWithDashes = name.replace(" ", "-");
+    return `/units/${unitNameWithDashes}`;
+  };
+
   const upgradedNames = (
     <InfoGrid
       isOpen={props.isOpen}
@@ -29,12 +39,23 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
       {props.upgradedName
         ? props.upgradedName.map((name) => (
             <React.Fragment key={name}>
-              <NavParagraph
-                onClick={() => handleNameClick(name)}
-                disableInfoNav={props.disableInfoNav ? 1 : 0}
-              >
-                {name}
-              </NavParagraph>
+              {!props.disableInfoNav ? (
+                <StyledLink to={() => getLinkURL(name)}>
+                  <NavParagraph
+                    onClick={() => handleNameClick(name)}
+                    disableInfoNav={props.disableInfoNav ? 1 : 0}
+                  >
+                    {name}
+                  </NavParagraph>
+                </StyledLink>
+              ) : (
+                <NavParagraph
+                  onClick={() => handleNameClick(name)}
+                  disableInfoNav={props.disableInfoNav ? 1 : 0}
+                >
+                  {name}
+                </NavParagraph>
+              )}
               {props.upgradedName !== null && props?.upgradedName.length > 1 ? (
                 <br />
               ) : null}
@@ -53,12 +74,23 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
       {props.baseName
         ? props.baseName.map((name) => (
             <React.Fragment key={name}>
-              <NavParagraph
-                onClick={() => handleNameClick(name)}
-                disableInfoNav={props.disableInfoNav ? 1 : 0}
-              >
-                {name}
-              </NavParagraph>
+              {!props.disableInfoNav ? (
+                <StyledLink to={() => getLinkURL(name)}>
+                  <NavParagraph
+                    onClick={() => handleNameClick(name)}
+                    disableInfoNav={props.disableInfoNav ? 1 : 0}
+                  >
+                    {name}
+                  </NavParagraph>
+                </StyledLink>
+              ) : (
+                <NavParagraph
+                  onClick={() => handleNameClick(name)}
+                  disableInfoNav={props.disableInfoNav ? 1 : 0}
+                >
+                  {name}
+                </NavParagraph>
+              )}
               {props.baseName !== null && props?.baseName.length > 1 ? (
                 <br />
               ) : null}

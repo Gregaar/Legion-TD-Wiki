@@ -1,6 +1,11 @@
 import React from "react";
 
-import { InfoGrid, InfoHeading, NavParagraph } from "../../card-styles";
+import {
+  InfoGrid,
+  InfoHeading,
+  NavParagraph,
+  StyledLink,
+} from "../../card-styles";
 
 interface BuildingInfoProps {
   tier: number;
@@ -21,18 +26,33 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
     }
   };
 
-  return (
-    <InfoGrid
-      isOpen={props.isOpen}
-      disableAnimation={props.disableInfoNav ? 1 : 0}
-    >
-      <InfoHeading>Builder</InfoHeading>
+  const cardWithNav = (
+    <StyledLink to={`/builders/${props.builder}`}>
       <NavParagraph
         onClick={() => handleBuilderClick(props.builder)}
         disableInfoNav={props.disableInfoNav ? 1 : 0}
       >
         {props.builder}
       </NavParagraph>
+    </StyledLink>
+  );
+
+  return (
+    <InfoGrid
+      isOpen={props.isOpen}
+      disableAnimation={props.disableInfoNav ? 1 : 0}
+    >
+      <InfoHeading>Builder</InfoHeading>
+      {!props.disableInfoNav ? (
+        cardWithNav
+      ) : (
+        <NavParagraph
+          onClick={() => handleBuilderClick(props.builder)}
+          disableInfoNav={props.disableInfoNav ? 1 : 0}
+        >
+          {props.builder}
+        </NavParagraph>
+      )}
       <InfoHeading>Unit Tier</InfoHeading>
       <p>{props.tier}</p>
       <InfoHeading>Gold Cost</InfoHeading>
