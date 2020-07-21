@@ -10,8 +10,8 @@ interface ArrowContainerProps {
 
 interface ArrowButtonProps {
   path: string;
-  disableprev?: boolean;
-  disablenext?: boolean;
+  disableprev?: number;
+  disablenext?: number;
 }
 
 export const ButtonContainer = styled.div`
