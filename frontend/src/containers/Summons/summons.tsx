@@ -84,7 +84,7 @@ const Summons: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <main>
       <MainHeading>Summons</MainHeading>
       <TextContainer>
         <P>
@@ -109,7 +109,7 @@ const Summons: React.FC = () => {
       <SummonsContainer>
         {summonDisplay ? summonDisplay : null}
       </SummonsContainer>
-    </React.Fragment>
+    </main>
   );
 };
 

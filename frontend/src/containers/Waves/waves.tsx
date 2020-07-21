@@ -71,7 +71,7 @@ const Waves: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <main>
       <MainHeading>Waves</MainHeading>
       <TextContainer>
         <P>
@@ -91,7 +91,7 @@ const Waves: React.FC = () => {
       <WavesContainer>
         {enemyWaves.length > 1 ? wavesCardDisplay : null}
       </WavesContainer>
-    </React.Fragment>
+    </main>
   );
 };
 

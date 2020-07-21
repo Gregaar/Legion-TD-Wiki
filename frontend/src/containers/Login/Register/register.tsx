@@ -102,7 +102,7 @@ const Register: React.FC<RegisterProps> = ({
   );
 
   return (
-    <React.Fragment>
+    <main>
       <ContainerDiv>
         {formErrors.length > 0 ? errorDisplay : null}
         <Form
@@ -192,7 +192,7 @@ const Register: React.FC<RegisterProps> = ({
           </ButtonContainer>
         </Form>
       </ContainerDiv>
-    </React.Fragment>
+    </main>
   );
 };
 

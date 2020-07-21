@@ -70,30 +70,32 @@ const forgotPassword: React.FC<ForgotPasswordProps> = (props) => {
   };
 
   return (
-    <ContainerDiv>
-      <Form onSubmit={(e) => handleSubmit(e, props.email)}>
-        <h2 style={{ marginBottom: "1.5rem" }}>Forgotten Password</h2>
-        <InputDiv>
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="email"
-            id="email"
-            value={props.email}
-            onChange={(e) => props.setEmail(e.target.value)}
-          />
-        </InputDiv>
-        <ButtonContainer>
-          <InputButton type="submit" value="Submit" />
-          <Button
-            type="button"
-            value="Back"
-            onClick={() => props.setForgottenPassword(false)}
-          >
-            Back to Login{" "}
-          </Button>
-        </ButtonContainer>
-      </Form>
-    </ContainerDiv>
+    <main>
+      <ContainerDiv>
+        <Form onSubmit={(e) => handleSubmit(e, props.email)}>
+          <h2 style={{ marginBottom: "1.5rem" }}>Forgotten Password</h2>
+          <InputDiv>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              type="email"
+              id="email"
+              value={props.email}
+              onChange={(e) => props.setEmail(e.target.value)}
+            />
+          </InputDiv>
+          <ButtonContainer>
+            <InputButton type="submit" value="Submit" />
+            <Button
+              type="button"
+              value="Back"
+              onClick={() => props.setForgottenPassword(false)}
+            >
+              Back to Login{" "}
+            </Button>
+          </ButtonContainer>
+        </Form>
+      </ContainerDiv>
+    </main>
   );
 };
 

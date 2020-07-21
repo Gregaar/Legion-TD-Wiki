@@ -77,50 +77,52 @@ const BuilderUnits: React.FC = () => {
         maxNumber={16}
         currentBuilder={builderInfo.Name}
       />
-      {builderName === "prophet" ? (
-        <IndividualBuilder
-          prophet={true}
-          disableHover={true}
-          ID={builderInfo["Avatar ID"]}
-          name={builderInfo.Name}
-          description={builderInfo.Description}
-          heroes={builderInfo["Altar Of Heroes"]}
-          aura={prophetAbilities.Aura}
-          buff={prophetAbilities.Buff}
-          debuff={prophetAbilities.Debuff}
-          splash={prophetAbilities.Splash}
-          heal={prophetAbilities.Heal}
-          stun={prophetAbilities.Stun}
-          summon={prophetAbilities.Summon}
-        />
-      ) : (
-        <IndividualBuilder
-          disableHover={true}
-          ID={builderInfo["Avatar ID"]}
-          name={builderInfo.Name}
-          description={builderInfo.Description}
-          heroes={builderInfo["Altar Of Heroes"]}
-          aura={builderInfo.Aura}
-          buff={builderInfo.Buff}
-          debuff={builderInfo.Debuff}
-          splash={builderInfo.Splash}
-          heal={builderInfo.Heal}
-          stun={builderInfo.Stun}
-          summon={builderInfo.Summon}
-        />
-      )}
-      <UnitGrid>
-        {units &&
-          units.map((unit) => (
-            <InfoCard
-              key={unit.ID}
-              unit={unit}
-              goToClicked={history.push}
-              nameNav={true}
-              disableInfoNav={true}
-            />
-          ))}
-      </UnitGrid>
+      <main>
+        {builderName === "prophet" ? (
+          <IndividualBuilder
+            prophet={true}
+            disableHover={true}
+            ID={builderInfo["Avatar ID"]}
+            name={builderInfo.Name}
+            description={builderInfo.Description}
+            heroes={builderInfo["Altar Of Heroes"]}
+            aura={prophetAbilities.Aura}
+            buff={prophetAbilities.Buff}
+            debuff={prophetAbilities.Debuff}
+            splash={prophetAbilities.Splash}
+            heal={prophetAbilities.Heal}
+            stun={prophetAbilities.Stun}
+            summon={prophetAbilities.Summon}
+          />
+        ) : (
+          <IndividualBuilder
+            disableHover={true}
+            ID={builderInfo["Avatar ID"]}
+            name={builderInfo.Name}
+            description={builderInfo.Description}
+            heroes={builderInfo["Altar Of Heroes"]}
+            aura={builderInfo.Aura}
+            buff={builderInfo.Buff}
+            debuff={builderInfo.Debuff}
+            splash={builderInfo.Splash}
+            heal={builderInfo.Heal}
+            stun={builderInfo.Stun}
+            summon={builderInfo.Summon}
+          />
+        )}
+        <UnitGrid>
+          {units &&
+            units.map((unit) => (
+              <InfoCard
+                key={unit.ID}
+                unit={unit}
+                goToClicked={history.push}
+                nameNav={true}
+                disableInfoNav={true}
+              />
+            ))}
+        </UnitGrid>
+      </main>
     </React.Fragment>
   );
 };

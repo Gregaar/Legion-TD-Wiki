@@ -13,7 +13,7 @@ import {
 
 const homepage: React.FC = () => {
   return (
-    <React.Fragment>
+    <main>
       <MainHeading>Legion TD Mega Wiki</MainHeading>
       <HeadingTwo>Based on Version 3.5 (B4)</HeadingTwo>
       <Img src={mapImage} alt="The Legion TD map" />
@@ -55,7 +55,7 @@ const homepage: React.FC = () => {
         <br />
         <Paragraph>Happy Tower Defending!</Paragraph>
       </TextContainer>
-    </React.Fragment>
+    </main>
   );
 };
 
