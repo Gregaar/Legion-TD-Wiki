@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { ArrowButton, ArrowContainer } from "../button-styles";
 
 interface NavButtonProps {
-  goToChosen: (path: string) => void;
   path: string;
   currentNumber: number | string;
   maxNumber: number;
@@ -31,7 +30,6 @@ const builderOrder = [
 ];
 
 const navButtons: React.FC<NavButtonProps> = ({
-  goToChosen,
   path,
   currentNumber,
   maxNumber,
@@ -49,64 +47,49 @@ const navButtons: React.FC<NavButtonProps> = ({
       } else if (btnName === "next" && maxNumber >= builderIndex) {
         return `/builders/${builderOrder[builderIndex + 1].builder}`;
       } else {
-        return "";
+        return "#";
       }
     } else {
-      return "";
+      return "#";
     }
   };
 
   const getUnitButtonURL = (btnName: string): string => {
     if (btnName === "back") {
       return `/units`;
-    } else if (btnName === "next") {
-      return `/builders/${currentBuilder}`;
-    } else {
-      return "";
-    }
+    } else return `/builders/${currentBuilder}`;
   };
 
-  const getButtonURL = (btnName: string): string => {
+  const getURL = (btnName: string): string => {
     if (path === "builders") {
       return getBuilderButtonURL(btnName);
     } else if (path === "units") {
       return getUnitButtonURL(btnName);
     } else if (btnName === "back" && +currentNumber > 1) {
       return `/${path}/${+currentNumber - 1}`;
-    } else if (btnName === "next" && maxNumber >= +currentNumber) {
+    } else if (btnName === "next" && maxNumber > +currentNumber) {
       return `/${path}/${+currentNumber + 1}`;
     } else {
-      return "";
+      return "#";
     }
-  };
-
-  const handleArrowClick = (btnName: string): void => {
-    const urlPath = getButtonURL(btnName);
-    goToChosen(urlPath);
   };
 
   return (
     <ArrowContainer path={path}>
-      <Link to={() => getButtonURL("back")}>
-        <ArrowButton
-          type="button"
-          onClick={() => handleArrowClick("back")}
-          path={path}
-          disablePrev={+currentNumber <= 1}
-        >
-          {path !== "units" ? "❮ Prev" : "❮ Unit Search"}
-        </ArrowButton>
-      </Link>
-      <Link to={() => getButtonURL("next")}>
-        <ArrowButton
-          type="button"
-          onClick={() => handleArrowClick("next")}
-          path={path}
-          disableNext={+currentNumber >= maxNumber}
-        >
-          {path !== "units" ? "Next ❯" : "Unit Builder ❯"}
-        </ArrowButton>
-      </Link>
+      <ArrowButton
+        to={() => getURL("back")}
+        path={path}
+        disableprev={+currentNumber <= 1}
+      >
+        {path !== "units" ? "❮ Prev" : "❮ Unit Search"}
+      </ArrowButton>
+      <ArrowButton
+        to={() => getURL("next")}
+        path={path}
+        disablenext={+currentNumber >= maxNumber}
+      >
+        {path !== "units" ? "Next ❯" : "Unit Builder ❯"}
+      </ArrowButton>
     </ArrowContainer>
   );
 };
