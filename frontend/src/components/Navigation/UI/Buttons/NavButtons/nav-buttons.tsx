@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { ArrowButton, ArrowContainer } from "../button-styles";
 
