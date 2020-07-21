@@ -82,7 +82,7 @@ const King: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <main>
       <MainHeading>The King</MainHeading>
       <TextContainer>
         <P>
@@ -111,7 +111,7 @@ const King: React.FC = () => {
       {activeButton.abilities ? (
         <KingContainer>{abilityDisplay}</KingContainer>
       ) : null}
-    </React.Fragment>
+    </main>
   );
 };
 

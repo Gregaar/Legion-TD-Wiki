@@ -105,35 +105,37 @@ const ResetPassword: React.FC = () => {
   );
 
   return (
-    <ContainerDiv>
-      {formErrors.length > 0 ? errorDisplay : null}
-      <Form onSubmit={(e) => handleReset(e, password, confirmPassword)}>
-        <h2 style={{ marginBottom: "1.5rem" }}>Reset Password</h2>
-        <Input type="hidden" name="id" value={userId} />
-        <Input type="hidden" name="token" value={token} />
-        <InputDiv>
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </InputDiv>
-        <InputDiv>
-          <Label htmlFor="confirmPassword">Confirm Password</Label>
-          <Input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </InputDiv>
-        <InputButton type="submit" value="Submit" />
-      </Form>
-    </ContainerDiv>
+    <main>
+      <ContainerDiv>
+        {formErrors.length > 0 ? errorDisplay : null}
+        <Form onSubmit={(e) => handleReset(e, password, confirmPassword)}>
+          <h2 style={{ marginBottom: "1.5rem" }}>Reset Password</h2>
+          <Input type="hidden" name="id" value={userId} />
+          <Input type="hidden" name="token" value={token} />
+          <InputDiv>
+            <Label htmlFor="password">Password</Label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </InputDiv>
+          <InputDiv>
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </InputDiv>
+          <InputButton type="submit" value="Submit" />
+        </Form>
+      </ContainerDiv>
+    </main>
   );
 };
 

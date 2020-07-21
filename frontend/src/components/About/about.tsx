@@ -14,7 +14,7 @@ import {
 
 const about: React.FC = () => {
   return (
-    <React.Fragment>
+    <main>
       <MainHeading>About</MainHeading>
       <FAQContainer>
         <PQ>Q. Does logging in actually do anything?</PQ>
@@ -82,7 +82,7 @@ const about: React.FC = () => {
           <Img src={EmailLogo} alt="Email Logo" />
         </A>
       </ImgContainer>
-    </React.Fragment>
+    </main>
   );
 };
 

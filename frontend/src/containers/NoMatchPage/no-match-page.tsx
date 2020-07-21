@@ -12,7 +12,7 @@ const NoMatchPage: React.FC = () => {
   const history = useHistory();
 
   return (
-    <React.Fragment>
+    <main>
       <Heading>
         404{"\n"}
         Page Not Found
@@ -27,7 +27,7 @@ const NoMatchPage: React.FC = () => {
           Back to Safety
         </BackButton>
       </ButtonContainer>
-    </React.Fragment>
+    </main>
   );
 };
 

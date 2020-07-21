@@ -86,7 +86,7 @@ const Login: React.FC = () => {
   );
 
   const login = (
-    <React.Fragment>
+    <main>
       <ContainerDiv>
         {formErrors.length > 0 ? errorDisplay : null}
         <Form
@@ -135,7 +135,7 @@ const Login: React.FC = () => {
           </ForgotHeading>
         </Form>
       </ContainerDiv>
-    </React.Fragment>
+    </main>
   );
 
   if (signUp) {
