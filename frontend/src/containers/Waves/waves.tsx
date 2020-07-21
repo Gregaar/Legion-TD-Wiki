@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 import shortid from "shortid";
 
@@ -72,6 +73,15 @@ const Waves: React.FC = () => {
 
   return (
     <main>
+      <div>
+        <Helmet>
+          <title>{`Legion TD Mega Wiki | Waves`}</title>
+          <meta
+            name="description"
+            content={`All Waves / Levels for Legion TD Mega. Gold. Combat. Attack Type. Defence Type. Melee. Ranged. Flying. Land`}
+          />
+        </Helmet>
+      </div>
       <MainHeading>Waves</MainHeading>
       <TextContainer>
         <P>

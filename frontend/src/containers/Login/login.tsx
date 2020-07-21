@@ -1,5 +1,6 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import isEmail from "validator/lib/isEmail";
 
 import ErrorDisplay from "../../components/ErrorDisplay/error-display";
@@ -168,7 +169,20 @@ const Login: React.FC = () => {
     );
   }
 
-  return <React.Fragment>{login}</React.Fragment>;
+  return (
+    <React.Fragment>
+      <div>
+        <Helmet>
+        <title>{`Legion TD Mega Wiki | Login`}</title>
+            <meta
+              name="description"
+              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+            />
+        </Helmet>
+      </div>
+      {login}
+    </React.Fragment>
+  );
 };
 
 export default Login;

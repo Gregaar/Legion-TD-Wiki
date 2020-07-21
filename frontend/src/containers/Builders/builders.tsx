@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 
 import BuilderCards from "../../components/Cards/BuilderCards/builder-cards";
@@ -39,6 +40,15 @@ const Builders: React.FC = () => {
 
   return (
     <main>
+      <div>
+        <Helmet>
+          <title>Legion TD Mega Wiki | Builders</title>
+          <meta
+            name="description"
+            content="All Builders. Artic. Beast. Demi-Human. Element. Elf. Ghost. Goblin. Hybrid. Marine. Mech. Nature. Orc. Paladin. Prophet. Shadow. Undead."
+          />
+        </Helmet>
+      </div>
       <MainHeading>Builders</MainHeading>
       <TextContainer>
         <P>

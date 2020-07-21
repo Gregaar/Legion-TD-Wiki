@@ -1,5 +1,6 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
+import { Helmet } from "react-helmet";
 
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
 import { useAuthContext } from "../../../hoc/AuthContext/auth-context";
@@ -103,6 +104,15 @@ const Register: React.FC<RegisterProps> = ({
 
   return (
     <main>
+      <div>
+        <Helmet>
+        <title>{`Legion TD Mega Wiki | Register`}</title>
+            <meta
+              name="description"
+              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+            />
+        </Helmet>
+      </div>
       <ContainerDiv>
         {formErrors.length > 0 ? errorDisplay : null}
         <Form

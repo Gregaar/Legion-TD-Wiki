@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useHistory, useLocation } from "react-router-dom";
 
 import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
@@ -120,6 +121,31 @@ const IndividualUnit: React.FC = () => {
 
   return (
     <React.Fragment>
+      <div>
+        <Helmet>
+          <title>{`Legion TD Mega Wiki | ${
+            Object.keys(currentUnit).length > 0
+              ? isWaveUnit
+                ? currentUnit["Creep Name"].charAt(0).toUpperCase() +
+                  currentUnit["Creep Name"].slice(1)
+                : currentUnit.Name.charAt(0).toUpperCase() +
+                  currentUnit.Name.slice(1)
+              : "Unit"
+          }`}</title>
+          <meta
+            name="description"
+            content={`${
+              Object.keys(currentUnit).length > 0
+                ? isWaveUnit
+                  ? currentUnit["Creep Name"].charAt(0).toUpperCase() +
+                    currentUnit["Creep Name"].slice(1)
+                  : currentUnit.Name.charAt(0).toUpperCase() +
+                    currentUnit.Name.slice(1)
+                : "Unit"
+            }. Abilities. Gold Cost. Food Cost. Upgraded Unit. Base Unit. Combat Stats. Range. Attack Type. Defence Type.`}
+          />
+        </Helmet>
+      </div>
       {navButtons}
       <main>
         <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>
