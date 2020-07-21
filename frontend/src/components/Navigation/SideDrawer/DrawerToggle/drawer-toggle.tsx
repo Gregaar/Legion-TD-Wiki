@@ -8,7 +8,6 @@ interface DrawerToggleProps {
 
 const drawerToggle: React.FC<DrawerToggleProps> = (props) => {
   const handleToggle = () => {
-    console.log("clicked");
     props.toggled((prevState) => !prevState);
   };
 
