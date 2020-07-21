@@ -78,14 +78,14 @@ const navButtons: React.FC<NavButtonProps> = ({
       <ArrowButton
         to={() => getURL("back")}
         path={path}
-        disableprev={+currentNumber <= 1}
+        disableprev={+currentNumber <= 1 ? 1 : 0}
       >
         {path !== "units" ? "❮ Prev" : "❮ Unit Search"}
       </ArrowButton>
       <ArrowButton
         to={() => getURL("next")}
         path={path}
-        disablenext={+currentNumber >= maxNumber}
+        disablenext={+currentNumber >= maxNumber ? 1 : 0}
       >
         {path !== "units" ? "Next ❯" : "Unit Builder ❯"}
       </ArrowButton>
