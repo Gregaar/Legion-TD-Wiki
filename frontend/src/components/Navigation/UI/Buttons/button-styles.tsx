@@ -1,5 +1,5 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
 interface ButtonProps {
   active: boolean;
 }
@@ -10,8 +10,8 @@ interface ArrowContainerProps {
 
 interface ArrowButtonProps {
   path: string;
-  disablePrev?: boolean;
-  disableNext?: boolean;
+  disableprev?: boolean;
+  disablenext?: boolean;
 }
 
 export const ButtonContainer = styled.div`
@@ -62,12 +62,13 @@ export const ArrowContainer = styled.div<ArrowContainerProps>`
   }
 `;
 
-export const ArrowButton = styled.button<ArrowButtonProps>`
+export const ArrowButton = styled(NavLink)<ArrowButtonProps>`
   display: inline-block;
+  text-decoration: none;
   line-height: 2.5em;
   text-align: center;
   background: ${(props) =>
-    props.disablePrev ? "grey" : props.disableNext ? "grey" : "teal"};
+    props.disableprev ? "grey" : props.disablenext ? "grey" : "teal"};
   color: white;
   font-size: 1em;
   width: 7em;
@@ -77,12 +78,12 @@ export const ArrowButton = styled.button<ArrowButtonProps>`
   margin-right: ${(props) => (props.path === "builders" ? "14rem" : null)};
   border: 2px solid
     ${(props) =>
-      props.disablePrev ? "grey" : props.disableNext ? "grey" : "black"};
+      props.disableprev ? "grey" : props.disablenext ? "grey" : "black"};
   border-radius: 5px;
   text-shadow: 1px 1px black;
   cursor: pointer;
   pointer-events: ${(props) =>
-    props.disablePrev ? "none" : props.disableNext ? "none" : "default"};
+    props.disableprev ? "none" : props.disablenext ? "none" : "default"};
 
   &:hover {
     text-shadow: 0 0 2em rgba(255, 255, 255, 1);

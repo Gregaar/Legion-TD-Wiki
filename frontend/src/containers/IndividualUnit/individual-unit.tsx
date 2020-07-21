@@ -106,22 +106,11 @@ const IndividualUnit: React.FC = () => {
   }
 
   const navButtons = isWaveUnit ? (
-    <NavButtons
-      goToChosen={history.push}
-      path={"waves"}
-      currentNumber={unitName}
-      maxNumber={31}
-    />
+    <NavButtons path={"waves"} currentNumber={unitName} maxNumber={31} />
   ) : isSummonUnit ? (
-    <NavButtons
-      goToChosen={history.push}
-      path={"summons"}
-      currentNumber={unitName}
-      maxNumber={24}
-    />
+    <NavButtons path={"summons"} currentNumber={unitName} maxNumber={24} />
   ) : (
     <NavButtons
-      goToChosen={history.push}
       path={"units"}
       currentNumber={2}
       maxNumber={100}

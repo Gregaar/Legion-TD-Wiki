@@ -71,7 +71,6 @@ const BuilderUnits: React.FC = () => {
   return (
     <React.Fragment>
       <NavButtons
-        goToChosen={history.push}
         path={"builders"}
         currentNumber={builderInfo.Order}
         maxNumber={16}
