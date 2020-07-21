@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
 import searchWithFilters from "./Filter/Requests/search-with-filters";
@@ -95,6 +95,15 @@ const Units: React.FC = () => {
 
   return (
     <main>
+      <div>
+        <Helmet>
+          <title>{`Legion TD Mega Wiki | Unit / Tower Search`}</title>
+          <meta
+            name="description"
+            content={`Search for Units / Towers. Filter by Name, Builder, Tier, Ability, Range, Attack Type, Defence Type.`}
+          />
+        </Helmet>
+      </div>
       <React.Fragment>
         <Filter
           displayUnits={displayUnits}

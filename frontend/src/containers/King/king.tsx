@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import KingButtons from "../../components/Navigation/UI/Buttons/KingButtons/king-buttons";
@@ -83,6 +84,17 @@ const King: React.FC = () => {
 
   return (
     <main>
+      <div>
+        <div>
+          <Helmet>
+            <title>{`Legion TD Mega Wiki | King`}</title>
+            <meta
+              name="description"
+              content={`King Abilities. Stats. Upgrades. Attack. Hit Points. Regeneration. Income. Lumber.`}
+            />
+          </Helmet>
+        </div>
+      </div>
       <MainHeading>The King</MainHeading>
       <TextContainer>
         <P>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 
 import SummonButtons from "../../components/Navigation/UI/Buttons/SummonButtons/summon-buttons";
@@ -85,6 +86,15 @@ const Summons: React.FC = () => {
 
   return (
     <main>
+      <div>
+        <Helmet>
+          <title>{`Legion TD Mega Wiki | Summons`}</title>
+          <meta
+            name="description"
+            content={`Summons for Barracks and Advanced Barracks. Gold Cost. Income. Lumber. Abilities. Range. Attack Type. Defence Type.`}
+          />
+        </Helmet>
+      </div>
       <MainHeading>Summons</MainHeading>
       <TextContainer>
         <P>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useHistory, useLocation } from "react-router-dom";
 
 import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBuilder/individual-builder";
@@ -70,6 +71,25 @@ const BuilderUnits: React.FC = () => {
 
   return (
     <React.Fragment>
+      <div>
+        <Helmet>
+          <title>{`Legion TD Mega Wiki | ${
+            builderInfo.Name
+              ? builderInfo.Name.charAt(0).toUpperCase() +
+                builderInfo.Name.slice(1)
+              : "Builder"
+          }'s Units`}</title>
+          <meta
+            name="description"
+            content={`All ${
+              builderInfo.Name
+                ? builderInfo.Name.charAt(0).toUpperCase() +
+                  builderInfo.Name.slice(1)
+                : "Builder"
+            }'s Units/Towers. Abilities. Gold Cost. Food Cost. Upgraded Unit. Combat Stats. Range. Attack Type. Defence Type.`}
+          />
+        </Helmet>
+      </div>
       <NavButtons
         path={"builders"}
         currentNumber={builderInfo.Order}

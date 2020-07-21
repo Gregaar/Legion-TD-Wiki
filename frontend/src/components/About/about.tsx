@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Helmet } from "react-helmet";
 import EmailLogo from "../../assets/email-logo.png";
 import GitHubLogo from "../../assets/github-logo.png";
 import {
@@ -15,6 +15,15 @@ import {
 const about: React.FC = () => {
   return (
     <main>
+      <div>
+        <Helmet>
+          <title>Legion TD Mega Wiki | About</title>
+          <meta
+            name="description"
+            content="About Section. FAQ. Github Repo. Contact Address."
+          />
+        </Helmet>
+      </div>
       <MainHeading>About</MainHeading>
       <FAQContainer>
         <PQ>Q. Does logging in actually do anything?</PQ>

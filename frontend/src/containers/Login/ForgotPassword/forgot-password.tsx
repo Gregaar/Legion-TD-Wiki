@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Helmet } from "react-helmet";
 import isEmail from "validator/lib/isEmail";
 
 import {
@@ -71,6 +72,15 @@ const forgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 
   return (
     <main>
+      <div>
+        <Helmet>
+        <title>{`Legion TD Mega Wiki | Forgot Password`}</title>
+            <meta
+              name="description"
+              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+            />
+        </Helmet>
+      </div>
       <ContainerDiv>
         <Form onSubmit={(e) => handleSubmit(e, props.email)}>
           <h2 style={{ marginBottom: "1.5rem" }}>Forgotten Password</h2>

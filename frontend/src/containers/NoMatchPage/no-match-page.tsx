@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 
 import {
@@ -13,6 +14,15 @@ const NoMatchPage: React.FC = () => {
 
   return (
     <main>
+      <div>
+        <Helmet>
+        <title>{`Legion TD Mega Wiki | 404`}</title>
+            <meta
+              name="description"
+              content={`Page not found. 404.`}
+            />
+        </Helmet>
+      </div>
       <Heading>
         404{"\n"}
         Page Not Found
