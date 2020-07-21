@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import {
   InfoPanel,
+  StyledLink,
   UnitImage as SummonImage,
   UnitInfoHeading as SummonInfoHeading,
   UnitName as SummonName,
@@ -72,22 +73,52 @@ const SummonCard: React.FC<SummonCardProps> = ({
     }
   };
 
+  const cardWithNav = (
+    <>
+      <StyledLink to={`/summons/${summon.Order}`}>
+        <SummonName
+          bgColor={bgColor}
+          enableHover={enableHover}
+          onClick={handleSummonClick}
+        >
+          {summon.Name}
+        </SummonName>
+      </StyledLink>
+      <StyledLink to={`/summons/${summon.Order}`}>
+        <SummonImage
+          src={`${imgurURL}/${summon.ID}.png`}
+          alt={`Icon for the ${summon.Name} summon`}
+          bgColor={bgColor}
+          enableHover={enableHover}
+          onClick={handleSummonClick}
+        />
+      </StyledLink>
+    </>
+  );
+
   return (
     <InfoPanel>
-      <SummonName
-        bgColor={bgColor}
-        enableHover={enableHover}
-        onClick={handleSummonClick}
-      >
-        {summon.Name}
-      </SummonName>
-      <SummonImage
-        src={`${imgurURL}/${summon.ID}.png`}
-        alt={`Icon for the ${summon.Name} summon`}
-        bgColor={bgColor}
-        enableHover={enableHover}
-        onClick={handleSummonClick}
-      />
+      {enableHover ? (
+        cardWithNav
+      ) : (
+        <>
+          <SummonName
+            bgColor={bgColor}
+            enableHover={enableHover}
+            onClick={handleSummonClick}
+          >
+            {summon.Name}
+          </SummonName>
+
+          <SummonImage
+            src={`${imgurURL}/${summon.ID}.png`}
+            alt={`Icon for the ${summon.Name} summon`}
+            bgColor={bgColor}
+            enableHover={enableHover}
+            onClick={handleSummonClick}
+          />
+        </>
+      )}
       <p>{summon["Unit Description"]}</p>
       <SummonInfoHeading
         onClick={() => handleToggle("resources", toggle.resources)}

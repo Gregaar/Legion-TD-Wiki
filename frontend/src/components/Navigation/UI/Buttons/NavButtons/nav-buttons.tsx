@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { ArrowButton, ArrowContainer } from "../button-styles";
 
@@ -41,62 +42,71 @@ const navButtons: React.FC<NavButtonProps> = ({
       ? builderOrder.findIndex((element) => element.builder === currentBuilder)
       : null;
 
-  const handleBuilderArrowClick = (btnName: string): void => {
+  const getBuilderButtonURL = (btnName: string): string => {
     if (builderIndex !== null) {
       if (btnName === "back" && builderIndex > 0) {
-        console.log("back");
-        goToChosen(`/builders/${builderOrder[builderIndex - 1].builder}`);
+        return `/builders/${builderOrder[builderIndex - 1].builder}`;
       } else if (btnName === "next" && maxNumber >= builderIndex) {
-        console.log("next");
-        goToChosen(`/builders/${builderOrder[builderIndex + 1].builder}`);
+        return `/builders/${builderOrder[builderIndex + 1].builder}`;
+      } else {
+        return "";
       }
     } else {
-      return;
+      return "";
     }
   };
 
-  const handleUnitArrowClick = (btnName: string): void => {
+  const getUnitButtonURL = (btnName: string): string => {
     if (btnName === "back") {
-      goToChosen(`/units`);
+      return `/units`;
     } else if (btnName === "next") {
-      goToChosen(`/builders/${currentBuilder}`);
+      return `/builders/${currentBuilder}`;
     } else {
-      return;
+      return "";
+    }
+  };
+
+  const getButtonURL = (btnName: string): string => {
+    if (path === "builders") {
+      return getBuilderButtonURL(btnName);
+    } else if (path === "units") {
+      return getUnitButtonURL(btnName);
+    } else if (btnName === "back" && +currentNumber > 1) {
+      return `/${path}/${+currentNumber - 1}`;
+    } else if (btnName === "next" && maxNumber >= +currentNumber) {
+      return `/${path}/${+currentNumber + 1}`;
+    } else {
+      return "";
     }
   };
 
   const handleArrowClick = (btnName: string): void => {
-    if (path === "builders") {
-      return handleBuilderArrowClick(btnName);
-    } else if (path === "units") {
-      return handleUnitArrowClick(btnName);
-    } else if (btnName === "back" && +currentNumber > 1) {
-      goToChosen(`/${path}/${+currentNumber - 1}`);
-    } else if (btnName === "next" && maxNumber >= +currentNumber) {
-      goToChosen(`/${path}/${+currentNumber + 1}`);
-    } else {
-      return;
-    }
+    const urlPath = getButtonURL(btnName);
+    goToChosen(urlPath);
   };
 
   return (
     <ArrowContainer path={path}>
-      <ArrowButton
-        type="button"
-        onClick={() => handleArrowClick("back")}
-        path={path}
-        disablePrev={+currentNumber <= 1}
-      >
-        {path !== "units" ? "❮ Prev" : "❮ Unit Search"}
-      </ArrowButton>
-      <ArrowButton
-        type="button"
-        onClick={() => handleArrowClick("next")}
-        path={path}
-        disableNext={+currentNumber >= maxNumber}
-      >
-        {path !== "units" ? "Next ❯" : "Unit Builder ❯"}
-      </ArrowButton>
+      <Link to={() => getButtonURL("back")}>
+        <ArrowButton
+          type="button"
+          onClick={() => handleArrowClick("back")}
+          path={path}
+          disablePrev={+currentNumber <= 1}
+        >
+          {path !== "units" ? "❮ Prev" : "❮ Unit Search"}
+        </ArrowButton>
+      </Link>
+      <Link to={() => getButtonURL("next")}>
+        <ArrowButton
+          type="button"
+          onClick={() => handleArrowClick("next")}
+          path={path}
+          disableNext={+currentNumber >= maxNumber}
+        >
+          {path !== "units" ? "Next ❯" : "Unit Builder ❯"}
+        </ArrowButton>
+      </Link>
     </ArrowContainer>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import device from "../../../shared/Styles/devices";
 
 interface HeaderProps {
-  loading: number;
+  loading?: number;
 }
 
 export const Header = styled.header<HeaderProps>`
@@ -17,7 +17,7 @@ export const Header = styled.header<HeaderProps>`
   border-radius: 5px;
   position: unset;
   border: 2px solid yellow;
-  visibility: ${(props) => (props.loading ? "hidden" : "visible")};
+  visibility: visible;
 
   @media (max-width: 575px) {
     justify-content: flex-start;

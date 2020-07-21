@@ -3,6 +3,7 @@ import shortid from "shortid";
 
 import {
   InfoPanel,
+  StyledLink,
   UnitImage,
   UnitInfoHeading,
   UnitName,
@@ -72,22 +73,56 @@ const InfoCard: React.FC<InfoCardProps> = ({
     }
   };
 
+  const getUnitURL = (): string => {
+    const unitNameWithDashes = unit.Name.replace(" ", "-");
+    return `/units/${unitNameWithDashes}`;
+  };
+
+  const cardWithNav = (
+    <>
+      <StyledLink to={() => getUnitURL()}>
+        <UnitName
+          bgColor={unitBgColor}
+          onClick={handleNameClick}
+          enableHover={nameNav ? 1 : 0}
+        >
+          {unit.Name}
+        </UnitName>
+      </StyledLink>
+      <StyledLink to={() => getUnitURL()}>
+        <UnitImage
+          src={unitIcon}
+          alt={`Avatar for the ${unit.Name} unit.`}
+          onClick={handleNameClick}
+          bgColor={unitBgColor}
+          enableHover={nameNav ? 1 : 0}
+        />
+      </StyledLink>
+    </>
+  );
+
   return (
     <InfoPanel key={shortid.generate()}>
-      <UnitName
-        bgColor={unitBgColor}
-        onClick={handleNameClick}
-        enableHover={nameNav ? 1 : 0}
-      >
-        {unit.Name}
-      </UnitName>
-      <UnitImage
-        src={unitIcon}
-        alt={`Avatar for the ${unit.Name} unit.`}
-        onClick={handleNameClick}
-        bgColor={unitBgColor}
-        enableHover={nameNav ? 1 : 0}
-      />
+      {nameNav ? (
+        cardWithNav
+      ) : (
+        <>
+          <UnitName
+            bgColor={unitBgColor}
+            onClick={handleNameClick}
+            enableHover={nameNav ? 1 : 0}
+          >
+            {unit.Name}
+          </UnitName>
+          <UnitImage
+            src={unitIcon}
+            alt={`Avatar for the ${unit.Name} unit.`}
+            onClick={handleNameClick}
+            bgColor={unitBgColor}
+            enableHover={nameNav ? 1 : 0}
+          />
+        </>
+      )}
       <UnitInfoHeading
         canToggle={disableInfoNav ? 1 : 0}
         onClick={() => handleToggle("building", toggle.building)}

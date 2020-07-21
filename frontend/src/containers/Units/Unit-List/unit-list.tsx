@@ -1,6 +1,6 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import {
   getAbilityIcon,
@@ -63,12 +63,14 @@ const UnitList: React.FC<UnitProps> = (props) => {
           .concat(props.unitName.slice(1))}
         placement="right"
       >
-        <Img
-          src={unitIcon}
-          alt={`The avatar for the ${props.unitName} unit`}
-          onClick={(event) => goToUnitHandler(event)}
-          cursor={1}
-        />
+        <Link to={`/units/${props.unitName}`}>
+          <Img
+            src={unitIcon}
+            alt={`The avatar for the ${props.unitName} unit`}
+            onClick={(event) => goToUnitHandler(event)}
+            cursor={1}
+          />
+        </Link>
       </Tooltip>
       <Tooltip
         title={props.builder
@@ -77,12 +79,14 @@ const UnitList: React.FC<UnitProps> = (props) => {
           .concat(props.builder.slice(1))}
         placement="right"
       >
-        <Img
-          src={`${imgurURL}/${props.builderId}.png`}
-          alt={`The avatar for the ${props.builder} builder`}
-          onClick={(event) => goToBuilderHandler(event)}
-          cursor={1}
-        />
+        <Link to={`/builders/${props.builder}`}>
+          <Img
+            src={`${imgurURL}/${props.builderId}.png`}
+            alt={`The avatar for the ${props.builder} builder`}
+            onClick={(event) => goToBuilderHandler(event)}
+            cursor={1}
+          />
+        </Link>
       </Tooltip>
       <Tooltip title={`Tier ${props.tier}`} placement="right">
         <Img
