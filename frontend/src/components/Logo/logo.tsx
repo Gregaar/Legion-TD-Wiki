@@ -9,7 +9,7 @@ interface LogoProps {
 const logo: React.FC<LogoProps> = (props) => {
   return (
     <LogoDiv menu={props.menu}>
-      <LogoImg src={"https://i.imgur.com/pux9PSW.png"} alt="Legion TD Logo" />
+      <LogoImg src={"https://i.imgur.com/A4WDJLK.png"} alt="Legion TD Logo" />
     </LogoDiv>
   );
 };
