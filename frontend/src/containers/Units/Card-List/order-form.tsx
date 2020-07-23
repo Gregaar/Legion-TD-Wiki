@@ -33,7 +33,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ listOrder, handleReorder }) => {
           title: listOrderArray[currentOrderIndex][0],
           order: listOrderArray[currentOrderIndex][1],
         }
-      : { title: "", order: "" };
+      : { title: "Tier", order: "asc" };
 
   const [sortProperties, setSortProperties] = useState<SortProperties>(
     defaultSortProperties
