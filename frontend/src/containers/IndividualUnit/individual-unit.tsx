@@ -92,7 +92,7 @@ const IndividualUnit: React.FC = () => {
             enableHover={false}
           />
         ) : (
-          <UnitCard unit={copiedUnit} goToClicked={history.push} />
+          <UnitCard unit={copiedUnit} />
         )}
 
         {copiedUnit["Attack Type"] !== null ? (

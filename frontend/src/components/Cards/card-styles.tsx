@@ -118,6 +118,7 @@ export const UnitInfoHeading = styled.h3<UnitInfoHeadingProps>`
 export const InfoGrid = styled.div<InfoGridProps>`
   display: ${(props) => (props.isOpen ? "grid" : "none")};
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 5px;
   text-transform: capitalize;
   align-items: center;
   justify-items: center;

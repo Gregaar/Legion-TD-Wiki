@@ -5,7 +5,6 @@ type SetUnits = (
   value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])
 ) => void;
 
-
 type SetListOrderType = (
   value:
     | ListOrderInterface
@@ -19,7 +18,7 @@ const reorderList = (
   setUnits: SetUnits
 ): void => {
   switch (title) {
-    case "Unit":
+    case "Unit Name":
       currentUnits.sort((a, b) => {
         let comparison;
         comparison = a.Name.localeCompare(b.Name);
@@ -124,9 +123,19 @@ export default (
   currentList: UnitInterface[],
   setCurrentList: SetUnits,
   listOrder: ListOrderInterface,
-  setListOrder: SetListOrderType
+  setListOrder: SetListOrderType,
+  sortOrder?: string
 ) => {
-  if (listOrder[title] === "") {
+  if (sortOrder) {
+    setListOrder(defaultOrderState);
+    setListOrder((prevOrder) => {
+      return {
+        ...prevOrder,
+        [title]: sortOrder,
+      };
+    });
+    reorderList(title, sortOrder, [...currentList], setCurrentList);
+  } else if (listOrder[title] === "") {
     setListOrder(defaultOrderState);
     setListOrder((prevOrder) => {
       return {

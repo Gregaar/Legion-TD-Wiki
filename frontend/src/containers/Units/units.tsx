@@ -5,15 +5,16 @@ import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
 import searchWithFilters from "./Filter/Requests/search-with-filters";
 import sortListOrder from "./Services/reorder-units";
-import UnitList from "./Unit-List/unit-list";
-import { HeadingContainer, UnitContainer, UnitHeadings } from "./unit-styles";
+import IconList from "./Icon-List/icon-list";
+import CardList from "./Card-List/card-list";
+import { TypeHeading, ButtonContainer, ListButton } from "./unit-styles";
 
 export interface ListOrderInterface {
   [key: string]: string;
 }
 
 export const defaultOrderState = {
-  Unit: "",
+  "Unit Name": "",
   Builder: "",
   Tier: "",
   "Ability 1": "",
@@ -22,18 +23,50 @@ export const defaultOrderState = {
   "Defence Type": "",
 };
 
+const getDefaultListType = (): string => {
+  const storedListType = sessionStorage.getItem("listType");
+  return storedListType !== null ? JSON.parse(storedListType) : "icons";
+};
+
+const getDefaultListOrder = (): ListOrderInterface => {
+  const storedListOrder = sessionStorage.getItem("listOrder");
+  return storedListOrder !== null
+    ? JSON.parse(storedListOrder)
+    : defaultOrderState;
+};
+
 const Units: React.FC = () => {
+  const userListType = getDefaultListType();
+  const userListOrder = getDefaultListOrder();
   const [displayUnits, setDisplayUnits] = useState<UnitInterface[]>([]);
-  const [listOrder, setListOrder] = useState<ListOrderInterface>(
-    defaultOrderState
-  );
+  const [listType, setListType] = useState<string>(userListType);
+  const [listOrder, setListOrder] = useState<ListOrderInterface>(userListOrder);
+
+  useEffect(() => {
+    sessionStorage.setItem("listOrder", JSON.stringify(listOrder));
+  }, [listOrder]);
+
+  useEffect(() => {
+    console.log("firing");
+    const storedList = sessionStorage.getItem("listOrder");
+    const parsedList = storedList !== null ? JSON.parse(storedList) : null;
+    if (
+      storedList &&
+      storedList !== JSON.stringify(defaultOrderState) &&
+      displayUnits.length >= 1
+    ) {
+      const listArray: [string, string][] = Object.entries(parsedList);
+      const index = listArray.findIndex((ele) => ele[1] !== "");
+      handleReorder(listArray[index][0], listArray[index][1]);
+    }
+    //eslint-disable-next-line
+  }, [displayUnits.length]);
 
   useEffect(() => {
     const getUnitsToDisplay = async (builder: string) => {
       await axios(`/api/unit/builder/${builder}`)
         .then((res) => {
           setDisplayUnits((prevUnits) => [...res.data.units]);
-          return;
         })
         .catch((error) => {
           return;
@@ -49,48 +82,35 @@ const Units: React.FC = () => {
     }
   }, []);
 
-  const listTitles = [
-    "Unit",
-    "Builder",
-    "Tier",
-    "Ability 1",
-    "Ability 2",
-    "Attack Type",
-    "Defence Type",
-  ];
-
-  let unitListDisplay: JSX.Element[] | undefined;
-
-  const mapDisplayUnits = (listCopy: UnitInterface[]) => {
-    unitListDisplay = listCopy.map((unit) => (
-      <UnitList
-        key={unit.ID}
-        id={unit.ID}
-        builderId={unit["Builder ID"]}
-        unitName={unit.Name}
-        tier={unit["Unit Tier"]}
-        builder={unit.Builder}
-        abilities={unit.Abilities}
-        abilityDescriptions={unit["Ability Description"]}
-        attack={unit["Attack Type"]}
-        defense={unit["Defense Type"]}
-      />
-    ));
+  const handleListType = (type: string): void => {
+    if (type === "icons" && listType !== "icons") {
+      setListType((prevType) => "icons");
+      sessionStorage.setItem("listType", JSON.stringify("icons"));
+    } else if (type === "cards" && listType !== "cards") {
+      setListType((prevType) => "cards");
+      sessionStorage.setItem("listType", JSON.stringify("cards"));
+    }
   };
 
-  if (displayUnits.length > 0) {
-    const unitCopy: UnitInterface[] = [...displayUnits];
-    mapDisplayUnits(unitCopy);
-  }
-
-  const handleReorder = (title: string): void => {
-    sortListOrder(
-      title,
-      displayUnits,
-      setDisplayUnits,
-      listOrder,
-      setListOrder
-    );
+  const handleReorder = (title: string, sortOrder?: string): void => {
+    if (!sortOrder) {
+      sortListOrder(
+        title,
+        [...displayUnits],
+        setDisplayUnits,
+        listOrder,
+        setListOrder
+      );
+    } else {
+      sortListOrder(
+        title,
+        [...displayUnits],
+        setDisplayUnits,
+        listOrder,
+        setListOrder,
+        sortOrder
+      );
+    }
   };
 
   return (
@@ -106,25 +126,38 @@ const Units: React.FC = () => {
       </div>
       <React.Fragment>
         <Filter
-          displayUnits={displayUnits}
+          displayUnits={[...displayUnits]}
           setDisplayUnits={setDisplayUnits}
-          setListOrder={setListOrder}
         />
-        <UnitContainer>
-          <HeadingContainer>
-            {listTitles.map((title) => (
-              <UnitHeadings key={title} onClick={() => handleReorder(title)}>
-                {title}{" "}
-                {listOrder[title] === "asc"
-                  ? "↑"
-                  : listOrder[title] === "desc"
-                  ? "↓"
-                  : null}
-              </UnitHeadings>
-            ))}
-          </HeadingContainer>
-          {unitListDisplay}
-        </UnitContainer>
+
+        <ButtonContainer>
+          <TypeHeading>List Type</TypeHeading>
+          <ListButton
+            color="deepskyblue"
+            onClick={() => handleListType("icons")}
+          >
+            Icons
+          </ListButton>
+          <ListButton
+            color="darkorange"
+            onClick={() => handleListType("cards")}
+          >
+            Cards
+          </ListButton>
+        </ButtonContainer>
+        {listType === "icons" ? (
+          <IconList
+            units={[...displayUnits]}
+            listOrder={listOrder}
+            handleReorder={handleReorder}
+          />
+        ) : (
+          <CardList
+            units={[...displayUnits]}
+            listOrder={listOrder}
+            handleReorder={handleReorder}
+          />
+        )}
       </React.Fragment>
     </main>
   );

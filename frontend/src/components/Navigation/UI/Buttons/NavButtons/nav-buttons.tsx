@@ -43,7 +43,13 @@ const navButtons: React.FC<NavButtonProps> = ({
     if (builderIndex !== null) {
       if (btnName === "back" && builderIndex > 0) {
         return `/builders/${builderOrder[builderIndex - 1].builder}`;
-      } else if (btnName === "next" && maxNumber >= builderIndex) {
+      } else if (
+        btnName === "next" &&
+        maxNumber - 1 >= builderIndex &&
+        builderIndex === builderOrder.length - 1
+      ) {
+        return `/builders/${builderOrder[builderOrder.length - 1].builder}`;
+      } else if (btnName === "next" && maxNumber - 1 >= builderIndex) {
         return `/builders/${builderOrder[builderIndex + 1].builder}`;
       } else {
         return "#";

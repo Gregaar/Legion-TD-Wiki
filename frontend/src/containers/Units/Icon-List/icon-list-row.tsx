@@ -1,6 +1,6 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   getAbilityIcon,
@@ -25,33 +25,20 @@ interface UnitProps {
 
 type UnitNameHandlerEvent = HTMLParagraphElement | HTMLImageElement;
 
-const UnitList: React.FC<UnitProps> = (props) => {
+const unitListRow: React.FC<UnitProps> = (props) => {
   const unitIcon = getUnitIcon(props.builder, props.unitName);
   const tierIcon = getTierIcon(props.tier);
   const attackIcon = getAttackIcon(props.attack);
   const defenseIcon = getDefenseIcon(props.defense);
   const imgurURL = "https://i.imgur.com";
-  const history = useHistory();
 
   const abilityIcon = (builder: string, abilityName: string | null): string => {
     return getAbilityIcon(builder, abilityName);
   };
 
-  const goToUnitHandler = (
-    event: React.MouseEvent<UnitNameHandlerEvent>
-  ): void => {
-    event.preventDefault();
-    const addDashToUnitName = props.unitName.replace(/\s/gm, "-");
-    history.push(`/units/${addDashToUnitName}`);
-    return;
-  };
-
-  const goToBuilderHandler = (
-    event: React.MouseEvent<HTMLImageElement>
-  ): void => {
-    event.preventDefault();
-    history.push(`/builders/${props.builder}`);
-    return;
+  const goToUnitHandler = (name: string): string => {
+    const addDashToUnitName = name.replace(/\s/gm, "-");
+    return `/units/${addDashToUnitName}`;
   };
 
   return (
@@ -63,11 +50,10 @@ const UnitList: React.FC<UnitProps> = (props) => {
           .concat(props.unitName.slice(1))}
         placement="right"
       >
-        <Link to={`/units/${props.unitName}`}>
+        <Link to={() => goToUnitHandler(props.unitName)}>
           <Img
             src={unitIcon}
             alt={`The avatar for the ${props.unitName} unit`}
-            onClick={(event) => goToUnitHandler(event)}
             cursor={1}
           />
         </Link>
@@ -83,17 +69,12 @@ const UnitList: React.FC<UnitProps> = (props) => {
           <Img
             src={`${imgurURL}/${props.builderId}.png`}
             alt={`The avatar for the ${props.builder} builder`}
-            onClick={(event) => goToBuilderHandler(event)}
             cursor={1}
           />
         </Link>
       </Tooltip>
       <Tooltip title={`Tier ${props.tier}`} placement="right">
-        <Img
-          src={tierIcon}
-          alt={`Tier ${props.tier} icon`}
-          onClick={(event) => goToUnitHandler(event)}
-        />
+        <Img src={tierIcon} alt={`Tier ${props.tier} icon`} />
       </Tooltip>
       <Tooltip
         placement="right"
@@ -165,4 +146,4 @@ const UnitList: React.FC<UnitProps> = (props) => {
   );
 };
 
-export default UnitList;
+export default unitListRow;
