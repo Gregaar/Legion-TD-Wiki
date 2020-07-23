@@ -12,18 +12,9 @@ interface UpgradeInfoProps {
   baseName: string[] | null;
   disableInfoNav?: boolean;
   isOpen?: boolean;
-  clickedName: (path: string) => void;
 }
 
 const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
-  const handleNameClick = (name: string) => {
-    if (props.disableInfoNav) {
-      return;
-    } else {
-      const unitNameWithDashes = name.replace(" ", "-");
-      props.clickedName(`/units/${unitNameWithDashes}`);
-    }
-  };
 
   const getLinkURL = (name: string) => {
     const unitNameWithDashes = name.replace(" ", "-");
@@ -42,7 +33,6 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
               {!props.disableInfoNav ? (
                 <StyledLink to={() => getLinkURL(name)}>
                   <NavParagraph
-                    onClick={() => handleNameClick(name)}
                     disableInfoNav={props.disableInfoNav ? 1 : 0}
                   >
                     {name}
@@ -50,7 +40,6 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
                 </StyledLink>
               ) : (
                 <NavParagraph
-                  onClick={() => handleNameClick(name)}
                   disableInfoNav={props.disableInfoNav ? 1 : 0}
                 >
                   {name}
@@ -77,7 +66,6 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
               {!props.disableInfoNav ? (
                 <StyledLink to={() => getLinkURL(name)}>
                   <NavParagraph
-                    onClick={() => handleNameClick(name)}
                     disableInfoNav={props.disableInfoNav ? 1 : 0}
                   >
                     {name}
@@ -85,7 +73,6 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
                 </StyledLink>
               ) : (
                 <NavParagraph
-                  onClick={() => handleNameClick(name)}
                   disableInfoNav={props.disableInfoNav ? 1 : 0}
                 >
                   {name}

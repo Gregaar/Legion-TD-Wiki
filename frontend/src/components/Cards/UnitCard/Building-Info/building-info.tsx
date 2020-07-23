@@ -14,22 +14,13 @@ interface BuildingInfoProps {
   builder: string;
   disableInfoNav?: boolean;
   isOpen?: boolean;
-  clicked: (path: string) => void;
 }
 
 const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
-  const handleBuilderClick = (builder: string): void => {
-    if (props.disableInfoNav) {
-      return;
-    } else {
-      props.clicked(`/builders/${builder}`);
-    }
-  };
 
   const cardWithNav = (
     <StyledLink to={`/builders/${props.builder}`}>
       <NavParagraph
-        onClick={() => handleBuilderClick(props.builder)}
         disableInfoNav={props.disableInfoNav ? 1 : 0}
       >
         {props.builder}
@@ -47,7 +38,6 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
         cardWithNav
       ) : (
         <NavParagraph
-          onClick={() => handleBuilderClick(props.builder)}
           disableInfoNav={props.disableInfoNav ? 1 : 0}
         >
           {props.builder}

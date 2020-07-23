@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import IndividualBuilder from "../../components/Cards/BuilderCards/IndividualBuilder/individual-builder";
 import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-buttons";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import ProphetAbilities from "../../shared/Interfaces/prophet-abilities-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
-import InfoCard from "../Units/UnitCard/unit-card";
+import UnitCard from "../Units/UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
 
 const sanitizeBuilderName = (path: string): string => {
@@ -24,7 +24,6 @@ const BuilderUnits: React.FC = () => {
   const [prophetAbilities, setProphetAbilities] = useState<ProphetAbilities>(
     {} as ProphetAbilities
   );
-  const history = useHistory();
   const currentLocation = useLocation();
   const builderName = sanitizeBuilderName(currentLocation.pathname);
 
@@ -132,12 +131,12 @@ const BuilderUnits: React.FC = () => {
         <UnitGrid>
           {units &&
             units.map((unit) => (
-              <InfoCard
+              <UnitCard
                 key={unit.ID}
                 unit={unit}
-                goToClicked={history.push}
-                nameNav={true}
-                disableInfoNav={true}
+                nameNav
+                disableInfoNav
+                showExtras
               />
             ))}
         </UnitGrid>

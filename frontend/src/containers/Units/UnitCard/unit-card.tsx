@@ -11,40 +11,44 @@ import {
 import BuildingInfo from "../../../components/Cards/UnitCard/Building-Info/building-info";
 import CombatInfo from "../../../components/Cards/UnitCard/Combat-Info/combat-info";
 import UpgradeInfo from "../../../components/Cards/UnitCard/Upgrade-Info/upgrade-info";
+import AbilityInfo from "../../../components/Cards/UnitCard/AbilityInfo/ability-info";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
 import { getUnitIcon } from "../../../shared/Services/get-icons";
 import { unitNameColor } from "../../../shared/Styles/get-heading-color";
 
-interface InfoCardProps {
+interface UnitCardProps {
   unit: UnitInterface;
-  goToClicked: (path: string) => void;
   nameNav?: boolean;
   disableInfoNav?: boolean;
+  showExtras?: boolean;
 }
 
 interface ToggleInterface {
   building: boolean;
   upgrade: boolean;
   combat: boolean;
+  abilities: boolean;
 }
 
 const builderUnitList: ToggleInterface = {
   building: true,
   upgrade: false,
   combat: false,
+  abilities: true,
 };
 
 const singleUnitList: ToggleInterface = {
   building: true,
   upgrade: true,
   combat: true,
+  abilities: true,
 };
 
-const InfoCard: React.FC<InfoCardProps> = ({
+const UnitCard: React.FC<UnitCardProps> = ({
   unit,
-  goToClicked,
   nameNav,
   disableInfoNav,
+  showExtras,
 }) => {
   const defaultToggle = disableInfoNav ? builderUnitList : singleUnitList;
   const [toggle, setToggle] = useState<ToggleInterface>(defaultToggle);
@@ -64,15 +68,6 @@ const InfoCard: React.FC<InfoCardProps> = ({
     }
   };
 
-  const handleNameClick = (): void => {
-    if (nameNav) {
-      const unitNameWithDashes = unit.Name.replace(" ", "-");
-      goToClicked(`/units/${unitNameWithDashes}`);
-    } else {
-      return;
-    }
-  };
-
   const getUnitURL = (): string => {
     const unitNameWithDashes = unit.Name.replace(" ", "-");
     return `/units/${unitNameWithDashes}`;
@@ -81,11 +76,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
   const cardWithNav = (
     <>
       <StyledLink to={() => getUnitURL()}>
-        <UnitName
-          bgColor={unitBgColor}
-          onClick={handleNameClick}
-          enableHover={nameNav ? 1 : 0}
-        >
+        <UnitName bgColor={unitBgColor} enableHover={nameNav ? 1 : 0}>
           {unit.Name}
         </UnitName>
       </StyledLink>
@@ -93,7 +84,6 @@ const InfoCard: React.FC<InfoCardProps> = ({
         <UnitImage
           src={unitIcon}
           alt={`Avatar for the ${unit.Name} unit.`}
-          onClick={handleNameClick}
           bgColor={unitBgColor}
           enableHover={nameNav ? 1 : 0}
         />
@@ -107,17 +97,12 @@ const InfoCard: React.FC<InfoCardProps> = ({
         cardWithNav
       ) : (
         <>
-          <UnitName
-            bgColor={unitBgColor}
-            onClick={handleNameClick}
-            enableHover={nameNav ? 1 : 0}
-          >
+          <UnitName bgColor={unitBgColor} enableHover={nameNav ? 1 : 0}>
             {unit.Name}
           </UnitName>
           <UnitImage
             src={unitIcon}
             alt={`Avatar for the ${unit.Name} unit.`}
-            onClick={handleNameClick}
             bgColor={unitBgColor}
             enableHover={nameNav ? 1 : 0}
           />
@@ -136,7 +121,6 @@ const InfoCard: React.FC<InfoCardProps> = ({
         builder={unit.Builder}
         disableInfoNav={disableInfoNav}
         isOpen={toggle.building}
-        clicked={goToClicked}
       />
       {unit.Builder === "hybrid" ? null : (
         <>
@@ -152,7 +136,6 @@ const InfoCard: React.FC<InfoCardProps> = ({
             baseName={unit["Base Unit Name"]}
             disableInfoNav={disableInfoNav}
             isOpen={toggle.upgrade}
-            clickedName={goToClicked}
           />
           <UnitInfoHeading
             canToggle={disableInfoNav ? 1 : 0}
@@ -168,14 +151,33 @@ const InfoCard: React.FC<InfoCardProps> = ({
             rangeClass={unit["Melee / Ranged"]}
             attackSpeed={unit["Attack Speed"]}
             attackClass={unit["Attack Speed Class"]}
+            attackType={unit["Attack Type"]}
+            defenseType={unit["Defense Type"]}
             mana={unit.Mana}
             isOpen={toggle.combat}
             disableAnimation={disableInfoNav}
+            showAtkDef={showExtras}
           />
         </>
       )}
+      {showExtras ? (
+        <>
+          <UnitInfoHeading
+            canToggle={disableInfoNav ? 1 : 0}
+            onClick={() => handleToggle("abilities", toggle.abilities)}
+          >
+            Abilities
+          </UnitInfoHeading>
+          <AbilityInfo
+            abilities={unit["Abilities"]}
+            abilityTypes={unit["Ability Type"]}
+            isOpen={toggle.abilities}
+            disableAnimation={disableInfoNav}
+          />
+        </>
+      ) : null}
     </InfoPanel>
   );
 };
 
-export default InfoCard;
+export default UnitCard;
