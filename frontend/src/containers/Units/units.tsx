@@ -47,7 +47,6 @@ const Units: React.FC = () => {
   }, [listOrder]);
 
   useEffect(() => {
-    console.log("firing");
     const storedList = sessionStorage.getItem("listOrder");
     const parsedList = storedList !== null ? JSON.parse(storedList) : null;
     if (
