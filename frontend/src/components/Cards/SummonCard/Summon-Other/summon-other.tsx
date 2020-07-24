@@ -71,7 +71,6 @@ const summonOther: React.FC<SummonOtherProps> = (props) => {
               </NavParagraph>
             ) : (
               <NavParagraph
-                onClick={handleNavClick}
                 disableInfoNav={props.disableAnimation ? 1 : 0}
               >
                 {info.value}

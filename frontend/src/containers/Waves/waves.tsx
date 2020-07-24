@@ -78,7 +78,7 @@ const Waves: React.FC = () => {
           <title>{`Legion TD Mega Wiki | Waves`}</title>
           <meta
             name="description"
-            content={`All Waves / Levels for Legion TD Mega. Gold. Combat. Attack Type. Defence Type. Melee. Ranged. Flying. Land`}
+            content={`All Waves / Levels for Legion TD Mega. Gold. Bonus Gold. Combat. Attack Type. Defence Type. Melee. Ranged. Flying. Land. Boss Wave.`}
           />
         </Helmet>
       </div>

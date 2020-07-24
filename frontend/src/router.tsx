@@ -10,9 +10,9 @@ import IndividualUnit from "./containers/IndividualUnit/individual-unit";
 import King from "./containers/King/king";
 import Login from "./containers/Login/login";
 import ResetPassword from "./containers/Login/ResetPassword/reset-password";
-import NoMatchPage from "./containers/NoMatchPage/no-match-page";
+import NoMatchPage from "./components/NoMatchPage/no-match-page";
 import Summons from "./containers/Summons/summons";
-import Units from "./containers/Units/units";
+import Units from "./containers/UnitSearch/units";
 import Waves from "./containers/Waves/waves";
 import ProtectedRoute from "./hoc/ProtectedRoute/protected-route";
 

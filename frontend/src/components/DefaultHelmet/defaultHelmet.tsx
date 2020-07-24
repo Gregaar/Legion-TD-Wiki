@@ -10,7 +10,7 @@ const defaultHelmet: React.FC = () => {
           content="The ultimate Legion TD Mega Wiki, with all Units, Builders, Waves, Summons and King info. Based on Warcraft 3 (III) custom map version 3.5 (B4)"
         />
 
-        <title>Legion TD Mega Wiki | Ultimate Edition</title>
+        <title>Legion TD Mega Wiki | Warcraft 3 (III) Edition</title>
       </Helmet>
     </div>
   );

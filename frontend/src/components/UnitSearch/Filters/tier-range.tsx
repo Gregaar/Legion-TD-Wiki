@@ -1,12 +1,12 @@
 import React from "react";
 
-import { FilterObjectInterface } from "../filter";
+import { FilterObjectInterface } from "../../../containers/UnitSearch/Filter/filter";
 import {
   TierHeading,
   TierInput,
   TierLabel,
   TierRangeContainer,
-} from "../filter-styles";
+} from "../../../containers/UnitSearch/Filter/filter-styles";
 
 interface TierRangeProps {
   unitFilters: FilterObjectInterface;

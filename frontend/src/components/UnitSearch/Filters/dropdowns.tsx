@@ -1,11 +1,11 @@
 import React from "react";
 
-import { FilterObjectInterface } from "../filter";
+import { FilterObjectInterface } from "../../../containers/UnitSearch/Filter/filter";
 import {
   DropdownContainer,
   DropdownLabel,
   DropdownSelect,
-} from "../filter-styles";
+} from "../../../containers/UnitSearch/Filter/filter-styles";
 
 interface DropdownProps {
   unitFilters: FilterObjectInterface;

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom";
 
 import BuilderCards from "../../components/Cards/BuilderCards/builder-cards";
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
@@ -14,7 +13,6 @@ import {
 import { BuildersContainer } from "./builders-styles";
 const Builders: React.FC = () => {
   const [legionBuilders, setLegionBuilders] = useState<BuilderInterface[]>([]);
-  const history = useHistory();
 
   useEffect(() => {
     const getBuilders = async () => {
@@ -28,15 +26,6 @@ const Builders: React.FC = () => {
     };
     getBuilders();
   }, []);
-
-  let buildersDisplay;
-
-  if (legionBuilders.length > 0) {
-    const buildersCopy: BuilderInterface[] = [...legionBuilders];
-    buildersDisplay = (
-      <BuilderCards builders={buildersCopy} goToClicked={history.push} />
-    );
-  }
 
   return (
     <main>
@@ -64,7 +53,11 @@ const Builders: React.FC = () => {
         <P>The Hybrid builder randoms units every time they are placed.</P>
         <P>The Prophet builder randoms units once whenever he is selected.</P>
       </TextContainer>
-      <BuildersContainer>{buildersDisplay}</BuildersContainer>
+      <BuildersContainer>
+        {legionBuilders.length >= 1 ? (
+          <BuilderCards builders={[...legionBuilders]} />
+        ) : null}
+      </BuildersContainer>
     </main>
   );
 };

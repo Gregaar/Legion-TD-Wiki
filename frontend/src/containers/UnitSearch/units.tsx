@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
-import searchWithFilters from "./Filter/Requests/search-with-filters";
-import sortListOrder from "./Services/reorder-units";
-import IconList from "./Icon-List/icon-list";
-import CardList from "./Card-List/card-list";
+import searchWithFilters from "../../components/UnitSearch/Requests/search-with-filters";
+import sortListOrder from "../../components/UnitSearch/reorder-units";
+import IconList from "../../components/UnitSearch/Icon-List/icon-list";
+import CardList from "../../components/UnitSearch/Card-List/card-list";
 import { TypeHeading, ButtonContainer, ListButton } from "./unit-styles";
 
 export interface ListOrderInterface {

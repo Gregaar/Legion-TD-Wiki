@@ -1,5 +1,5 @@
-import UnitInterface from "../../../shared/Interfaces/unit-interface";
-import { ListOrderInterface, defaultOrderState } from "../units";
+import UnitInterface from "../../shared/Interfaces/unit-interface";
+import { ListOrderInterface, defaultOrderState } from "../../containers/UnitSearch/units";
 
 type SetUnits = (
   value: UnitInterface[] | ((value: UnitInterface[]) => UnitInterface[])

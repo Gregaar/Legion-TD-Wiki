@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import UnitInterface from "../../../../shared/Interfaces/unit-interface";
+import UnitInterface from "../../../shared/Interfaces/unit-interface";
 
 interface SearchByNameArgs {
   (
