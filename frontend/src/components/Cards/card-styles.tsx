@@ -34,7 +34,7 @@ export const InfoPanel = styled.div<InfoPanelProps>`
   flex: 0 0 calc(25% - 90px);
   align-self: start;
   width: 350px;
-  max-height: ${(props) => props.height || "700px"};
+  max-height: ${(props) => props.height || "100%"};
   overflow: hidden;
   margin: 125px auto 0 auto;
   text-align: center;

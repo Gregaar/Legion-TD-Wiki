@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import shortid from "shortid";
 import { FormContainer, Label, Input } from "./card-list-styles";
-import { ListButton } from "../unit-styles";
-import { ListOrderInterface } from "../units";
+import { ListButton } from "../../../containers/UnitSearch/unit-styles";
+import { ListOrderInterface } from "../../../containers/UnitSearch/units";
 
 interface OrderFormProps {
   listOrder: ListOrderInterface;

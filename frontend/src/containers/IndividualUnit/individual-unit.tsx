@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useHistory, useLocation } from "react-router-dom";
 
 import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import CombatCard from "../../components/Cards/CombatCard/combat-card";
+import IndividualHelmet from "./individual-helmet";
 import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
 import SummonCard from "../Summons/summon-card";
-import UnitCard from "../Units/UnitCard/unit-card";
+import UnitCard from "../UnitSearch/UnitCard/unit-card";
 import WaveCard from "../Waves/wave-card";
 import { ContainerDiv } from "./individual-unit-styles";
 
@@ -121,31 +121,7 @@ const IndividualUnit: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div>
-        <Helmet>
-          <title>{`Legion TD Mega Wiki | ${
-            Object.keys(currentUnit).length > 0
-              ? isWaveUnit
-                ? currentUnit["Creep Name"].charAt(0).toUpperCase() +
-                  currentUnit["Creep Name"].slice(1)
-                : currentUnit.Name.charAt(0).toUpperCase() +
-                  currentUnit.Name.slice(1)
-              : "Unit"
-          }`}</title>
-          <meta
-            name="description"
-            content={`${
-              Object.keys(currentUnit).length > 0
-                ? isWaveUnit
-                  ? currentUnit["Creep Name"].charAt(0).toUpperCase() +
-                    currentUnit["Creep Name"].slice(1)
-                  : currentUnit.Name.charAt(0).toUpperCase() +
-                    currentUnit.Name.slice(1)
-                : "Unit"
-            }. Abilities. Gold Cost. Food Cost. Upgraded Unit. Base Unit. Combat Stats. Range. Attack Type. Defence Type.`}
-          />
-        </Helmet>
-      </div>
+      <IndividualHelmet unit={{ ...currentUnit }} isWaveUnit={isWaveUnit} />
       {navButtons}
       <main>
         <ContainerDiv>{currentUnit ? unitToDisplay : null}</ContainerDiv>

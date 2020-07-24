@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 import device from "../../shared/Styles/devices";
 
 export const Heading = styled.h1`
@@ -47,7 +47,7 @@ export const ButtonContainer = styled.div`
   margin: 50px auto;
 `;
 
-export const BackButton = styled.button`
+export const BackButton = styled(NavLink)`
   display: inline-block;
    padding: 0.7em 1.7em;
    margin: 0 0.3em 0.3em 0;

@@ -5,12 +5,10 @@ import IndividualBuilder from "./IndividualBuilder/individual-builder";
 
 interface BuilderCardsProps {
   builders: BuilderInterface[];
-  goToClicked: (path: string) => void;
 }
 
 const builderCards: React.FC<BuilderCardsProps> = ({
   builders,
-  goToClicked,
 }) => {
   return (
     <>
@@ -19,7 +17,6 @@ const builderCards: React.FC<BuilderCardsProps> = ({
           <IndividualBuilder
             key={builder.ID}
             ID={builder["Avatar ID"]}
-            clicked={goToClicked}
             name={builder.Name}
             description={builder.Description}
             heroes={builder["Altar Of Heroes"]}

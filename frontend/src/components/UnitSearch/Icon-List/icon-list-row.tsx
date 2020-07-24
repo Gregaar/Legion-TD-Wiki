@@ -9,7 +9,7 @@ import {
   getTierIcon,
   getUnitIcon,
 } from "../../../shared/Services/get-icons";
-import { Img } from "../unit-styles";
+import { Img } from "../../../containers/UnitSearch/unit-styles";
 
 interface UnitProps {
   id: string;

@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom";
 
 import {
   BackButton,
@@ -9,8 +8,7 @@ import {
   Paragraph,
 } from "./no-match-styles";
 
-const NoMatchPage: React.FC = () => {
-  const history = useHistory();
+const noMatchPage: React.FC = () => {
 
   return (
     <main>
@@ -33,7 +31,7 @@ const NoMatchPage: React.FC = () => {
       </Paragraph>
 
       <ButtonContainer>
-        <BackButton type="button" onClick={() => history.push("/")}>
+        <BackButton to="/">
           Back to Safety
         </BackButton>
       </ButtonContainer>
@@ -41,4 +39,4 @@ const NoMatchPage: React.FC = () => {
   );
 };
 
-export default NoMatchPage;
+export default noMatchPage;

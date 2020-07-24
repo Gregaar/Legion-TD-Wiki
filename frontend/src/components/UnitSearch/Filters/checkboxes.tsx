@@ -1,12 +1,12 @@
 import React from "react";
 
-import { FilterObjectInterface } from "../filter";
+import { FilterObjectInterface } from "../../../containers/UnitSearch/Filter/filter";
 import {
   AbilitiesHeading,
   CheckboxContainer,
   CheckboxInput,
   CheckboxLabel,
-} from "../filter-styles";
+} from "../../../containers/UnitSearch/Filter/filter-styles";
 
 interface CheckboxProps {
   unitFilters: FilterObjectInterface;

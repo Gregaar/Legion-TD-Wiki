@@ -8,7 +8,7 @@ import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-bu
 import BuilderInterface from "../../shared/Interfaces/builder-interface";
 import ProphetAbilities from "../../shared/Interfaces/prophet-abilities-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
-import UnitCard from "../Units/UnitCard/unit-card";
+import UnitCard from "../UnitSearch/UnitCard/unit-card";
 import { UnitGrid } from "./builder-units-styles";
 
 const sanitizeBuilderName = (path: string): string => {

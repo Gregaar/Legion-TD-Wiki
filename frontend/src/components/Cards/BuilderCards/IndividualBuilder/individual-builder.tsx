@@ -14,7 +14,6 @@ import {
 } from "./individual-builder-styles";
 
 interface IndividualBuilderProps {
-  clicked?: (path: string) => void;
   prophet?: boolean;
   disableHover?: boolean;
   ID: string;
@@ -59,20 +58,11 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
 
   const builderColor = unitNameColor(props.name);
 
-  const handleBuilderClick = (): void => {
-    if (props.clicked) {
-      props.clicked(`/builders/${props.name}`);
-    } else {
-      return;
-    }
-  };
-
   const cardWithNav = (
     <>
       <StyledLink to={`/builders/${props.name}`}>
         <BuilderName
           bgColor={builderColor}
-          onClick={handleBuilderClick}
           disableHover={props.disableHover ? 1 : 0}
         >
           {props.name}
@@ -82,7 +72,6 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
         <BuilderImage
           src={`${imgurURL}/${props.ID}.png`}
           alt={`Avatar for the ${props.name} builder.`}
-          onClick={handleBuilderClick}
           disableHover={props.disableHover ? 1 : 0}
           bgColor={builderColor}
         />
@@ -98,7 +87,6 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
         <>
           <BuilderName
             bgColor={builderColor}
-            onClick={handleBuilderClick}
             disableHover={props.disableHover ? 1 : 0}
           >
             {props.name}
@@ -106,7 +94,6 @@ const individualBuilder: React.FC<IndividualBuilderProps> = (props) => {
           <BuilderImage
             src={`${imgurURL}/${props.ID}.png`}
             alt={`Avatar for the ${props.name} builder.`}
-            onClick={handleBuilderClick}
             disableHover={props.disableHover ? 1 : 0}
             bgColor={builderColor}
           />

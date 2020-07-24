@@ -8,12 +8,12 @@ import {
   ResetButton,
   SubmitButton,
 } from "./filter-styles";
-import CheckboxFilters from "./Filters/checkboxes";
-import DropdownFilters from "./Filters/dropdowns";
-import SearchFilter from "./Filters/search";
-import TierFilter from "./Filters/tier-range";
-import searchByName from "./Requests/search-by-name";
-import searchWithFilters from "./Requests/search-with-filters";
+import CheckboxFilters from "../../../components/UnitSearch/Filters/checkboxes";
+import DropdownFilters from "../../../components/UnitSearch/Filters/dropdowns";
+import SearchFilter from "../../../components/UnitSearch/Filters/search";
+import TierFilter from "../../../components/UnitSearch/Filters/tier-range";
+import searchByName from "../../../components/UnitSearch/Requests/search-by-name";
+import searchWithFilters from "../../../components/UnitSearch/Requests/search-with-filters";
 
 interface FilterProps {
   displayUnits: UnitInterface[];
