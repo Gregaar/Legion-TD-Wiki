@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import EmailLogo from "../../assets/email-logo.png";
-import GitHubLogo from "../../assets/github-logo.png";
+import EmailLogo from "../../assets/contact/email-logo.png";
+import GitHubLogo from "../../assets/contact/github-logo.png";
 import {
   A,
   FAQContainer,

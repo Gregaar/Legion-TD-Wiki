@@ -6,12 +6,12 @@ import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import React from "react";
 import shortid from "shortid";
 
-import goldIcon from "../../../assets/gold.png";
-import kingAttack from "../../../assets/king-attack.png";
-import kingHitPoints from "../../../assets/king-hitpoints.png";
-import kingLevel from "../../../assets/king-level.png";
-import kingRegen from "../../../assets/king-regen.png";
-import lumberIcon from "../../../assets/lumber.png";
+import goldIcon from "../../../assets/icons/gold.png";
+import kingAttack from "../../../assets/icons/king-attack.png";
+import kingHitPoints from "../../../assets/icons/king-hitpoints.png";
+import kingLevel from "../../../assets/icons/king-level.png";
+import kingRegen from "../../../assets/icons/king-regen.png";
+import lumberIcon from "../../../assets/icons/lumber.png";
 import KingStatsInterface from "../../../shared/Interfaces/king-stats-interface";
 import { TableCellStyled, TableContainer } from "./king-stats-styles";
 
