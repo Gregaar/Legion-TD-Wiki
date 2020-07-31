@@ -30,7 +30,6 @@ const ProtectedRoute = lazy(() =>
 
 const Router: React.FC = () => {
   return (
-    <>
       <Suspense fallback={<Spinner />}>
         <Switch>
           <ProtectedRoute path="/secret" exact component={Secret} />
@@ -54,7 +53,6 @@ const Router: React.FC = () => {
           <Route path="*" component={NoMatchPage} />
         </Switch>
       </Suspense>
-    </>
   );
 };
 
