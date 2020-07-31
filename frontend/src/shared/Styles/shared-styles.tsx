@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import Background from "../../assets/background/bg.png";
+import Background from "../../assets/background/bg.jpg";
 import device from "./devices";
 
 export const BackgroundDiv = styled.div`
