@@ -69,7 +69,7 @@ const UnitCard: React.FC<UnitCardProps> = ({
   };
 
   const getUnitURL = (): string => {
-    const unitNameWithDashes = unit.Name.replace(" ", "-");
+    const unitNameWithDashes = unit.Name.replace(/\s/gm, "-");
     return `/units/${unitNameWithDashes}`;
   };
 
