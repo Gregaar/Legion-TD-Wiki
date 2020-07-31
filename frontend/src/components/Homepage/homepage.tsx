@@ -1,6 +1,6 @@
 import React from "react";
 
-import mapImage from "../../assets/homepage/map-image.png";
+import mapImage from "../../assets/homepage/map-image.jpg";
 import {
   A,
   HeadingTwo,
