@@ -17,7 +17,7 @@ interface UpgradeInfoProps {
 const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
 
   const getLinkURL = (name: string) => {
-    const unitNameWithDashes = name.replace(" ", "-");
+    const unitNameWithDashes = name.replace(/\s/gm, "-");
     return `/units/${unitNameWithDashes}`;
   };
 
