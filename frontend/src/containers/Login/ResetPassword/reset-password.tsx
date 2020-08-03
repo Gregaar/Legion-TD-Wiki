@@ -109,11 +109,11 @@ const ResetPassword: React.FC = () => {
     <main>
       <div>
         <Helmet>
-        <title>{`Legion TD Mega Wiki | Reset Password`}</title>
-            <meta
-              name="description"
-              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
-            />
+          <title>{`Legion TD Mega Wiki | Reset Password`}</title>
+          <meta
+            name="description"
+            content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+          />
         </Helmet>
       </div>
       <ContainerDiv>

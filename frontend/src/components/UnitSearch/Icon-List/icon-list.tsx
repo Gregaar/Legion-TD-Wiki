@@ -1,7 +1,12 @@
 import React from "react";
+
+import {
+  HeadingContainer,
+  UnitContainer,
+  UnitHeadings,
+} from "../../../containers/UnitSearch/unit-styles";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
 import IconListRow from "./icon-list-row";
-import { HeadingContainer, UnitContainer, UnitHeadings } from "../../../containers/UnitSearch/unit-styles";
 
 interface ListOrder {
   [key: string]: string;

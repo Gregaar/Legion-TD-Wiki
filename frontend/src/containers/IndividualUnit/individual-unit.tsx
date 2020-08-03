@@ -4,7 +4,6 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import AbilityCard from "../../components/Cards/AbilityCard/ability-card";
 import CombatCard from "../../components/Cards/CombatCard/combat-card";
-import IndividualHelmet from "./individual-helmet";
 import NavButtons from "../../components/Navigation/UI/Buttons/NavButtons/nav-buttons";
 import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
@@ -12,6 +11,7 @@ import WaveInterface from "../../shared/Interfaces/wave-interface";
 import SummonCard from "../Summons/summon-card";
 import UnitCard from "../UnitSearch/UnitCard/unit-card";
 import WaveCard from "../Waves/wave-card";
+import IndividualHelmet from "./individual-helmet";
 import { ContainerDiv } from "./individual-unit-styles";
 
 const sanitizeUnitName = (path: string): string => {

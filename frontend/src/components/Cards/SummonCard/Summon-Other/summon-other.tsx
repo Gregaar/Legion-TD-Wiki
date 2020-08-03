@@ -70,9 +70,7 @@ const summonOther: React.FC<SummonOtherProps> = (props) => {
                 <StyledLink to={"/summons"}>{info.value}</StyledLink>
               </NavParagraph>
             ) : (
-              <NavParagraph
-                disableInfoNav={props.disableAnimation ? 1 : 0}
-              >
+              <NavParagraph disableInfoNav={props.disableAnimation ? 1 : 0}>
                 {info.value}
               </NavParagraph>
             )}

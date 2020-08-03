@@ -7,9 +7,7 @@ interface BuilderCardsProps {
   builders: BuilderInterface[];
 }
 
-const builderCards: React.FC<BuilderCardsProps> = ({
-  builders,
-}) => {
+const builderCards: React.FC<BuilderCardsProps> = ({ builders }) => {
   return (
     <>
       {builders &&

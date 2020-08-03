@@ -9,16 +9,12 @@ import {
 } from "./no-match-styles";
 
 const noMatchPage: React.FC = () => {
-
   return (
     <main>
       <div>
         <Helmet>
-        <title>{`Legion TD Mega Wiki | 404`}</title>
-            <meta
-              name="description"
-              content={`Page not found. 404.`}
-            />
+          <title>{`Legion TD Mega Wiki | 404`}</title>
+          <meta name="description" content={`Page not found. 404.`} />
         </Helmet>
       </div>
       <Heading>
@@ -31,9 +27,7 @@ const noMatchPage: React.FC = () => {
       </Paragraph>
 
       <ButtonContainer>
-        <BackButton to="/">
-          Back to Safety
-        </BackButton>
+        <BackButton to="/">Back to Safety</BackButton>
       </ButtonContainer>
     </main>
   );

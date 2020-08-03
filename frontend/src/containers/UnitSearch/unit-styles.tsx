@@ -94,7 +94,7 @@ export const TypeHeading = styled.h2`
 export const ButtonContainer = styled.div`
   margin: 2rem auto;
   text-align: center;
-  background-color: rgba(68,89,106,0.9);
+  background-color: rgba(68, 89, 106, 0.9);
   border: 2px solid white;
   width: 20rem;
   border-radius: 5px;

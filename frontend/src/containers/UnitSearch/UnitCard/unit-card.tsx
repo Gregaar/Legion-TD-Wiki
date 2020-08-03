@@ -8,10 +8,10 @@ import {
   UnitInfoHeading,
   UnitName,
 } from "../../../components/Cards/card-styles";
+import AbilityInfo from "../../../components/Cards/UnitCard/AbilityInfo/ability-info";
 import BuildingInfo from "../../../components/Cards/UnitCard/Building-Info/building-info";
 import CombatInfo from "../../../components/Cards/UnitCard/Combat-Info/combat-info";
 import UpgradeInfo from "../../../components/Cards/UnitCard/Upgrade-Info/upgrade-info";
-import AbilityInfo from "../../../components/Cards/UnitCard/AbilityInfo/ability-info";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
 import { getUnitIcon } from "../../../shared/Services/get-icons";
 import { unitNameColor } from "../../../shared/Styles/get-heading-color";

@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+
+import CardList from "../../components/UnitSearch/Card-List/card-list";
+import IconList from "../../components/UnitSearch/Icon-List/icon-list";
+import sortListOrder from "../../components/UnitSearch/reorder-units";
+import searchWithFilters from "../../components/UnitSearch/Requests/search-with-filters";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import Filter from "./Filter/filter";
-import searchWithFilters from "../../components/UnitSearch/Requests/search-with-filters";
-import sortListOrder from "../../components/UnitSearch/reorder-units";
-import IconList from "../../components/UnitSearch/Icon-List/icon-list";
-import CardList from "../../components/UnitSearch/Card-List/card-list";
-import { TypeHeading, ButtonContainer, ListButton } from "./unit-styles";
+import { ButtonContainer, ListButton, TypeHeading } from "./unit-styles";
 
 export interface ListOrderInterface {
   [key: string]: string;

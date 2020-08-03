@@ -42,7 +42,11 @@ const combatInfo: React.FC<CombatInfoProps> = (props) => {
 
   const attackAndDefence = [
     { title: "Attack Type", value: props.attackType, key: shortid.generate() },
-    { title: "Defence Type", value: props.defenseType, key: shortid.generate() },
+    {
+      title: "Defence Type",
+      value: props.defenseType,
+      key: shortid.generate(),
+    },
   ];
 
   return (

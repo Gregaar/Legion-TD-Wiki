@@ -173,11 +173,11 @@ const Login: React.FC = () => {
     <React.Fragment>
       <div>
         <Helmet>
-        <title>{`Legion TD Mega Wiki | Login`}</title>
-            <meta
-              name="description"
-              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
-            />
+          <title>{`Legion TD Mega Wiki | Login`}</title>
+          <meta
+            name="description"
+            content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+          />
         </Helmet>
       </div>
       {login}

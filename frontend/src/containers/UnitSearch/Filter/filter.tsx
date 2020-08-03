@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
 import ErrorDisplay from "../../../components/ErrorDisplay/error-display";
+import CheckboxFilters from "../../../components/UnitSearch/Filters/checkboxes";
+import DropdownFilters from "../../../components/UnitSearch/Filters/dropdowns";
+import SearchFilter from "../../../components/UnitSearch/Filters/search";
+import TierFilter from "../../../components/UnitSearch/Filters/tier-range";
+import searchByName from "../../../components/UnitSearch/Requests/search-by-name";
+import searchWithFilters from "../../../components/UnitSearch/Requests/search-with-filters";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
 import {
   ButtonContainer,
@@ -8,12 +14,6 @@ import {
   ResetButton,
   SubmitButton,
 } from "./filter-styles";
-import CheckboxFilters from "../../../components/UnitSearch/Filters/checkboxes";
-import DropdownFilters from "../../../components/UnitSearch/Filters/dropdowns";
-import SearchFilter from "../../../components/UnitSearch/Filters/search";
-import TierFilter from "../../../components/UnitSearch/Filters/tier-range";
-import searchByName from "../../../components/UnitSearch/Requests/search-by-name";
-import searchWithFilters from "../../../components/UnitSearch/Requests/search-with-filters";
 
 interface FilterProps {
   displayUnits: UnitInterface[];

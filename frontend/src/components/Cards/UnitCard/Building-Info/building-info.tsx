@@ -17,12 +17,9 @@ interface BuildingInfoProps {
 }
 
 const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
-
   const cardWithNav = (
     <StyledLink to={`/builders/${props.builder}`}>
-      <NavParagraph
-        disableInfoNav={props.disableInfoNav ? 1 : 0}
-      >
+      <NavParagraph disableInfoNav={props.disableInfoNav ? 1 : 0}>
         {props.builder}
       </NavParagraph>
     </StyledLink>
@@ -37,9 +34,7 @@ const buildingInfo: React.FC<BuildingInfoProps> = (props) => {
       {!props.disableInfoNav ? (
         cardWithNav
       ) : (
-        <NavParagraph
-          disableInfoNav={props.disableInfoNav ? 1 : 0}
-        >
+        <NavParagraph disableInfoNav={props.disableInfoNav ? 1 : 0}>
           {props.builder}
         </NavParagraph>
       )}

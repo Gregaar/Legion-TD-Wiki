@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "react-router";
 
 import Spinner from "./components/Spinner/spinner";
@@ -30,29 +30,29 @@ const ProtectedRoute = lazy(() =>
 
 const Router: React.FC = () => {
   return (
-      <Suspense fallback={<Spinner />}>
-        <Switch>
-          <ProtectedRoute path="/secret" exact component={Secret} />
-          <Route path="/login" exact component={Login} />
-          <Route
-            path="/resetpassword/:id/:token"
-            exact
-            component={ResetPassword}
-          />
-          <Route path="/units/:unitName" exact component={IndividualUnit} />
-          <Route path="/units" exact component={Units} />
-          <Route path="/builders/:builderName" exact component={BuilderUnits} />
-          <Route path="/builders" exact component={Builders} />
-          <Route path="/summons/:order" exact component={IndividualUnit} />
-          <Route path="/summons" exact component={Summons} />
-          <Route path="/waves/:level" exact component={IndividualUnit} />
-          <Route path="/waves" exact component={Waves} />
-          <Route path="/king" exact component={King} />
-          <Route path="/about" exact component={About} />
-          <Route path="/" exact component={Homepage} />
-          <Route path="*" component={NoMatchPage} />
-        </Switch>
-      </Suspense>
+    <Suspense fallback={<Spinner />}>
+      <Switch>
+        <ProtectedRoute path="/secret" exact component={Secret} />
+        <Route path="/login" exact component={Login} />
+        <Route
+          path="/resetpassword/:id/:token"
+          exact
+          component={ResetPassword}
+        />
+        <Route path="/units/:unitName" exact component={IndividualUnit} />
+        <Route path="/units" exact component={Units} />
+        <Route path="/builders/:builderName" exact component={BuilderUnits} />
+        <Route path="/builders" exact component={Builders} />
+        <Route path="/summons/:order" exact component={IndividualUnit} />
+        <Route path="/summons" exact component={Summons} />
+        <Route path="/waves/:level" exact component={IndividualUnit} />
+        <Route path="/waves" exact component={Waves} />
+        <Route path="/king" exact component={King} />
+        <Route path="/about" exact component={About} />
+        <Route path="/" exact component={Homepage} />
+        <Route path="*" component={NoMatchPage} />
+      </Switch>
+    </Suspense>
   );
 };
 
