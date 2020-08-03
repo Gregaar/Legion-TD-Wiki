@@ -1,8 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+
+import SummonInterface from "../../shared/Interfaces/summon-interface";
 import UnitInterface from "../../shared/Interfaces/unit-interface";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
-import SummonInterface from "../../shared/Interfaces/summon-interface";
 
 type Unit = UnitInterface & SummonInterface & WaveInterface;
 
@@ -23,8 +24,7 @@ const individualHelmet: React.FC<IndividualHelmetProps> = ({
             ? isWaveUnit
               ? unit["Creep Name"].charAt(0).toUpperCase() +
                 unit["Creep Name"].slice(1)
-              : unit.Name.charAt(0).toUpperCase() +
-                unit.Name.slice(1)
+              : unit.Name.charAt(0).toUpperCase() + unit.Name.slice(1)
             : "Unit"
         }`}</title>
         <meta
@@ -34,8 +34,7 @@ const individualHelmet: React.FC<IndividualHelmetProps> = ({
               ? isWaveUnit
                 ? unit["Creep Name"].charAt(0).toUpperCase() +
                   unit["Creep Name"].slice(1)
-                : unit.Name.charAt(0).toUpperCase() +
-                  unit.Name.slice(1)
+                : unit.Name.charAt(0).toUpperCase() + unit.Name.slice(1)
               : "Unit"
           }. Abilities. Gold Cost. Food Cost. Upgraded Unit. Base Unit. Combat Stats. Range. Attack Type. Defence Type.`}
         />

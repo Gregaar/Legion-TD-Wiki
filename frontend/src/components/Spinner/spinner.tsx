@@ -8,7 +8,8 @@ const loadingSpinner = () => (
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "rgb(68,89,106)",
-      height: "100%",
+      height: "100vh",
+      marginBottom: "-2rem",
     }}
   >
     <h2 style={{ display: "block", color: "yellow", marginRight: "10px" }}>

@@ -74,11 +74,11 @@ const forgotPassword: React.FC<ForgotPasswordProps> = (props) => {
     <main>
       <div>
         <Helmet>
-        <title>{`Legion TD Mega Wiki | Forgot Password`}</title>
-            <meta
-              name="description"
-              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
-            />
+          <title>{`Legion TD Mega Wiki | Forgot Password`}</title>
+          <meta
+            name="description"
+            content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+          />
         </Helmet>
       </div>
       <ContainerDiv>

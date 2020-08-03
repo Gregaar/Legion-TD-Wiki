@@ -15,7 +15,6 @@ interface UpgradeInfoProps {
 }
 
 const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
-
   const getLinkURL = (name: string) => {
     const unitNameWithDashes = name.replace(/\s/gm, "-");
     return `/units/${unitNameWithDashes}`;
@@ -32,16 +31,12 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
             <React.Fragment key={name}>
               {!props.disableInfoNav ? (
                 <StyledLink to={() => getLinkURL(name)}>
-                  <NavParagraph
-                    disableInfoNav={props.disableInfoNav ? 1 : 0}
-                  >
+                  <NavParagraph disableInfoNav={props.disableInfoNav ? 1 : 0}>
                     {name}
                   </NavParagraph>
                 </StyledLink>
               ) : (
-                <NavParagraph
-                  disableInfoNav={props.disableInfoNav ? 1 : 0}
-                >
+                <NavParagraph disableInfoNav={props.disableInfoNav ? 1 : 0}>
                   {name}
                 </NavParagraph>
               )}
@@ -65,16 +60,12 @@ const upgradeInfo: React.FC<UpgradeInfoProps> = (props) => {
             <React.Fragment key={name}>
               {!props.disableInfoNav ? (
                 <StyledLink to={() => getLinkURL(name)}>
-                  <NavParagraph
-                    disableInfoNav={props.disableInfoNav ? 1 : 0}
-                  >
+                  <NavParagraph disableInfoNav={props.disableInfoNav ? 1 : 0}>
                     {name}
                   </NavParagraph>
                 </StyledLink>
               ) : (
-                <NavParagraph
-                  disableInfoNav={props.disableInfoNav ? 1 : 0}
-                >
+                <NavParagraph disableInfoNav={props.disableInfoNav ? 1 : 0}>
                   {name}
                 </NavParagraph>
               )}

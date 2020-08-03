@@ -1,4 +1,5 @@
 import React from "react";
+
 import DefaultHelmet from "./components/DefaultHelmet/defaultHelmet";
 import { AuthProvider } from "./hoc/AuthContext/auth-context";
 import Layout from "./hoc/Layout/layout";

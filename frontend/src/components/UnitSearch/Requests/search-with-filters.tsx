@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import UnitInterface from "../../../shared/Interfaces/unit-interface";
 import { FilterObjectInterface } from "../../../containers/UnitSearch/Filter/filter";
+import UnitInterface from "../../../shared/Interfaces/unit-interface";
 
 interface SearchWithFiltersArgs {
   (

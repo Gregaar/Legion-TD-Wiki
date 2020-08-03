@@ -106,11 +106,11 @@ const Register: React.FC<RegisterProps> = ({
     <main>
       <div>
         <Helmet>
-        <title>{`Legion TD Mega Wiki | Register`}</title>
-            <meta
-              name="description"
-              content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
-            />
+          <title>{`Legion TD Mega Wiki | Register`}</title>
+          <meta
+            name="description"
+            content={`Login to the Wiki. Register. Sign Up. Forgot Password.`}
+          />
         </Helmet>
       </div>
       <ContainerDiv>

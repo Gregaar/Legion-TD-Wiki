@@ -2,6 +2,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { Img } from "../../../containers/UnitSearch/unit-styles";
 import {
   getAbilityIcon,
   getAttackIcon,
@@ -9,7 +10,6 @@ import {
   getTierIcon,
   getUnitIcon,
 } from "../../../shared/Services/get-icons";
-import { Img } from "../../../containers/UnitSearch/unit-styles";
 
 interface UnitProps {
   id: string;
