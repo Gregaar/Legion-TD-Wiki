@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Tooltip from "@material-ui/core/Tooltip";
 import shortid from "shortid";
 
 import {
   InfoPanel,
   StyledLink,
   UnitImage,
+  CombatImg,
   UnitInfoHeading,
   UnitName,
 } from "../../../components/Cards/card-styles";
@@ -13,7 +15,11 @@ import BuildingInfo from "../../../components/Cards/UnitCard/Building-Info/build
 import CombatInfo from "../../../components/Cards/UnitCard/Combat-Info/combat-info";
 import UpgradeInfo from "../../../components/Cards/UnitCard/Upgrade-Info/upgrade-info";
 import UnitInterface from "../../../shared/Interfaces/unit-interface";
-import { getUnitIcon } from "../../../shared/Services/get-icons";
+import {
+  getUnitIcon,
+  getAttackIcon,
+  getDefenseIcon,
+} from "../../../shared/Services/get-icons";
 import { unitNameColor } from "../../../shared/Styles/get-heading-color";
 
 interface UnitCardProps {
@@ -54,6 +60,8 @@ const UnitCard: React.FC<UnitCardProps> = ({
   const [toggle, setToggle] = useState<ToggleInterface>(defaultToggle);
   const unitBgColor = unitNameColor(unit.Builder);
   const unitIcon = getUnitIcon(unit.Builder, unit.Name);
+  const attackIcon = getAttackIcon(unit["Attack Type"]);
+  const defIcon = getDefenseIcon(unit["Defense Type"]);
 
   const handleToggle = (key: string, curVal: boolean): void => {
     if (!disableInfoNav) {
@@ -108,6 +116,42 @@ const UnitCard: React.FC<UnitCardProps> = ({
           />
         </>
       )}
+      {showExtras ? (
+        <>
+          <Tooltip
+            title={
+              unit["Attack Type"] !== null
+                ? unit["Attack Type"]
+                    .charAt(0)
+                    .toUpperCase()
+                    .concat(unit["Attack Type"].slice(1)) + " Attack"
+                : "Unknown Attack"
+            }
+            placement="left"
+          >
+            <CombatImg
+              src={attackIcon}
+              alt={`Attack icon for ${unit["Attack Type"]} attacks`}
+            />
+          </Tooltip>
+          <Tooltip
+            title={
+              unit["Defense Type"] !== null
+                ? unit["Defense Type"]
+                    .charAt(0)
+                    .toUpperCase()
+                    .concat(unit["Defense Type"].slice(1)) + " Defence"
+                : "Unknown Defence"
+            }
+            placement="right"
+          >
+            <CombatImg
+              src={defIcon}
+              alt={`Defence icon for ${unit["Defense Type"]} defence`}
+            />
+          </Tooltip>
+        </>
+      ) : null}
       <UnitInfoHeading
         canToggle={disableInfoNav ? 1 : 0}
         onClick={() => handleToggle("building", toggle.building)}
@@ -151,8 +195,6 @@ const UnitCard: React.FC<UnitCardProps> = ({
             rangeClass={unit["Melee / Ranged"]}
             attackSpeed={unit["Attack Speed"]}
             attackClass={unit["Attack Speed Class"]}
-            attackType={unit["Attack Type"]}
-            defenseType={unit["Defense Type"]}
             mana={unit.Mana}
             isOpen={toggle.combat}
             disableAnimation={disableInfoNav}

@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import {
   InfoPanel,
   StyledLink,
+  SummonDescription,
   UnitImage as SummonImage,
+  CombatImg,
   UnitInfoHeading as SummonInfoHeading,
   UnitName as SummonName,
 } from "../../components/Cards/card-styles";
+import { getAttackIcon, getDefenseIcon } from "../../shared/Services/get-icons";
+import SummonAbilities from "../../components/Cards/UnitCard/AbilityInfo/ability-info";
 import SummonCombat from "../../components/Cards/SummonCard/Summon-Combat/summon-combat";
 import SummonInfo from "../../components/Cards/SummonCard/Summon-Info/summon-info";
 import SummonOther from "../../components/Cards/SummonCard/Summon-Other/summon-other";
@@ -21,22 +26,26 @@ interface SummonCardProps {
   summon: SummonInterface;
   goToClicked: (pathname: string, state?: HistoryWithState) => void;
   enableHover?: number;
+  showExtras?: boolean;
 }
 
 interface ToggleInterface {
   resources: boolean;
+  ability: boolean;
   combat: boolean;
   other: boolean;
 }
 
 const summonCardList: ToggleInterface = {
   resources: true,
+  ability: true,
   combat: false,
   other: false,
 };
 
 const individualSummon: ToggleInterface = {
   resources: true,
+  ability: true,
   combat: true,
   other: true,
 };
@@ -45,9 +54,12 @@ const SummonCard: React.FC<SummonCardProps> = ({
   summon,
   goToClicked,
   enableHover,
+  showExtras,
 }) => {
   const defaultToggle = enableHover ? summonCardList : individualSummon;
   const [toggle, setToggle] = useState<ToggleInterface>(defaultToggle);
+  const attackIcon = getAttackIcon(summon["Attack Type"]);
+  const defIcon = getDefenseIcon(summon["Defense Type"]);
   const bgColor = unitNameColor(summon.Builder);
   const imgurURL = "https://i.imgur.com";
 
@@ -83,6 +95,7 @@ const SummonCard: React.FC<SummonCardProps> = ({
         >
           {summon.Name}
         </SummonName>
+        <SummonDescription>{summon["Unit Description"]}</SummonDescription>
       </StyledLink>
       <StyledLink to={`/summons/${summon.Order}`}>
         <SummonImage
@@ -109,7 +122,7 @@ const SummonCard: React.FC<SummonCardProps> = ({
           >
             {summon.Name}
           </SummonName>
-
+          <SummonDescription>{summon["Unit Description"]}</SummonDescription>
           <SummonImage
             src={`${imgurURL}/${summon.ID}.png`}
             alt={`Icon for the ${summon.Name} summon`}
@@ -119,7 +132,38 @@ const SummonCard: React.FC<SummonCardProps> = ({
           />
         </>
       )}
-      <p>{summon["Unit Description"]}</p>
+      {showExtras ? (
+        <>
+          <Tooltip
+            title={
+              summon["Attack Type"]
+                .charAt(0)
+                .toUpperCase()
+                .concat(summon["Attack Type"].slice(1)) + " Attack"
+            }
+            placement="left"
+          >
+            <CombatImg
+              src={attackIcon}
+              alt={`Attack icon for ${summon["Attack Type"]} attacks`}
+            />
+          </Tooltip>
+          <Tooltip
+            title={
+              summon["Defense Type"]
+                .charAt(0)
+                .toUpperCase()
+                .concat(summon["Defense Type"].slice(1)) + " Defence"
+            }
+            placement="right"
+          >
+            <CombatImg
+              src={defIcon}
+              alt={`Defence icon for ${summon["Defense Type"]} defence`}
+            />
+          </Tooltip>
+        </>
+      ) : null}
       <SummonInfoHeading
         onClick={() => handleToggle("resources", toggle.resources)}
         canToggle={enableHover ? 1 : 0}
@@ -134,6 +178,22 @@ const SummonCard: React.FC<SummonCardProps> = ({
         disableAnimation={enableHover}
         isOpen={toggle.resources}
       />
+      {showExtras ? (
+        <>
+          <SummonInfoHeading
+            onClick={() => handleToggle("resources", toggle.ability)}
+            canToggle={enableHover ? 1 : 0}
+          >
+            Abilities
+          </SummonInfoHeading>
+          <SummonAbilities
+            abilities={summon.Abilities}
+            abilityTypes={summon["Ability Type"]}
+            disableAnimation={enableHover ? true : false}
+            isOpen={toggle.ability}
+          />
+        </>
+      ) : null}
       <SummonInfoHeading
         canToggle={enableHover ? 1 : 0}
         onClick={() => handleToggle("combat", toggle.combat)}
@@ -149,7 +209,6 @@ const SummonCard: React.FC<SummonCardProps> = ({
         range={summon.Range}
         rangeClass={summon["Melee / Ranged"]}
         mana={summon.Mana}
-        abilityCount={summon.Abilities ? summon.Abilities.length : 0}
         disableAnimation={enableHover}
         isOpen={toggle.combat}
       />

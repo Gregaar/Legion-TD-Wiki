@@ -12,7 +12,6 @@ interface SummonCombatProps {
   range: number;
   rangeClass: string;
   mana: number;
-  abilityCount: number;
   disableAnimation?: number;
   isOpen: boolean;
 }
@@ -34,11 +33,6 @@ const summonCombat: React.FC<SummonCombatProps> = (props) => {
     {
       title: "Attack Speed",
       value: `${props.attackSpeedClass} (${props.attackSpeed})`,
-      key: shortid.generate(),
-    },
-    {
-      title: "Ability Count",
-      value: props.abilityCount,
       key: shortid.generate(),
     },
   ];

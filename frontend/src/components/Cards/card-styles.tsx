@@ -62,7 +62,7 @@ export const InfoPanel = styled.div<InfoPanelProps>`
   }
 
   @media ${device.laptop} {
-    flex 0 0 40%;
+    flex 0 0 30%;
     margin: 125px auto 0 auto;
   }
 
@@ -160,3 +160,29 @@ export const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
 `;
+
+export const CombatImg = styled.img`
+  margin: 0px 10px 5px 10px;
+`
+
+export const SummonDescription = styled.p`
+  font-style: italic;
+  margin: 0 auto;
+  width: 17vw;
+
+  @media ${device.mobileS} {
+    width: 90vw;
+  }
+
+  @media ${device.mobileM} {
+    width: 90vw;
+  }
+
+  @media ${device.mobileL} {
+    width: 50vw;
+  }
+
+  @media ${device.tablet} {
+    width: 35vw;
+  }
+`
