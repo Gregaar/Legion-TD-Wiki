@@ -12,8 +12,6 @@ interface CombatInfoProps {
   mana: number;
   attackClass: string | null;
   attackSpeed: number;
-  attackType: string | null;
-  defenseType: string | null;
   isOpen: boolean;
   disableAnimation?: boolean;
   showAtkDef?: boolean;
@@ -40,15 +38,6 @@ const combatInfo: React.FC<CombatInfoProps> = (props) => {
     },
   ];
 
-  const attackAndDefence = [
-    { title: "Attack Type", value: props.attackType, key: shortid.generate() },
-    {
-      title: "Defence Type",
-      value: props.defenseType,
-      key: shortid.generate(),
-    },
-  ];
-
   return (
     <InfoGrid
       isOpen={props.isOpen}
@@ -56,14 +45,6 @@ const combatInfo: React.FC<CombatInfoProps> = (props) => {
     >
       {combatData &&
         combatData.map((data) => (
-          <React.Fragment key={data.key}>
-            <InfoHeading>{data.title}</InfoHeading>
-            <p>{data.value}</p>
-          </React.Fragment>
-        ))}
-      {props.showAtkDef &&
-        attackAndDefence &&
-        attackAndDefence.map((data) => (
           <React.Fragment key={data.key}>
             <InfoHeading>{data.title}</InfoHeading>
             <p>{data.value}</p>

@@ -66,7 +66,8 @@ const Waves: React.FC = () => {
         key={shortid.generate()}
         wave={wave}
         goToClicked={history.push}
-        enableHover={true}
+        enableHover
+        showExtras
       />
     ));
   }

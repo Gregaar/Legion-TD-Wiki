@@ -80,6 +80,7 @@ const Summons: React.FC = () => {
         summon={sum}
         enableHover={1}
         goToClicked={history.push}
+        showExtras
       />
     ));
   }

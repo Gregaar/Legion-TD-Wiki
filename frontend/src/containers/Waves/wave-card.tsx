@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import {
   InfoPanel,
   Paragraph,
   StyledLink,
   UnitImage as WaveImage,
+  CombatImg,
   UnitInfoHeading as WaveInfoHeading,
   UnitName as WaveName,
 } from "../../components/Cards/card-styles";
@@ -12,13 +14,18 @@ import WaveCombat from "../../components/Cards/WaveCard/Wave-Combat/wave-combat"
 import WaveGold from "../../components/Cards/WaveCard/Wave-Gold/wave-gold";
 import WaveOther from "../../components/Cards/WaveCard/Wave-Other/wave-other";
 import WaveInterface from "../../shared/Interfaces/wave-interface";
-import { getWaveIcon } from "../../shared/Services/get-icons";
+import {
+  getWaveIcon,
+  getAttackIcon,
+  getDefenseIcon,
+} from "../../shared/Services/get-icons";
 import { getWaveColor } from "../../shared/Styles/get-heading-color";
 
 interface WaveCardProps {
   wave: WaveInterface;
   goToClicked: (path: string) => void;
   enableHover?: boolean;
+  showExtras?: boolean;
 }
 
 interface ToggleInterface {
@@ -43,9 +50,12 @@ const WaveCard: React.FC<WaveCardProps> = ({
   wave,
   goToClicked,
   enableHover,
+  showExtras,
 }) => {
   const defaultToggle = enableHover ? waveCardList : individualWave;
   const [toggle, setToggle] = useState<ToggleInterface>(defaultToggle);
+  const attackIcon = getAttackIcon(wave["Attack Type"]);
+  const defIcon = getDefenseIcon(wave["Defense Type"]);
   const waveIcon = getWaveIcon(wave["Creep Name"]);
   const bgColor = getWaveColor(wave.Level);
 
@@ -116,6 +126,38 @@ const WaveCard: React.FC<WaveCardProps> = ({
           />
         </>
       )}
+      {showExtras ? (
+        <>
+          <Tooltip
+            title={
+              wave["Attack Type"]
+                .charAt(0)
+                .toUpperCase()
+                .concat(wave["Attack Type"].slice(1)) + " Attack"
+            }
+            placement="left"
+          >
+            <CombatImg
+              src={attackIcon}
+              alt={`Attack icon for ${wave["Attack Type"]} attacks`}
+            />
+          </Tooltip>
+          <Tooltip
+            title={
+              wave["Defense Type"]
+                .charAt(0)
+                .toUpperCase()
+                .concat(wave["Defense Type"].slice(1)) + " Defence"
+            }
+            placement="right"
+          >
+            <CombatImg
+              src={defIcon}
+              alt={`Defence icon for ${wave["Defense Type"]} defence`}
+            />
+          </Tooltip>
+        </>
+      ) : null}
       <Paragraph>{`Wave: ${wave.Level}`}</Paragraph>
       <Paragraph>
         {`Number of ${wave["Creep Name"]}: ${wave["Number of Creeps"]}`}
@@ -144,8 +186,6 @@ const WaveCard: React.FC<WaveCardProps> = ({
         minHit={wave["Min Hit"]}
         maxHit={wave["Max Hit"]}
         range={wave.Range}
-        attackType={wave["Attack Type"]}
-        defenseType={wave["Defense Type"]}
         isOpen={toggle.combat}
       />
       <WaveInfoHeading
