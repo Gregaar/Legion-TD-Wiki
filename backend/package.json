@@ -28,7 +28,7 @@
     "nodemailer": "^6.4.11",
     "nodemailer-smtp-transport": "^2.7.4",
     "password-validator": "^5.1.0",
-    "pino": "^6.6.0",
+    "pino": "^6.11.0",
     "typescript": "^3.9.7",
     "validator": "^13.1.1"
   },
