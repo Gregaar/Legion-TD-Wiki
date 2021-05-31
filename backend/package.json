@@ -23,7 +23,7 @@
     "express-pino-logger": "^5.0.0",
     "helmet": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.6.1",
+    "mongodb": "^3.6.9",
     "mongoose": "^5.9.25",
     "nodemailer": "^6.4.11",
     "nodemailer-smtp-transport": "^2.7.4",
